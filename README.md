@@ -35,7 +35,7 @@ Our engine stress-tests the whole book against the venues' own rules and real cr
 4. **Lenders:** the account posts collateral and borrows in its own name. At Rhea, on NEAR, by contract calls. At Aave, on Base, by Ethereum transactions the account signs through Chain Signatures.
 5. **Money movement:** 1Click (NEAR Intents) carries swaps and the moves between NEAR, Hyperliquid and Aave's chain. A deposit from a NEAR wallet into the account, and a withdrawal back to it, is a plain token transfer.
 6. **Keeper** (`services/keeper`): asks for checks, runs funding and unwind plans step by step, and tops a lender up when its cushion thins. It uses only public methods, so anyone can run one.
-7. **Web app** (`web/`): Home, Spot, Perps, Basis trade (put a coin and its margin in the account, short the same amount on Hyperliquid, borrow against both, in one run), Borrow; under More: Credit check, Book, Deposit & withdraw, Account details, Risk, Activity, Drill.
+7. **Web app** (`web/`): the tabs read left to right in the order a new client goes: Home, Deposit & withdraw, Spot, Perps, Borrow, Basis trade (put a coin and its margin in the account, short the same amount on Hyperliquid, borrow against both, in one run); under More: Activity, Risk, Account details, Credit check, Book, Drill.
 
 The full design is in [PLAN.md](PLAN.md); the engine's rules and formulas in [RISK_ENGINE.md](RISK_ENGINE.md); lending through outside lenders in [FUNDING.md](FUNDING.md); every interface, with what was run and when, in [INTERFACES.md](INTERFACES.md).
 
@@ -161,7 +161,7 @@ Steps 1 to 7 need no key, no wallet and no account. Tools: Python 3.10 or later 
    ```
    The backend prints `previews and orders off (OUTLAYER_PAYMENT_KEY is empty)`. Open http://localhost:3000.
    - **With no key and no wallet** you can read the pages that show public data: Book (the pool's money, read live from `pool.pbf.testnet`) and the markets on Spot and Perps.
-   - **With a NEAR testnet wallet** holding about 7 test NEAR, the steps that need only NEAR work in a copy without our keys: open an account (6 NEAR), mint and deposit test tokens (More, Deposit & withdraw), borrow from the pool (the check is paid from your wallet, 0.01 NEAR), repay, withdraw. This path was last walked by hand on 7 Nov, on the first version of the pages (`research/data/phase2_web_click_through.json`), and not again on today's pages.
+   - **With a NEAR testnet wallet** holding about 7 test NEAR, the steps that need only NEAR work in a copy without our keys: open an account (6 NEAR), mint and deposit test tokens (the Deposit & withdraw tab), borrow from the pool (the check is paid from your wallet, 0.01 NEAR), repay, withdraw. This path was last walked by hand on 7 Nov, on the first version of the pages (`research/data/phase2_web_click_through.json`), and not again on today's pages.
    - **What needs keys you don't have:** orders on Hyperliquid and the free previews (an OutLayer payment key), the credit check page (the same key), moves between chains (the stand-in, with its floats on NEAR, Hyperliquid and Base Sepolia), and a lender's part of a loan (a running keeper). `.env.example` lists every setting. Steps 6 and 7 and the records below stand in for these.
 
 9. **Check Hyperliquid testnet against the real market** (optional; public APIs only).
@@ -263,8 +263,8 @@ Every contract we deploy went through the `near-contract-audit` checklist and a 
 contracts/   NEAR contracts (Rust, near-sdk 5.29.1): factory, account, pool, testnet tokens and mocks, sandbox tests
 risk/        risk-core (pure Rust library), pb-read (the readers), pb-risk and pb-gateway (OutLayer programs), backtest (CLI)
 services/    TypeScript: 1Click client, 1Click stand-in for testnet, keeper and gate scripts, backend (API)
-web/         Next.js app: Home, Spot, Perps, Basis trade, Borrow; under More, credit check, book, deposit & withdraw,
-             account details, risk, activity and the testnet drill
+web/         Next.js app: Home, Deposit & withdraw, Spot, Perps, Borrow, Basis trade; under More, activity, risk,
+             account details, credit check, book and the testnet drill
 scripts/     testnet setup scripts, and live-check.py (step 7)
 research/    notes with sources, market data, the Python reference engine, the security review, and research/data/:
              the record of every live run

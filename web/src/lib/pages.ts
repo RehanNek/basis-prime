@@ -1,7 +1,9 @@
 // The web app's pages (PLAN.md 5.8), and the phase that builds each one (PLAN.md 11).
 // The navigation, the home page and the placeholders all read this list.
-// The app's second shape (INTERFACES.md 49.1): the tabs are Home, Spot, Perps, Borrow, Basis trade and More. Credit
-// check, Book and every page of before sit under More, and the old order form stays there as "Trade (classic)".
+// The app's second shape (INTERFACES.md 49.1): the tabs are Home, Deposit & withdraw, Spot, Perps, Borrow, Basis trade
+// and More. The tabs read left to right as the order a new client goes in (the user, 14 Nov: "the tabs act as a
+// guide. First home, then deposit then buy spot then trade perps then borrow"). Credit check, Book and the other
+// pages of before sit under More; the old order form keeps its address and is linked from nowhere.
 
 export interface AppPage {
   href: string;
@@ -103,13 +105,14 @@ export const PAGES: AppPage[] = [
   {
     href: '/deposit',
     // INTERFACES.md 50.1 point 3: depositing and withdrawing are one page, each one click away at its top.
+    // A tab of its own, right after Home, since 14 Nov (INTERFACES.md 51.7): it was the first item under More.
     title: 'Deposit & withdraw',
     summary:
       'Depositing: test tokens from the faucet, then a deposit from your wallet. ' +
       'Withdrawing: a token out to a NEAR wallet, with its check first while a loan is open.',
     phase: 'Phase 2',
     wallet: true,
-    place: 'more',
+    place: 'tab',
     label: 'Deposit & withdraw',
     blurb: 'Put tokens into your account, or take them out to a wallet',
     icon: 'bi-arrow-down-up',
@@ -190,10 +193,10 @@ export function navPages(network: 'mainnet' | 'testnet'): AppPage[] {
   return PAGES.filter((page) => network === 'testnet' || !page.testnetOnly);
 }
 
-/** INTERFACES.md 49.1: the tabs after Home, in the user's order. */
-const TAB_ORDER = ['/spot', '/perps', '/borrow', '/basis'];
+/** INTERFACES.md 49.1 and 51.7: the tabs after Home, in the user's order. */
+const TAB_ORDER = ['/deposit', '/spot', '/perps', '/borrow', '/basis'];
 
-/** The tabs after Home, in order: Spot, Perps, Borrow, Basis trade. */
+/** The tabs after Home, in order: Deposit & withdraw, Spot, Perps, Borrow, Basis trade. */
 export function tabPages(network: 'mainnet' | 'testnet'): AppPage[] {
   return navPages(network)
     .filter((page) => page.place === 'tab')
@@ -202,7 +205,7 @@ export function tabPages(network: 'mainnet' | 'testnet'): AppPage[] {
 
 /** The More menu: the pages of before but the old order form, in the order people reach for them, with Credit check and Book. */
 export function morePages(network: 'mainnet' | 'testnet'): AppPage[] {
-  const order = ['/deposit', '/activity', '/risk', '/account', '/credit-check', '/book', '/drill'];
+  const order = ['/activity', '/risk', '/account', '/credit-check', '/book', '/drill'];
   return navPages(network)
     .filter((page) => page.place === 'more')
     .sort((a, b) => order.indexOf(a.href) - order.indexOf(b.href));

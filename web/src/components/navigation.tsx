@@ -46,7 +46,7 @@ export function Brand() {
 export function Tabs({ pathname, more }: { pathname: string; more: ReactNode }) {
   return (
     <nav className="pb-tabs" aria-label="Pages">
-      {/* Six tabs: on a phone they sit closer together, and wrap to a second line before they would run off the edge. */}
+      {/* Seven tabs: on a phone they sit closer together, and wrap to a second line before they would run off the edge. */}
       <div className="pb-container pb-tabs-row" style={{ flexWrap: 'wrap', columnGap: 'clamp(0.7rem, 2.8vw, 1.5rem)', rowGap: 0 }}>
         <Tab href="/" label="Home" active={pathname === '/'} />
         {tabPages(NetworkId).map((page) => (

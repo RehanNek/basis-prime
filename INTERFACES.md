@@ -7220,3 +7220,13 @@ From the user's wallet click-through on the hosted site.
   the same. `oneClickDepositTx` stays in `lib/tx.ts` with its test; nothing on a page calls it now.
 - On mainnet a deposit from another chain through 1Click would come back as its own piece of work; nothing here is
   on mainnet.
+
+### 51.7 Deposit & withdraw is a tab, right after Home (the main session, 14 Nov, 15:56 UTC)
+
+The user, during the click-through: "move the deposit and withdraw button and workflow out of more and make it
+seperate tab right next to the home tab so users dont have to search and the tabs act as a guide. First home, then
+deposit then buy spot then trade perps then borrow."
+- **Tabs now:** Home, Deposit & withdraw, Spot, Perps, Borrow, Basis trade, More (`web/src/lib/pages.ts`: `/deposit`
+  has `place: 'tab'` and is first in `TAB_ORDER`). Basis trade stays where it was, after Borrow.
+- **More now:** Activity, Risk, Account details, Credit check, Book, Drill.
+- The page, its address (`/deposit`) and every link to it are unchanged. `pages.test.ts` holds the new order.

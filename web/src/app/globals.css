@@ -1444,8 +1444,10 @@ details > summary {
     min-width: 0;
   }
 
-  .pb-brand span {
-    display: none;
+  /* The whole name stays on a phone ("Basis Prime"), a little smaller so the bar still fits one line. */
+  .pb-brand {
+    font-size: 1.1rem;
+    gap: 0.3rem;
   }
 
   .pb-tiles {

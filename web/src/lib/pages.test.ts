@@ -29,16 +29,22 @@ test('the drill panel is shown on testnet only', () => {
   assert.equal(navPages('mainnet').length, PAGES.length - 1);
 });
 
-test('the tabs are Home, Spot, Perps, Borrow, Basis trade and More; the pages of before are under More, but the old order form (INTERFACES.md 49.1)', () => {
-  assert.deepEqual(tabPages('testnet').map((p) => [p.label, p.href]), [['Spot', '/spot'], ['Perps', '/perps'], ['Borrow', '/borrow'], ['Basis trade', '/basis']]);
+test('the tabs are Home, Deposit & withdraw, Spot, Perps, Borrow, Basis trade and More; the other pages of before are under More, but the old order form (INTERFACES.md 49.1, 51.7)', () => {
+  // The user, 14 Nov: the tabs are a guide, left to right. Home, then deposit, then buy spot, then trade perps, then borrow.
+  assert.deepEqual(
+    tabPages('testnet').map((p) => [p.label, p.href]),
+    [['Deposit & withdraw', '/deposit'], ['Spot', '/spot'], ['Perps', '/perps'], ['Borrow', '/borrow'], ['Basis trade', '/basis']],
+  );
+  assert.deepEqual(tabPages('mainnet').map((p) => p.href), tabPages('testnet').map((p) => p.href));
   // Credit check and Book moved under More. The old order form left the menu on the user's word (13 Nov); its address stays.
   assert.deepEqual(
     morePages('testnet').map((p) => p.label),
-    ['Deposit & withdraw', 'Activity', 'Risk', 'Account details', 'Credit check', 'Book', 'Drill'],
+    ['Activity', 'Risk', 'Account details', 'Credit check', 'Book', 'Drill'],
   );
   // INTERFACES.md 50.1 point 3: "Add funds" became "Deposit & withdraw" (the user's name for it), one page for both,
-  // at the address of before.
-  assert.deepEqual([pageAt('/deposit').label, pageAt('/deposit').title, pageAt('/deposit').place], ['Deposit & withdraw', 'Deposit & withdraw', 'more']);
+  // at the address of before. Since 14 Nov it is a tab of its own, not the first item under More.
+  assert.deepEqual([pageAt('/deposit').label, pageAt('/deposit').title, pageAt('/deposit').place], ['Deposit & withdraw', 'Deposit & withdraw', 'tab']);
+  assert.ok(!morePages('testnet').some((p) => p.href === '/deposit'));
   assert.match(pageAt('/deposit').summary, /Depositing: .*Withdrawing: /);
   assert.equal(pageAt('/trade').place, 'none');
   assert.ok(![...tabPages('testnet'), ...morePages('testnet')].some((p) => p.href === '/trade'));
