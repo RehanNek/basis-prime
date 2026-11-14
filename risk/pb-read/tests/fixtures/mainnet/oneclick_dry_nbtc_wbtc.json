@@ -1,0 +1,60 @@
+{
+ "request": {
+  "dry": true,
+  "swapType": "EXACT_INPUT",
+  "slippageTolerance": 100,
+  "originAsset": "nep141:nbtc.bridge.near",
+  "depositType": "ORIGIN_CHAIN",
+  "destinationAsset": "nep141:eth-0x2260fac5e5542a773aa44fbcfedf7c193bc2c599.omft.near",
+  "amount": "135435000",
+  "refundTo": "aurora",
+  "refundType": "ORIGIN_CHAIN",
+  "recipient": "0xce4bd513b9457d3cfa29b804fba54b11193a2f4d",
+  "recipientType": "DESTINATION_CHAIN",
+  "deadline": "2026-11-10T22:29:23.000Z"
+ },
+ "status": 201,
+ "ms": 1193,
+ "response": {
+  "quote": {
+   "amountIn": "135435000",
+   "amountInFormatted": "1.35435",
+   "amountInUsd": "100070.212799999994",
+   "minAmountIn": "135435000",
+   "amountOut": "134778697",
+   "amountOutFormatted": "1.34778697",
+   "amountOutUsd": "99450.504942359999",
+   "minAmountOut": "133430910",
+   "timeEstimate": 29,
+   "refundFee": "7",
+   "withdrawFee": "180"
+  },
+  "quoteRequest": {
+   "dry": true,
+   "depositMode": "SIMPLE",
+   "swapType": "EXACT_INPUT",
+   "slippageTolerance": 100,
+   "originAsset": "nep141:nbtc.bridge.near",
+   "depositType": "ORIGIN_CHAIN",
+   "destinationAsset": "nep141:eth-0x2260fac5e5542a773aa44fbcfedf7c193bc2c599.omft.near",
+   "amount": "135435000",
+   "refundTo": "aurora",
+   "refundType": "ORIGIN_CHAIN",
+   "recipient": "0xce4bd513b9457d3cfa29b804fba54b11193a2f4d",
+   "recipientType": "DESTINATION_CHAIN",
+   "deadline": "2026-11-10T22:29:23.000Z",
+   "confidentiality": "public",
+   "quoteWaitingTimeMs": 0,
+   "insured": false,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ]
+  },
+  "signature": "ed25519:3Ku3aQtNECsTztCC1tdKk5mu6uKCczRykJczZd59yGybVZyy1pBxwSBZKGi9t5Lxhnos1Lw5Lsfq6yZst9NTF46E",
+  "timestamp": "2026-11-10T22:19:23.729Z",
+  "correlationId": "6f7d3133-ee90-4afa-932f-8b51e795842d"
+ }
+}

@@ -1,0 +1,18 @@
+[package]
+name = "pb-factory"
+description = "Factory: creates one account contract per client and registers it with the pool (PLAN.md 5.1)"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+near-sdk = { workspace = true }
+pb-types = { path = "../types" }
+
+[dev-dependencies]
+near-sdk = { workspace = true, features = ["unit-testing"] }

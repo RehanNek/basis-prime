@@ -1,0 +1,85 @@
+{
+ "accessor": {
+  "Project": {
+   "project_id": "pbf-keeper.testnet/pb-gateway"
+  }
+ },
+ "new_access": {
+  "Logic": {
+   "conditions": [
+    {
+     "Predecessor": {
+      "condition": {
+       "Logic": {
+        "conditions": [
+         {
+          "AccountPattern": {
+           "pattern": "[a-z0-9_-]+\\.pbf\\.testnet"
+          }
+         },
+         {
+          "Whitelist": {
+           "accounts": [
+            "pbf-keeper.testnet"
+           ]
+          }
+         }
+        ],
+        "operator": "Or"
+       }
+      }
+     }
+    },
+    {
+     "Logic": {
+      "conditions": [
+       {
+        "WasmHash": {
+         "hash": "fcae6052c4cde41d4dcb50460f4788df848e648839ce392fb6f15dc1581223d5"
+        }
+       },
+       {
+        "WasmHash": {
+         "hash": "6746393a828da9e9f3cb302f1e1a57d1c50d1042d66c3b7a659f58652a747efb"
+        }
+       },
+       {
+        "WasmHash": {
+         "hash": "e5d4b32459d5acf5dbd163e787705e952decfbcf8c0815301fff0ff1e9418b50"
+        }
+       },
+       {
+        "WasmHash": {
+         "hash": "6bdc21f66476c14dfda7e94d9257b7ccc53e4621d4c518b763dba1d98226455b"
+        }
+       },
+       {
+        "WasmHash": {
+         "hash": "06dc7787e8fc5db00747588e21c6e704c13e5055dc14f2fb2c20c5dd4db426c1"
+        }
+       },
+       {
+        "WasmHash": {
+         "hash": "9a2e035c2f62906d8e390db28c5be23b0753ca20b7d842908ac35916b09643e8"
+        }
+       },
+       {
+        "WasmHash": {
+         "hash": "fba556c2b9e64cf216fb3c805c998a1a210d5ef257960091853e3a8e0303ceb6"
+        }
+       },
+       {
+        "WasmHash": {
+         "hash": "68a50dfa8518271b96ed0484257609694dd50b4bad9b577c199d609e2e705480"
+        }
+       }
+      ],
+      "operator": "Or"
+     }
+    }
+   ],
+   "operator": "And"
+  }
+ },
+ "profile": "gateway"
+}

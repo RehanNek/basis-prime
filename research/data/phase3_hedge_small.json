@@ -1,0 +1,2088 @@
+{
+ "version": 1,
+ "account": "hedge1.pbf.testnet",
+ "owner": "pbf-keeper.testnet",
+ "size": "small",
+ "api_url": "http://localhost:8788",
+ "started_utc": "2026-11-08T11:00:52.534Z",
+ "plan": {
+  "size": "small",
+  "btc_px": 75778.4,
+  "deposit_usdc_micro": "440000000",
+  "deposit_nbtc_units": "1500000",
+  "to_hl_micro": "430000000",
+  "short_sz": "0.015",
+  "burst": {
+   "count": 40,
+   "sz": "0.00014"
+  },
+  "caps": {
+   "to_hl_micro": "500000000",
+   "short_usd": 2000,
+   "borrow_micro": "2000000000",
+   "float_order_usd": 2000,
+   "nbtc_usd": 2000
+  }
+ },
+ "context": {
+  "gateway": {
+   "project_id": "pbf-keeper.testnet/pb-gateway",
+   "version_key": "fcae6052c4cde41d4dcb50460f4788df848e648839ce392fb6f15dc1581223d5",
+   "secrets_ref": null
+  },
+  "risk_version": "d741714416b7a75c9228bda21d6b70fb92850344130235943179369763396b7e",
+  "hl_address": "0x1b242c24f5e67e93d7b58c3dad77ccc90dacd7d0",
+  "to_hl_quote": {
+   "correlationId": "c8313097-19b7-4e80-b646-f812f676dc3a",
+   "depositAddress": "dc85fc98b95b0c8404d37ae74ef85e6f1a1e3d05c12f78d7b6c63ff63ad88b21",
+   "amountIn": "430000000",
+   "amountOut": "42960214300"
+  },
+  "agent": "0x94d0abc4290e4ef96fe81e406fd3ad1672d8acab",
+  "float_open_oid": null,
+  "short_sz": 0.015,
+  "borrowed": "1096805079",
+  "taken_out": "1096805079",
+  "home_quote": {
+   "correlationId": "6e8c50a6-34e1-4c46-8ff1-ff6c6999d118",
+   "depositAddress": "0xfc9d786b69b900ec51dfe8ebbf19ed47be59009d",
+   "depositMemo": "6e8c50a6-34e1-4c46-8ff1-ff6c6999d118",
+   "amountIn": "42765178700"
+  }
+ },
+ "steps": [
+  {
+   "id": "create",
+   "label": "create hedge1.pbf.testnet, owned by pbf-keeper.testnet",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-08T11:00:52.534Z",
+   "seconds": 7.3,
+   "txs": [
+    {
+     "label": "create_account",
+     "hash": "HWLRWzyQXWtsdXxhVPm5vcXhw8bVCE6E1GraPmA9BY1D",
+     "ok": true,
+     "gas_tgas": 62.27,
+     "receipts": [
+      {
+       "executor": "pbf.testnet",
+       "gas_tgas": 20.045120465292
+      },
+      {
+       "executor": "hedge1.pbf.testnet",
+       "gas_tgas": 29.4159341385
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf.testnet",
+       "gas_tgas": 3.485492872911
+      },
+      {
+       "executor": "pool.pbf.testnet",
+       "gas_tgas": 2.141426345976
+      },
+      {
+       "executor": "pbf.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 1.549614078739
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "mnbtc.pbf-ops.testnet",
+       "gas_tgas": 1.517694078739
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf.testnet",
+       "gas_tgas": 1.798668942667
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": true,
+     "seconds": 6.7,
+     "logs": [
+      "EVENT_JSON:{\"standard\":\"pb-pool\",\"version\":\"1.0.0\",\"event\":\"register\",\"data\":{\"account_id\":\"hedge1.pbf.testnet\"}}",
+      "created hedge1.pbf.testnet"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "gateway": {
+     "project_id": "pbf-keeper.testnet/pb-gateway",
+     "version_key": "fcae6052c4cde41d4dcb50460f4788df848e648839ce392fb6f15dc1581223d5",
+     "secrets_ref": null
+    },
+    "risk_version": "d741714416b7a75c9228bda21d6b70fb92850344130235943179369763396b7e",
+    "counter": 0
+   },
+   "code": null
+  },
+  {
+   "id": "deposit",
+   "label": "mint and deposit mUSDC and mNBTC",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-08T11:00:59.869Z",
+   "seconds": 18.9,
+   "txs": [
+    {
+     "label": "mint musdc.pbf-ops.testnet",
+     "hash": "38e8Cq9orMkeRwNDPzbqSaQY9xuP2PgSaAxXuFJdUYd5",
+     "ok": true,
+     "gas_tgas": 2.87,
+     "receipts": [
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 1.889716298485
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": "",
+     "seconds": 4.6,
+     "logs": [
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_mint\",\"data\":[{\"owner_id\":\"pbf-keeper.testnet\",\"amount\":\"440000000\",\"memo\":\"faucet\"}]}"
+     ]
+    },
+    {
+     "label": "deposit musdc.pbf-ops.testnet",
+     "hash": "77aTAwDURRykqt47FkoKWFsLb7oDh5owQCTsHCo68Rqf",
+     "ok": true,
+     "gas_tgas": 6.49,
+     "receipts": [
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 2.59367884954
+      },
+      {
+       "executor": "hedge1.pbf.testnet",
+       "gas_tgas": 1.584725370747
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 1.333958260549
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": "440000000",
+     "seconds": 4.8,
+     "logs": [
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"pbf-keeper.testnet\",\"new_owner_id\":\"hedge1.pbf.testnet\",\"amount\":\"440000000\"}]}",
+      "deposit of 440000000 musdc.pbf-ops.testnet from pbf-keeper.testnet"
+     ]
+    },
+    {
+     "label": "mint mnbtc.pbf-ops.testnet",
+     "hash": "2M4FtQwPKRm1S7bV36oGVqaCToEohoCZNrEBzQa9dYoD",
+     "ok": true,
+     "gas_tgas": 2.84,
+     "receipts": [
+      {
+       "executor": "mnbtc.pbf-ops.testnet",
+       "gas_tgas": 1.856787261959
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": "",
+     "seconds": 4.3,
+     "logs": [
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_mint\",\"data\":[{\"owner_id\":\"pbf-keeper.testnet\",\"amount\":\"1500000\",\"memo\":\"faucet\"}]}"
+     ]
+    },
+    {
+     "label": "deposit mnbtc.pbf-ops.testnet",
+     "hash": "DPstDy8VaV22EFxziNfa1CjYSs2cxEZ31ZqcwSNhoyx2",
+     "ok": true,
+     "gas_tgas": 6.43,
+     "receipts": [
+      {
+       "executor": "mnbtc.pbf-ops.testnet",
+       "gas_tgas": 2.544450978752
+      },
+      {
+       "executor": "hedge1.pbf.testnet",
+       "gas_tgas": 1.583911327393
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "mnbtc.pbf-ops.testnet",
+       "gas_tgas": 1.317678589895
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": "1500000",
+     "seconds": 4.9,
+     "logs": [
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"pbf-keeper.testnet\",\"new_owner_id\":\"hedge1.pbf.testnet\",\"amount\":\"1500000\"}]}",
+      "deposit of 1500000 mnbtc.pbf-ops.testnet from pbf-keeper.testnet"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "balances": {
+     "musdc": "440000000",
+     "mnbtc": "1500000"
+    }
+   },
+   "code": null
+  },
+  {
+   "id": "hl_init",
+   "label": "hl_init: the Hyperliquid address through Chain Signatures",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-08T11:01:18.814Z",
+   "seconds": 5.3,
+   "txs": [
+    {
+     "label": "hl_init",
+     "hash": "DHRYP9kbnJg71MUw4RdLyWoANRji2qRRxLpCYJcMWdmY",
+     "ok": true,
+     "gas_tgas": 10.33,
+     "receipts": [
+      {
+       "executor": "hedge1.pbf.testnet",
+       "gas_tgas": 2.279120243654
+      },
+      {
+       "executor": "v1.signer-prod.testnet",
+       "gas_tgas": 5.369941276682
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "hedge1.pbf.testnet",
+       "gas_tgas": 1.703893939593
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": "0x1b242c24f5e67e93d7b58c3dad77ccc90dacd7d0",
+     "seconds": 5.1,
+     "logs": [
+      "Hyperliquid address 0x1b242c24f5e67e93d7b58c3dad77ccc90dacd7d0"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "address": "0x1b242c24f5e67e93d7b58c3dad77ccc90dacd7d0",
+    "returned": "0x1b242c24f5e67e93d7b58c3dad77ccc90dacd7d0",
+    "derived_public_key_gas_tgas": 5.369941276682,
+    "mpc_receipts": [
+     {
+      "executor": "v1.signer-prod.testnet",
+      "gas_tgas": 5.369941276682
+     }
+    ],
+    "tx_gas_tgas": 10.33
+   },
+   "code": null
+  },
+  {
+   "id": "to_hl",
+   "label": "move 430 USDC to Hyperliquid",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-08T11:01:24.091Z",
+   "seconds": 41.7,
+   "txs": [
+    {
+     "label": "withdraw to the deposit address",
+     "hash": "25fCTjZrbxR1THKSG6T4k5vX6thx9MQCCLAYsC6ZuQFJ",
+     "ok": true,
+     "gas_tgas": 6.08,
+     "receipts": [
+      {
+       "executor": "hedge1.pbf.testnet",
+       "gas_tgas": 2.130408384905
+      },
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 3.185128428638
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": "",
+     "seconds": 4.6,
+     "logs": [
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"hedge1.pbf.testnet\",\"new_owner_id\":\"dc85fc98b95b0c8404d37ae74ef85e6f1a1e3d05c12f78d7b6c63ff63ad88b21\",\"amount\":\"430000000\"}]}"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "statuses": [
+     "PROCESSING",
+     "SUCCESS"
+    ],
+    "delivered": "429.602143",
+    "hl_equity": 428.602143,
+    "seconds_to_hl": 42
+   },
+   "code": null
+  },
+  {
+   "id": "agent",
+   "label": "request_agent: pb-gateway names the agent, on-chain",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-08T11:02:05.840Z",
+   "seconds": 12.1,
+   "txs": [
+    {
+     "label": "request_agent",
+     "hash": "2rQPgg5APPkYYHPKhC6rjuWk6Yy7a9BxHLFNPBBfGxfv",
+     "ok": true,
+     "gas_tgas": 12.68,
+     "receipts": [
+      {
+       "executor": "hedge1.pbf.testnet",
+       "gas_tgas": 2.349941262075
+      },
+      {
+       "executor": "outlayer.testnet",
+       "gas_tgas": 4.073278139081
+      },
+      {
+       "executor": "outlayer.testnet",
+       "gas_tgas": 3.004698849061
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "hedge1.pbf.testnet",
+       "gas_tgas": 1.605628691599
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": {
+      "accepted": true,
+      "reason": null
+     },
+     "seconds": 12,
+     "logs": [
+      "Resolved project: pbf-keeper.testnet/pb-gateway, version: \"fcae6052c4cde41d4dcb50460f4788df848e648839ce392fb6f15dc1581223d5\", source: WasmUrl { url: \"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/fcae6052c4cde41d4dcb50460f4788df848e648839ce392fb6f15dc1581223d5.wasm\", hash: \"fcae6052c4cde41d4dcb50460f4788df848e648839ce392fb6f15dc1581223d5\", build_target: Some(\"wasm32-wasip2\") }, uuid: p0000000000000122",
+      "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_requested\",\"data\":[{\"request_data\":\"{\\\"request_id\\\":13360,\\\"sender_id\\\":\\\"pbf-keeper.testnet\\\",\\\"predecessor_id\\\":\\\"hedge1.pbf.testnet\\\",\\\"code_source\\\":{\\\"WasmUrl\\\":{\\\"url\\\":\\\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/fcae6052c4cde41d4dcb50460f4788df848e648839ce392fb6f15dc1581223d5.wasm\\\",\\\"hash\\\":\\\"fcae6052c4cde41d4dcb50460f4788df848e648839ce392fb6f15dc1581223d5\\\",\\\"build_target\\\":\\\"wasm32-wasip2\\\"}},\\\"resource_limits\\\":{\\\"max_instructions\\\":2000000000,\\\"max_memory_mb\\\":256,\\\"max_execution_seconds\\\":20},\\\"input_data\\\":\\\"{\\\\\\\"mode\\\\\\\":\\\\\\\"agent_address\\\\\\\",\\\\\\\"account\\\\\\\":\\\\\\\"hedge1.pbf.testnet\\\\\\\",\\\\\\\"network\\\\\\\":\\\\\\\"testnet\\\\\\\"}\\\",\\\"input_data_in_state\\\":false,\\\"secrets_ref\\\":null,\\\"response_format\\\":\\\"Json\\\",\\\"payment\\\":\\\"10000000000000000000000\\\",\\\"attached_usd\\\":\\\"0\\\",\\\"timestamp\\\":1794135728024013115,\\\"compile_only\\\":false,\\\"force_rebuild\\\":false,\\\"store_on_fastfs\\\":false,\\\"use_bound_identity\\\":false,\\\"project_uuid\\\":\\\"p0000000000000122\\\",\\\"project_id\\\":\\\"pbf-keeper.testnet/pb-gateway\\\"}\",\"data_id\":[37,196,68,101,229,106,232,92,174,248,113,55,90,146,238,185,155,78,74,42,175,246,252,12,157,114,13,85,210,71,100,10],\"timestamp\":1794135728024013115}]}",
+      "[[yNEAR charged: \"1152900500000000000000\"]]",
+      "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_completed\",\"data\":[{\"sender_id\":\"pbf-keeper.testnet\",\"code_source\":{\"WasmUrl\":{\"url\":\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/fcae6052c4cde41d4dcb50460f4788df848e648839ce392fb6f15dc1581223d5.wasm\",\"hash\":\"fcae6052c4cde41d4dcb50460f4788df848e648839ce392fb6f15dc1581223d5\",\"build_target\":\"wasm32-wasip2\"}},\"resources_used\":{\"instructions\":5745771,\"time_ms\":1529,\"compile_time_ms\":null},\"success\":true,\"error_message\":null,\"payment_charged\":\"1152900500000000000000\",\"payment_refunded\":\"8847099500000000000000\",\"compilation_note\":\"Cached WASM from 2026-11-08T09:47:58.718959+00:00\",\"timestamp\":1794135734617141133}]}",
+      "Execution completed successfully. Output: Json(92 bytes), Resources: { instructions: 5745771, time_ms: 1529 }, Cost: 1152900500000000000000 yoctoNEAR, Refund: 8847099500000000000000 yoctoNEAR, Cached WASM from 2026-11-08T09:47:58.718959+00:00",
+      "agent 0x94d0abc4290e4ef96fe81e406fd3ad1672d8acab accepted"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "agent": {
+     "address": "0x94d0abc4290e4ef96fe81e406fd3ad1672d8acab",
+     "received_block": 276766946
+    },
+    "returned": {
+     "accepted": true,
+     "reason": null
+    }
+   },
+   "code": null
+  },
+  {
+   "id": "approve",
+   "label": "hl_approve_agent, post it, until Hyperliquid lists the agent",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-08T11:02:17.989Z",
+   "seconds": 11.3,
+   "txs": [
+    {
+     "label": "hl_approve_agent",
+     "hash": "D6H2oQfzYkDMZzv7Re98GV5umnLMyxJLA582k8FE8qdL",
+     "ok": true,
+     "gas_tgas": 13.27,
+     "receipts": [
+      {
+       "executor": "hedge1.pbf.testnet",
+       "gas_tgas": 2.57625539153
+      },
+      {
+       "executor": "v1.signer-prod.testnet",
+       "gas_tgas": 4.267358378906
+      },
+      {
+       "executor": "v1.signer-prod.testnet",
+       "gas_tgas": 3.462760702146
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "hedge1.pbf.testnet",
+       "gas_tgas": 1.759403716085
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": {
+      "index": 0,
+      "kind": "approveAgent",
+      "action": "{\"type\":\"approveAgent\",\"hyperliquidChain\":\"Testnet\",\"signatureChainId\":\"0x66eee\",\"agentAddress\":\"0x94d0abc4290e4ef96fe81e406fd3ad1672d8acab\",\"agentName\":\"pb valid_until 1809687739464\",\"nonce\":1794135739464}",
+      "nonce": 1794135739464,
+      "signature": {
+       "r": "0xc1d66e8930bfb76113c995aaba67b03de5ad2da294cd78c2d3fa2c720703e6da",
+       "s": "0x5a84b1698c7e8046a5048cbfab49fec5d46722eb05f1980a5d6b9a5680899444",
+       "v": 28
+      },
+      "signed_block": 276766961
+     },
+     "seconds": 9,
+     "logs": [
+      "sign: predecessor=AccountId(\"hedge1.pbf.testnet\"), request=SignRequestArgs { path: \"hyperliquid-1\", payload: Ecdsa(BoundedVec { inner: [162, 82, 62, 47, 192, 198, 112, 90, 195, 47, 184, 17, 209, 34, 175, 62, 217, 109, 118, 97, 215, 87, 149, 7, 90, 250, 78, 136, 7, 144, 189, 71], witness: NonEmpty(()) }), domain_id: DomainId(0) }",
+      "EVENT_JSON:{\"standard\":\"pb-pool\",\"version\":\"1.0.0\",\"event\":\"hl_signed\",\"data\":[{\"account\":\"hedge1.pbf.testnet\",\"index\":0,\"kind\":\"approveAgent\",\"nonce\":1794135739464}]}"
+     ]
+    }
+   ],
+   "gateway": [
+    {
+     "label": "submit approveAgent #0",
+     "http_status": 200,
+     "ok": true,
+     "reason": "{\"status\":\"ok\",\"response\":{\"type\":\"default\"}}",
+     "seconds": 1.5
+    }
+   ],
+   "detail": {
+    "index": 0,
+    "agent": "0x94d0abc4290e4ef96fe81e406fd3ad1672d8acab",
+    "listed": {
+     "name": "pb",
+     "address": "0x94d0abc4290e4ef96fe81e406fd3ad1672d8acab",
+     "validUntil": 1809687739464
+    },
+    "mpc_receipts": [
+     {
+      "executor": "v1.signer-prod.testnet",
+      "gas_tgas": 4.267358378906
+     },
+     {
+      "executor": "v1.signer-prod.testnet",
+      "gas_tgas": 3.462760702146
+     }
+    ]
+   },
+   "code": null
+  },
+  {
+   "id": "short",
+   "label": "open the short: 0.015 BTC through the gateway",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-08T11:02:29.271Z",
+   "seconds": 20,
+   "txs": [],
+   "gateway": [
+    {
+     "label": "short: sell 0.015 BTC at 75569 (IOC)",
+     "http_status": 200,
+     "ok": true,
+     "code": null,
+     "reason": null,
+     "status": "filled",
+     "oid": 64822296467,
+     "filled_sz": "0.015",
+     "avg_px": "75787.0",
+     "call_id": "2120a010-dd5b-4bf1-8fe0-73d600998aea",
+     "attestation_url": "https://testnet-api.outlayer.ai/attestations/by-call/2120a010-dd5b-4bf1-8fe0-73d600998aea",
+     "seconds": 13.6
+    }
+   ],
+   "detail": {
+    "mark": 75797,
+    "px": "75569",
+    "short": 0.015,
+    "remaining": 0,
+    "float_order": "11:02:32 float: Hyperliquid: resting, oid 64822285532"
+   },
+   "code": null
+  },
+  {
+   "id": "borrow",
+   "label": "preview, a borrow check for the line less 0.5%, borrow",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-08T11:02:49.251Z",
+   "seconds": 32.9,
+   "txs": [
+    {
+     "label": "request_check (borrow)",
+     "hash": "A9aRbkGN2Kvw7Yr2z4Wvy3g5SJUBzrSREY9ZwwJYcpUQ",
+     "ok": true,
+     "gas_tgas": 13.16,
+     "receipts": [
+      {
+       "executor": "hedge1.pbf.testnet",
+       "gas_tgas": 2.434513993508
+      },
+      {
+       "executor": "outlayer.testnet",
+       "gas_tgas": 4.124956690595
+      },
+      {
+       "executor": "outlayer.testnet",
+       "gas_tgas": 3.098745168053
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "hedge1.pbf.testnet",
+       "gas_tgas": 1.8557382512
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": {
+      "accepted": true,
+      "reason": null
+     },
+     "seconds": 15.9,
+     "logs": [
+      "Resolved project: pbf-keeper.testnet/pb-risk, version: \"d741714416b7a75c9228bda21d6b70fb92850344130235943179369763396b7e\", source: WasmUrl { url: \"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/d741714416b7a75c9228bda21d6b70fb92850344130235943179369763396b7e.wasm\", hash: \"d741714416b7a75c9228bda21d6b70fb92850344130235943179369763396b7e\", build_target: Some(\"wasm32-wasip2\") }, uuid: p000000000000011a",
+      "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_requested\",\"data\":[{\"request_data\":\"{\\\"request_id\\\":13364,\\\"sender_id\\\":\\\"pbf-keeper.testnet\\\",\\\"predecessor_id\\\":\\\"hedge1.pbf.testnet\\\",\\\"code_source\\\":{\\\"WasmUrl\\\":{\\\"url\\\":\\\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/d741714416b7a75c9228bda21d6b70fb92850344130235943179369763396b7e.wasm\\\",\\\"hash\\\":\\\"d741714416b7a75c9228bda21d6b70fb92850344130235943179369763396b7e\\\",\\\"build_target\\\":\\\"wasm32-wasip2\\\"}},\\\"resource_limits\\\":{\\\"max_instructions\\\":2000000000,\\\"max_memory_mb\\\":256,\\\"max_execution_seconds\\\":20},\\\"input_data\\\":\\\"{\\\\\\\"mode\\\\\\\":\\\\\\\"check\\\\\\\",\\\\\\\"account\\\\\\\":\\\\\\\"hedge1.pbf.testnet\\\\\\\",\\\\\\\"intent\\\\\\\":{\\\\\\\"borrow\\\\\\\":{\\\\\\\"amount\\\\\\\":\\\\\\\"1096805079\\\\\\\"}},\\\\\\\"network\\\\\\\":\\\\\\\"testnet\\\\\\\",\\\\\\\"snapshot\\\\\\\":false}\\\",\\\"input_data_in_state\\\":false,\\\"secrets_ref\\\":null,\\\"response_format\\\":\\\"Json\\\",\\\"payment\\\":\\\"10000000000000000000000\\\",\\\"attached_usd\\\":\\\"0\\\",\\\"timestamp\\\":1794135780070129227,\\\"compile_only\\\":false,\\\"force_rebuild\\\":false,\\\"store_on_fastfs\\\":false,\\\"use_bound_identity\\\":false,\\\"project_uuid\\\":\\\"p000000000000011a\\\",\\\"project_id\\\":\\\"pbf-keeper.testnet/pb-risk\\\"}\",\"data_id\":[76,199,66,4,212,77,220,1,15,107,172,187,72,30,222,149,30,85,75,194,245,133,99,160,196,187,173,146,200,110,150,107],\"timestamp\":1794135780070129227}]}",
+      "Retrieving large output from storage for request_id: 13364",
+      "[[yNEAR charged: \"1605016900000000000000\"]]",
+      "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_completed\",\"data\":[{\"sender_id\":\"pbf-keeper.testnet\",\"code_source\":{\"WasmUrl\":{\"url\":\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/d741714416b7a75c9228bda21d6b70fb92850344130235943179369763396b7e.wasm\",\"hash\":\"d741714416b7a75c9228bda21d6b70fb92850344130235943179369763396b7e\",\"build_target\":\"wasm32-wasip2\"}},\"resources_used\":{\"instructions\":169215643,\"time_ms\":6050,\"compile_time_ms\":null},\"success\":true,\"error_message\":null,\"payment_charged\":\"1605016900000000000000\",\"payment_refunded\":\"8394983100000000000000\",\"compilation_note\":\"Cached WASM from 2026-11-08T09:57:43.942642+00:00\",\"timestamp\":1794135791033124371}]}",
+      "Execution completed successfully. Output: Json(853 bytes), Resources: { instructions: 169215643, time_ms: 6050 }, Cost: 1605016900000000000000 yoctoNEAR, Refund: 8394983100000000000000 yoctoNEAR, Cached WASM from 2026-11-08T09:57:43.942642+00:00",
+      "verdict accepted: nonce 1"
+     ]
+    },
+    {
+     "label": "borrow",
+     "hash": "A4hngRCNCfR8p96qdViH32BedDjq3u2giMcLVYWQiWip",
+     "ok": true,
+     "gas_tgas": 16.44,
+     "receipts": [
+      {
+       "executor": "hedge1.pbf.testnet",
+       "gas_tgas": 2.513706055406
+      },
+      {
+       "executor": "pool.pbf.testnet",
+       "gas_tgas": 2.904034744641
+      },
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 2.597503747594
+      },
+      {
+       "executor": "hedge1.pbf.testnet",
+       "gas_tgas": 1.764075530883
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 1.334871507066
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pool.pbf.testnet",
+       "gas_tgas": 1.703978305353
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "hedge1.pbf.testnet",
+       "gas_tgas": 1.75206708106
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": true,
+     "seconds": 7.6,
+     "logs": [
+      "EVENT_JSON:{\"standard\":\"pb-pool\",\"version\":\"1.0.0\",\"event\":\"borrow\",\"data\":{\"account_id\":\"hedge1.pbf.testnet\",\"amount\":\"1096805079\",\"tier\":\"STANDARD\",\"debt\":\"1096805080\"}}",
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"pool.pbf.testnet\",\"new_owner_id\":\"hedge1.pbf.testnet\",\"amount\":\"1096805079\"}]}",
+      "loan of 1096805079 from the pool"
+     ]
+    }
+   ],
+   "gateway": [
+    {
+     "label": "preview (check)",
+     "http_status": 200,
+     "ok": true,
+     "call_id": "6092499a-f9a4-4806-b5d7-9ac7150a7426",
+     "attestation_url": "https://testnet-api.outlayer.ai/attestations/by-call/6092499a-f9a4-4806-b5d7-9ac7150a7426",
+     "reason": null,
+     "seconds": 8.1
+    }
+   ],
+   "detail": {
+    "preview": {
+     "ok": true,
+     "state": "HEALTHY",
+     "action": "NONE",
+     "tier": "STANDARD",
+     "score": 700,
+     "rate_bp": 200,
+     "allow": {
+      "borrow": 1102426906,
+      "withdraw": 10000000
+     },
+     "credit": {
+      "binding": "C4",
+      "line": 1102426906
+     },
+     "eq": 1576930330,
+     "eq_allow": 1574895581,
+     "im": 250853871,
+     "mm": 200683097,
+     "nonce": 1,
+     "blk": 276767003
+    },
+    "verdict": {
+     "ok": true,
+     "state": "HEALTHY",
+     "action": "NONE",
+     "tier": "STANDARD",
+     "score": 700,
+     "rate_bp": 200,
+     "allow": {
+      "borrow": 1102426906,
+      "withdraw": 10000000
+     },
+     "credit": {
+      "binding": "C4",
+      "line": 1102426906
+     },
+     "eq": 1576943081,
+     "eq_allow": 1574895581,
+     "im": 250870933,
+     "mm": 200696747,
+     "nonce": 1,
+     "blk": 276767023
+    },
+    "line": "1102426906",
+    "set_by": "the line less 0.5%",
+    "borrowed": "1096805079",
+    "debt": "1096805083"
+   },
+   "code": null
+  },
+  {
+   "id": "take_out",
+   "label": "take the loan out: a withdrawal check, then the mUSDC to the keeper",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-08T11:03:22.181Z",
+   "seconds": 31.7,
+   "txs": [
+    {
+     "label": "request_check (withdraw)",
+     "hash": "5vxPM8AYmi7sRhXD7ArGQuv142i9P6LxEAec1GgxLqt3",
+     "ok": true,
+     "gas_tgas": 13.43,
+     "receipts": [
+      {
+       "executor": "hedge1.pbf.testnet",
+       "gas_tgas": 2.577272068251
+      },
+      {
+       "executor": "outlayer.testnet",
+       "gas_tgas": 4.150029615916
+      },
+      {
+       "executor": "outlayer.testnet",
+       "gas_tgas": 3.105740626386
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "hedge1.pbf.testnet",
+       "gas_tgas": 1.947962682019
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": {
+      "accepted": true,
+      "reason": null
+     },
+     "seconds": 16.1,
+     "logs": [
+      "Resolved project: pbf-keeper.testnet/pb-risk, version: \"d741714416b7a75c9228bda21d6b70fb92850344130235943179369763396b7e\", source: WasmUrl { url: \"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/d741714416b7a75c9228bda21d6b70fb92850344130235943179369763396b7e.wasm\", hash: \"d741714416b7a75c9228bda21d6b70fb92850344130235943179369763396b7e\", build_target: Some(\"wasm32-wasip2\") }, uuid: p000000000000011a",
+      "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_requested\",\"data\":[{\"request_data\":\"{\\\"request_id\\\":13365,\\\"sender_id\\\":\\\"pbf-keeper.testnet\\\",\\\"predecessor_id\\\":\\\"hedge1.pbf.testnet\\\",\\\"code_source\\\":{\\\"WasmUrl\\\":{\\\"url\\\":\\\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/d741714416b7a75c9228bda21d6b70fb92850344130235943179369763396b7e.wasm\\\",\\\"hash\\\":\\\"d741714416b7a75c9228bda21d6b70fb92850344130235943179369763396b7e\\\",\\\"build_target\\\":\\\"wasm32-wasip2\\\"}},\\\"resource_limits\\\":{\\\"max_instructions\\\":2000000000,\\\"max_memory_mb\\\":256,\\\"max_execution_seconds\\\":20},\\\"input_data\\\":\\\"{\\\\\\\"mode\\\\\\\":\\\\\\\"check\\\\\\\",\\\\\\\"account\\\\\\\":\\\\\\\"hedge1.pbf.testnet\\\\\\\",\\\\\\\"intent\\\\\\\":{\\\\\\\"withdraw\\\\\\\":{\\\\\\\"token\\\\\\\":\\\\\\\"musdc.pbf-ops.testnet\\\\\\\",\\\\\\\"amount\\\\\\\":\\\\\\\"1096805079\\\\\\\"}},\\\\\\\"network\\\\\\\":\\\\\\\"testnet\\\\\\\",\\\\\\\"snapshot\\\\\\\":false}\\\",\\\"input_data_in_state\\\":false,\\\"secrets_ref\\\":null,\\\"response_format\\\":\\\"Json\\\",\\\"payment\\\":\\\"10000000000000000000000\\\",\\\"attached_usd\\\":\\\"0\\\",\\\"timestamp\\\":1794135813985269902,\\\"compile_only\\\":false,\\\"force_rebuild\\\":false,\\\"store_on_fastfs\\\":false,\\\"use_bound_identity\\\":false,\\\"project_uuid\\\":\\\"p000000000000011a\\\",\\\"project_id\\\":\\\"pbf-keeper.testnet/pb-risk\\\"}\",\"data_id\":[13,88,68,129,250,92,169,182,68,106,149,218,46,188,133,111,220,219,0,214,78,192,72,121,255,2,219,70,104,22,89,105],\"timestamp\":1794135813985269902}]}",
+      "Retrieving large output from storage for request_id: 13365",
+      "[[yNEAR charged: \"1611155600000000000000\"]]",
+      "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_completed\",\"data\":[{\"sender_id\":\"pbf-keeper.testnet\",\"code_source\":{\"WasmUrl\":{\"url\":\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/d741714416b7a75c9228bda21d6b70fb92850344130235943179369763396b7e.wasm\",\"hash\":\"d741714416b7a75c9228bda21d6b70fb92850344130235943179369763396b7e\",\"build_target\":\"wasm32-wasip2\"}},\"resources_used\":{\"instructions\":556148271,\"time_ms\":6111,\"compile_time_ms\":null},\"success\":true,\"error_message\":null,\"payment_charged\":\"1611155600000000000000\",\"payment_refunded\":\"8388844400000000000000\",\"compilation_note\":\"Cached WASM from 2026-11-08T09:57:43.942642+00:00\",\"timestamp\":1794135824928974001}]}",
+      "Execution completed successfully. Output: Json(902 bytes), Resources: { instructions: 556148271, time_ms: 6111 }, Cost: 1611155600000000000000 yoctoNEAR, Refund: 8388844400000000000000 yoctoNEAR, Cached WASM from 2026-11-08T09:57:43.942642+00:00",
+      "verdict accepted: nonce 2"
+     ]
+    },
+    {
+     "label": "withdraw the loan to the keeper",
+     "hash": "E7ch26i5XxzDtG4vcwk8ZueyDSTj1vqv3QPYQXf9gUGQ",
+     "ok": true,
+     "gas_tgas": 6.87,
+     "receipts": [
+      {
+       "executor": "hedge1.pbf.testnet",
+       "gas_tgas": 2.303994876844
+      },
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 3.359106888499
+      },
+      {
+       "executor": "hedge1.pbf.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": "",
+     "seconds": 5.4,
+     "logs": [
+      "The account is already registered, refunding the deposit",
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"hedge1.pbf.testnet\",\"new_owner_id\":\"pbf-keeper.testnet\",\"amount\":\"1096805079\"}]}"
+     ]
+    }
+   ],
+   "gateway": [
+    {
+     "label": "preview (check)",
+     "http_status": 200,
+     "ok": true,
+     "call_id": "56b1a8c6-ca4f-4606-a811-68963fb247e9",
+     "attestation_url": "https://testnet-api.outlayer.ai/attestations/by-call/56b1a8c6-ca4f-4606-a811-68963fb247e9",
+     "reason": null,
+     "seconds": 9.3
+    }
+   ],
+   "detail": {
+    "taken_out": "1096805079",
+    "borrowed": "1096805079",
+    "musdc_left": "10000000",
+    "preview": {
+     "ok": true,
+     "state": "HEALTHY",
+     "action": "NONE",
+     "tier": "STANDARD",
+     "score": 700,
+     "rate_bp": 200,
+     "allow": {
+      "borrow": 773385376,
+      "withdraw": 1104836252
+     },
+     "credit": {
+      "binding": "C4",
+      "line": 1870190461
+     },
+     "eq": 1576934824,
+     "eq_allow": 1574895574,
+     "im": 251385578,
+     "mm": 201108462,
+     "nonce": 2,
+     "blk": 276767058
+    },
+    "verdict": {
+     "ok": true,
+     "state": "HEALTHY",
+     "action": "NONE",
+     "tier": "STANDARD",
+     "score": 700,
+     "rate_bp": 200,
+     "allow": {
+      "borrow": 773385367,
+      "withdraw": 1096805079
+     },
+     "credit": {
+      "binding": "C4",
+      "line": 1870190461
+     },
+     "eq": 1576935565,
+     "eq_allow": 1574895566,
+     "im": 251475349,
+     "mm": 201180280,
+     "nonce": 2,
+     "blk": 276767079
+    }
+   },
+   "code": null
+  },
+  {
+   "id": "refuse_close",
+   "label": "with the loan out, closing the whole short is refused",
+   "ok": false,
+   "expect_fail": true,
+   "expect_codes": [
+    "P5",
+    "P6",
+    "P7",
+    "P8",
+    "P9"
+   ],
+   "pass": true,
+   "started_utc": "2026-11-08T11:03:53.862Z",
+   "seconds": 13.1,
+   "txs": [],
+   "gateway": [
+    {
+     "label": "close the whole short: buy 0.015 BTC at 75552 (IOC, reduce-only)",
+     "http_status": 200,
+     "ok": false,
+     "code": "P8",
+     "reason": "equity $479 below the initial requirement $526",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": "8c59c860-5bb8-4d5e-9ede-2a6e5dda50a8",
+     "attestation_url": "https://testnet-api.outlayer.ai/attestations/by-call/8c59c860-5bb8-4d5e-9ede-2a6e5dda50a8",
+     "seconds": 11.6
+    }
+   ],
+   "detail": {
+    "short": 0.015,
+    "px": "75552",
+    "reason": "equity $479 below the initial requirement $526",
+    "call_id": "8c59c860-5bb8-4d5e-9ede-2a6e5dda50a8",
+    "attestation_url": "https://testnet-api.outlayer.ai/attestations/by-call/8c59c860-5bb8-4d5e-9ede-2a6e5dda50a8"
+   },
+   "code": "P8"
+  },
+  {
+   "id": "burst",
+   "label": "40 orders that add to the short, sent at once",
+   "ok": false,
+   "expect_fail": false,
+   "pass": false,
+   "started_utc": "2026-11-08T11:04:06.973Z",
+   "seconds": 130,
+   "txs": [],
+   "gateway": [
+    {
+     "label": "burst #1: sell 0.00014 BTC at 75552",
+     "http_status": 200,
+     "ok": false,
+     "code": "P0",
+     "reason": "another order for this account is in flight (for 0 ms): try again in a moment",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": "b9fe3ef0-fa30-46f6-9b73-98524cc1d95a",
+     "attestation_url": "https://testnet-api.outlayer.ai/attestations/by-call/b9fe3ef0-fa30-46f6-9b73-98524cc1d95a",
+     "seconds": 6
+    },
+    {
+     "label": "burst #40: sell 0.00014 BTC at 75552",
+     "http_status": 200,
+     "ok": false,
+     "code": "P0",
+     "reason": "another order for this account is in flight (for 5221 ms): try again in a moment",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": "45a7284e-011b-4505-a9d8-e1e74d66dc41",
+     "attestation_url": "https://testnet-api.outlayer.ai/attestations/by-call/45a7284e-011b-4505-a9d8-e1e74d66dc41",
+     "seconds": 11.1
+    },
+    {
+     "label": "burst #38: sell 0.00014 BTC at 75552",
+     "http_status": 200,
+     "ok": true,
+     "code": null,
+     "reason": null,
+     "status": "filled",
+     "oid": 64822377663,
+     "filled_sz": "0.00014",
+     "avg_px": "75774.0",
+     "call_id": "12175423-fdec-4c41-a53a-e9b73a1b7e2f",
+     "attestation_url": "https://testnet-api.outlayer.ai/attestations/by-call/12175423-fdec-4c41-a53a-e9b73a1b7e2f",
+     "seconds": 12.3
+    },
+    {
+     "label": "burst #2: sell 0.00014 BTC at 75552",
+     "http_status": 200,
+     "ok": false,
+     "code": "P0",
+     "reason": "another order for this account is in flight (for 273 ms): try again in a moment",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": "6760d73a-032f-4a67-8e2e-f8aec03d6724",
+     "attestation_url": "https://testnet-api.outlayer.ai/attestations/by-call/6760d73a-032f-4a67-8e2e-f8aec03d6724",
+     "seconds": 16.3
+    },
+    {
+     "label": "burst #17: sell 0.00014 BTC at 75552",
+     "http_status": 200,
+     "ok": false,
+     "code": "P0",
+     "reason": "another order for this account is in flight (for 5387 ms): try again in a moment",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": "f7ced13e-c619-4874-aaa2-71dc6210f868",
+     "attestation_url": "https://testnet-api.outlayer.ai/attestations/by-call/f7ced13e-c619-4874-aaa2-71dc6210f868",
+     "seconds": 21.3
+    },
+    {
+     "label": "burst #4: sell 0.00014 BTC at 75552",
+     "http_status": 200,
+     "ok": true,
+     "code": null,
+     "reason": null,
+     "status": "filled",
+     "oid": 64822385585,
+     "filled_sz": "0.00014",
+     "avg_px": "75776.0",
+     "call_id": "7e4f4587-1e25-4fd6-adca-003f37c4a4f7",
+     "attestation_url": "https://testnet-api.outlayer.ai/attestations/by-call/7e4f4587-1e25-4fd6-adca-003f37c4a4f7",
+     "seconds": 21.7
+    },
+    {
+     "label": "burst #24: sell 0.00014 BTC at 75552",
+     "http_status": 200,
+     "ok": false,
+     "code": "P0",
+     "reason": "another order for this account is in flight (for 742 ms): try again in a moment",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": "4dc74c23-2ed5-4182-9098-a3f07f437293",
+     "attestation_url": "https://testnet-api.outlayer.ai/attestations/by-call/4dc74c23-2ed5-4182-9098-a3f07f437293",
+     "seconds": 26.4
+    },
+    {
+     "label": "burst #20: sell 0.00014 BTC at 75552",
+     "http_status": 200,
+     "ok": false,
+     "code": "P0",
+     "reason": "another order for this account is in flight (for 5493 ms): try again in a moment",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": "39b26bec-091d-47cd-8583-4785ead14751",
+     "attestation_url": "https://testnet-api.outlayer.ai/attestations/by-call/39b26bec-091d-47cd-8583-4785ead14751",
+     "seconds": 31.2
+    },
+    {
+     "label": "burst #18: sell 0.00014 BTC at 75552",
+     "http_status": 200,
+     "ok": true,
+     "code": null,
+     "reason": null,
+     "status": "filled",
+     "oid": 64822393426,
+     "filled_sz": "0.00014",
+     "avg_px": "75776.0",
+     "call_id": "4f518c8b-0eb4-45fe-bc6b-526c77c13a61",
+     "attestation_url": "https://testnet-api.outlayer.ai/attestations/by-call/4f518c8b-0eb4-45fe-bc6b-526c77c13a61",
+     "seconds": 31.2
+    },
+    {
+     "label": "burst #12: sell 0.00014 BTC at 75552",
+     "http_status": 200,
+     "ok": false,
+     "code": "P0",
+     "reason": "another order for this account is in flight (for 962 ms): try again in a moment",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": "a1821880-aba5-4efd-9177-8c984777b76c",
+     "attestation_url": "https://testnet-api.outlayer.ai/attestations/by-call/a1821880-aba5-4efd-9177-8c984777b76c",
+     "seconds": 36.4
+    },
+    {
+     "label": "burst #31: sell 0.00014 BTC at 75552",
+     "http_status": 200,
+     "ok": true,
+     "code": null,
+     "reason": null,
+     "status": "filled",
+     "oid": 64822401532,
+     "filled_sz": "0.00014",
+     "avg_px": "75776.0",
+     "call_id": "84bd40d9-191d-4115-be0c-9bd0af5d6cc7",
+     "attestation_url": "https://testnet-api.outlayer.ai/attestations/by-call/84bd40d9-191d-4115-be0c-9bd0af5d6cc7",
+     "seconds": 41.1
+    },
+    {
+     "label": "burst #11: sell 0.00014 BTC at 75552",
+     "http_status": 200,
+     "ok": false,
+     "code": "P0",
+     "reason": "another order for this account is in flight (for 5790 ms): try again in a moment",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": "ce49db52-fe29-4b37-b0c7-738ac0332948",
+     "attestation_url": "https://testnet-api.outlayer.ai/attestations/by-call/ce49db52-fe29-4b37-b0c7-738ac0332948",
+     "seconds": 41.3
+    },
+    {
+     "label": "burst #23: sell 0.00014 BTC at 75552",
+     "http_status": 200,
+     "ok": false,
+     "code": "P0",
+     "reason": "another order for this account is in flight (for 582 ms): try again in a moment",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": "ba69865f-e540-434e-a2ae-ff5ce69cbb82",
+     "attestation_url": "https://testnet-api.outlayer.ai/attestations/by-call/ba69865f-e540-434e-a2ae-ff5ce69cbb82",
+     "seconds": 46
+    },
+    {
+     "label": "burst #9: sell 0.00014 BTC at 75552",
+     "http_status": 200,
+     "ok": false,
+     "code": "P0",
+     "reason": "another order for this account is in flight (for 5396 ms): try again in a moment",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": "a66de072-1555-4a7a-b098-ccca2dcb2cc3",
+     "attestation_url": "https://testnet-api.outlayer.ai/attestations/by-call/a66de072-1555-4a7a-b098-ccca2dcb2cc3",
+     "seconds": 50.8
+    },
+    {
+     "label": "burst #16: sell 0.00014 BTC at 75552",
+     "http_status": 200,
+     "ok": true,
+     "code": null,
+     "reason": null,
+     "status": "filled",
+     "oid": 64822409665,
+     "filled_sz": "0.00014",
+     "avg_px": "75776.0",
+     "call_id": "33de0159-9de6-4ab3-93ea-540261fb8e8b",
+     "attestation_url": "https://testnet-api.outlayer.ai/attestations/by-call/33de0159-9de6-4ab3-93ea-540261fb8e8b",
+     "seconds": 51.4
+    },
+    {
+     "label": "burst #8: sell 0.00014 BTC at 75552",
+     "http_status": 200,
+     "ok": false,
+     "code": "P0",
+     "reason": "another order for this account is in flight (for 497 ms): try again in a moment",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": "82a944e0-d0fe-4db8-9923-b8013a629903",
+     "attestation_url": "https://testnet-api.outlayer.ai/attestations/by-call/82a944e0-d0fe-4db8-9923-b8013a629903",
+     "seconds": 55.5
+    },
+    {
+     "label": "burst #35: sell 0.00014 BTC at 75552",
+     "http_status": 200,
+     "ok": true,
+     "code": null,
+     "reason": null,
+     "status": "filled",
+     "oid": 64822417799,
+     "filled_sz": "0.00014",
+     "avg_px": "75776.0",
+     "call_id": "d93a3343-b35b-491f-984a-1d87c68815a9",
+     "attestation_url": "https://testnet-api.outlayer.ai/attestations/by-call/d93a3343-b35b-491f-984a-1d87c68815a9",
+     "seconds": 59.8
+    },
+    {
+     "label": "burst #10: sell 0.00014 BTC at 75552",
+     "http_status": 502,
+     "ok": false,
+     "code": "outlayer_unknown",
+     "reason": "OutLayer did not answer: The operation was aborted due to timeout. The order may still have reached Hyperliquid: look at the open orders and fills before sending it again.",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": null,
+     "attestation_url": null,
+     "seconds": 60.6
+    },
+    {
+     "label": "burst #14: sell 0.00014 BTC at 75552",
+     "http_status": 502,
+     "ok": false,
+     "code": "outlayer_unknown",
+     "reason": "OutLayer did not answer: The operation was aborted due to timeout. The order may still have reached Hyperliquid: look at the open orders and fills before sending it again.",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": null,
+     "attestation_url": null,
+     "seconds": 60.6
+    },
+    {
+     "label": "burst #13: sell 0.00014 BTC at 75552",
+     "http_status": 502,
+     "ok": false,
+     "code": "outlayer_unknown",
+     "reason": "OutLayer did not answer: The operation was aborted due to timeout. The order may still have reached Hyperliquid: look at the open orders and fills before sending it again.",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": null,
+     "attestation_url": null,
+     "seconds": 60.6
+    },
+    {
+     "label": "burst #5: sell 0.00014 BTC at 75552",
+     "http_status": 502,
+     "ok": false,
+     "code": "outlayer_unknown",
+     "reason": "OutLayer did not answer: The operation was aborted due to timeout. The order may still have reached Hyperliquid: look at the open orders and fills before sending it again.",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": null,
+     "attestation_url": null,
+     "seconds": 60.6
+    },
+    {
+     "label": "burst #6: sell 0.00014 BTC at 75552",
+     "http_status": 502,
+     "ok": false,
+     "code": "outlayer_unknown",
+     "reason": "OutLayer did not answer: The operation was aborted due to timeout. The order may still have reached Hyperliquid: look at the open orders and fills before sending it again.",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": null,
+     "attestation_url": null,
+     "seconds": 60.6
+    },
+    {
+     "label": "burst #19: sell 0.00014 BTC at 75552",
+     "http_status": 502,
+     "ok": false,
+     "code": "outlayer_unknown",
+     "reason": "OutLayer did not answer: The operation was aborted due to timeout. The order may still have reached Hyperliquid: look at the open orders and fills before sending it again.",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": null,
+     "attestation_url": null,
+     "seconds": 60.6
+    },
+    {
+     "label": "burst #3: sell 0.00014 BTC at 75552",
+     "http_status": 502,
+     "ok": false,
+     "code": "outlayer_unknown",
+     "reason": "OutLayer did not answer: The operation was aborted due to timeout. The order may still have reached Hyperliquid: look at the open orders and fills before sending it again.",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": null,
+     "attestation_url": null,
+     "seconds": 60.6
+    },
+    {
+     "label": "burst #7: sell 0.00014 BTC at 75552",
+     "http_status": 502,
+     "ok": false,
+     "code": "outlayer_unknown",
+     "reason": "OutLayer did not answer: The operation was aborted due to timeout. The order may still have reached Hyperliquid: look at the open orders and fills before sending it again.",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": null,
+     "attestation_url": null,
+     "seconds": 60.6
+    },
+    {
+     "label": "burst #30: sell 0.00014 BTC at 75552",
+     "http_status": 502,
+     "ok": false,
+     "code": "outlayer_unknown",
+     "reason": "OutLayer did not answer: The operation was aborted due to timeout. The order may still have reached Hyperliquid: look at the open orders and fills before sending it again.",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": null,
+     "attestation_url": null,
+     "seconds": 60.6
+    },
+    {
+     "label": "burst #21: sell 0.00014 BTC at 75552",
+     "http_status": 502,
+     "ok": false,
+     "code": "outlayer_unknown",
+     "reason": "OutLayer did not answer: The operation was aborted due to timeout. The order may still have reached Hyperliquid: look at the open orders and fills before sending it again.",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": null,
+     "attestation_url": null,
+     "seconds": 60.6
+    },
+    {
+     "label": "burst #28: sell 0.00014 BTC at 75552",
+     "http_status": 502,
+     "ok": false,
+     "code": "outlayer_unknown",
+     "reason": "OutLayer did not answer: The operation was aborted due to timeout. The order may still have reached Hyperliquid: look at the open orders and fills before sending it again.",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": null,
+     "attestation_url": null,
+     "seconds": 60.6
+    },
+    {
+     "label": "burst #29: sell 0.00014 BTC at 75552",
+     "http_status": 502,
+     "ok": false,
+     "code": "outlayer_unknown",
+     "reason": "OutLayer did not answer: The operation was aborted due to timeout. The order may still have reached Hyperliquid: look at the open orders and fills before sending it again.",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": null,
+     "attestation_url": null,
+     "seconds": 60.6
+    },
+    {
+     "label": "burst #27: sell 0.00014 BTC at 75552",
+     "http_status": 502,
+     "ok": false,
+     "code": "outlayer_unknown",
+     "reason": "OutLayer did not answer: The operation was aborted due to timeout. The order may still have reached Hyperliquid: look at the open orders and fills before sending it again.",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": null,
+     "attestation_url": null,
+     "seconds": 60.7
+    },
+    {
+     "label": "burst #15: sell 0.00014 BTC at 75552",
+     "http_status": 502,
+     "ok": false,
+     "code": "outlayer_unknown",
+     "reason": "OutLayer did not answer: The operation was aborted due to timeout. The order may still have reached Hyperliquid: look at the open orders and fills before sending it again.",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": null,
+     "attestation_url": null,
+     "seconds": 60.7
+    },
+    {
+     "label": "burst #25: sell 0.00014 BTC at 75552",
+     "http_status": 502,
+     "ok": false,
+     "code": "outlayer_unknown",
+     "reason": "OutLayer did not answer: The operation was aborted due to timeout. The order may still have reached Hyperliquid: look at the open orders and fills before sending it again.",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": null,
+     "attestation_url": null,
+     "seconds": 60.7
+    },
+    {
+     "label": "burst #32: sell 0.00014 BTC at 75552",
+     "http_status": 502,
+     "ok": false,
+     "code": "outlayer_unknown",
+     "reason": "OutLayer did not answer: The operation was aborted due to timeout. The order may still have reached Hyperliquid: look at the open orders and fills before sending it again.",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": null,
+     "attestation_url": null,
+     "seconds": 60.7
+    },
+    {
+     "label": "burst #39: sell 0.00014 BTC at 75552",
+     "http_status": 502,
+     "ok": false,
+     "code": "outlayer_unknown",
+     "reason": "OutLayer did not answer: The operation was aborted due to timeout. The order may still have reached Hyperliquid: look at the open orders and fills before sending it again.",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": null,
+     "attestation_url": null,
+     "seconds": 60.7
+    },
+    {
+     "label": "burst #36: sell 0.00014 BTC at 75552",
+     "http_status": 502,
+     "ok": false,
+     "code": "outlayer_unknown",
+     "reason": "OutLayer did not answer: The operation was aborted due to timeout. The order may still have reached Hyperliquid: look at the open orders and fills before sending it again.",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": null,
+     "attestation_url": null,
+     "seconds": 60.7
+    },
+    {
+     "label": "burst #37: sell 0.00014 BTC at 75552",
+     "http_status": 502,
+     "ok": false,
+     "code": "outlayer_unknown",
+     "reason": "OutLayer did not answer: The operation was aborted due to timeout. The order may still have reached Hyperliquid: look at the open orders and fills before sending it again.",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": null,
+     "attestation_url": null,
+     "seconds": 60.7
+    },
+    {
+     "label": "burst #33: sell 0.00014 BTC at 75552",
+     "http_status": 502,
+     "ok": false,
+     "code": "outlayer_unknown",
+     "reason": "OutLayer did not answer: The operation was aborted due to timeout. The order may still have reached Hyperliquid: look at the open orders and fills before sending it again.",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": null,
+     "attestation_url": null,
+     "seconds": 60.7
+    },
+    {
+     "label": "burst #34: sell 0.00014 BTC at 75552",
+     "http_status": 502,
+     "ok": false,
+     "code": "outlayer_unknown",
+     "reason": "OutLayer did not answer: The operation was aborted due to timeout. The order may still have reached Hyperliquid: look at the open orders and fills before sending it again.",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": null,
+     "attestation_url": null,
+     "seconds": 60.7
+    },
+    {
+     "label": "burst #22: sell 0.00014 BTC at 75552",
+     "http_status": 502,
+     "ok": false,
+     "code": "outlayer_unknown",
+     "reason": "OutLayer did not answer: The operation was aborted due to timeout. The order may still have reached Hyperliquid: look at the open orders and fills before sending it again.",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": null,
+     "attestation_url": null,
+     "seconds": 60.9
+    },
+    {
+     "label": "burst #26: sell 0.00014 BTC at 75552",
+     "http_status": 502,
+     "ok": false,
+     "code": "outlayer_unknown",
+     "reason": "OutLayer did not answer: The operation was aborted due to timeout. The order may still have reached Hyperliquid: look at the open orders and fills before sending it again.",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": null,
+     "attestation_url": null,
+     "seconds": 60.9
+    },
+    {
+     "label": "preview after the burst",
+     "http_status": 502,
+     "ok": false,
+     "call_id": null,
+     "attestation_url": null,
+     "reason": "OutLayer did not answer: The operation was aborted due to timeout",
+     "seconds": 60.3
+    }
+   ],
+   "detail": {
+    "error": "the preview failed: HTTP 502 OutLayer did not answer: The operation was aborted due to timeout"
+   }
+  },
+  {
+   "id": "refuse_coin",
+   "label": "an order for TAO, outside the allow-list, is refused with P1",
+   "ok": false,
+   "expect_fail": true,
+   "expect_codes": [
+    "P1"
+   ],
+   "pass": true,
+   "started_utc": "2026-11-08T11:07:46.091Z",
+   "seconds": 4.6,
+   "txs": [],
+   "gateway": [
+    {
+     "label": "buy 0.048 TAO at 221.19 (IOC)",
+     "http_status": 200,
+     "ok": false,
+     "code": "P1",
+     "reason": "TAO is not on the allow-list",
+     "status": null,
+     "oid": null,
+     "filled_sz": null,
+     "avg_px": null,
+     "call_id": "c721f19e-286b-4cc1-b0a8-aaa87d554a1d",
+     "attestation_url": "https://testnet-api.outlayer.ai/attestations/by-call/c721f19e-286b-4cc1-b0a8-aaa87d554a1d",
+     "seconds": 4.1
+    }
+   ],
+   "detail": {
+    "sz": "0.048",
+    "px": "221.19",
+    "reason": "TAO is not on the allow-list",
+    "call_id": "c721f19e-286b-4cc1-b0a8-aaa87d554a1d"
+   },
+   "code": "P1"
+  },
+  {
+   "id": "repay",
+   "label": "put the loan back and repay it all",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-08T11:07:50.683Z",
+   "seconds": 12.9,
+   "txs": [
+    {
+     "label": "deposit the loan back",
+     "hash": "DRbR9LfGAkMdxoeZpKsSmeNsWGfKR4ssGNHoG5S1ttLK",
+     "ok": true,
+     "gas_tgas": 6.68,
+     "receipts": [
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 2.594296837526
+      },
+      {
+       "executor": "hedge1.pbf.testnet",
+       "gas_tgas": 1.774073994793
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 1.334169518126
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": "1088902075",
+     "seconds": 5,
+     "logs": [
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"pbf-keeper.testnet\",\"new_owner_id\":\"hedge1.pbf.testnet\",\"amount\":\"1088902075\"}]}",
+      "deposit of 1088902075 musdc.pbf-ops.testnet from pbf-keeper.testnet"
+     ]
+    },
+    {
+     "label": "repay",
+     "hash": "E9AsRbLbsFAYPM7eiejN2jpCQJPBiPvVt28USaGG3TXi",
+     "ok": true,
+     "gas_tgas": 12.15,
+     "receipts": [
+      {
+       "executor": "hedge1.pbf.testnet",
+       "gas_tgas": 2.504308664182
+      },
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 2.59601413119
+      },
+      {
+       "executor": "pool.pbf.testnet",
+       "gas_tgas": 1.989632509791
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 1.852868509274
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "hedge1.pbf.testnet",
+       "gas_tgas": 1.777639984862
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": "1096805277",
+     "seconds": 7,
+     "logs": [
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"hedge1.pbf.testnet\",\"new_owner_id\":\"pool.pbf.testnet\",\"amount\":\"1098902075\"}]}",
+      "EVENT_JSON:{\"standard\":\"pb-pool\",\"version\":\"1.0.0\",\"event\":\"repay\",\"data\":{\"account_id\":\"hedge1.pbf.testnet\",\"amount\":\"1096805277\"}}",
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"pool.pbf.testnet\",\"new_owner_id\":\"hedge1.pbf.testnet\",\"amount\":\"2096798\",\"memo\":\"refund\"}]}",
+      "repaid 1096805277"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "repaid": "1098902075",
+    "put_back": "1088902075",
+    "minted": "0",
+    "debt_before": "1096805270",
+    "debt_after": "0",
+    "loan": {
+     "principal": "0",
+     "open": false
+    }
+   },
+   "code": null
+  },
+  {
+   "id": "close_short",
+   "label": "close the short through the gateway",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-08T11:08:03.599Z",
+   "seconds": 21.8,
+   "txs": [],
+   "gateway": [
+    {
+     "label": "close: buy 0.01668 BTC at 76012 (IOC)",
+     "http_status": 200,
+     "ok": true,
+     "code": null,
+     "reason": null,
+     "status": "filled",
+     "oid": 64822575204,
+     "filled_sz": "0.01668",
+     "avg_px": "75774.0",
+     "call_id": "d5771005-3ec7-4608-b682-f06bcd2549eb",
+     "attestation_url": "https://testnet-api.outlayer.ai/attestations/by-call/d5771005-3ec7-4608-b682-f06bcd2549eb",
+     "seconds": 14.8
+    }
+   ],
+   "detail": {
+    "closed": 0.01668,
+    "left": 0,
+    "dust": null,
+    "float_held": 0,
+    "float_close": "the float holds no BTC"
+   },
+   "code": null
+  },
+  {
+   "id": "home",
+   "label": "bring the USDC home: quote, hl_withdraw, submit, delivered",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-08T11:08:25.352Z",
+   "seconds": 53.2,
+   "txs": [
+    {
+     "label": "hl_withdraw",
+     "hash": "FDwcpWqjx6BFL3v48aFgaqoPwxvYEVgSu7hB5dgbBPVT",
+     "ok": true,
+     "gas_tgas": 13.77,
+     "receipts": [
+      {
+       "executor": "hedge1.pbf.testnet",
+       "gas_tgas": 2.883031792749
+      },
+      {
+       "executor": "v1.signer-prod.testnet",
+       "gas_tgas": 4.268911977749
+      },
+      {
+       "executor": "v1.signer-prod.testnet",
+       "gas_tgas": 3.462734373954
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "hedge1.pbf.testnet",
+       "gas_tgas": 1.953231345492
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": {
+      "index": 1,
+      "kind": "sendAsset",
+      "action": "{\"type\":\"sendAsset\",\"hyperliquidChain\":\"Testnet\",\"signatureChainId\":\"0x66eee\",\"destination\":\"0xfc9d786b69b900ec51dfe8ebbf19ed47be59009d\",\"sourceDex\":\"\",\"destinationDex\":\"\",\"token\":\"USDC:0xeb62eee3685fc4c43992febcd9e75443\",\"amount\":\"427.651787\",\"fromSubAccount\":\"\",\"nonce\":1794136108889}",
+      "nonce": 1794136108889,
+      "signature": {
+       "r": "0x83880b977f7b5154e45b6ce30335ce5eab593f2e55ab86d8404f7eb845ee9f0e",
+       "s": "0x7d7b1a16a19ad89d14996b69f291e1c39f504488bbae79f078327f9028f4dabe",
+       "v": 28
+      },
+      "signed_block": 276767577
+     },
+     "seconds": 9.4,
+     "logs": [
+      "sign: predecessor=AccountId(\"hedge1.pbf.testnet\"), request=SignRequestArgs { path: \"hyperliquid-1\", payload: Ecdsa(BoundedVec { inner: [160, 118, 226, 254, 215, 12, 63, 55, 74, 47, 144, 7, 135, 164, 162, 67, 58, 100, 211, 248, 90, 12, 224, 163, 31, 195, 210, 105, 222, 237, 246, 220], witness: NonEmpty(()) }), domain_id: DomainId(0) }",
+      "EVENT_JSON:{\"standard\":\"pb-pool\",\"version\":\"1.0.0\",\"event\":\"hl_signed\",\"data\":[{\"account\":\"hedge1.pbf.testnet\",\"index\":1,\"kind\":\"sendAsset\",\"nonce\":1794136108889}]}"
+     ]
+    }
+   ],
+   "gateway": [
+    {
+     "label": "submit sendAsset #1",
+     "http_status": 200,
+     "ok": true,
+     "reason": "{\"status\":\"ok\",\"response\":{\"type\":\"default\"}}",
+     "seconds": 1.6
+    }
+   ],
+   "detail": {
+    "amount": "427651787",
+    "index": 1,
+    "statuses": [
+     "PENDING_DEPOSIT",
+     "PROCESSING",
+     "SUCCESS"
+    ],
+    "delivered": "427.411776",
+    "send_open_until_ms": "1794312508889"
+   },
+   "code": null
+  },
+  {
+   "id": "withdraw",
+   "label": "withdraw both tokens to the keeper, with no verdict",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-08T11:09:18.516Z",
+   "seconds": 10.7,
+   "txs": [
+    {
+     "label": "withdraw musdc.pbf-ops.testnet",
+     "hash": "2M8jX45nq92Y7ECUYo1Sr3g6ZCChhNvv1Kdk4cYGNLtY",
+     "ok": true,
+     "gas_tgas": 6.91,
+     "receipts": [
+      {
+       "executor": "hedge1.pbf.testnet",
+       "gas_tgas": 2.347946127046
+      },
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 3.358665722448
+      },
+      {
+       "executor": "hedge1.pbf.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": "",
+     "seconds": 5.1,
+     "logs": [
+      "The account is already registered, refunding the deposit",
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"hedge1.pbf.testnet\",\"new_owner_id\":\"pbf-keeper.testnet\",\"amount\":\"429508574\"}]}"
+     ]
+    },
+    {
+     "label": "withdraw mnbtc.pbf-ops.testnet",
+     "hash": "HtFiRWLQDtYyCP5ERma9VPLAFKJtBqYRM43p61Na5sEy",
+     "ok": true,
+     "gas_tgas": 6.86,
+     "receipts": [
+      {
+       "executor": "hedge1.pbf.testnet",
+       "gas_tgas": 2.347522861402
+      },
+      {
+       "executor": "mnbtc.pbf-ops.testnet",
+       "gas_tgas": 3.309776685922
+      },
+      {
+       "executor": "hedge1.pbf.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": "",
+     "seconds": 5.1,
+     "logs": [
+      "The account is already registered, refunding the deposit",
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"hedge1.pbf.testnet\",\"new_owner_id\":\"pbf-keeper.testnet\",\"amount\":\"1500000\"}]}"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "withdrawn": {
+     "musdc.pbf-ops.testnet": "429508574",
+     "mnbtc.pbf-ops.testnet": "1500000"
+    },
+    "left": [
+     "0",
+     "0"
+    ]
+   },
+   "code": null
+  }
+ ],
+ "pass": false,
+ "finished_utc": "2026-11-08T11:09:29.207Z",
+ "burst_summary": {
+  "answers": {
+   "P0": 11,
+   "filled": 6,
+   "outlayer_unknown": 23
+  },
+  "orders_that_reached_hyperliquid": 12,
+  "how_counted": "The short went from 0.015 to 0.01668 BTC: 12 orders of 0.00014 BTC. 6 answered 'filled'; 6 more ran in OutLayer after the backend had stopped waiting (outlayer_unknown). The gateway's lock ran them one at a time.",
+  "why_some_timed_out": "OutLayer runs only a few jobs at once per payment key, so most of the 40 queued; the backend gives up after 60 s. Messages expire 90 s after signing, so no late run could post afterwards."
+ },
+ "burst_recheck": {
+  "when_utc": "2026-11-08T11:07 (one minute after the burst)",
+  "why": "The script's own check after the burst timed out at OutLayer (HTTP 502), so the step recorded 'not passed' without an answer. This preview was run by hand through /api/preview.",
+  "verdict": {
+   "state": "HEALTHY",
+   "tier": "STANDARD",
+   "score": 700,
+   "rate_bp": 200,
+   "eq": 480088084,
+   "eq_allow": 477786244,
+   "im": 251287598,
+   "mm": 201030079,
+   "credit": {
+    "binding": "C0",
+    "line": 1096805245
+   },
+   "allow": {
+    "borrow": 0,
+    "withdraw": 7726854
+   }
+  },
+  "debt_micro_usdc": 1096805248,
+  "checks": {
+   "HEALTHY": true,
+   "eq_at_least_im": true,
+   "loan_within_tier_cap": true
+  },
+  "result": "pass"
+ },
+ "pass_with_burst_recheck": true,
+ "final_state": {
+  "checked_utc": "2026-11-08T11:10",
+  "hedge1.pbf.testnet": {
+   "loan": {
+    "principal": "0",
+    "open": false
+   },
+   "pool_debt": 0,
+   "counter": 6,
+   "musdc": 0,
+   "mnbtc": 0,
+   "hl_address": "0x1b242c24f5e67e93d7b58c3dad77ccc90dacd7d0",
+   "hl_perps_usdc": 0.01,
+   "hl_positions": [],
+   "hl_open_orders": 0,
+   "agent": "0x94d0abc4290e4ef96fe81e406fd3ad1672d8acab",
+   "agent_as_hyperliquid_lists_it": {
+    "name": "pb",
+    "validUntil": 1809687739464
+   },
+   "send_open_until_ms": 1794312508889
+  },
+  "float": {
+   "perps_usdc_before": 790.617379,
+   "perps_usdc_after": 788.667023,
+   "cost_usdc": 1.950356,
+   "positions": [],
+   "open_orders": 0
+  },
+  "derived_public_key_gas_tgas": 5.37
+ }
+}

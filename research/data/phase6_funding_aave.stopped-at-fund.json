@@ -1,0 +1,534 @@
+{
+ "version": 1,
+ "account": "fund-aave-11112049.pbf.testnet",
+ "owner": "pbf-keeper.testnet",
+ "lender": "aave",
+ "api_url": "http://localhost:8788",
+ "keeper_log": "services/keeper/logs/keeper.jsonl",
+ "permission": {
+  "lenders": [
+   "aave",
+   "rhea"
+  ],
+  "min_hf_bp": 15000,
+  "max_rate_bp": 2500,
+  "moves": "any"
+ },
+ "started_utc": "2026-11-11T20:49:46.942Z",
+ "plan": {
+  "size": "small",
+  "btc_px": 75358,
+  "deposit_usdc_micro": "440000000",
+  "deposit_nbtc_units": "1500000",
+  "to_hl_micro": "430000000",
+  "short_sz": "0.015",
+  "burst": {
+   "count": 40,
+   "sz": "0.00014"
+  },
+  "caps": {
+   "to_hl_micro": "500000000",
+   "short_usd": 2000,
+   "borrow_micro": "2000000000",
+   "float_order_usd": 2000,
+   "nbtc_usd": 2000
+  }
+ },
+ "context": {
+  "gateway": {
+   "project_id": "pbf-keeper.testnet/pb-gateway",
+   "version_key": "6bdc21f66476c14dfda7e94d9257b7ccc53e4621d4c518b763dba1d98226455b",
+   "secrets_ref": null
+  },
+  "risk_version": "53cb13ba91403a0c72bf72fdfe76cccccad078f64a6d1e9d49a85361d6535767",
+  "hl_address": "0x5ebf298b5e84faf68d644b1b3987867c99fca794",
+  "collateral": {
+   "symbol": "WETH",
+   "token": "0x4200000000000000000000000000000000000006",
+   "decimals": 18,
+   "amount": "20000000000000000",
+   "how": "wrap",
+   "why": "Aave's test market has no room for WBTC now (room for 0 WBTC), and takes WETH (room for 764.0258246967729 WETH): 0.02 test ETH wrapped by the gas wallet",
+   "gas_wallet": "0x2031181d63507368232579af4c64a1c3428407ff",
+   "address": "0x5ebf298b5e84faf68d644b1b3987867c99fca794"
+  }
+ },
+ "steps": [
+  {
+   "id": "create",
+   "label": "create fund-aave-11112049.pbf.testnet, owned by pbf-keeper.testnet, with the funding permission in the same signature",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-11T20:49:46.942Z",
+   "seconds": 7.4,
+   "txs": [
+    {
+     "label": "create_account",
+     "hash": "9E8yMAdcvpYrB9aTuANV1LaHxVS9oMCyCDN83xuXuWXX",
+     "ok": true,
+     "gas_tgas": 86.6,
+     "receipts": [
+      {
+       "executor": "pbf.testnet",
+       "gas_tgas": 30.729262937948
+      },
+      {
+       "executor": "fund-aave-11112049.pbf.testnet",
+       "gas_tgas": 42.318827047227
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf.testnet",
+       "gas_tgas": 3.789320566091
+      },
+      {
+       "executor": "pool.pbf.testnet",
+       "gas_tgas": 2.264406890848
+      },
+      {
+       "executor": "pbf.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 1.549628154859
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "mnbtc.pbf-ops.testnet",
+       "gas_tgas": 1.517708154859
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf.testnet",
+       "gas_tgas": 2.101360436739
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": true,
+     "seconds": 6.8,
+     "logs": [
+      "EVENT_JSON:{\"standard\":\"pb-pool\",\"version\":\"1.0.0\",\"event\":\"register\",\"data\":{\"account_id\":\"fund-aave-11112049.pbf.testnet\"}}",
+      "created fund-aave-11112049.pbf.testnet"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "gateway": {
+     "project_id": "pbf-keeper.testnet/pb-gateway",
+     "version_key": "6bdc21f66476c14dfda7e94d9257b7ccc53e4621d4c518b763dba1d98226455b",
+     "secrets_ref": null
+    },
+    "risk_version": "53cb13ba91403a0c72bf72fdfe76cccccad078f64a6d1e9d49a85361d6535767",
+    "counter": 0,
+    "created": true,
+    "permission": {
+     "lenders": [
+      "aave",
+      "rhea"
+     ],
+     "min_hf_bp": 15000,
+     "max_rate_bp": 2500,
+     "moves": "any"
+    }
+   },
+   "code": null
+  },
+  {
+   "id": "deposit",
+   "label": "mint and deposit the test USDC",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-11T20:49:54.316Z",
+   "seconds": 8.8,
+   "txs": [
+    {
+     "label": "mint test USDC",
+     "hash": "J9BaFY7qCRgz9E79tLGXqB8M9X4ggwFETDxQ2QNWsG1z",
+     "ok": true,
+     "gas_tgas": 2.87,
+     "receipts": [
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 1.889716298485
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": "",
+     "seconds": 4.2,
+     "logs": [
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_mint\",\"data\":[{\"owner_id\":\"pbf-keeper.testnet\",\"amount\":\"440000000\",\"memo\":\"faucet\"}]}"
+     ]
+    },
+    {
+     "label": "deposit test USDC",
+     "hash": "6LJzguBQUVs28XUgD7r45J1TTiT3Hq6U2Ds9My5T7tEw",
+     "ok": true,
+     "gas_tgas": 6.78,
+     "receipts": [
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 2.59969458124
+      },
+      {
+       "executor": "fund-aave-11112049.pbf.testnet",
+       "gas_tgas": 1.866325361881
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 1.334587484161
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": "440000000",
+     "seconds": 4.5,
+     "logs": [
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"pbf-keeper.testnet\",\"new_owner_id\":\"fund-aave-11112049.pbf.testnet\",\"amount\":\"440000000\"}]}",
+      "deposit of 440000000 musdc.pbf-ops.testnet from pbf-keeper.testnet"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "musdc": "440000000"
+   },
+   "code": null
+  },
+  {
+   "id": "hl_init",
+   "label": "hl_init: the Hyperliquid address through Chain Signatures",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-11T20:50:03.125Z",
+   "seconds": 5.1,
+   "txs": [
+    {
+     "label": "hl_init",
+     "hash": "7xjfwytZShC7f34iPH5KDKvT7j4E6FKBKcRm1HAbC7dE",
+     "ok": true,
+     "gas_tgas": 11.09,
+     "receipts": [
+      {
+       "executor": "fund-aave-11112049.pbf.testnet",
+       "gas_tgas": 2.566137019452
+      },
+      {
+       "executor": "v1.signer-prod.testnet",
+       "gas_tgas": 5.551918368889
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-aave-11112049.pbf.testnet",
+       "gas_tgas": 1.990809470197
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": "0x5ebf298b5e84faf68d644b1b3987867c99fca794",
+     "seconds": 5,
+     "logs": [
+      "Hyperliquid address 0x5ebf298b5e84faf68d644b1b3987867c99fca794"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "address": "0x5ebf298b5e84faf68d644b1b3987867c99fca794",
+    "returned": "0x5ebf298b5e84faf68d644b1b3987867c99fca794",
+    "derived_public_key_gas_tgas": 5.551918368889,
+    "mpc_receipts": [
+     {
+      "executor": "v1.signer-prod.testnet",
+      "gas_tgas": 5.551918368889
+     }
+    ],
+    "tx_gas_tgas": 11.09
+   },
+   "code": null
+  },
+  {
+   "id": "keeper",
+   "label": "the keeper is running, is a stage 3 keeper, and watches the account",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-11T20:50:08.221Z",
+   "seconds": 10,
+   "txs": [],
+   "gateway": [],
+   "detail": {
+    "ok": true,
+    "why": "the keeper ticked 5 s ago and watches fund-aave-11112049.pbf.testnet",
+    "last_tick_at": "2026-11-11T20:50:13.627Z",
+    "alive_window_s": 240
+   },
+   "code": null
+  },
+  {
+   "id": "collateral",
+   "label": "test ETH for gas and the collateral reach the account's address on Aave's chain",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-11T20:50:18.266Z",
+   "seconds": 3.3,
+   "txs": [],
+   "gateway": [],
+   "detail": {
+    "collateral": {
+     "symbol": "WETH",
+     "token": "0x4200000000000000000000000000000000000006",
+     "decimals": 18,
+     "amount": "20000000000000000",
+     "how": "wrap",
+     "why": "Aave's test market has no room for WBTC now (room for 0 WBTC), and takes WETH (room for 764.0258246967729 WETH): 0.02 test ETH wrapped by the gas wallet",
+     "gas_wallet": "0x2031181d63507368232579af4c64a1c3428407ff",
+     "address": "0x5ebf298b5e84faf68d644b1b3987867c99fca794"
+    },
+    "rooms": [
+     {
+      "token": "0x54114591963cf60ef3aa63befd6ec263d98145a4",
+      "symbol": "WBTC",
+      "decimals": 8,
+      "room": "0"
+     },
+     {
+      "token": "0x4200000000000000000000000000000000000006",
+      "symbol": "WETH",
+      "decimals": 18,
+      "room": "764025824696772962505"
+     }
+    ],
+    "helper": {
+     "account": "fund-aave-11112049.pbf.testnet",
+     "address": "0x5ebf298b5e84faf68d644b1b3987867c99fca794",
+     "eth": {
+      "balance": "2000000000000000",
+      "sent": "2000000000000000",
+      "hash": "0x28c28c846af3d71d04348ce58af18d4ee36b5af64a92ee7532b3474b8aacc6f1",
+      "mined": true,
+      "ok": true
+     },
+     "mint": null,
+     "wrap": {
+      "token": "0x4200000000000000000000000000000000000006",
+      "symbol": "WETH",
+      "amount": "20000000000000000",
+      "hash": "0x5b65d877835740e646600610230c06a4263640cf2c2c7ae3dad2a3deae4145e8",
+      "deposit_hash": "0x15e5153969d41fba2c64db2b561fd970c9284feadee9531cfea6535de382a035",
+      "mined": true,
+      "ok": true
+     },
+     "gas_wallet": "0x2031181d63507368232579af4c64a1c3428407ff"
+    },
+    "address": "0x5ebf298b5e84faf68d644b1b3987867c99fca794",
+    "eth_wei": "2000000000000000",
+    "wallet": [
+     {
+      "token": "0xba50cd2a20f6da35d788639e581bca8d0b5d4d5f",
+      "symbol": "USDC",
+      "decimals": 6,
+      "amount": "0"
+     },
+     {
+      "token": "0x54114591963cf60ef3aa63befd6ec263d98145a4",
+      "symbol": "WBTC",
+      "decimals": 8,
+      "amount": "0"
+     },
+     {
+      "token": "0x4200000000000000000000000000000000000006",
+      "symbol": "WETH",
+      "decimals": 18,
+      "amount": "20000000000000000"
+     }
+    ]
+   },
+   "code": null
+  },
+  {
+   "id": "fund",
+   "label": "a preview, a check for the fund intent, then the client's one fund(amount)",
+   "ok": false,
+   "expect_fail": false,
+   "pass": false,
+   "started_utc": "2026-11-11T20:50:21.578Z",
+   "seconds": 66.3,
+   "txs": [],
+   "gateway": [
+    {
+     "label": "preview (fund)",
+     "http_status": 200,
+     "ok": true,
+     "call_id": "6035d512-17ff-4874-b3ec-4a6ed3ec30cf",
+     "attestation_url": "https://testnet-api.outlayer.ai/attestations/by-call/6035d512-17ff-4874-b3ec-4a6ed3ec30cf",
+     "reason": null,
+     "seconds": 66.3
+    }
+   ],
+   "detail": {
+    "why": "the engine found nothing to lend: is the collateral at the account's address on Aave's chain, and the USDC in the account?",
+    "preview": {
+     "asked": "2000000000",
+     "total": 0,
+     "sources": [],
+     "steps": [],
+     "blended_bp": null
+    },
+    "verdict": {
+     "acct": "fund-aave-11112049.pbf.testnet",
+     "action": "NONE",
+     "allow": {
+      "borrow": 0,
+      "fund": 0,
+      "withdraw": 440000000
+     },
+     "bands": {},
+     "blk": 277266628,
+     "coins": {
+      "reduce_only": [],
+      "stale": [],
+      "uncertain": []
+     },
+     "credit": {
+      "binding": "C0",
+      "line": 0
+     },
+     "eq": 481609700,
+     "eq_allow": 481602310,
+     "evm": {
+      "nonce": 0
+     },
+     "exp_bp": 864,
+     "ext": [
+      {
+       "c": 0,
+       "d": 0,
+       "hf_bp": 0,
+       "l": "aave",
+       "liq_bp": 8300,
+       "r_bp": 74,
+       "room": 0,
+       "s_bp": 9
+      },
+      {
+       "c": 0,
+       "d": 0,
+       "hf_bp": 0,
+       "l": "rhea",
+       "liq_bp": 7600,
+       "r_bp": 1592,
+       "room": 0,
+       "s_bp": 1016
+      }
+     ],
+     "hr7_bp": 0,
+     "hr_bp": 0,
+     "im": 19343894,
+     "in": "1f5f94fb1110d9b7f3e7eba6d3a228939756572071262b3fcdc1914fad601290",
+     "mm": 15475116,
+     "model": "B-0.2",
+     "nonce": 0,
+     "ok": true,
+     "params": "3d362b434adaad0e0c909605bd792232acf964b9143a95ccb2541a0f65c4c263",
+     "plan": [],
+     "pool": {
+      "hl_eq": 0,
+      "hold": {
+       "ETH": 41609700
+      },
+      "shares_bp": {
+       "ETH": 864
+      }
+     },
+     "rate_bp": 200,
+     "score": 650,
+     "since": 0,
+     "state": "HEALTHY",
+     "tier": "STANDARD",
+     "top": [
+      "replay 2021-05-19 down (from 2021-05-19 09:10 UTC)",
+      "replay 2020-03-12 down (from 2020-03-12 22:25 UTC)",
+      "replay 2024-08-05 down (from 2024-08-04 22:12 UTC)",
+      "funding: nothing can be lent now: the book can carry no more, or no source has room"
+     ],
+     "topup": 0,
+     "v": 1,
+     "venues": {
+      "hl_margin_ratio_bp": 0
+     },
+     "volf_bp": 10000
+    }
+   },
+   "code": null
+  }
+ ],
+ "leftovers": [
+  "0.02 WETH is at the account's address 0x5ebf298b5e84faf68d644b1b3987867c99fca794: the evm_out step sends the collateral out"
+ ],
+ "pass": false,
+ "finished_utc": "2026-11-11T20:51:28.447Z"
+}

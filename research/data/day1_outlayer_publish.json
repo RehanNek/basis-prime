@@ -1,0 +1,59 @@
+{
+ "check": "publish",
+ "date_utc": "2026-11-06T23:13:00+00:00",
+ "network": "testnet",
+ "contract": "outlayer.testnet",
+ "program": {
+  "crate": "pb-ol-probe 0.0.1 (risk/probe)",
+  "target": "wasm32-wasip2",
+  "toolchain": "rustc 1.93.0 (risk/rust-toolchain.toml)",
+  "dependencies": {"outlayer": "0.2.1", "wasi-http-client": "0.2.1", "serde_json": "1.0.154"},
+  "build": "cd risk && RUSTFLAGS=\"--remap-path-prefix=$HOME=~\" cargo build -p pb-ol-probe --target wasm32-wasip2 --release",
+  "build_note": "The remap keeps the builder's home directory out of the dependency panic paths that the binary embeds; two builds in a row gave the same hash. Without it the hash depends on the builder's home path.",
+  "imports": "near:storage/api@0.2.0 plus wasi:cli, wasi:clocks, wasi:http, wasi:io, wasi:random (0.2.2 to 0.2.6; the worker's wasmtime 28 serves them)"
+ },
+ "project": {
+  "project_id": "pbf-keeper.testnet/pb-probe",
+  "uuid": "p0000000000000104",
+  "owner": "pbf-keeper.testnet",
+  "active_version": "3f89e6441848ad7d323e37888d3fa560d636577d95ace635b7f984f3fa4de466"
+ },
+ "versions": [
+  {
+   "sha256": "3f89e6441848ad7d323e37888d3fa560d636577d95ace635b7f984f3fa4de466",
+   "active": true,
+   "bytes": 531157,
+   "url": "https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/3f89e6441848ad7d323e37888d3fa560d636577d95ace635b7f984f3fa4de466.wasm",
+   "fastfs_upload_tx": "14fcTtsxd1wdUWjYYnth92Eim163BFpttfDsWEmwbBAG",
+   "url_checked": "downloaded back from FastFS; sha256 matches",
+   "used_by": ["smoke", "big", "limits"]
+  },
+  {
+   "sha256": "c6ea51a6db131c84a2360535a7be458ab5334a5980758384330b22110080238b",
+   "active": false,
+   "bytes": 526859,
+   "url": "https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/c6ea51a6db131c84a2360535a7be458ab5334a5980758384330b22110080238b.wasm",
+   "fastfs_upload_tx": "A1DbfsTgtwwZv7Z9yT6szJTyk5MYU45rra8dgxjs8f9G",
+   "used_by": ["hello", "lock", "prices", "calls", "calls_beyond"],
+   "superseded_because": "its `big` mode could not make an output under 329 bytes; hello, prices, calls and lock are the same code in both builds"
+  }
+ ],
+ "on_chain_request_execution": {
+  "source": {"Project": {"project_id": "pbf-keeper.testnet/pb-probe", "version_key": "3f89e6441848ad7d323e37888d3fa560d636577d95ace635b7f984f3fa4de466"}},
+  "resource_limits": {"max_instructions": 1000000000, "max_memory_mb": 128, "max_execution_seconds": 20},
+  "estimate_execution_cost_yocto": "3000100000000000000000",
+  "estimate_execution_cost_near": "0.0030001",
+  "response_format": "Json",
+  "input_data_examples": ["{\"mode\":\"hello\"}", "{\"mode\":\"big\",\"bytes\":2048}", "{\"mode\":\"lock\",\"op\":\"take\",\"key\":\"pbtest:chain:1\"}"],
+  "notes": [
+   "Use the Project source. The program imports near:storage/api, and the worker gives storage only to runs with a project uuid (worker/src/main.rs); a WasmUrl source would refuse to start ('WASM imports near:storage/api but storage is not configured'). From code, not run.",
+   "resource_limits must be present: omitting it makes the request compile-only (contract execution.rs: compile_only = params.compile_only || resource_limits.is_none()).",
+   "On chain the storage cell is the transaction signer's, so locks taken over HTTPS (the payment key owner's cell, pbf-keeper.testnet) are not visible to on-chain runs signed by another account.",
+   "Measured over HTTPS: hello uses about 0.23M instructions and 0.75 s; prices 32M and 2.5 s; calls n=200 8.3M and 6 s. 1B instructions and 20 s cover every mode except calls with n of about 500 or more."
+  ]
+ },
+ "spend": {
+  "payment_key_usd": {"before": "20.000000", "after": "19.907705", "spent": "0.092295", "covers": "every HTTPS run in day1_outlayer_*.json, plus one smoke run whose result was not saved and the first build's big run"},
+  "keeper_near": {"before": "9.991728", "after": "9.973844", "spent": "0.017884", "covers": "two FastFS uploads, create_project and add_version (0.1 NEAR attached each, excess refunded)"}
+ }
+}

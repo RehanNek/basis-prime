@@ -1,0 +1,135 @@
+{
+ "account_id": "mnbtc.pbf-ops.testnet",
+ "block_height": 277564921,
+ "code_sha256": "f17e208da721c9d1740288997f3d9f057152d5ac212d32d376d80def1f57a714",
+ "values": [
+  {
+   "key": "AA8AAABwYmYtb3BzLnRlc3RuZXQ=",
+   "value": "3K32BQAAAAAAAAAAAAAAAA=="
+  },
+  {
+   "key": "ABEAAABkZW1vMS5wYmYudGVzdG5ldA==",
+   "value": "AAAAAAAAAAAAAAAAAAAAAA=="
+  },
+  {
+   "key": "ABIAAABkcmlsbDEucGJmLnRlc3RuZXQ=",
+   "value": "AAAAAAAAAAAAAAAAAAAAAA=="
+  },
+  {
+   "key": "ABIAAABnYXRlMmEucGJmLnRlc3RuZXQ=",
+   "value": "AAAAAAAAAAAAAAAAAAAAAA=="
+  },
+  {
+   "key": "ABIAAABoZWRnZTEucGJmLnRlc3RuZXQ=",
+   "value": "AAAAAAAAAAAAAAAAAAAAAA=="
+  },
+  {
+   "key": "ABIAAABwYmYta2VlcGVyLnRlc3RuZXQ=",
+   "value": "xjIKAwAAAAAAAAAAAAAAAA=="
+  },
+  {
+   "key": "ABMAAABmYXVsdHMxLnBiZi50ZXN0bmV0",
+   "value": "AAAAAAAAAAAAAAAAAAAAAA=="
+  },
+  {
+   "key": "ABQAAAByaGVhLnBiZi1vcHMudGVzdG5ldA==",
+   "value": "AAAAAAAAAAAAAAAAAAAAAA=="
+  },
+  {
+   "key": "ABQAAABzaGltLnBiZi1vcHMudGVzdG5ldA==",
+   "value": "Nc+VOwAAAAAAAAAAAAAAAA=="
+  },
+  {
+   "key": "ABUAAABxdWlldGhhcmU2MDAxLnRlc3RuZXQ=",
+   "value": "8B6VAQAAAAAAAAAAAAAAAA=="
+  },
+  {
+   "key": "ABYAAABucG1lMmpscXgyLnBiZi50ZXN0bmV0",
+   "value": "fRcAAAAAAAAAAAAAAAAAAA=="
+  },
+  {
+   "key": "ABkAAABxdWlldGhhcmU2MDAxLnBiZi50ZXN0bmV0",
+   "value": "AAAAAAAAAAAAAAAAAAAAAA=="
+  },
+  {
+   "key": "ABsAAABxdWlldGhhcmUtaGVkZ2UucGJmLnRlc3RuZXQ=",
+   "value": "AAAAAAAAAAAAAAAAAAAAAA=="
+  },
+  {
+   "key": "ABwAAABmdW5kLXJoZWEtd2F0Y2gxLnBiZi50ZXN0bmV0",
+   "value": "AAAAAAAAAAAAAAAAAAAAAA=="
+  },
+  {
+   "key": "AB4AAABmdW5kLWFhdmUtMTExMTIwNDkucGJmLnRlc3RuZXQ=",
+   "value": "AAAAAAAAAAAAAAAAAAAAAA=="
+  },
+  {
+   "key": "AB4AAABmdW5kLW1vdmUtMTExMjA4MzYucGJmLnRlc3RuZXQ=",
+   "value": "AAAAAAAAAAAAAAAAAAAAAA=="
+  },
+  {
+   "key": "AB4AAABmdW5kLW1vdmUtMTExMjEyMzkucGJmLnRlc3RuZXQ=",
+   "value": "AAAAAAAAAAAAAAAAAAAAAA=="
+  },
+  {
+   "key": "AB4AAABmdW5kLW1vdmUtMTExMjIyMTIucGJmLnRlc3RuZXQ=",
+   "value": "AAAAAAAAAAAAAAAAAAAAAA=="
+  },
+  {
+   "key": "AB4AAABmdW5kLW1vdmUtMTExMzEwMzEucGJmLnRlc3RuZXQ=",
+   "value": "AAAAAAAAAAAAAAAAAAAAAA=="
+  },
+  {
+   "key": "AB4AAABmdW5kLXJoZWEtMTExMjEyNTEucGJmLnRlc3RuZXQ=",
+   "value": "AAAAAAAAAAAAAAAAAAAAAA=="
+  },
+  {
+   "key": "AB4AAABmdW5kLXJoZWEtMTExMjE1MDcucGJmLnRlc3RuZXQ=",
+   "value": "AAAAAAAAAAAAAAAAAAAAAA=="
+  },
+  {
+   "key": "AB4AAABmdW5kLXJoZWEtMTExMjIxNDMucGJmLnRlc3RuZXQ=",
+   "value": "YOMWAAAAAAAAAAAAAAAAAA=="
+  },
+  {
+   "key": "AB4AAABmdW5kLXJoZWEtMTExMjIxNDgucGJmLnRlc3RuZXQ=",
+   "value": "AAAAAAAAAAAAAAAAAAAAAA=="
+  },
+  {
+   "key": "AB4AAABmdW5kLXJoZWEtMTExMzEwMTEucGJmLnRlc3RuZXQ=",
+   "value": "AAAAAAAAAAAAAAAAAAAAAA=="
+  },
+  {
+   "key": "AB4AAABmdW5kLXJoZWEtMTExMzExMzYucGJmLnRlc3RuZXQ=",
+   "value": "AAAAAAAAAAAAAAAAAAAAAA=="
+  },
+  {
+   "key": "AB4AAABmdW5kLXJoZWEtMTExMzEyMjkucGJmLnRlc3RuZXQ=",
+   "value": "AAAAAAAAAAAAAAAAAAAAAA=="
+  },
+  {
+   "key": "AB4AAABmdW5kLXJoZWEtMTExMzE5NDYucGJmLnRlc3RuZXQ=",
+   "value": "AAAAAAAAAAAAAAAAAAAAAA=="
+  },
+  {
+   "key": "AEAAAAA4MzcwMGRiY2FjN2IxOTEzMjE2MDI2YzhjZWMxNjE5ZDYzOTc3MjNiODYwY2MyNDg2MzEwY2FmOTc1N2E1YzY5",
+   "value": "EtcAAAAAAAAAAAAAAAAAAA=="
+  },
+  {
+   "key": "AEAAAAA4NzA1YmE2YWZkZDQxMDVhYzM1ZjJjNDFiMTI4ODRlODc0M2M5OTdlYzViNWJkYzA4MGEwZjAwYWU0MDVkYTA0",
+   "value": "aNcAAAAAAAAAAAAAAAAAAA=="
+  },
+  {
+   "key": "AEAAAAA4OWIwMmI4NmQxMTYzZTgyNjIyMjYyYzk4YmMyYjJmNDA4NzE5ZWQ4NDRjMGU5YzQwMDYyNDJkYjFhZjdiZTdj",
+   "value": "5tMAAAAAAAAAAAAAAAAAAA=="
+  },
+  {
+   "key": "AEAAAABjNjMwOThlOGFiZTg3YmYyYzk0MTIwODQ2NGI3MzdkMWYzNDkwM2JlNjA4NTNiMWUyZGI2YmE5MTExZWMyYTUw",
+   "value": "pNQAAAAAAAAAAAAAAAAAAA=="
+  },
+  {
+   "key": "U1RBVEU=",
+   "value": "AQAAAACoIEZGAAAAAAAAAAAAAAAAfQAAAAAAAAAIAAAAZnQtMS4wLjAJAAAATW9jayBuQlRDBQAAAG1OQlRDAAAACA=="
+  }
+ ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@pb/oneclick",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Typed 1Click API client (tokens, quote, deposit/submit, status). Server-side only: the key never reaches a browser (PLAN.md 5.4)",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p .",
+    "test": "tsc -p . && node --test dist/*.test.js",
+    "test:live": "tsc -p . && node --env-file-if-exists=../../.env --test dist/smoke.live.js"
+  },
+  "engines": {
+    "node": ">=22.22.2"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "typescript": "7.0.2"
+  }
+}

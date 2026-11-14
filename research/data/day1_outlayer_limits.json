@@ -1,0 +1,186 @@
+{
+ "meta": {
+  "check": "limits",
+  "date_utc": "2026-11-06T23:12:24+00:00",
+  "api": "https://testnet-api.outlayer.ai",
+  "project": "pbf-keeper.testnet/pb-probe",
+  "version_key": "3f89e6441848ad7d323e37888d3fa560d636577d95ace635b7f984f3fa4de466",
+  "compute_limit_micro_usd": 10000
+ },
+ "summary": [
+  {
+   "case": "limit 10000, no body limits",
+   "http": 200,
+   "status": "completed",
+   "reason": null,
+   "max_instructions": "8940000000",
+   "max_seconds": "60",
+   "max_memory_mb": "128"
+  },
+  {
+   "case": "limit 10000, body resource_limits 1B / 64 MB / 20 s",
+   "http": 200,
+   "status": "completed",
+   "reason": null,
+   "max_instructions": "1000000000",
+   "max_seconds": "20",
+   "max_memory_mb": "64"
+  },
+  {
+   "case": "limit 5000, no body limits",
+   "http": 200,
+   "status": "completed",
+   "reason": null,
+   "max_instructions": "3940000000",
+   "max_seconds": "60",
+   "max_memory_mb": "128"
+  },
+  {
+   "case": "limit 2000, no body limits",
+   "http": 200,
+   "status": "completed",
+   "reason": null,
+   "max_instructions": "940000000",
+   "max_seconds": "60",
+   "max_memory_mb": "128"
+  }
+ ],
+ "runs": [
+  {
+   "input": {
+    "mode": "hello"
+   },
+   "sent_ms": 1794006736564,
+   "http": 200,
+   "wall_ms": 2187,
+   "call_id": "89c62b28-4409-48ec-83c2-94b22d897d21",
+   "status": "completed",
+   "output": {
+    "block_height": null,
+    "block_ts": null,
+    "call_id": "89c62b28-4409-48ec-83c2-94b22d897d21",
+    "exec": "HTTPS",
+    "max_instructions": "8940000000",
+    "max_memory_mb": "128",
+    "max_seconds": "60",
+    "mode": "hello",
+    "network": "testnet",
+    "now_ms": 1794006738743,
+    "ok": true,
+    "predecessor": null,
+    "probe": "pb-ol-probe 0.0.1",
+    "project": "pbf-keeper.testnet/pb-probe",
+    "request_id": null,
+    "rpc_proxy": "1",
+    "sender": "pbf-keeper.testnet"
+   },
+   "compute_cost": "1000",
+   "instructions": 118155,
+   "time_ms": 826,
+   "attestation_url": "/attestations/by-call/89c62b28-4409-48ec-83c2-94b22d897d21",
+   "case": "limit 10000, no body limits"
+  },
+  {
+   "input": {
+    "mode": "hello"
+   },
+   "sent_ms": 1794006738750,
+   "http": 200,
+   "wall_ms": 1815,
+   "call_id": "3658d3a6-96ce-4eb1-9173-a2fb0b0bda67",
+   "status": "completed",
+   "output": {
+    "block_height": null,
+    "block_ts": null,
+    "call_id": "3658d3a6-96ce-4eb1-9173-a2fb0b0bda67",
+    "exec": "HTTPS",
+    "max_instructions": "1000000000",
+    "max_memory_mb": "64",
+    "max_seconds": "20",
+    "mode": "hello",
+    "network": "testnet",
+    "now_ms": 1794006740544,
+    "ok": true,
+    "predecessor": null,
+    "probe": "pb-ol-probe 0.0.1",
+    "project": "pbf-keeper.testnet/pb-probe",
+    "request_id": null,
+    "rpc_proxy": "1",
+    "sender": "pbf-keeper.testnet"
+   },
+   "compute_cost": "1000",
+   "instructions": 125457,
+   "time_ms": 797,
+   "attestation_url": "/attestations/by-call/3658d3a6-96ce-4eb1-9173-a2fb0b0bda67",
+   "case": "limit 10000, body resource_limits 1B / 64 MB / 20 s"
+  },
+  {
+   "input": {
+    "mode": "hello"
+   },
+   "sent_ms": 1794006740565,
+   "http": 200,
+   "wall_ms": 1783,
+   "call_id": "63fd99ec-19b8-4e81-990f-dbfd6c42ab77",
+   "status": "completed",
+   "output": {
+    "block_height": null,
+    "block_ts": null,
+    "call_id": "63fd99ec-19b8-4e81-990f-dbfd6c42ab77",
+    "exec": "HTTPS",
+    "max_instructions": "3940000000",
+    "max_memory_mb": "128",
+    "max_seconds": "60",
+    "mode": "hello",
+    "network": "testnet",
+    "now_ms": 1794006742343,
+    "ok": true,
+    "predecessor": null,
+    "probe": "pb-ol-probe 0.0.1",
+    "project": "pbf-keeper.testnet/pb-probe",
+    "request_id": null,
+    "rpc_proxy": "1",
+    "sender": "pbf-keeper.testnet"
+   },
+   "compute_cost": "1000",
+   "instructions": 125630,
+   "time_ms": 786,
+   "attestation_url": "/attestations/by-call/63fd99ec-19b8-4e81-990f-dbfd6c42ab77",
+   "case": "limit 5000, no body limits"
+  },
+  {
+   "input": {
+    "mode": "hello"
+   },
+   "sent_ms": 1794006742349,
+   "http": 200,
+   "wall_ms": 2195,
+   "call_id": "51c57fe1-c2d8-4f98-97a9-88c3dac159de",
+   "status": "completed",
+   "output": {
+    "block_height": null,
+    "block_ts": null,
+    "call_id": "51c57fe1-c2d8-4f98-97a9-88c3dac159de",
+    "exec": "HTTPS",
+    "max_instructions": "940000000",
+    "max_memory_mb": "128",
+    "max_seconds": "60",
+    "mode": "hello",
+    "network": "testnet",
+    "now_ms": 1794006744506,
+    "ok": true,
+    "predecessor": null,
+    "probe": "pb-ol-probe 0.0.1",
+    "project": "pbf-keeper.testnet/pb-probe",
+    "request_id": null,
+    "rpc_proxy": "1",
+    "sender": "pbf-keeper.testnet"
+   },
+   "compute_cost": "1000",
+   "instructions": 122686,
+   "time_ms": 750,
+   "attestation_url": "/attestations/by-call/51c57fe1-c2d8-4f98-97a9-88c3dac159de",
+   "case": "limit 2000, no body limits"
+  }
+ ]
+}

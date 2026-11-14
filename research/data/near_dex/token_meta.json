@@ -1,0 +1,375 @@
+{
+ "0316eb71485b0ab14103307bf65a021042c6d380.factory.bridge.near": {
+  "symbol": "HBTC",
+  "name": "Huobi BTC",
+  "decimals": 18
+ },
+ "111111111117dc0aa78b770fa6a738034120c302.factory.bridge.near": {
+  "symbol": "1INCH",
+  "name": "1INCH Token",
+  "decimals": 18
+ },
+ "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1": {
+  "symbol": "USDC",
+  "name": "USDC",
+  "decimals": 6
+ },
+ "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near": {
+  "symbol": "WBTC",
+  "name": "Wrapped BTC",
+  "decimals": 8
+ },
+ "23.contract.portalbridge.near": {
+  "symbol": "Aurora",
+  "name": "Aurora Network",
+  "decimals": 8
+ },
+ "31761a152f1e96f966c041291644129144233b0b.factory.bridge.near": {
+  "symbol": "aBTC",
+  "name": "aBTC",
+  "decimals": 18
+ },
+ "6b175474e89094c44da98b954eedeac495271d0f.factory.bridge.near": {
+  "symbol": "DAI",
+  "name": "Dai Stablecoin",
+  "decimals": 18
+ },
+ "a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.factory.bridge.near": {
+  "symbol": "USDC.e",
+  "name": "Bridged USDC",
+  "decimals": 6
+ },
+ "abtc.nearlytrade.near": {
+  "symbol": "ABTC",
+  "name": "Anime Bitcoin",
+  "decimals": 18
+ },
+ "aurora": {
+  "error": "{'__error__': 'wasm execution failed with error: HostError(ProhibitedInView { method_name: \"used_gas\" })', 'block_height': 223207793}"
+ },
+ "blackdragonbtc.tok.rune-shot.near": {
+  "symbol": "BLACKDRAGONBTC",
+  "name": "BLACK DRAGON BTC",
+  "decimals": 8
+ },
+ "bob.nearlytrade.near": {
+  "symbol": "BOB",
+  "name": "Bitcoin Bob",
+  "decimals": 18
+ },
+ "boshi.nearlytrade.near": {
+  "symbol": "BOSHI",
+  "name": "SHIBOSHI",
+  "decimals": 18
+ },
+ "btc.nearlytrade.near": {
+  "symbol": "BTC",
+  "name": "Nearly BTC",
+  "decimals": 18
+ },
+ "btc.omft.near": {
+  "symbol": "BTC",
+  "name": "Bitcoin",
+  "decimals": 8
+ },
+ "buckazoids.nearlytrade.near": {
+  "symbol": "BUCKAZOIDS",
+  "name": "BUCKAZOIDS",
+  "decimals": 18
+ },
+ "c.tkn.near": {
+  "symbol": "C",
+  "name": "Credit",
+  "decimals": 18
+ },
+ "c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.factory.bridge.near": {
+  "symbol": "WETH",
+  "name": "Wrapped Ether",
+  "decimals": 18
+ },
+ "dac17f958d2ee523a2206206994597c13d831ec7.factory.bridge.near": {
+  "symbol": "USDT.e",
+  "name": "Tether USD",
+  "decimals": 6
+ },
+ "dbio.near": {
+  "symbol": "DBIO",
+  "name": "Debio",
+  "decimals": 18
+ },
+ "dog-bitcoin.near": {
+  "symbol": "DOG",
+  "name": "Dog (Bitcoin)",
+  "decimals": 8
+ },
+ "eth.bridge.near": {
+  "symbol": "ETH",
+  "name": "Ether",
+  "decimals": 18
+ },
+ "eth.omft.near": {
+  "symbol": "ETH",
+  "name": "Ethereum",
+  "decimals": 18
+ },
+ "gp.token0.near": {
+  "symbol": "GP",
+  "name": "GProk",
+  "decimals": 18
+ },
+ "hbsc.tkn.near": {
+  "symbol": "HBSC",
+  "name": "HIBISCUS COIN",
+  "decimals": 18
+ },
+ "hewwopwincess.tkn.primitives.near": {
+  "symbol": "HEWWOPWINCESS",
+  "name": "HEWWO PWINCESS",
+  "decimals": 8
+ },
+ "hrt.tkn.near": {
+  "symbol": "HRT",
+  "name": "Honorable Republican ",
+  "decimals": 18
+ },
+ "ikenga.tkn.near": {
+  "symbol": "IKENGA",
+  "name": " DEDE",
+  "decimals": 24
+ },
+ "jeffforgov.tkn.primitives.near": {
+  "symbol": "JEFFFORGOV",
+  "name": "JEFF FOR GOV",
+  "decimals": 8
+ },
+ "jeffforgov.tok.rune-shot.near": {
+  "symbol": "JEFFFORGOV",
+  "name": "JEFF FOR GOV",
+  "decimals": 8
+ },
+ "linear-protocol.near": {
+  "symbol": "LINEAR",
+  "name": "LiNEAR",
+  "decimals": 24
+ },
+ "lst.rhealab.near": {
+  "symbol": "rNEAR",
+  "name": "Rhea Liquid Near Staking Token",
+  "decimals": 24
+ },
+ "lucky-273.meme-cooking.near": {
+  "symbol": "LUCKY",
+  "name": "DapperDalmation",
+  "decimals": 18
+ },
+ "marmaj.tkn.near": {
+  "symbol": "marmaj",
+  "name": "marma j token",
+  "decimals": 18
+ },
+ "meta-pool.near": {
+  "symbol": "STNEAR",
+  "name": "Staked NEAR",
+  "decimals": 24
+ },
+ "mim-2.nearlytrade.near": {
+  "symbol": "MIM",
+  "name": "Magic Internet Money",
+  "decimals": 18
+ },
+ "mim-3.nearlytrade.near": {
+  "symbol": "MIM",
+  "name": "Magic Internet Money",
+  "decimals": 18
+ },
+ "mim-5.nearlytrade.near": {
+  "symbol": "MIM",
+  "name": "Magic Internet Money",
+  "decimals": 18
+ },
+ "mineminemine.tkn.primitives.near": {
+  "symbol": "MINEMINEMINE",
+  "name": "MINE MINE MINE",
+  "decimals": 8
+ },
+ "nbtc.bridge.near": {
+  "symbol": "NBTC",
+  "name": "Near WBTC",
+  "decimals": 8
+ },
+ "nearport-2b0fd9.nearportnear.near": {
+  "symbol": "NEARPORT",
+  "name": "NEAR PORT",
+  "decimals": 18
+ },
+ "nersig-282.meme-cooking.near": {
+  "symbol": "NERSIG",
+  "name": "NEAR SIGMA",
+  "decimals": 18
+ },
+ "npepe.nearlytrade.near": {
+  "symbol": "NPEPE",
+  "name": "near pepe",
+  "decimals": 18
+ },
+ "pizza-2.nearlytrade.near": {
+  "symbol": "PIZZA",
+  "name": "PIZZA",
+  "decimals": 18
+ },
+ "poop.nearlytrade.near": {
+  "symbol": "POOP",
+  "name": "Poop",
+  "decimals": 18
+ },
+ "puncs.nearlytrade.near": {
+  "symbol": "PUNCS",
+  "name": "Plumber Uncs",
+  "decimals": 18
+ },
+ "pupdep.tkn.primitives.near": {
+  "symbol": "PUPDEP",
+  "name": "PUP DEP",
+  "decimals": 8
+ },
+ "puppenza.tkn.primitives.near": {
+  "symbol": "PUPPENZA",
+  "name": "PUPPENZA",
+  "decimals": 8
+ },
+ "puptwo.tkn.primitives.near": {
+  "symbol": "PUPTWO",
+  "name": "PUP TWO",
+  "decimals": 8
+ },
+ "pussy.laboratory.jumpfinance.near": {
+  "symbol": "PUSSY",
+  "name": "PUSSY",
+  "decimals": 18
+ },
+ "qbtc.nearlytrade.near": {
+  "symbol": "QBTC",
+  "name": "Quantum Bitcoin",
+  "decimals": 18
+ },
+ "sail.nearlytrade.near": {
+  "symbol": "SAIL",
+  "name": "Michael Sailor",
+  "decimals": 18
+ },
+ "saylormoon.nearlytrade.near": {
+  "symbol": "SAYLORMOON",
+  "name": "SAYLORMOON",
+  "decimals": 18
+ },
+ "sol.token.a11bd.near": {
+  "symbol": "SOL",
+  "name": "Solana",
+  "decimals": 24
+ },
+ "t.tkn.near": {
+  "symbol": "T",
+  "name": "Tmb",
+  "decimals": 18
+ },
+ "tbtc.tkn.primitives.near": {
+  "symbol": "tBTC",
+  "name": "Test BTC",
+  "decimals": 8
+ },
+ "test-101.nearlytrade.near": {
+  "symbol": "TEST",
+  "name": "test",
+  "decimals": 18
+ },
+ "test-102.nearlytrade.near": {
+  "symbol": "TEST",
+  "name": "test",
+  "decimals": 18
+ },
+ "test-68.nearlytrade.near": {
+  "symbol": "TEST",
+  "name": "test",
+  "decimals": 18
+ },
+ "test-69.nearlytrade.near": {
+  "symbol": "TEST",
+  "name": "test",
+  "decimals": 18
+ },
+ "test-token.staderlabs-test.near": {
+  "symbol": "Test Token",
+  "name": "Test Token",
+  "decimals": 24
+ },
+ "thisistheone.tkn.primitives.near": {
+  "symbol": "THISISTHEONE",
+  "name": "THIS IS THE ONE",
+  "decimals": 8
+ },
+ "token.paras.near": {
+  "symbol": "PARAS",
+  "name": "PARAS",
+  "decimals": 18
+ },
+ "token.pumpopoly.near": {
+  "symbol": "PUMPOPOLY",
+  "name": "Pumpopoly fungible token",
+  "decimals": 24
+ },
+ "token.skyward.near": {
+  "symbol": "SKYWARD",
+  "name": "Skyward Finance Token",
+  "decimals": 18
+ },
+ "token.sweat": {
+  "symbol": "SWEAT",
+  "name": "SWEAT",
+  "decimals": 18
+ },
+ "token.v2.ref-finance.near": {
+  "symbol": "REF",
+  "name": "Ref Finance Token",
+  "decimals": 18
+ },
+ "uniinscription.tknx.near": {
+  "symbol": "UniINSCRIPTION",
+  "name": "Inscription",
+  "decimals": 6
+ },
+ "uniinstwo.tknx.near": {
+  "symbol": "UniINSTwo",
+  "name": "Inscription",
+  "decimals": 6
+ },
+ "usdt.tether-token.near": {
+  "symbol": "USDt",
+  "name": "Tether USD",
+  "decimals": 6
+ },
+ "usn": {
+  "symbol": "USN",
+  "name": "USN",
+  "decimals": 18
+ },
+ "wrap.near": {
+  "symbol": "wNEAR",
+  "name": "Wrapped NEAR fungible token",
+  "decimals": 24
+ },
+ "xbt.nearlytrade.near": {
+  "symbol": "XBT",
+  "name": "XBT",
+  "decimals": 18
+ },
+ "zec.omft.near": {
+  "symbol": "ZEC",
+  "name": "Zcash",
+  "decimals": 8
+ },
+ "zeeekcointwo.tkn.primitives.near": {
+  "symbol": "ZEEEKCOINTWO",
+  "name": "ZEEEK COIN TWO",
+  "decimals": 8
+ }
+}

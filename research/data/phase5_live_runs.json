@@ -1,0 +1,117 @@
+{
+ "what": "Phase 5's live runs of pb-risk's new modes on OutLayer testnet (INTERFACES.md 18-19), 9 Nov 2026. Read-only on mainnet; paid with the testnet payment key.",
+ "program": {
+  "project": "pbf-keeper.testnet/pb-risk",
+  "version": "4e44327ef90b0716edb91b0785c0bc1941b71c741da4f88e08f0068f39f94b0e",
+  "wasm_url": "https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/4e44327ef90b0716edb91b0785c0bc1941b71c741da4f88e08f0068f39f94b0e.wasm",
+  "build": "from risk/: RUSTFLAGS=\"--remap-path-prefix=$HOME=~\" cargo build -p pb-risk --target wasm32-wasip2 --release"
+ },
+ "deploys": {
+  "pb_risk_version_added": "outlayer deploy pb-risk <wasm_url> --no-activate",
+  "factory_code": {
+   "hash": "2064eae1b81bb641db59ff490bc8b1881194507e26becd4480e618c0413845fa",
+   "account_code": "496b93521b9b3489c369961c0f6eae36162a69e4073239139689f9d0815a4e06",
+   "tx": "G1vgfCwz8CyNe6Za5yUqZreuUsxtdVVwRw3eGcjL9PLH"
+  },
+  "factory_pins_pb_risk": {
+   "tx": "9X1HGdv9i8s2Xa4b6qDMXNaTTGtBnBjqqKKkDw6m2v87"
+  },
+  "drill": {
+   "hash": "61b1e9a79483d95b19da8a11bd6a63416f23d3acf0a7c354206ecf2cd5416636",
+   "storage_top_up_tx": "Ex3KKFwBHAyKThAiwLnwo5MGw6tb6f5VW5t2akhipaBf",
+   "deploy_with_migrate_tx": "EoqWC5BY61SDSVuEmQaqRSKRu9jWeuooL2id8xV4mjhV"
+  }
+ },
+ "credit_check_worked_example": {
+  "input": {
+   "mode": "credit_check",
+   "network": "mainnet",
+   "hl_address": null,
+   "book": {
+    "usdc": "35000000000",
+    "positions": [
+     {
+      "coin": "BTC",
+      "usd": "-100000000000"
+     }
+    ]
+   },
+   "spot": [
+    {
+     "token": "nBTC",
+     "amount": "134569579"
+    }
+   ],
+   "snapshot": true
+  },
+  "call_id": "411fd449-e938-4413-8694-4c6ae3fc04f4",
+  "time_ms": 4592,
+  "compute_cost_micro_usd": "1195",
+  "attestation": "https://testnet-api.outlayer.ai/attestations/by-call/411fd449-e938-4413-8694-4c6ae3fc04f4",
+  "output_hash": "6179ca708eeb6e2489e4a3d37e02a8a8fda8c20cde161d04b097b16b0e4e2e64",
+  "replay": "cd risk && cargo run -p backtest --release -- credit ../research/data/phase5_credit_snapshot.json prints the same output_hash",
+  "ours": {
+   "line": 94172476898,
+   "binding": "C4",
+   "score": 700,
+   "tier": "STANDARD",
+   "rate_bp": 200,
+   "rate_bp_at_60": 650
+  },
+  "rhea": {
+   "max": 75707097092,
+   "safe": 63089247576,
+   "usdc_borrow_apr_bp": 1600
+  },
+  "pi": {
+   "nBTC": {
+    "bp": 9961,
+    "source": "1Click dry quote, no key"
+   }
+  }
+ },
+ "credit_check_real_address": {
+  "note": "An active mainnet trader found through Hyperliquid's public recentTrades, holding BTC, ETH and HYPE perps and no spot. The address is left out of this record on purpose.",
+  "call_id": "f668f490-bcb8-4596-9e95-66f68869fa33",
+  "time_ms": 4699,
+  "attestation": "https://testnet-api.outlayer.ai/attestations/by-call/f668f490-bcb8-4596-9e95-66f68869fa33",
+  "output_hash": "7d57fdf916d970dbe5b87a1d39440428ce7f1a52c0e355b5803f075d6d581669",
+  "ours": {
+   "eq": 90125506031,
+   "line": 35083119922,
+   "binding": "C1",
+   "score": 550,
+   "tier": "WATCH",
+   "rate_bp": 500
+  },
+  "rhea": {
+   "max": 0,
+   "safe": 0
+  }
+ },
+ "book_stress": {
+  "input": {
+   "mode": "book",
+   "network": "testnet"
+  },
+  "call_id": "52cb7aea-2a86-4beb-a642-2bcf9945d3ee",
+  "time_ms": 2867,
+  "attestation": "https://testnet-api.outlayer.ai/attestations/by-call/52cb7aea-2a86-4beb-a642-2bcf9945d3ee",
+  "output_hash": "7f20c254051ce89c451f2aa6a60b89a4115c774765ce098d5ea55e4ea3c8af85",
+  "output": {
+   "accounts": [],
+   "blk": 276897277,
+   "capital": 10000000002209,
+   "days": 0,
+   "in": "6a562c3a19ed71af5de344392381f8c7bd7738402e7c9a9caf2af4e6426f6fb4",
+   "limit": 250000000055,
+   "loans": 0,
+   "mode": "book",
+   "ok": true,
+   "pass": true,
+   "top": [],
+   "v": 1,
+   "worst": null
+  }
+ }
+}

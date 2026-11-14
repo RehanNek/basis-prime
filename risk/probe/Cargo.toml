@@ -1,0 +1,17 @@
+[package]
+name = "pb-ol-probe"
+description = "pb-ol-probe: the Phase 0 OutLayer probe (PLAN.md 13): latency, storage lock, price sources, calls out per run, output size"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[[bin]]
+name = "pb-ol-probe"
+path = "src/main.rs"
+
+[dependencies]
+outlayer = "=0.2.1"
+wasi-http-client = "=0.2.1"
+serde_json = "=1.0.154"

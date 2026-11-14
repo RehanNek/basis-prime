@@ -1,0 +1,2292 @@
+{
+ "version": 1,
+ "account": "fund-rhea-11131229.pbf.testnet",
+ "owner": "pbf-keeper.testnet",
+ "operator": "pbf-ops.testnet",
+ "lender": "rhea",
+ "rhea": "rhea.pbf-ops.testnet",
+ "size": "small",
+ "api_url": "http://localhost:8788",
+ "keeper_log": "services/keeper/logs/keeper.jsonl",
+ "permission": {
+  "lenders": [
+   "rhea"
+  ],
+  "min_hf_bp": 15000,
+  "max_rate_bp": 2500,
+  "moves": "any"
+ },
+ "started_utc": "2026-11-13T12:29:35.517Z",
+ "plan": {
+  "size": "small",
+  "btc_px": 69118,
+  "deposit_usdc_micro": "440000000",
+  "deposit_nbtc_units": "1500000",
+  "to_hl_micro": "430000000",
+  "short_sz": "0.015",
+  "burst": {
+   "count": 40,
+   "sz": "0.00016"
+  },
+  "caps": {
+   "to_hl_micro": "500000000",
+   "short_usd": 2000,
+   "borrow_micro": "2000000000",
+   "float_order_usd": 2000,
+   "nbtc_usd": 2000
+  }
+ },
+ "context": {
+  "gateway": {
+   "project_id": "pbf-keeper.testnet/pb-gateway",
+   "version_key": "fba556c2b9e64cf216fb3c805c998a1a210d5ef257960091853e3a8e0303ceb6",
+   "secrets_ref": null
+  },
+  "risk_version": "fb2cee3bb0b9dd8215b8c667a27dc6c565868487ccdf2e402f0327d516b2aee6",
+  "hl_address": "0xddc621bb998da3e9f194ce52453b3994f44dfc22",
+  "to_hl_quote": {
+   "correlationId": "4dbf1e6a-88d5-43a3-946b-f347be568c72",
+   "depositAddress": "434b85630043149c701c8713726e6624e6e4398ec81b5a635666c9cb45f89dfd",
+   "amountIn": "430000000",
+   "amountOut": "42965608100"
+  },
+  "agent": "0xa142f1e557c6cd944141f90ee1cfdc93cf115dde",
+  "float_open_oid": null,
+  "short_sz": 0.015,
+  "funding_order": {
+   "before": {
+    "order": "lender_first",
+    "loan_days": 90
+   },
+   "changed": false
+  },
+  "funding": {
+   "pid": "f277512417",
+   "amount": "1026586347",
+   "from_lender": "526085680",
+   "from_pool": "500500667",
+   "stored_at_ms": 1794574375453,
+   "expires_at_ms": 1794576175453
+  },
+  "loans": {
+   "rhea_debt_micro": "526085835",
+   "rhea_collateral_units": "1500000",
+   "pool_debt_micro": "500500669"
+  },
+  "hold": {
+   "shift_bp": -1333,
+   "started_ms": 1794575863798,
+   "until_ms": 1794577963798,
+   "cushion_before_bp": 14999
+  },
+  "home_quote": {
+   "correlationId": "5e8edae1-4537-4cd7-ab3e-e43380540650",
+   "depositAddress": "0xfc9d786b69b900ec51dfe8ebbf19ed47be59009d",
+   "depositMemo": "5e8edae1-4537-4cd7-ab3e-e43380540650",
+   "amountIn": "42664977000"
+  }
+ },
+ "steps": [
+  {
+   "id": "create",
+   "label": "create fund-rhea-11131229.pbf.testnet, owned by pbf-keeper.testnet, with the funding permission in the same signature",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T12:29:35.517Z",
+   "seconds": 7.4,
+   "txs": [
+    {
+     "label": "create_account",
+     "hash": "7CX4w5qLduJgnZ5EL1yMQmjzUdtkU9SWP6VwHgeHoXP4",
+     "ok": true,
+     "gas_tgas": 89.68,
+     "receipts": [
+      {
+       "executor": "pbf.testnet",
+       "gas_tgas": 32.02206454728
+      },
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 43.926873985973
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf.testnet",
+       "gas_tgas": 3.818584581831
+      },
+      {
+       "executor": "pool.pbf.testnet",
+       "gas_tgas": 2.361544839133
+      },
+      {
+       "executor": "pbf.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 1.563308154859
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "mnbtc.pbf-ops.testnet",
+       "gas_tgas": 1.531388154859
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf.testnet",
+       "gas_tgas": 2.128344452479
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": true,
+     "seconds": 6.8,
+     "logs": [
+      "EVENT_JSON:{\"standard\":\"pb-pool\",\"version\":\"1.0.0\",\"event\":\"register\",\"data\":{\"account_id\":\"fund-rhea-11131229.pbf.testnet\"}}",
+      "created fund-rhea-11131229.pbf.testnet"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "gateway": {
+     "project_id": "pbf-keeper.testnet/pb-gateway",
+     "version_key": "fba556c2b9e64cf216fb3c805c998a1a210d5ef257960091853e3a8e0303ceb6",
+     "secrets_ref": null
+    },
+    "risk_version": "fb2cee3bb0b9dd8215b8c667a27dc6c565868487ccdf2e402f0327d516b2aee6",
+    "counter": 0,
+    "created": true,
+    "permission": {
+     "lenders": [
+      "rhea"
+     ],
+     "min_hf_bp": 15000,
+     "max_rate_bp": 2500,
+     "moves": "any"
+    }
+   },
+   "code": null
+  },
+  {
+   "id": "deposit",
+   "label": "mint and deposit mUSDC and mNBTC",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T12:29:42.890Z",
+   "seconds": 19.2,
+   "txs": [
+    {
+     "label": "mint musdc.pbf-ops.testnet",
+     "hash": "37LjqemfZWsmMC5cp9kgwphAv8KmmSNdqMEUaMJUt7ys",
+     "ok": true,
+     "gas_tgas": 2.87,
+     "receipts": [
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 1.889716298485
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": "",
+     "seconds": 4.4,
+     "logs": [
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_mint\",\"data\":[{\"owner_id\":\"pbf-keeper.testnet\",\"amount\":\"440000000\",\"memo\":\"faucet\"}]}"
+     ]
+    },
+    {
+     "label": "deposit musdc.pbf-ops.testnet",
+     "hash": "EjEuFMLFjuqLjYLY8GXjpMQgiExfoKXSm9DBaXwS6qJB",
+     "ok": true,
+     "gas_tgas": 6.84,
+     "receipts": [
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 2.61337458124
+      },
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 1.90897644194
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 1.334587484161
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": "440000000",
+     "seconds": 5.4,
+     "logs": [
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"pbf-keeper.testnet\",\"new_owner_id\":\"fund-rhea-11131229.pbf.testnet\",\"amount\":\"440000000\"}]}",
+      "deposit of 440000000 musdc.pbf-ops.testnet from pbf-keeper.testnet"
+     ]
+    },
+    {
+     "label": "mint mnbtc.pbf-ops.testnet",
+     "hash": "GRkDeCQPB9oDxUhYqiuvotHZWU6r1KgRdtnneboufHUG",
+     "ok": true,
+     "gas_tgas": 2.84,
+     "receipts": [
+      {
+       "executor": "mnbtc.pbf-ops.testnet",
+       "gas_tgas": 1.856787261959
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": "",
+     "seconds": 4.1,
+     "logs": [
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_mint\",\"data\":[{\"owner_id\":\"pbf-keeper.testnet\",\"amount\":\"1500000\",\"memo\":\"faucet\"}]}"
+     ]
+    },
+    {
+     "label": "deposit mnbtc.pbf-ops.testnet",
+     "hash": "Bxo9HRF1PJswbkDeYaFEcCtusXh1w1TEMRuHv8UCmkHv",
+     "ok": true,
+     "gas_tgas": 6.77,
+     "receipts": [
+      {
+       "executor": "mnbtc.pbf-ops.testnet",
+       "gas_tgas": 2.564067725876
+      },
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 1.908162398586
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "mnbtc.pbf-ops.testnet",
+       "gas_tgas": 1.318307813507
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": "1500000",
+     "seconds": 5,
+     "logs": [
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"pbf-keeper.testnet\",\"new_owner_id\":\"fund-rhea-11131229.pbf.testnet\",\"amount\":\"1500000\"}]}",
+      "deposit of 1500000 mnbtc.pbf-ops.testnet from pbf-keeper.testnet"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "balances": {
+     "musdc": "440000000",
+     "mnbtc": "1500000"
+    }
+   },
+   "code": null
+  },
+  {
+   "id": "hl_init",
+   "label": "hl_init: the Hyperliquid address through Chain Signatures",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T12:30:02.105Z",
+   "seconds": 5.4,
+   "txs": [
+    {
+     "label": "hl_init",
+     "hash": "96q6asAZvxLpZEroTVCV4iPAdXuV1u67DWETK6pZjTJc",
+     "ok": true,
+     "gas_tgas": 11.17,
+     "receipts": [
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 2.608755189271
+      },
+      {
+       "executor": "v1.signer-prod.testnet",
+       "gas_tgas": 5.555771853938
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 2.030877565106
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": "0xddc621bb998da3e9f194ce52453b3994f44dfc22",
+     "seconds": 5.3,
+     "logs": [
+      "Hyperliquid address 0xddc621bb998da3e9f194ce52453b3994f44dfc22"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "address": "0xddc621bb998da3e9f194ce52453b3994f44dfc22",
+    "returned": "0xddc621bb998da3e9f194ce52453b3994f44dfc22",
+    "derived_public_key_gas_tgas": 5.555771853938,
+    "mpc_receipts": [
+     {
+      "executor": "v1.signer-prod.testnet",
+      "gas_tgas": 5.555771853938
+     }
+    ],
+    "tx_gas_tgas": 11.17
+   },
+   "code": null
+  },
+  {
+   "id": "to_hl",
+   "label": "move 430 USDC to Hyperliquid",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T12:30:07.534Z",
+   "seconds": 37.2,
+   "txs": [
+    {
+     "label": "withdraw to the deposit address",
+     "hash": "BDRc3XVo1HqxBv1kBcBqQZV81bg6BfvLom8qTScHLQuT",
+     "ok": true,
+     "gas_tgas": 9.06,
+     "receipts": [
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 2.950803152186
+      },
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 3.205038856502
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 1.914656376367
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": true,
+     "seconds": 5.3,
+     "logs": [
+      "transfer move:0 under way: 430000000 musdc.pbf-ops.testnet to 434b85630043149c701c8713726e6624e6e4398ec81b5a635666c9cb45f89dfd",
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"fund-rhea-11131229.pbf.testnet\",\"new_owner_id\":\"434b85630043149c701c8713726e6624e6e4398ec81b5a635666c9cb45f89dfd\",\"amount\":\"430000000\"}]}"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "statuses": [
+     "PROCESSING",
+     "SUCCESS"
+    ],
+    "delivered": "429.656081",
+    "hl_equity": 428.656081,
+    "seconds_to_hl": 37
+   },
+   "code": null
+  },
+  {
+   "id": "agent",
+   "label": "request_agent: pb-gateway names the agent, on-chain",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T12:51:26.627Z",
+   "seconds": 12.9,
+   "txs": [
+    {
+     "label": "request_agent",
+     "hash": "Dbi81eefoWYrbapKqH1oaWRQLNc1YzcFb7RWZUFaQSUm",
+     "ok": true,
+     "gas_tgas": 13.55,
+     "receipts": [
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 2.698977036862
+      },
+      {
+       "executor": "outlayer.testnet",
+       "gas_tgas": 4.16061225431
+      },
+      {
+       "executor": "outlayer.testnet",
+       "gas_tgas": 3.087190942348
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 1.95062364641
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": {
+      "accepted": true,
+      "reason": null
+     },
+     "seconds": 12.7,
+     "logs": [
+      "Resolved project: pbf-keeper.testnet/pb-gateway, version: \"fba556c2b9e64cf216fb3c805c998a1a210d5ef257960091853e3a8e0303ceb6\", source: WasmUrl { url: \"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/fba556c2b9e64cf216fb3c805c998a1a210d5ef257960091853e3a8e0303ceb6.wasm\", hash: \"fba556c2b9e64cf216fb3c805c998a1a210d5ef257960091853e3a8e0303ceb6\", build_target: Some(\"wasm32-wasip2\") }, uuid: p0000000000000122",
+      "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_requested\",\"data\":[{\"request_data\":\"{\\\"request_id\\\":38572,\\\"sender_id\\\":\\\"pbf-keeper.testnet\\\",\\\"predecessor_id\\\":\\\"fund-rhea-11131229.pbf.testnet\\\",\\\"code_source\\\":{\\\"WasmUrl\\\":{\\\"url\\\":\\\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/fba556c2b9e64cf216fb3c805c998a1a210d5ef257960091853e3a8e0303ceb6.wasm\\\",\\\"hash\\\":\\\"fba556c2b9e64cf216fb3c805c998a1a210d5ef257960091853e3a8e0303ceb6\\\",\\\"build_target\\\":\\\"wasm32-wasip2\\\"}},\\\"resource_limits\\\":{\\\"max_instructions\\\":2000000000,\\\"max_memory_mb\\\":256,\\\"max_execution_seconds\\\":20},\\\"input_data\\\":\\\"{\\\\\\\"mode\\\\\\\":\\\\\\\"agent_address\\\\\\\",\\\\\\\"account\\\\\\\":\\\\\\\"fund-rhea-11131229.pbf.testnet\\\\\\\",\\\\\\\"network\\\\\\\":\\\\\\\"testnet\\\\\\\"}\\\",\\\"input_data_in_state\\\":false,\\\"secrets_ref\\\":null,\\\"response_format\\\":\\\"Json\\\",\\\"payment\\\":\\\"10000000000000000000000\\\",\\\"attached_usd\\\":\\\"0\\\",\\\"timestamp\\\":1794574288813678750,\\\"compile_only\\\":false,\\\"force_rebuild\\\":false,\\\"store_on_fastfs\\\":false,\\\"use_bound_identity\\\":false,\\\"project_uuid\\\":\\\"p0000000000000122\\\",\\\"project_id\\\":\\\"pbf-keeper.testnet/pb-gateway\\\"}\",\"data_id\":[135,156,177,225,101,4,220,50,37,123,147,13,50,59,229,9,234,37,170,218,191,48,7,91,95,89,189,252,143,15,195,49],\"timestamp\":1794574288813678750}]}",
+      "[[yNEAR charged: \"1246900500000000000000\"]]",
+      "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_completed\",\"data\":[{\"sender_id\":\"pbf-keeper.testnet\",\"code_source\":{\"WasmUrl\":{\"url\":\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/fba556c2b9e64cf216fb3c805c998a1a210d5ef257960091853e3a8e0303ceb6.wasm\",\"hash\":\"fba556c2b9e64cf216fb3c805c998a1a210d5ef257960091853e3a8e0303ceb6\",\"build_target\":\"wasm32-wasip2\"}},\"resources_used\":{\"instructions\":5747727,\"time_ms\":2469,\"compile_time_ms\":null},\"success\":true,\"error_message\":null,\"payment_charged\":\"1246900500000000000000\",\"payment_refunded\":\"8753099500000000000000\",\"compilation_note\":\"Cached WASM from 2026-11-12T14:33:52.962350+00:00\",\"timestamp\":1794574295974123983}]}",
+      "Execution completed successfully. Output: Json(104 bytes), Resources: { instructions: 5747727, time_ms: 2469 }, Cost: 1246900500000000000000 yoctoNEAR, Refund: 8753099500000000000000 yoctoNEAR, Cached WASM from 2026-11-12T14:33:52.962350+00:00",
+      "agent 0xa142f1e557c6cd944141f90ee1cfdc93cf115dde accepted"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "agent": {
+     "address": "0xa142f1e557c6cd944141f90ee1cfdc93cf115dde",
+     "received_block": 277512307
+    },
+    "returned": {
+     "accepted": true,
+     "reason": null
+    }
+   },
+   "code": null
+  },
+  {
+   "id": "approve",
+   "label": "hl_approve_agent, post it, until Hyperliquid lists the agent",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T12:51:39.484Z",
+   "seconds": 11.4,
+   "txs": [
+    {
+     "label": "hl_approve_agent",
+     "hash": "4cFEgRrqa22GgaPdf7rRs5LUD29f8QSE4mNPVwdZc33k",
+     "ok": true,
+     "gas_tgas": 14.72,
+     "receipts": [
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 2.925176383477
+      },
+      {
+       "executor": "v1.signer-prod.testnet",
+       "gas_tgas": 4.649337116852
+      },
+      {
+       "executor": "v1.signer-prod.testnet",
+       "gas_tgas": 3.838557274914
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 2.108687607592
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": {
+      "index": 0,
+      "kind": "approveAgent",
+      "action": "{\"type\":\"approveAgent\",\"hyperliquidChain\":\"Testnet\",\"signatureChainId\":\"0x66eee\",\"agentAddress\":\"0xa142f1e557c6cd944141f90ee1cfdc93cf115dde\",\"agentName\":\"pb valid_until 1810126301548\",\"nonce\":1794574301548}",
+      "nonce": 1794574301548,
+      "signature": {
+       "r": "0x5298f75c03add0672171b43aec89938df50cd6be41f440104d44d2afae6416a9",
+       "s": "0x2a7c7f992c635aa617467e963cfa32ee3be0b8873ef227d3cf2988ee827b3418",
+       "v": 27
+      },
+      "signed_block": 277512323
+     },
+     "seconds": 8.9,
+     "logs": [
+      "sign: predecessor=AccountId(\"fund-rhea-11131229.pbf.testnet\"), request=SignRequestArgs { path: \"hyperliquid-1\", payload: Ecdsa(BoundedVec { inner: [213, 97, 40, 174, 127, 16, 241, 173, 67, 177, 106, 4, 183, 68, 217, 237, 229, 71, 10, 86, 147, 155, 101, 104, 8, 110, 140, 138, 178, 240, 244, 248], witness: NonEmpty(()) }), domain_id: DomainId(0) }",
+      "EVENT_JSON:{\"standard\":\"pb-pool\",\"version\":\"1.0.0\",\"event\":\"hl_signed\",\"data\":[{\"account\":\"fund-rhea-11131229.pbf.testnet\",\"index\":0,\"kind\":\"approveAgent\",\"nonce\":1794574301548}]}"
+     ]
+    }
+   ],
+   "gateway": [
+    {
+     "label": "submit approveAgent #0",
+     "http_status": 200,
+     "ok": true,
+     "reason": "{\"status\":\"ok\",\"response\":{\"type\":\"default\"}}",
+     "seconds": 1.2
+    }
+   ],
+   "detail": {
+    "index": 0,
+    "agent": "0xa142f1e557c6cd944141f90ee1cfdc93cf115dde",
+    "listed": {
+     "name": "pb",
+     "address": "0xa142f1e557c6cd944141f90ee1cfdc93cf115dde",
+     "validUntil": 1810126301548
+    },
+    "mpc_receipts": [
+     {
+      "executor": "v1.signer-prod.testnet",
+      "gas_tgas": 4.649337116852
+     },
+     {
+      "executor": "v1.signer-prod.testnet",
+      "gas_tgas": 3.838557274914
+     }
+    ]
+   },
+   "code": null
+  },
+  {
+   "id": "short",
+   "label": "open the short: 0.015 BTC through the gateway",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T12:51:50.845Z",
+   "seconds": 25,
+   "txs": [],
+   "gateway": [
+    {
+     "label": "short: sell 0.015 BTC at 68935 (IOC)",
+     "http_status": 200,
+     "ok": true,
+     "code": null,
+     "reason": null,
+     "status": "filled",
+     "oid": 65228112990,
+     "filled_sz": "0.015",
+     "avg_px": "69058.6",
+     "call_id": "faec1ec0-10b5-49d0-8812-4d9c181f4ff5",
+     "attestation_url": "https://testnet-api.outlayer.ai/attestations/by-call/faec1ec0-10b5-49d0-8812-4d9c181f4ff5",
+     "seconds": 19.4
+    }
+   ],
+   "detail": {
+    "mark": 69143,
+    "oracle": 69251.5,
+    "band_bp": 300,
+    "band_from": "account",
+    "px": "68935",
+    "could_close_at": "69350",
+    "short": 0.015,
+    "remaining": 0,
+    "float_order": "12:51:53 float: Hyperliquid: resting, oid 65228101861"
+   },
+   "code": null
+  },
+  {
+   "id": "keeper",
+   "label": "the keeper is running, watches the account, and keeps our Rhea copy's BTC price",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T12:52:15.883Z",
+   "seconds": 0.4,
+   "txs": [],
+   "gateway": [],
+   "detail": {
+    "ok": true,
+    "why": "the keeper ticked 16 s ago, watches fund-rhea-11131229.pbf.testnet, and reads our Rhea copy's BTC price at $69,326",
+    "last_tick_at": "2026-11-13T12:51:59.972Z",
+    "rhea_btc": 69326,
+    "rhea_btc_usd": 69326,
+    "oracle_usd": 69220,
+    "gap_bp": 15.3
+   },
+   "code": null
+  },
+  {
+   "id": "order",
+   "label": "the operator has the pool fill a loan from the lender first (\"lender_first\"), for the client's fund",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T12:52:16.287Z",
+   "seconds": 0.1,
+   "txs": [],
+   "gateway": [],
+   "detail": {
+    "already": "the pool's order is \"lender_first\" already: nothing to set, and nothing to put back",
+    "funding": {
+     "order": "lender_first",
+     "loan_days": 90
+    }
+   },
+   "code": null
+  },
+  {
+   "id": "fund",
+   "label": "a preview, a check for the fund intent, then the client's one fund(amount)",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T12:52:16.421Z",
+   "seconds": 41.7,
+   "txs": [
+    {
+     "label": "request_check (fund)",
+     "hash": "H3aK4zgjnhS3PaHu4xVMCM7vH6Xr4Gd4RqT4PFGfHFsT",
+     "ok": true,
+     "gas_tgas": 14.25,
+     "receipts": [
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 2.783793865252
+      },
+      {
+       "executor": "outlayer.testnet",
+       "gas_tgas": 4.209090434655
+      },
+      {
+       "executor": "outlayer.testnet",
+       "gas_tgas": 3.22231489428
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 2.389173716767
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": {
+      "accepted": true,
+      "reason": null
+     },
+     "seconds": 19,
+     "logs": [
+      "Resolved project: pbf-keeper.testnet/pb-risk, version: \"fb2cee3bb0b9dd8215b8c667a27dc6c565868487ccdf2e402f0327d516b2aee6\", source: WasmUrl { url: \"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/fb2cee3bb0b9dd8215b8c667a27dc6c565868487ccdf2e402f0327d516b2aee6.wasm\", hash: \"fb2cee3bb0b9dd8215b8c667a27dc6c565868487ccdf2e402f0327d516b2aee6\", build_target: Some(\"wasm32-wasip2\") }, uuid: p000000000000011a",
+      "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_requested\",\"data\":[{\"request_data\":\"{\\\"request_id\\\":38579,\\\"sender_id\\\":\\\"pbf-keeper.testnet\\\",\\\"predecessor_id\\\":\\\"fund-rhea-11131229.pbf.testnet\\\",\\\"code_source\\\":{\\\"WasmUrl\\\":{\\\"url\\\":\\\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/fb2cee3bb0b9dd8215b8c667a27dc6c565868487ccdf2e402f0327d516b2aee6.wasm\\\",\\\"hash\\\":\\\"fb2cee3bb0b9dd8215b8c667a27dc6c565868487ccdf2e402f0327d516b2aee6\\\",\\\"build_target\\\":\\\"wasm32-wasip2\\\"}},\\\"resource_limits\\\":{\\\"max_instructions\\\":2000000000,\\\"max_memory_mb\\\":256,\\\"max_execution_seconds\\\":20},\\\"input_data\\\":\\\"{\\\\\\\"mode\\\\\\\":\\\\\\\"check\\\\\\\",\\\\\\\"account\\\\\\\":\\\\\\\"fund-rhea-11131229.pbf.testnet\\\\\\\",\\\\\\\"intent\\\\\\\":{\\\\\\\"fund\\\\\\\":{\\\\\\\"amount\\\\\\\":\\\\\\\"1026586347\\\\\\\"}},\\\\\\\"network\\\\\\\":\\\\\\\"testnet\\\\\\\",\\\\\\\"snapshot\\\\\\\":false}\\\",\\\"input_data_in_state\\\":false,\\\"secrets_ref\\\":null,\\\"response_format\\\":\\\"Json\\\",\\\"payment\\\":\\\"10000000000000000000000\\\",\\\"attached_usd\\\":\\\"0\\\",\\\"timestamp\\\":1794574357255691171,\\\"compile_only\\\":false,\\\"force_rebuild\\\":false,\\\"store_on_fastfs\\\":false,\\\"use_bound_identity\\\":false,\\\"project_uuid\\\":\\\"p000000000000011a\\\",\\\"project_id\\\":\\\"pbf-keeper.testnet/pb-risk\\\"}\",\"data_id\":[121,157,79,180,76,37,76,53,80,192,244,13,168,159,36,252,89,198,145,157,5,165,200,182,84,132,235,153,23,15,209,115],\"timestamp\":1794574357255691171}]}",
+      "Retrieving large output from storage for request_id: 38579",
+      "[[yNEAR charged: \"1876823000000000000000\"]]",
+      "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_completed\",\"data\":[{\"sender_id\":\"pbf-keeper.testnet\",\"code_source\":{\"WasmUrl\":{\"url\":\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/fb2cee3bb0b9dd8215b8c667a27dc6c565868487ccdf2e402f0327d516b2aee6.wasm\",\"hash\":\"fb2cee3bb0b9dd8215b8c667a27dc6c565868487ccdf2e402f0327d516b2aee6\",\"build_target\":\"wasm32-wasip2\"}},\"resources_used\":{\"instructions\":230035539,\"time_ms\":8768,\"compile_time_ms\":null},\"success\":true,\"error_message\":null,\"payment_charged\":\"1876823000000000000000\",\"payment_refunded\":\"8123177000000000000000\",\"compilation_note\":\"Cached WASM from 2026-11-12T14:33:54.872094+00:00\",\"timestamp\":1794574370648204396}]}",
+      "Execution completed successfully. Output: Json(1273 bytes), Resources: { instructions: 230035539, time_ms: 8768 }, Cost: 1876823000000000000000 yoctoNEAR, Refund: 8123177000000000000000 yoctoNEAR, Cached WASM from 2026-11-12T14:33:54.872094+00:00",
+      "verdict accepted: nonce 2",
+      "EVENT_JSON:{\"standard\":\"pb-pool\",\"version\":\"1.0.0\",\"event\":\"transfer_done\",\"data\":{\"id\":\"move:0\",\"how\":\"verdict\"}}"
+     ]
+    },
+    {
+     "label": "fund",
+     "hash": "EtmVxQHLRTP2fsLkwgic2wp1biAb5kEjjbZ7QerqDPwj",
+     "ok": true,
+     "gas_tgas": 3.04,
+     "receipts": [
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 2.510472589961
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": {
+      "pid": "f277512417",
+      "amount": "1026586347",
+      "stored_at": "1794574375453219401",
+      "expires_at": "1794576175453219401",
+      "steps": [
+       {
+        "amt": "1500000",
+        "k": "l_supply",
+        "l": "rhea",
+        "tok": "mnbtc.pbf-ops.testnet",
+        "done": false
+       },
+       {
+        "amt": 526085680,
+        "k": "l_borrow",
+        "l": "rhea",
+        "done": false
+       },
+       {
+        "amt": 500500667,
+        "k": "p_borrow",
+        "done": false
+       }
+      ]
+     },
+     "seconds": 3.7,
+     "logs": [
+      "EVENT_JSON:{\"standard\":\"pb-pool\",\"version\":\"1.0.0\",\"event\":\"funding_stored\",\"data\":{\"pid\":\"f277512417\",\"amount\":\"1026586347\",\"steps\":[\"l_supply\",\"l_borrow\",\"p_borrow\"]}}"
+     ]
+    }
+   ],
+   "gateway": [
+    {
+     "label": "preview (fund)",
+     "http_status": 200,
+     "ok": true,
+     "call_id": "7d59638a-6082-49bf-b084-d96b05e3f613",
+     "attestation_url": "https://testnet-api.outlayer.ai/attestations/by-call/7d59638a-6082-49bf-b084-d96b05e3f613",
+     "reason": null,
+     "seconds": 18.3
+    }
+   ],
+   "detail": {
+    "amount": "1026586347",
+    "from_rhea": "526085680",
+    "from_pool": "500500667",
+    "free_near": 0.6026,
+    "preview": {
+     "asked": "2000000000",
+     "total": 1031848258,
+     "sources": [
+      {
+       "source": "rhea",
+       "amount": 526085680,
+       "rate_bp": 1593
+      },
+      {
+       "source": "pool",
+       "amount": 505762578,
+       "rate_bp": 200
+      }
+     ],
+     "steps": [
+      {
+       "amt": "1500000",
+       "k": "l_supply",
+       "l": "rhea",
+       "tok": "mnbtc.pbf-ops.testnet"
+      },
+      {
+       "amt": 526085680,
+       "k": "l_borrow",
+       "l": "rhea"
+      },
+      {
+       "amt": 505762578,
+       "k": "p_borrow"
+      }
+     ],
+     "blended_bp": 910
+    },
+    "verdict": {
+     "ok": true,
+     "state": "HEALTHY",
+     "action": "NONE",
+     "tier": "STANDARD",
+     "score": 700,
+     "rate_bp": 200,
+     "allow": {
+      "borrow": 1031848258,
+      "fund": 1026586347,
+      "withdraw": 10000000
+     },
+     "credit": {
+      "binding": "C4",
+      "line": 1031848258
+     },
+     "eq": 1475823940,
+     "eq_allow": 1474068940,
+     "im": 257531857,
+     "mm": 206025486,
+     "nonce": 2,
+     "blk": 277512417,
+     "fund": [
+      {
+       "amt": "1500000",
+       "k": "l_supply",
+       "l": "rhea",
+       "tok": "mnbtc.pbf-ops.testnet"
+      },
+      {
+       "amt": 526085680,
+       "k": "l_borrow",
+       "l": "rhea"
+      },
+      {
+       "amt": 500500667,
+       "k": "p_borrow"
+      }
+     ],
+     "ext": [
+      {
+       "c": 0,
+       "d": 0,
+       "hf_bp": 0,
+       "l": "rhea",
+       "liq_bp": 7600,
+       "r_bp": 1593,
+       "room": 0,
+       "s_bp": 1018
+      }
+     ]
+    },
+    "funding": {
+     "pid": "f277512417",
+     "expires_at_ms": 1794576175453,
+     "steps": [
+      {
+       "i": 0,
+       "k": "l_supply",
+       "text": "post 1500000 units of mnbtc.pbf-ops.testnet at Rhea as collateral"
+      },
+      {
+       "i": 1,
+       "k": "l_borrow",
+       "text": "borrow $526.09 of USDC from Rhea, or the room a fresh verdict gives if that is less"
+      },
+      {
+       "i": 2,
+       "k": "p_borrow",
+       "text": "borrow $500.50 from our pool, or what a fresh verdict allows if that is less"
+      }
+     ]
+    }
+   },
+   "code": null
+  },
+  {
+   "id": "order_back",
+   "label": "the operator puts the pool's funding order back as it was",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T12:52:58.136Z",
+   "seconds": 0.1,
+   "txs": [],
+   "gateway": [],
+   "detail": {
+    "why": "the order step changed nothing, or it is back already",
+    "funding": {
+     "order": "lender_first",
+     "loan_days": 90
+    }
+   },
+   "code": null
+  },
+  {
+   "id": "funded",
+   "label": "the keeper runs the funding plan: the account ends with a Rhea loan and a pool loan",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T12:52:58.278Z",
+   "seconds": 115,
+   "txs": [],
+   "gateway": [],
+   "detail": {
+    "rhea": {
+     "debt_micro": "526085835",
+     "collateral_units": "1500000"
+    },
+    "pool_debt_micro": "500500669",
+    "ext": {
+     "l": "rhea",
+     "c": 1038327000,
+     "d": 526085779,
+     "hf_bp": 14999,
+     "r_bp": 1604,
+     "s_bp": 1025,
+     "room": 0,
+     "liq_bp": 7600
+    },
+    "keeper_steps": [
+     {
+      "at": "2026-11-13T12:53:07.178Z",
+      "i": 0,
+      "k": "l_supply",
+      "ok": true,
+      "tx": "BBTGEjMd4q87WMJeRXe6u8ZoCm2AfGuuhhw9USmNNVNB"
+     },
+     {
+      "at": "2026-11-13T12:53:51.939Z",
+      "i": 1,
+      "k": "l_borrow",
+      "ok": true,
+      "tx": "7ZHXt9DcFZRkvXqXvUU8Ts7gM8vzXmLS9f4m8TrGhnm5"
+     }
+    ],
+    "keeper_checks": [
+     {
+      "at": "2026-11-13T12:53:34.415Z",
+      "tx": "CvmxEb9WXvM5dQYtUhNGrvBQ2zH3RgNVtLNDvxcJn83m",
+      "why": "step 1 (l_borrow) of funding plan f277512417 needs a fresh check first: the last one was made before the account's latest change"
+     },
+     {
+      "at": "2026-11-13T12:54:41.106Z",
+      "tx": "2kcoeEP8hSUJqLd4c7X2SqR3LLuZgTTgrV6epra1DAi7",
+      "why": "the account counted its borrow at Rhea as under way until block 277512553, which has passed: a fresh check"
+     }
+    ],
+    "keeper_notes": [
+     "step 2 (p_borrow) of funding plan f277512417 waits: the account counts its borrow at Rhea as under way until block 277512553 has passed"
+    ]
+   },
+   "code": null
+  },
+  {
+   "id": "fee_policy",
+   "label": "the operator sets the account's price: Rhea's rate plus 5 points",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T12:54:53.309Z",
+   "seconds": 4.4,
+   "txs": [
+    {
+     "label": "set_pricing (fee_policy)",
+     "hash": "Gq92SLtvvbyPfAo8PPUWDTCdYCQaxTfuVBrw6jizbFr5",
+     "ok": true,
+     "gas_tgas": 2.8,
+     "receipts": [
+      {
+       "executor": "pool.pbf.testnet",
+       "gas_tgas": 2.267977306927
+      },
+      {
+       "executor": "pbf-ops.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": "",
+     "seconds": 4.2,
+     "logs": [
+      "EVENT_JSON:{\"standard\":\"pb-pool\",\"version\":\"1.0.0\",\"event\":\"set_pricing\",\"data\":{\"target\":{\"account\":\"fund-rhea-11131229.pbf.testnet\"},\"pricing\":{\"lender\":{\"margin_bp\":500,\"cap_bp\":null}}}}"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "policy": {
+     "lender": {
+      "margin_bp": 500,
+      "cap_bp": null
+     }
+    },
+    "stored": {
+     "lender": {
+      "margin_bp": 500,
+      "cap_bp": null
+     }
+    },
+    "from": "account",
+    "events": [
+     "set_pricing"
+    ]
+   },
+   "code": null
+  },
+  {
+   "id": "settle_fee",
+   "label": "a check, then settle(): the pool books a fee",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T12:54:57.695Z",
+   "seconds": 173.4,
+   "txs": [
+    {
+     "label": "request_check (settle_fee, try 1)",
+     "hash": "6XbBheJNC7rnUD9iEgWuMiC8b6aUEqNmL5sFXJn6nK6a",
+     "ok": true,
+     "gas_tgas": 14.34,
+     "receipts": [
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 2.938571241804
+      },
+      {
+       "executor": "outlayer.testnet",
+       "gas_tgas": 4.187124969894
+      },
+      {
+       "executor": "outlayer.testnet",
+       "gas_tgas": 3.19749524398
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 2.365330122479
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": {
+      "accepted": true,
+      "reason": null
+     },
+     "seconds": 18.8,
+     "logs": [
+      "Resolved project: pbf-keeper.testnet/pb-risk, version: \"fb2cee3bb0b9dd8215b8c667a27dc6c565868487ccdf2e402f0327d516b2aee6\", source: WasmUrl { url: \"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/fb2cee3bb0b9dd8215b8c667a27dc6c565868487ccdf2e402f0327d516b2aee6.wasm\", hash: \"fb2cee3bb0b9dd8215b8c667a27dc6c565868487ccdf2e402f0327d516b2aee6\", build_target: Some(\"wasm32-wasip2\") }, uuid: p000000000000011a",
+      "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_requested\",\"data\":[{\"request_data\":\"{\\\"request_id\\\":38596,\\\"sender_id\\\":\\\"pbf-keeper.testnet\\\",\\\"predecessor_id\\\":\\\"fund-rhea-11131229.pbf.testnet\\\",\\\"code_source\\\":{\\\"WasmUrl\\\":{\\\"url\\\":\\\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/fb2cee3bb0b9dd8215b8c667a27dc6c565868487ccdf2e402f0327d516b2aee6.wasm\\\",\\\"hash\\\":\\\"fb2cee3bb0b9dd8215b8c667a27dc6c565868487ccdf2e402f0327d516b2aee6\\\",\\\"build_target\\\":\\\"wasm32-wasip2\\\"}},\\\"resource_limits\\\":{\\\"max_instructions\\\":2000000000,\\\"max_memory_mb\\\":256,\\\"max_execution_seconds\\\":20},\\\"input_data\\\":\\\"{\\\\\\\"mode\\\\\\\":\\\\\\\"check\\\\\\\",\\\\\\\"account\\\\\\\":\\\\\\\"fund-rhea-11131229.pbf.testnet\\\\\\\",\\\\\\\"intent\\\\\\\":{\\\\\\\"check\\\\\\\":{}},\\\\\\\"network\\\\\\\":\\\\\\\"testnet\\\\\\\",\\\\\\\"snapshot\\\\\\\":false}\\\",\\\"input_data_in_state\\\":false,\\\"secrets_ref\\\":null,\\\"response_format\\\":\\\"Json\\\",\\\"payment\\\":\\\"10000000000000000000000\\\",\\\"attached_usd\\\":\\\"0\\\",\\\"timestamp\\\":1794574500153421934,\\\"compile_only\\\":false,\\\"force_rebuild\\\":false,\\\"store_on_fastfs\\\":false,\\\"use_bound_identity\\\":false,\\\"project_uuid\\\":\\\"p000000000000011a\\\",\\\"project_id\\\":\\\"pbf-keeper.testnet/pb-risk\\\"}\",\"data_id\":[187,208,98,69,4,189,241,215,23,35,200,29,116,200,218,71,99,205,64,61,69,36,23,225,148,140,33,36,228,84,152,153],\"timestamp\":1794574500153421934}]}",
+      "Retrieving large output from storage for request_id: 38596",
+      "[[yNEAR charged: \"1842760500000000000000\"]]",
+      "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_completed\",\"data\":[{\"sender_id\":\"pbf-keeper.testnet\",\"code_source\":{\"WasmUrl\":{\"url\":\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/fb2cee3bb0b9dd8215b8c667a27dc6c565868487ccdf2e402f0327d516b2aee6.wasm\",\"hash\":\"fb2cee3bb0b9dd8215b8c667a27dc6c565868487ccdf2e402f0327d516b2aee6\",\"build_target\":\"wasm32-wasip2\"}},\"resources_used\":{\"instructions\":605830740,\"time_ms\":8427,\"compile_time_ms\":null},\"success\":true,\"error_message\":null,\"payment_charged\":\"1842760500000000000000\",\"payment_refunded\":\"8157239500000000000000\",\"compilation_note\":\"Cached WASM from 2026-11-12T14:33:54.872094+00:00\",\"timestamp\":1794574513536965367}]}",
+      "Execution completed successfully. Output: Json(1041 bytes), Resources: { instructions: 605830740, time_ms: 8427 }, Cost: 1842760500000000000000 yoctoNEAR, Refund: 8157239500000000000000 yoctoNEAR, Cached WASM from 2026-11-12T14:33:54.872094+00:00",
+      "verdict accepted: nonce 9"
+     ]
+    },
+    {
+     "label": "settle (settle_fee, try 1)",
+     "hash": "BQsoUJBZg5Zx1UeC6d8heJZ7VK8nYRRWmiJ9RhUHt6BB",
+     "ok": true,
+     "gas_tgas": 8.07,
+     "receipts": [
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 2.850363482518
+      },
+      {
+       "executor": "pool.pbf.testnet",
+       "gas_tgas": 2.069821252982
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 2.170816362605
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": true,
+     "seconds": 5.7,
+     "logs": [
+      "the pool settled nothing: too soon: this account settled 92 seconds ago, and two settlements are at least 2 minutes apart"
+     ]
+    },
+    {
+     "label": "request_check (settle_fee, try 2)",
+     "hash": "4jhKTzuRv7H9si16Ma1yFZ4TKHPFfneCHGFym8C5Mwwz",
+     "ok": true,
+     "gas_tgas": 14.34,
+     "receipts": [
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 2.938666556789
+      },
+      {
+       "executor": "outlayer.testnet",
+       "gas_tgas": 4.192677354939
+      },
+      {
+       "executor": "outlayer.testnet",
+       "gas_tgas": 3.19293524398
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 2.365389794836
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": {
+      "accepted": true,
+      "reason": null
+     },
+     "seconds": 22.4,
+     "logs": [
+      "Resolved project: pbf-keeper.testnet/pb-risk, version: \"fb2cee3bb0b9dd8215b8c667a27dc6c565868487ccdf2e402f0327d516b2aee6\", source: WasmUrl { url: \"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/fb2cee3bb0b9dd8215b8c667a27dc6c565868487ccdf2e402f0327d516b2aee6.wasm\", hash: \"fb2cee3bb0b9dd8215b8c667a27dc6c565868487ccdf2e402f0327d516b2aee6\", build_target: Some(\"wasm32-wasip2\") }, uuid: p000000000000011a",
+      "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_requested\",\"data\":[{\"request_data\":\"{\\\"request_id\\\":38616,\\\"sender_id\\\":\\\"pbf-keeper.testnet\\\",\\\"predecessor_id\\\":\\\"fund-rhea-11131229.pbf.testnet\\\",\\\"code_source\\\":{\\\"WasmUrl\\\":{\\\"url\\\":\\\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/fb2cee3bb0b9dd8215b8c667a27dc6c565868487ccdf2e402f0327d516b2aee6.wasm\\\",\\\"hash\\\":\\\"fb2cee3bb0b9dd8215b8c667a27dc6c565868487ccdf2e402f0327d516b2aee6\\\",\\\"build_target\\\":\\\"wasm32-wasip2\\\"}},\\\"resource_limits\\\":{\\\"max_instructions\\\":2000000000,\\\"max_memory_mb\\\":256,\\\"max_execution_seconds\\\":20},\\\"input_data\\\":\\\"{\\\\\\\"mode\\\\\\\":\\\\\\\"check\\\\\\\",\\\\\\\"account\\\\\\\":\\\\\\\"fund-rhea-11131229.pbf.testnet\\\\\\\",\\\\\\\"intent\\\\\\\":{\\\\\\\"check\\\\\\\":{}},\\\\\\\"network\\\\\\\":\\\\\\\"testnet\\\\\\\",\\\\\\\"snapshot\\\\\\\":false}\\\",\\\"input_data_in_state\\\":false,\\\"secrets_ref\\\":null,\\\"response_format\\\":\\\"Json\\\",\\\"payment\\\":\\\"10000000000000000000000\\\",\\\"attached_usd\\\":\\\"0\\\",\\\"timestamp\\\":1794574645199519724,\\\"compile_only\\\":false,\\\"force_rebuild\\\":false,\\\"store_on_fastfs\\\":false,\\\"use_bound_identity\\\":false,\\\"project_uuid\\\":\\\"p000000000000011a\\\",\\\"project_id\\\":\\\"pbf-keeper.testnet/pb-risk\\\"}\",\"data_id\":[13,46,2,188,144,96,150,75,43,235,190,135,185,85,201,56,143,44,197,56,221,150,191,29,216,35,224,154,110,212,63,135],\"timestamp\":1794574645199519724}]}",
+      "Retrieving large output from storage for request_id: 38616",
+      "[[yNEAR charged: \"1855160600000000000000\"]]",
+      "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_completed\",\"data\":[{\"sender_id\":\"pbf-keeper.testnet\",\"code_source\":{\"WasmUrl\":{\"url\":\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/fb2cee3bb0b9dd8215b8c667a27dc6c565868487ccdf2e402f0327d516b2aee6.wasm\",\"hash\":\"fb2cee3bb0b9dd8215b8c667a27dc6c565868487ccdf2e402f0327d516b2aee6\",\"build_target\":\"wasm32-wasip2\"}},\"resources_used\":{\"instructions\":606240636,\"time_ms\":8551,\"compile_time_ms\":null},\"success\":true,\"error_message\":null,\"payment_charged\":\"1855160600000000000000\",\"payment_refunded\":\"8144839400000000000000\",\"compilation_note\":\"Cached WASM from 2026-11-12T14:33:54.872094+00:00\",\"timestamp\":1794574662526715804}]}",
+      "Execution completed successfully. Output: Json(1041 bytes), Resources: { instructions: 606240636, time_ms: 8551 }, Cost: 1855160600000000000000 yoctoNEAR, Refund: 8144839400000000000000 yoctoNEAR, Cached WASM from 2026-11-12T14:33:54.872094+00:00",
+      "verdict accepted: nonce 9"
+     ]
+    },
+    {
+     "label": "settle (settle_fee, try 2)",
+     "hash": "3nMifzE9ydYECQNQDVfaim9tNvHgouEZUTRASBU4CQQD",
+     "ok": true,
+     "gas_tgas": 8.92,
+     "receipts": [
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 2.850363482518
+      },
+      {
+       "executor": "pool.pbf.testnet",
+       "gas_tgas": 2.923258587426
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 2.172787140011
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": true,
+     "seconds": 5,
+     "logs": [
+      "EVENT_JSON:{\"standard\":\"pb-pool\",\"version\":\"1.0.0\",\"event\":\"settle\",\"data\":{\"account_id\":\"fund-rhea-11131229.pbf.testnet\",\"pricing\":{\"lender\":{\"margin_bp\":500,\"cap_bp\":null}},\"from\":\"account\",\"period_ns\":\"240637666229\",\"fee\":\"201\",\"subsidy\":\"0\",\"cut\":\"0\",\"credit\":\"0\",\"debt\":\"500500927\",\"parts\":[{\"source\":\"rhea\",\"debt\":\"526086237\",\"counted_bp\":1593,\"client_bp\":2093,\"fee\":\"201\",\"subsidy\":\"0\"},{\"source\":\"pool\",\"debt\":\"374594644\",\"counted_bp\":203,\"client_bp\":203,\"fee\":\"0\",\"subsidy\":\"0\"}]}}",
+      "the pool settled: a fee of 201 and a subsidy of 0"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "fee": "201",
+    "in_words": "a fee of 0.000201 USDC",
+    "cut": "0",
+    "period_ns": "240637666229",
+    "policy": {
+     "lender": {
+      "margin_bp": 500,
+      "cap_bp": null
+     }
+    },
+    "fees_charged": "201",
+    "subsidy_paid": "0",
+    "credit": "0",
+    "settled_at": "1794574667679143639",
+    "last": [
+     {
+      "lender": "rhea",
+      "debt": "526086237",
+      "rate_bp": 1604,
+      "supply_bp": 1025
+     }
+    ],
+    "tries": [
+     {
+      "at": "2026-11-13T12:55:22.980Z",
+      "tx": "BQsoUJBZg5Zx1UeC6d8heJZ7VK8nYRRWmiJ9RhUHt6BB",
+      "said": "nothing settled: too soon: this account settled 92 seconds ago, and two settlements are at least 2 minutes apart",
+      "answer": true,
+      "pool": {
+       "skipped": "too soon: this account settled 92 seconds ago, and two settlements are at least 2 minutes apart"
+      },
+      "fees_charged": "0",
+      "subsidy_paid": "0"
+     },
+     {
+      "at": "2026-11-13T12:57:51.138Z",
+      "tx": "3nMifzE9ydYECQNQDVfaim9tNvHgouEZUTRASBU4CQQD",
+      "said": "settled: a fee of $0.000201 was added to what the account owes our pool",
+      "answer": true,
+      "pool": {
+       "fee": "201",
+       "subsidy": "0",
+       "cut": "0",
+       "credit": "0",
+       "period_ns": "240637666229",
+       "debt": "500500927"
+      },
+      "fees_charged": "201",
+      "subsidy_paid": "0"
+     }
+    ]
+   },
+   "code": null
+  },
+  {
+   "id": "subsidy_policy",
+   "label": "the operator sets the account's price: Rhea's rate capped at 0, so our pool pays down to Rhea's deposit rate",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T12:57:51.145Z",
+   "seconds": 4.4,
+   "txs": [
+    {
+     "label": "set_pricing (subsidy_policy)",
+     "hash": "DvwdcPtqtVPrrNwWfcoyFnUKtRbcL2jX25o9B5Lb3ziz",
+     "ok": true,
+     "gas_tgas": 2.81,
+     "receipts": [
+      {
+       "executor": "pool.pbf.testnet",
+       "gas_tgas": 2.270021678378
+      },
+      {
+       "executor": "pbf-ops.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": "",
+     "seconds": 4.2,
+     "logs": [
+      "EVENT_JSON:{\"standard\":\"pb-pool\",\"version\":\"1.0.0\",\"event\":\"set_pricing\",\"data\":{\"target\":{\"account\":\"fund-rhea-11131229.pbf.testnet\"},\"pricing\":{\"lender\":{\"margin_bp\":0,\"cap_bp\":0}}}}"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "policy": {
+     "lender": {
+      "margin_bp": 0,
+      "cap_bp": 0
+     }
+    },
+    "stored": {
+     "lender": {
+      "margin_bp": 0,
+      "cap_bp": 0
+     }
+    },
+    "from": "account",
+    "events": [
+     "set_pricing"
+    ]
+   },
+   "code": null
+  },
+  {
+   "id": "settle_subsidy",
+   "label": "a check, then settle(): the pool books a subsidy",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T13:16:40.399Z",
+   "seconds": 62.7,
+   "txs": [
+    {
+     "label": "request_check (settle_subsidy, try 1)",
+     "hash": "HXSzNSTSJQFXZCb8FwdzRhazCPSQjyntu7yJLpzd7waw",
+     "ok": true,
+     "gas_tgas": 14.3,
+     "receipts": [
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 2.941437573045
+      },
+      {
+       "executor": "outlayer.testnet",
+       "gas_tgas": 4.194060596187
+      },
+      {
+       "executor": "outlayer.testnet",
+       "gas_tgas": 3.145283595664
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 2.368198657868
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": {
+      "accepted": true,
+      "reason": null
+     },
+     "seconds": 57.5,
+     "logs": [
+      "Resolved project: pbf-keeper.testnet/pb-risk, version: \"fb2cee3bb0b9dd8215b8c667a27dc6c565868487ccdf2e402f0327d516b2aee6\", source: WasmUrl { url: \"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/fb2cee3bb0b9dd8215b8c667a27dc6c565868487ccdf2e402f0327d516b2aee6.wasm\", hash: \"fb2cee3bb0b9dd8215b8c667a27dc6c565868487ccdf2e402f0327d516b2aee6\", build_target: Some(\"wasm32-wasip2\") }, uuid: p000000000000011a",
+      "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_requested\",\"data\":[{\"request_data\":\"{\\\"request_id\\\":38695,\\\"sender_id\\\":\\\"pbf-keeper.testnet\\\",\\\"predecessor_id\\\":\\\"fund-rhea-11131229.pbf.testnet\\\",\\\"code_source\\\":{\\\"WasmUrl\\\":{\\\"url\\\":\\\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/fb2cee3bb0b9dd8215b8c667a27dc6c565868487ccdf2e402f0327d516b2aee6.wasm\\\",\\\"hash\\\":\\\"fb2cee3bb0b9dd8215b8c667a27dc6c565868487ccdf2e402f0327d516b2aee6\\\",\\\"build_target\\\":\\\"wasm32-wasip2\\\"}},\\\"resource_limits\\\":{\\\"max_instructions\\\":2000000000,\\\"max_memory_mb\\\":256,\\\"max_execution_seconds\\\":20},\\\"input_data\\\":\\\"{\\\\\\\"mode\\\\\\\":\\\\\\\"check\\\\\\\",\\\\\\\"account\\\\\\\":\\\\\\\"fund-rhea-11131229.pbf.testnet\\\\\\\",\\\\\\\"intent\\\\\\\":{\\\\\\\"check\\\\\\\":{}},\\\\\\\"network\\\\\\\":\\\\\\\"testnet\\\\\\\",\\\\\\\"snapshot\\\\\\\":false}\\\",\\\"input_data_in_state\\\":false,\\\"secrets_ref\\\":null,\\\"response_format\\\":\\\"Json\\\",\\\"payment\\\":\\\"10000000000000000000000\\\",\\\"attached_usd\\\":\\\"0\\\",\\\"timestamp\\\":1794575802939993195,\\\"compile_only\\\":false,\\\"force_rebuild\\\":false,\\\"store_on_fastfs\\\":false,\\\"use_bound_identity\\\":false,\\\"project_uuid\\\":\\\"p000000000000011a\\\",\\\"project_id\\\":\\\"pbf-keeper.testnet/pb-risk\\\"}\",\"data_id\":[16,101,158,34,149,226,18,138,227,78,13,153,16,88,243,184,240,105,162,173,51,160,210,185,14,96,252,159,218,137,203,182],\"timestamp\":1794575802939993195}]}",
+      "Retrieving large output from storage for request_id: 38695",
+      "[[yNEAR charged: \"2036265800000000000000\"]]",
+      "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_completed\",\"data\":[{\"sender_id\":\"pbf-keeper.testnet\",\"code_source\":{\"WasmUrl\":{\"url\":\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/fb2cee3bb0b9dd8215b8c667a27dc6c565868487ccdf2e402f0327d516b2aee6.wasm\",\"hash\":\"fb2cee3bb0b9dd8215b8c667a27dc6c565868487ccdf2e402f0327d516b2aee6\",\"build_target\":\"wasm32-wasip2\"}},\"resources_used\":{\"instructions\":658671361,\"time_ms\":10362,\"compile_time_ms\":null},\"success\":true,\"error_message\":null,\"payment_charged\":\"2036265800000000000000\",\"payment_refunded\":\"7963734200000000000000\",\"compilation_note\":\"Cached WASM from 2026-11-12T14:33:54.872094+00:00\",\"timestamp\":1794575855396307366}]}",
+      "Execution completed successfully. Output: Json(1041 bytes), Resources: { instructions: 658671361, time_ms: 10362 }, Cost: 2036265800000000000000 yoctoNEAR, Refund: 7963734200000000000000 yoctoNEAR, Cached WASM from 2026-11-12T14:33:54.872094+00:00",
+      "verdict accepted: nonce 9"
+     ]
+    },
+    {
+     "label": "settle (settle_subsidy, try 1)",
+     "hash": "EXExm7zME3qG1kzmjrnGMDcMRwwKeQwh6SvjKQGJAKXF",
+     "ok": true,
+     "gas_tgas": 8.82,
+     "receipts": [
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 2.853134498774
+      },
+      {
+       "executor": "pool.pbf.testnet",
+       "gas_tgas": 2.80877596847
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 2.175821599914
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": true,
+     "seconds": 4.5,
+     "logs": [
+      "EVENT_JSON:{\"standard\":\"pb-pool\",\"version\":\"1.0.0\",\"event\":\"settle\",\"data\":{\"account_id\":\"fund-rhea-11131229.pbf.testnet\",\"pricing\":{\"lender\":{\"margin_bp\":0,\"cap_bp\":0}},\"from\":\"account\",\"period_ns\":\"1192550859974\",\"fee\":\"0\",\"subsidy\":\"1151\",\"cut\":\"0\",\"credit\":\"0\",\"debt\":\"500500155\",\"parts\":[{\"source\":\"rhea\",\"debt\":\"526086237\",\"counted_bp\":1604,\"client_bp\":1025,\"fee\":\"0\",\"subsidy\":\"1151\"},{\"source\":\"pool\",\"debt\":\"500500927\",\"counted_bp\":200,\"client_bp\":200,\"fee\":\"0\",\"subsidy\":\"0\"}]}}",
+      "the pool settled: a fee of 0 and a subsidy of 1151"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "subsidy": "1151",
+    "in_words": "a subsidy of 0.001151 USDC",
+    "cut": "0",
+    "period_ns": "1192550859974",
+    "policy": {
+     "lender": {
+      "margin_bp": 0,
+      "cap_bp": 0
+     }
+    },
+    "fees_charged": "201",
+    "subsidy_paid": "1151",
+    "credit": "0",
+    "settled_at": "1794575860230003613",
+    "last": [
+     {
+      "lender": "rhea",
+      "debt": "526089191",
+      "rate_bp": 1604,
+      "supply_bp": 1025
+     }
+    ],
+    "tries": [
+     {
+      "at": "2026-11-13T13:17:43.059Z",
+      "tx": "EXExm7zME3qG1kzmjrnGMDcMRwwKeQwh6SvjKQGJAKXF",
+      "said": "settled: a subsidy of $0.001151 was taken off what the account owes our pool",
+      "answer": true,
+      "pool": {
+       "fee": "0",
+       "subsidy": "1151",
+       "cut": "0",
+       "credit": "0",
+       "period_ns": "1192550859974",
+       "debt": "500500155"
+      },
+      "fees_charged": "201",
+      "subsidy_paid": "1151"
+     }
+    ]
+   },
+   "code": null
+  },
+  {
+   "id": "price_drop",
+   "label": "bitcoin falls at Rhea: a hold keeps our copy's BTC price under the oracle, to take the cushion to 1.30",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T13:17:43.063Z",
+   "seconds": 12.1,
+   "txs": [],
+   "gateway": [],
+   "detail": {
+    "cushion_before_bp": 14999,
+    "aim_bp": 13000,
+    "shift_bp": -1333,
+    "until": "2026-11-13T13:52:43.798Z",
+    "price_before_usd": 69221.8,
+    "price_after_usd": 59988.21,
+    "oracle_usd": 69214.6,
+    "keeper_tx": "9HBuD71tYMqwV2vQRdnHDzaYrR4iftsxa3So879WT44Q",
+    "keeper_said": "set our Rhea copy's BTC price to $59,988.21: it was $69,221.80, 15.39% from the hold's level of $59,988.21 (13.33% under Hyperliquid's oracle at $69,214.50)"
+   },
+   "code": null
+  },
+  {
+   "id": "top_up",
+   "label": "the keeper tops Rhea up on its own: a check, a top-up plan, its step, and the cushion is back",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T13:17:55.213Z",
+   "seconds": 60.1,
+   "txs": [],
+   "gateway": [],
+   "detail": {
+    "checks": {
+     "thin_verdict_with_plan": true,
+     "keeper_ran_the_step": true,
+     "rhea_position_better": true,
+     "cushion_back": true,
+     "price_still_down": true
+    },
+    "thin": {
+     "blk": 277514986,
+     "action": "REBALANCE",
+     "cushion_bp": 12999,
+     "steps": [
+      {
+       "amt": 70180310,
+       "k": "l_repay",
+       "l": "rhea"
+      }
+     ],
+     "top": [
+      "replay 2020-03-12 up (from 2020-03-13 02:16 UTC)",
+      "ADL BTC 0.67S then 0.67S",
+      "nBTC depeg 20%",
+      "rhea: cushion 1.29 is under 1.35; repaying $70 brings it back to 1.50"
+     ]
+    },
+    "step_seen_done": {
+     "pid": "277514986",
+     "i": 0,
+     "k": "l_repay"
+    },
+    "restored": {
+     "blk": 277515058,
+     "cushion_bp": 15000
+    },
+    "rhea_before": {
+     "debt_micro": "526089265",
+     "collateral_units": "1500000"
+    },
+    "rhea_after": {
+     "debt_micro": "455909094",
+     "collateral_units": "1500000"
+    },
+    "keeper_steps": [
+     {
+      "at": "2026-11-13T13:18:28.191Z",
+      "pid": "277514986",
+      "i": 0,
+      "k": "l_repay",
+      "tx": "Q8nFxY6uTLqh7D8v5bp86sefse8czKwND3BiRPuUL27"
+     }
+    ],
+    "keeper_checks": [
+     {
+      "at": "2026-11-13T13:18:10.635Z",
+      "tx": "Br4fkmAQMqpjJ2YDbrqEx2ngLBPL4vHLiNRrXWeSLn6g",
+      "why": "Rhea's cushion was 1.50 at the last check, and bitcoin's price at Rhea has gone from $69,221.8 to $59,988.21 since: about 1.300 now, under 1.35, where it gets topped up"
+     },
+     {
+      "at": "2026-11-13T13:18:54.298Z",
+      "tx": "7H2iRjDkvGbAmgWHWL6icVjZn1vvYcBeSbZigNhXfNiE",
+      "why": "the steps of plan 277514986 have run: a check to see where the account stands"
+     }
+    ],
+    "verdicts": [
+     {
+      "at": "2026-11-13T13:17:55.636Z",
+      "blk": 277514922,
+      "state": "HEALTHY",
+      "action": "NONE",
+      "cushion_bp": 14999
+     },
+     {
+      "at": "2026-11-13T13:18:11.679Z",
+      "blk": 277514986,
+      "state": "HEALTHY",
+      "action": "REBALANCE",
+      "cushion_bp": 12999
+     },
+     {
+      "at": "2026-11-13T13:18:54.571Z",
+      "blk": 277515058,
+      "state": "HEALTHY",
+      "action": "NONE",
+      "cushion_bp": 15000
+     }
+    ],
+    "price": {
+     "copy": 59988.21,
+     "oracle": 69214,
+     "gap_bp": 0.1
+    }
+   },
+   "code": null
+  },
+  {
+   "id": "price_back",
+   "label": "the hold is cleared: the keeper brings our Rhea copy's BTC price back to the oracle's",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T13:18:55.343Z",
+   "seconds": 16.9,
+   "txs": [],
+   "gateway": [],
+   "detail": {
+    "price_usd": 69204,
+    "oracle_usd": 69201.3,
+    "gap_bp": 0.4
+   },
+   "code": null
+  },
+  {
+   "id": "repay_rhea",
+   "label": "the client repays Rhea in full",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T13:19:12.283Z",
+   "seconds": 7.2,
+   "txs": [
+    {
+     "label": "lender_repay (rhea)",
+     "hash": "AEETLy4JRCdt4TsbwK7JZJxXbANcnQjcdALtwN34zHCe",
+     "ok": true,
+     "gas_tgas": 21.35,
+     "receipts": [
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 3.644401586195
+      },
+      {
+       "executor": "pool.pbf.testnet",
+       "gas_tgas": 2.07880410067
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 2.173685162114
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 2.618266225264
+      },
+      {
+       "executor": "rhea.pbf-ops.testnet",
+       "gas_tgas": 5.465395189182
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 1.335511383391
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 2.15791265652
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": "455918350",
+     "seconds": 6.7,
+     "logs": [
+      "the pool settled nothing: too soon: this account settled 94 seconds ago, and two settlements are at least 2 minutes apart",
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"fund-rhea-11131229.pbf.testnet\",\"new_owner_id\":\"rhea.pbf-ops.testnet\",\"amount\":\"455918350\"}]}",
+      "EVENT_JSON:{\"data\":[{\"account_id\":\"fund-rhea-11131229.pbf.testnet\",\"amount\":\"455909142784520973488\",\"position\":\"REGULAR\",\"token_id\":\"musdc.pbf-ops.testnet\"}],\"event\":\"repay\",\"standard\":\"burrow\",\"version\":\"1.0.0\"}",
+      "EVENT_JSON:{\"data\":[{\"account_id\":\"fund-rhea-11131229.pbf.testnet\",\"amount\":\"9207215479026512\",\"token_id\":\"musdc.pbf-ops.testnet\"}],\"event\":\"deposit\",\"standard\":\"burrow\",\"version\":\"1.0.0\"}",
+      "EVENT_JSON:{\"data\":[{\"fee_type\":\"normal\",\"interest\":\"204519305126418127\",\"prot_fee\":\"0\",\"reserved\":\"51129826281604531\",\"token_id\":\"musdc.pbf-ops.testnet\"}],\"event\":\"fee_detail\",\"standard\":\"burrow\",\"version\":\"1.0.0\"}",
+      "EVENT_JSON:{\"data\":[{\"fee_type\":\"margin\",\"interest\":\"0\",\"prot_fee\":\"0\",\"reserved\":\"0\",\"token_id\":\"musdc.pbf-ops.testnet\"}],\"event\":\"fee_detail\",\"standard\":\"burrow\",\"version\":\"1.0.0\"}",
+      "repaid 455918350 at Rhea"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "debt_before_micro": "455909132",
+    "sent_micro": "455918350",
+    "put_in": "0",
+    "minted": "0",
+    "left_at_rhea_micro": "9207"
+   },
+   "code": null
+  },
+  {
+   "id": "repay",
+   "label": "put the loan back and repay it all",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T13:19:19.463Z",
+   "seconds": 7.3,
+   "txs": [
+    {
+     "label": "repay",
+     "hash": "AQU3SvbhR4ssJLwtnVWgj334QUBjiiWLrAkm6eW8Xdnk",
+     "ok": true,
+     "gas_tgas": 13.42,
+     "receipts": [
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 2.88747562044
+      },
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 2.612472688652
+      },
+      {
+       "executor": "pool.pbf.testnet",
+       "gas_tgas": 2.474244943054
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 1.868219365679
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 2.157209777998
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": "500500187",
+     "seconds": 6.6,
+     "logs": [
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"fund-rhea-11131229.pbf.testnet\",\"new_owner_id\":\"pool.pbf.testnet\",\"amount\":\"502000686\"}]}",
+      "EVENT_JSON:{\"standard\":\"pb-pool\",\"version\":\"1.0.0\",\"event\":\"repay\",\"data\":{\"account_id\":\"fund-rhea-11131229.pbf.testnet\",\"amount\":\"500500187\"}}",
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"pool.pbf.testnet\",\"new_owner_id\":\"fund-rhea-11131229.pbf.testnet\",\"amount\":\"1500499\",\"memo\":\"refund\"}]}",
+      "repaid 500500187"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "repaid": "502000686",
+    "put_back": "0",
+    "minted": "0",
+    "debt_before": "500500186",
+    "debt_after": "0",
+    "loan": {
+     "principal": "0",
+     "open": false
+    }
+   },
+   "code": null
+  },
+  {
+   "id": "credit",
+   "label": "the client claims what the pool owes the account, if anything",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T13:19:26.800Z",
+   "seconds": 0.1,
+   "txs": [],
+   "gateway": [],
+   "detail": {
+    "credit": "0",
+    "why": "the pool holds no credit for the account: nothing to claim",
+    "fees_charged": "201",
+    "subsidy_paid": "1151"
+   },
+   "code": null
+  },
+  {
+   "id": "rhea_withdraw",
+   "label": "the client takes the nBTC back from Rhea, and the USDC the repayment left there",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T13:19:26.937Z",
+   "seconds": 23.6,
+   "txs": [
+    {
+     "label": "lender_withdraw (rhea, nBTC)",
+     "hash": "E2hVsNp87sCF8jHRJNrWUsCkBBzWgYLTuhmo5rhLJQtx",
+     "ok": true,
+     "gas_tgas": 17.17,
+     "receipts": [
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 2.946604257016
+      },
+      {
+       "executor": "rhea.pbf-ops.testnet",
+       "gas_tgas": 6.421114132518
+      },
+      {
+       "executor": "mnbtc.pbf-ops.testnet",
+       "gas_tgas": 1.786978735301
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "rhea.pbf-ops.testnet",
+       "gas_tgas": 2.446399426555
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 2.144641142227
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": true,
+     "seconds": 6.1,
+     "logs": [
+      "withdrawal of 1500000 at rhea under way until block 277515157",
+      "EVENT_JSON:{\"data\":[{\"account_id\":\"fund-rhea-11131229.pbf.testnet\",\"amount\":\"15000000000000000\",\"position\":\"REGULAR\",\"token_id\":\"mnbtc.pbf-ops.testnet\"}],\"event\":\"decrease_collateral\",\"standard\":\"burrow\",\"version\":\"1.0.0\"}",
+      "EVENT_JSON:{\"data\":[{\"fee_type\":\"normal\",\"interest\":\"0\",\"prot_fee\":\"0\",\"reserved\":\"0\",\"token_id\":\"mnbtc.pbf-ops.testnet\"}],\"event\":\"fee_detail\",\"standard\":\"burrow\",\"version\":\"1.0.0\"}",
+      "EVENT_JSON:{\"data\":[{\"fee_type\":\"margin\",\"interest\":\"0\",\"prot_fee\":\"0\",\"reserved\":\"0\",\"token_id\":\"mnbtc.pbf-ops.testnet\"}],\"event\":\"fee_detail\",\"standard\":\"burrow\",\"version\":\"1.0.0\"}",
+      "EVENT_JSON:{\"data\":[{\"account_id\":\"fund-rhea-11131229.pbf.testnet\",\"amount\":\"15000000000000000\",\"token_id\":\"mnbtc.pbf-ops.testnet\"}],\"event\":\"withdraw_started\",\"standard\":\"burrow\",\"version\":\"1.0.0\"}",
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"rhea.pbf-ops.testnet\",\"new_owner_id\":\"fund-rhea-11131229.pbf.testnet\",\"amount\":\"1500000\"}]}",
+      "EVENT_JSON:{\"data\":[{\"account_id\":\"fund-rhea-11131229.pbf.testnet\",\"amount\":\"15000000000000000\",\"token_id\":\"mnbtc.pbf-ops.testnet\"}],\"event\":\"withdraw_succeeded\",\"standard\":\"burrow\",\"version\":\"1.0.0\"}"
+     ]
+    },
+    {
+     "label": "lender_withdraw (rhea, USDC)",
+     "hash": "HoKuFDM4FKUvUgL4MgViGspV1T4YfuMpn5rjsePEX7ay",
+     "ok": true,
+     "gas_tgas": 13.89,
+     "receipts": [
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 2.497419039484
+      },
+      {
+       "executor": "rhea.pbf-ops.testnet",
+       "gas_tgas": 5.910754661141
+      },
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 1.833420051308
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "rhea.pbf-ops.testnet",
+       "gas_tgas": 2.445752571504
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": "",
+     "seconds": 5.8,
+     "logs": [
+      "the lender action's 20 blocks are over: the counter moves on",
+      "EVENT_JSON:{\"data\":[{\"fee_type\":\"normal\",\"interest\":\"123576258292101492\",\"prot_fee\":\"0\",\"reserved\":\"30894064573025373\",\"token_id\":\"musdc.pbf-ops.testnet\"}],\"event\":\"fee_detail\",\"standard\":\"burrow\",\"version\":\"1.0.0\"}",
+      "EVENT_JSON:{\"data\":[{\"fee_type\":\"margin\",\"interest\":\"0\",\"prot_fee\":\"0\",\"reserved\":\"0\",\"token_id\":\"musdc.pbf-ops.testnet\"}],\"event\":\"fee_detail\",\"standard\":\"burrow\",\"version\":\"1.0.0\"}",
+      "EVENT_JSON:{\"data\":[{\"account_id\":\"fund-rhea-11131229.pbf.testnet\",\"amount\":\"9207000000000000\",\"token_id\":\"musdc.pbf-ops.testnet\"}],\"event\":\"withdraw_started\",\"standard\":\"burrow\",\"version\":\"1.0.0\"}",
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"rhea.pbf-ops.testnet\",\"new_owner_id\":\"fund-rhea-11131229.pbf.testnet\",\"amount\":\"9207\"}]}",
+      "EVENT_JSON:{\"data\":[{\"account_id\":\"fund-rhea-11131229.pbf.testnet\",\"amount\":\"9207000000000000\",\"token_id\":\"musdc.pbf-ops.testnet\"}],\"event\":\"withdraw_succeeded\",\"standard\":\"burrow\",\"version\":\"1.0.0\"}"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "nbtc_withdrawn_units": "1500000",
+    "account_holds_nbtc_units": "1500000",
+    "usdc_withdrawn_micro": "9207",
+    "left_at_rhea_micro": "0",
+    "waited_for_blocks": [
+     277515157
+    ]
+   },
+   "code": null
+  },
+  {
+   "id": "close_short",
+   "label": "close the short through the gateway",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T13:19:50.497Z",
+   "seconds": 24.4,
+   "txs": [],
+   "gateway": [
+    {
+     "label": "close: buy 0.015 BTC at 69283 (IOC)",
+     "http_status": 200,
+     "ok": true,
+     "code": null,
+     "reason": null,
+     "status": "filled",
+     "oid": 65229227130,
+     "filled_sz": "0.015",
+     "avg_px": "69130.3",
+     "call_id": "ddd06bac-8edc-4338-a376-bdf83fcd3eec",
+     "attestation_url": "https://testnet-api.outlayer.ai/attestations/by-call/ddd06bac-8edc-4338-a376-bdf83fcd3eec",
+     "seconds": 16.9
+    }
+   ],
+   "detail": {
+    "closed": 0.015,
+    "left": 0,
+    "dust": null,
+    "float_held": -0.00011,
+    "float_close": "not flattened: float-close failed (exit 2): 13:20:14 float: float 0xfc9d786b69b900ec51dfe8ebbf19ed47be59009d: 349.864111 USDC in perps, BTC position -0.00011 from 73143.0 | float: the order is worth $7.64; Hyperliquid's minimum is $10"
+   },
+   "code": null
+  },
+  {
+   "id": "home",
+   "label": "bring the USDC home: quote, hl_withdraw, submit, delivered",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T13:20:14.896Z",
+   "seconds": 57.1,
+   "txs": [
+    {
+     "label": "hl_withdraw",
+     "hash": "DiPnM6xy5L6Q8zwaJrp2wwmS2Gv5gC6dhhVkRuYZLvq1",
+     "ok": true,
+     "gas_tgas": 15.38,
+     "receipts": [
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 3.323706093311
+      },
+      {
+       "executor": "v1.signer-prod.testnet",
+       "gas_tgas": 4.649016194909
+      },
+      {
+       "executor": "v1.signer-prod.testnet",
+       "gas_tgas": 3.838527655698
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 2.35536446474
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": {
+      "index": 1,
+      "kind": "sendAsset",
+      "action": "{\"type\":\"sendAsset\",\"hyperliquidChain\":\"Testnet\",\"signatureChainId\":\"0x66eee\",\"destination\":\"0xfc9d786b69b900ec51dfe8ebbf19ed47be59009d\",\"sourceDex\":\"\",\"destinationDex\":\"\",\"token\":\"USDC:0xeb62eee3685fc4c43992febcd9e75443\",\"amount\":\"426.64977\",\"fromSubAccount\":\"\",\"nonce\":1794576018239}",
+      "nonce": 1794576018239,
+      "signature": {
+       "r": "0x578e3b0c889ee10de0d32b3d6e9530ab8472ad0f9e71f5cfb0e274ffc0d60e26",
+       "s": "0x71de1126c79e40f36cd94e611447d61ec469bbc4d8cb1dc0daf05c399affe2d7",
+       "v": 28
+      },
+      "signed_block": 277515230
+     },
+     "seconds": 8.6,
+     "logs": [
+      "transfer move:1 under way: 426649770 USDC to 0xfc9d786b69b900ec51dfe8ebbf19ed47be59009d",
+      "sign: predecessor=AccountId(\"fund-rhea-11131229.pbf.testnet\"), request=SignRequestArgs { path: \"hyperliquid-1\", payload: Ecdsa(BoundedVec { inner: [130, 14, 162, 11, 157, 155, 46, 37, 105, 112, 29, 244, 254, 230, 38, 141, 196, 34, 226, 111, 42, 76, 172, 81, 115, 77, 8, 130, 196, 150, 135, 109], witness: NonEmpty(()) }), domain_id: DomainId(0) }",
+      "EVENT_JSON:{\"standard\":\"pb-pool\",\"version\":\"1.0.0\",\"event\":\"hl_signed\",\"data\":[{\"account\":\"fund-rhea-11131229.pbf.testnet\",\"index\":1,\"kind\":\"sendAsset\",\"nonce\":1794576018239}]}"
+     ]
+    }
+   ],
+   "gateway": [
+    {
+     "label": "submit sendAsset #1",
+     "http_status": 200,
+     "ok": true,
+     "reason": "{\"status\":\"ok\",\"response\":{\"type\":\"default\"}}",
+     "seconds": 1.3
+    }
+   ],
+   "detail": {
+    "amount": "426649770",
+    "index": 1,
+    "statuses": [
+     "PENDING_DEPOSIT",
+     "PROCESSING",
+     "SUCCESS"
+    ],
+    "delivered": "426.36363",
+    "send_open_until_ms": "1794752418239"
+   },
+   "code": null
+  },
+  {
+   "id": "withdraw",
+   "label": "withdraw both tokens to the keeper, with no verdict",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T13:21:11.979Z",
+   "seconds": 9.7,
+   "txs": [
+    {
+     "label": "withdraw musdc.pbf-ops.testnet",
+     "hash": "BekiTQUmm9D5YusDkKjeZ1BicNiCjnSGSqvkqDU6c1aR",
+     "ok": true,
+     "gas_tgas": 10.12,
+     "receipts": [
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 3.146160584895
+      },
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 3.37835437104
+      },
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 2.171812519265
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": true,
+     "seconds": 4.7,
+     "logs": [
+      "The account is already registered, refunding the deposit",
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"fund-rhea-11131229.pbf.testnet\",\"new_owner_id\":\"pbf-keeper.testnet\",\"amount\":\"436360336\"}]}"
+     ]
+    },
+    {
+     "label": "withdraw mnbtc.pbf-ops.testnet",
+     "hash": "BhgnR5m8ad5MQ6iA4WENt8CP7mn3Z9AVgvcCchNbKVEG",
+     "ok": true,
+     "gas_tgas": 10.08,
+     "receipts": [
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 3.145737319251
+      },
+      {
+       "executor": "mnbtc.pbf-ops.testnet",
+       "gas_tgas": 3.329465334514
+      },
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-rhea-11131229.pbf.testnet",
+       "gas_tgas": 2.171812519265
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": true,
+     "seconds": 4.5,
+     "logs": [
+      "The account is already registered, refunding the deposit",
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"fund-rhea-11131229.pbf.testnet\",\"new_owner_id\":\"pbf-keeper.testnet\",\"amount\":\"1500000\"}]}"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "withdrawn": {
+     "musdc.pbf-ops.testnet": "436360336",
+     "mnbtc.pbf-ops.testnet": "1500000"
+    },
+    "left": [
+     "0",
+     "0"
+    ]
+   },
+   "code": null
+  }
+ ],
+ "pass": true,
+ "finished_utc": "2026-11-13T13:21:21.810Z"
+}

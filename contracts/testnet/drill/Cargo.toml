@@ -1,0 +1,17 @@
+[package]
+name = "pb-drill"
+description = "Drill config: the admin-set nBTC/BTC ratio that pb-risk reads on testnet only, to simulate a bridge depeg (PLAN.md 5.1)"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+near-sdk = { workspace = true }
+
+[dev-dependencies]
+near-sdk = { workspace = true, features = ["unit-testing"] }

@@ -1,0 +1,17 @@
+[package]
+name = "pb-testnet-mpc-mock"
+description = "Sandbox stand-in for the Chain Signatures signer: sign yields until a test hook responds (PLAN.md 5.1); testnet and sandbox only"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+near-sdk = { workspace = true }
+
+[dev-dependencies]
+near-sdk = { workspace = true, features = ["unit-testing"] }

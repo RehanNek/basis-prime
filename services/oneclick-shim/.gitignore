@@ -1,0 +1,2 @@
+# The shim keeps its swaps and fault switch here between runs (src/state.ts)
+state/

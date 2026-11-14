@@ -1,0 +1,1370 @@
+[
+ {
+  "market": "AaveV3Ethereum",
+  "chain": 1,
+  "symbol": "LBTC",
+  "address": "0x8236a87084f8B84306f72007F36F2618A5634494",
+  "usd": 74246.49160556,
+  "frozen": false,
+  "paused": false,
+  "supply": {
+   "apy": {
+    "value": "0.000000000002135949647186235"
+   },
+   "maxLTV": {
+    "value": "0.70"
+   },
+   "liquidationThreshold": {
+    "value": "0.75"
+   },
+   "liquidationBonus": {
+    "value": "0.085"
+   },
+   "canBeCollateral": true,
+   "supplyCapReached": true,
+   "supplyCap": {
+    "amount": {
+     "value": "2400"
+    },
+    "usd": "178191579.85334400"
+   },
+   "total": {
+    "value": "2449.05324645"
+   }
+  },
+  "borrow": {
+   "apy": {
+    "value": "0.000000616217997459338381619"
+   },
+   "total": {
+    "amount": {
+     "value": "0.01697793"
+    },
+    "usd": "1260.5517372247852908"
+   },
+   "availableLiquidity": {
+    "amount": {
+     "value": "2449.03626852"
+    },
+    "usd": "181832350.7523821660849712"
+   },
+   "utilizationRate": {
+    "value": "0.000006932446252285524700458"
+   },
+   "optimalUsageRate": {
+    "value": "0.45"
+   },
+   "baseVariableBorrowRate": {
+    "value": "0"
+   },
+   "variableRateSlope1": {
+    "value": "0.04"
+   },
+   "variableRateSlope2": {
+    "value": "3"
+   },
+   "reserveFactor": {
+    "value": "0.50"
+   },
+   "borrowCap": {
+    "amount": {
+     "value": "1"
+    },
+    "usd": "74246.49160556"
+   },
+   "borrowingState": "DISABLED"
+  }
+ },
+ {
+  "market": "AaveV3Ethereum",
+  "chain": 1,
+  "symbol": "USDC",
+  "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+  "usd": 0.99968041,
+  "frozen": false,
+  "paused": false,
+  "supply": {
+   "apy": {
+    "value": "0.039861125220416764290364295"
+   },
+   "maxLTV": {
+    "value": "0"
+   },
+   "liquidationThreshold": {
+    "value": "0.78"
+   },
+   "liquidationBonus": {
+    "value": "0.045"
+   },
+   "canBeCollateral": false,
+   "supplyCapReached": false,
+   "supplyCap": {
+    "amount": {
+     "value": "3500000000"
+    },
+    "usd": "3498881435.00000000"
+   },
+   "total": {
+    "value": "2860335765.470524"
+   }
+  },
+  "borrow": {
+   "apy": {
+    "value": "0.047250242591901594396051613"
+   },
+   "total": {
+    "amount": {
+     "value": "2690719991.658867"
+    },
+    "usd": "2689860064.45673274269547"
+   },
+   "availableLiquidity": {
+    "amount": {
+     "value": "169615772.184185"
+    },
+    "usd": "169561564.67955265631585"
+   },
+   "utilizationRate": {
+    "value": "0.940700747678554041583019447"
+   },
+   "optimalUsageRate": {
+    "value": "0.94"
+   },
+   "baseVariableBorrowRate": {
+    "value": "0"
+   },
+   "variableRateSlope1": {
+    "value": "0.045"
+   },
+   "variableRateSlope2": {
+    "value": "0.10"
+   },
+   "reserveFactor": {
+    "value": "0.10"
+   },
+   "borrowCap": {
+    "amount": {
+     "value": "2750000000"
+    },
+    "usd": "2749121127.50000000"
+   },
+   "borrowingState": "ENABLED"
+  }
+ },
+ {
+  "market": "AaveV3Ethereum",
+  "chain": 1,
+  "symbol": "USDT",
+  "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+  "usd": 0.99876,
+  "frozen": false,
+  "paused": false,
+  "supply": {
+   "apy": {
+    "value": "0.035299095883214793896515665"
+   },
+   "maxLTV": {
+    "value": "0"
+   },
+   "liquidationThreshold": {
+    "value": "0.78"
+   },
+   "liquidationBonus": {
+    "value": "0.045"
+   },
+   "canBeCollateral": false,
+   "supplyCapReached": false,
+   "supplyCap": {
+    "amount": {
+     "value": "3480000000"
+    },
+    "usd": "3475684800.00000"
+   },
+   "total": {
+    "value": "2600406374.924235"
+   }
+  },
+  "borrow": {
+   "apy": {
+    "value": "0.043892136637288230057671033"
+   },
+   "total": {
+    "amount": {
+     "value": "2333361788.293626"
+    },
+    "usd": "2330468419.67614190376"
+   },
+   "availableLiquidity": {
+    "amount": {
+     "value": "267044585.751216"
+    },
+    "usd": "266713450.46488449216"
+   },
+   "utilizationRate": {
+    "value": "0.897306594685876961198794502"
+   },
+   "optimalUsageRate": {
+    "value": "0.94"
+   },
+   "baseVariableBorrowRate": {
+    "value": "0"
+   },
+   "variableRateSlope1": {
+    "value": "0.045"
+   },
+   "variableRateSlope2": {
+    "value": "0.10"
+   },
+   "reserveFactor": {
+    "value": "0.10"
+   },
+   "borrowCap": {
+    "amount": {
+     "value": "2560000000"
+    },
+    "usd": "2556825600.00000"
+   },
+   "borrowingState": "ENABLED"
+  }
+ },
+ {
+  "market": "AaveV3Ethereum",
+  "chain": 1,
+  "symbol": "WBTC",
+  "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+  "usd": 73799.40690025,
+  "frozen": false,
+  "paused": false,
+  "supply": {
+   "apy": {
+    "value": "0.00003125422201856890130112"
+   },
+   "maxLTV": {
+    "value": "0.81"
+   },
+   "liquidationThreshold": {
+    "value": "0.85"
+   },
+   "liquidationBonus": {
+    "value": "0.05"
+   },
+   "canBeCollateral": true,
+   "supplyCapReached": false,
+   "supplyCap": {
+    "amount": {
+     "value": "38200"
+    },
+    "usd": "2819137343.58955000"
+   },
+   "total": {
+    "value": "34161.03313567"
+   }
+  },
+  "borrow": {
+   "apy": {
+    "value": "0.003129950345647961371705416"
+   },
+   "total": {
+    "amount": {
+     "value": "683.28868834"
+    },
+    "usd": "50426299.9411417677180850"
+   },
+   "availableLiquidity": {
+    "amount": {
+     "value": "33477.74298228"
+    },
+    "usd": "2470637576.4512706454775700"
+   },
+   "utilizationRate": {
+    "value": "0.020001992180103229442319005"
+   },
+   "optimalUsageRate": {
+    "value": "0.80"
+   },
+   "baseVariableBorrowRate": {
+    "value": "0.0025"
+   },
+   "variableRateSlope1": {
+    "value": "0.025"
+   },
+   "variableRateSlope2": {
+    "value": "3"
+   },
+   "reserveFactor": {
+    "value": "0.50"
+   },
+   "borrowCap": {
+    "amount": {
+     "value": "900"
+    },
+    "usd": "66419466.21022500"
+   },
+   "borrowingState": "ENABLED"
+  }
+ },
+ {
+  "market": "AaveV3Ethereum",
+  "chain": 1,
+  "symbol": "cbBTC",
+  "address": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+  "usd": 73836.32506279,
+  "frozen": false,
+  "paused": false,
+  "supply": {
+   "apy": {
+    "value": "0.00000991621280988697279182"
+   },
+   "maxLTV": {
+    "value": "0.81"
+   },
+   "liquidationThreshold": {
+    "value": "0.85"
+   },
+   "liquidationBonus": {
+    "value": "0.075"
+   },
+   "canBeCollateral": true,
+   "supplyCapReached": false,
+   "supplyCap": {
+    "amount": {
+     "value": "20000"
+    },
+    "usd": "1476726501.25580000"
+   },
+   "total": {
+    "value": "18238.04729271"
+   }
+  },
+  "borrow": {
+   "apy": {
+    "value": "0.002852220168145650855948956"
+   },
+   "total": {
+    "amount": {
+     "value": "126.99529329"
+    },
+    "usd": "9376865.7568047937156791"
+   },
+   "availableLiquidity": {
+    "amount": {
+     "value": "18111.05199941"
+    },
+    "usd": "1337253522.6575295232929539"
+   },
+   "utilizationRate": {
+    "value": "0.006963206710228863645104742"
+   },
+   "optimalUsageRate": {
+    "value": "0.80"
+   },
+   "baseVariableBorrowRate": {
+    "value": "0.0025"
+   },
+   "variableRateSlope1": {
+    "value": "0.04"
+   },
+   "variableRateSlope2": {
+    "value": "0.60"
+   },
+   "reserveFactor": {
+    "value": "0.50"
+   },
+   "borrowCap": {
+    "amount": {
+     "value": "250"
+    },
+    "usd": "18459081.26569750"
+   },
+   "borrowingState": "ENABLED"
+  }
+ },
+ {
+  "market": "AaveV3Ethereum",
+  "chain": 1,
+  "symbol": "tBTC",
+  "address": "0x18084fbA666a33d37592fA2633fD49a74DD93a88",
+  "usd": 73836.32506279,
+  "frozen": true,
+  "paused": false,
+  "supply": {
+   "apy": {
+    "value": "0.000000386743673220930146517"
+   },
+   "maxLTV": {
+    "value": "0"
+   },
+   "liquidationThreshold": {
+    "value": "0.78"
+   },
+   "liquidationBonus": {
+    "value": "0.075"
+   },
+   "canBeCollateral": false,
+   "supplyCapReached": false,
+   "supplyCap": {
+    "amount": {
+     "value": "1800"
+    },
+    "usd": "132905385.11302200"
+   },
+   "total": {
+    "value": "1568.120490591225011077"
+   }
+  },
+  "borrow": {
+   "apy": {
+    "value": "0.002518541395916013841685169"
+   },
+   "total": {
+    "amount": {
+     "value": "0.482204122994836608"
+    },
+    "usd": "35604.180372064325993031390616"
+   },
+   "availableLiquidity": {
+    "amount": {
+     "value": "1567.638258942765393547"
+    },
+    "usd": "115748648.06816418827570543384"
+   },
+   "utilizationRate": {
+    "value": "0.000307504515343229112811677"
+   },
+   "optimalUsageRate": {
+    "value": "0.80"
+   },
+   "baseVariableBorrowRate": {
+    "value": "0.0025"
+   },
+   "variableRateSlope1": {
+    "value": "0.04"
+   },
+   "variableRateSlope2": {
+    "value": "0.60"
+   },
+   "reserveFactor": {
+    "value": "0.50"
+   },
+   "borrowCap": {
+    "amount": {
+     "value": "1"
+    },
+    "usd": "73836.32506279"
+   },
+   "borrowingState": "ENABLED"
+  }
+ },
+ {
+  "market": "AaveV3EthereumEtherFi",
+  "chain": 1,
+  "symbol": "USDC",
+  "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+  "usd": 0.99968041,
+  "frozen": false,
+  "paused": false,
+  "supply": {
+   "apy": {
+    "value": "0.004836285371479915697554837"
+   },
+   "maxLTV": {
+    "value": "0"
+   },
+   "liquidationThreshold": {
+    "value": "0"
+   },
+   "liquidationBonus": {
+    "value": "0"
+   },
+   "canBeCollateral": false,
+   "supplyCapReached": true,
+   "supplyCap": {
+    "amount": {
+     "value": "1"
+    },
+    "usd": "0.99968041"
+   },
+   "total": {
+    "value": "8701.154218"
+   }
+  },
+  "borrow": {
+   "apy": {
+    "value": "0.018276586435293987400655799"
+   },
+   "total": {
+    "amount": {
+     "value": "2584.580682"
+    },
+    "usd": "2583.75467585983962"
+   },
+   "availableLiquidity": {
+    "amount": {
+     "value": "6105.157628"
+    },
+    "usd": "6103.20648067366748"
+   },
+   "utilizationRate": {
+    "value": "0.297429058252043035344294504"
+   },
+   "optimalUsageRate": {
+    "value": "0.90"
+   },
+   "baseVariableBorrowRate": {
+    "value": "0"
+   },
+   "variableRateSlope1": {
+    "value": "0.055"
+   },
+   "variableRateSlope2": {
+    "value": "0.40"
+   },
+   "reserveFactor": {
+    "value": "0.10"
+   },
+   "borrowCap": {
+    "amount": {
+     "value": "1"
+    },
+    "usd": "0.99968041"
+   },
+   "borrowingState": "ENABLED"
+  }
+ },
+ {
+  "market": "AaveV3EthereumLido",
+  "chain": 1,
+  "symbol": "USDC",
+  "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+  "usd": 0.99968041,
+  "frozen": false,
+  "paused": false,
+  "supply": {
+   "apy": {
+    "value": "0.039717691256932220589764442"
+   },
+   "maxLTV": {
+    "value": "0"
+   },
+   "liquidationThreshold": {
+    "value": "0"
+   },
+   "liquidationBonus": {
+    "value": "0"
+   },
+   "canBeCollateral": false,
+   "supplyCapReached": false,
+   "supplyCap": {
+    "amount": {
+     "value": "10000000"
+    },
+    "usd": "9996804.10000000"
+   },
+   "total": {
+    "value": "4673316.260207"
+   }
+  },
+  "borrow": {
+   "apy": {
+    "value": "0.052180425605830457314579072"
+   },
+   "total": {
+    "amount": {
+     "value": "3976211.753463"
+    },
+    "usd": "3974940.99594871075983"
+   },
+   "availableLiquidity": {
+    "amount": {
+     "value": "697102.307216"
+    },
+    "usd": "696879.52028963683856"
+   },
+   "utilizationRate": {
+    "value": "0.8508334132556210254783162"
+   },
+   "optimalUsageRate": {
+    "value": "0.92"
+   },
+   "baseVariableBorrowRate": {
+    "value": "0"
+   },
+   "variableRateSlope1": {
+    "value": "0.055"
+   },
+   "variableRateSlope2": {
+    "value": "0.35"
+   },
+   "reserveFactor": {
+    "value": "0.10"
+   },
+   "borrowCap": {
+    "amount": {
+     "value": "9000000"
+    },
+    "usd": "8997123.69000000"
+   },
+   "borrowingState": "ENABLED"
+  }
+ },
+ {
+  "market": "AaveV3EthereumHorizon",
+  "chain": 1,
+  "symbol": "USDC",
+  "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+  "usd": 0.99968041,
+  "frozen": false,
+  "paused": false,
+  "supply": {
+   "apy": {
+    "value": "0.078227298327280051795559714"
+   },
+   "maxLTV": {
+    "value": "0"
+   },
+   "liquidationThreshold": {
+    "value": "0"
+   },
+   "liquidationBonus": {
+    "value": "0"
+   },
+   "canBeCollateral": false,
+   "supplyCapReached": false,
+   "supplyCap": {
+    "amount": {
+     "value": "60000000"
+    },
+    "usd": "59980824.60000000"
+   },
+   "total": {
+    "value": "2620960.62072"
+   }
+  },
+  "borrow": {
+   "apy": {
+    "value": "0.096241490625213853768937918"
+   },
+   "total": {
+    "amount": {
+     "value": "2387054.558249"
+    },
+    "usd": "2386291.67948272920209"
+   },
+   "availableLiquidity": {
+    "amount": {
+     "value": "233906.062471"
+    },
+    "usd": "233831.30843249489311"
+   },
+   "utilizationRate": {
+    "value": "0.910755598301685268824369671"
+   },
+   "optimalUsageRate": {
+    "value": "0.90"
+   },
+   "baseVariableBorrowRate": {
+    "value": "0.015"
+   },
+   "variableRateSlope1": {
+    "value": "0.05"
+   },
+   "variableRateSlope2": {
+    "value": "0.25"
+   },
+   "reserveFactor": {
+    "value": "0.10"
+   },
+   "borrowCap": {
+    "amount": {
+     "value": "54000000"
+    },
+    "usd": "53982742.14000000"
+   },
+   "borrowingState": "ENABLED"
+  }
+ },
+ {
+  "market": "AaveV3Arbitrum",
+  "chain": 42161,
+  "symbol": "USDC",
+  "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
+  "usd": 0.99975572,
+  "frozen": true,
+  "paused": false,
+  "supply": {
+   "apy": {
+    "value": "0.083054425818577537255427094"
+   },
+   "maxLTV": {
+    "value": "0"
+   },
+   "liquidationThreshold": {
+    "value": "0.78"
+   },
+   "liquidationBonus": {
+    "value": "0.05"
+   },
+   "canBeCollateral": false,
+   "supplyCapReached": true,
+   "supplyCap": {
+    "amount": {
+     "value": "1"
+    },
+    "usd": "0.99975572"
+   },
+   "total": {
+    "value": "1004883.654469"
+   }
+  },
+  "borrow": {
+   "apy": {
+    "value": "0.395368155127707458254901887"
+   },
+   "total": {
+    "amount": {
+     "value": "962605.79518"
+    },
+    "usd": "962370.6498363534296"
+   },
+   "availableLiquidity": {
+    "amount": {
+     "value": "41896.296781"
+    },
+    "usd": "41886.06235362233732"
+   },
+   "utilizationRate": {
+    "value": "0.958291478816923526799245349"
+   },
+   "optimalUsageRate": {
+    "value": "0.90"
+   },
+   "baseVariableBorrowRate": {
+    "value": "0"
+   },
+   "variableRateSlope1": {
+    "value": "0.10"
+   },
+   "variableRateSlope2": {
+    "value": "0.40"
+   },
+   "reserveFactor": {
+    "value": "0.75"
+   },
+   "borrowCap": {
+    "amount": {
+     "value": "1"
+    },
+    "usd": "0.99975572"
+   },
+   "borrowingState": "DISABLED"
+  }
+ },
+ {
+  "market": "AaveV3Arbitrum",
+  "chain": 42161,
+  "symbol": "USDC",
+  "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+  "usd": 0.99975572,
+  "frozen": false,
+  "paused": false,
+  "supply": {
+   "apy": {
+    "value": "0.029080826224741927096965324"
+   },
+   "maxLTV": {
+    "value": "0"
+   },
+   "liquidationThreshold": {
+    "value": "0.78"
+   },
+   "liquidationBonus": {
+    "value": "0.05"
+   },
+   "canBeCollateral": false,
+   "supplyCapReached": false,
+   "supplyCap": {
+    "amount": {
+     "value": "250000000"
+    },
+    "usd": "249938930.00000000"
+   },
+   "total": {
+    "value": "204689596.487238"
+   }
+  },
+  "borrow": {
+   "apy": {
+    "value": "0.039780865287757725316690287"
+   },
+   "total": {
+    "amount": {
+     "value": "167126228.401558"
+    },
+    "usd": "167085402.80648406741176"
+   },
+   "availableLiquidity": {
+    "amount": {
+     "value": "37562901.069475"
+    },
+    "usd": "37553725.20400174864700"
+   },
+   "utilizationRate": {
+    "value": "0.816488051092176877795491761"
+   },
+   "optimalUsageRate": {
+    "value": "0.90"
+   },
+   "baseVariableBorrowRate": {
+    "value": "0"
+   },
+   "variableRateSlope1": {
+    "value": "0.043"
+   },
+   "variableRateSlope2": {
+    "value": "0.10"
+   },
+   "reserveFactor": {
+    "value": "0.10"
+   },
+   "borrowCap": {
+    "amount": {
+     "value": "200000000"
+    },
+    "usd": "199951144.00000000"
+   },
+   "borrowingState": "ENABLED"
+  }
+ },
+ {
+  "market": "AaveV3Arbitrum",
+  "chain": 42161,
+  "symbol": "USD\u20ae0",
+  "address": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
+  "usd": 0.99897,
+  "frozen": false,
+  "paused": false,
+  "supply": {
+   "apy": {
+    "value": "0.036816528950920046802059412"
+   },
+   "maxLTV": {
+    "value": "0"
+   },
+   "liquidationThreshold": {
+    "value": "0.78"
+   },
+   "liquidationBonus": {
+    "value": "0.05"
+   },
+   "canBeCollateral": false,
+   "supplyCapReached": false,
+   "supplyCap": {
+    "amount": {
+     "value": "58300000"
+    },
+    "usd": "58239951.00000"
+   },
+   "total": {
+    "value": "42892852.347282"
+   }
+  },
+  "borrow": {
+   "apy": {
+    "value": "0.045851635044586167379609399"
+   },
+   "total": {
+    "amount": {
+     "value": "38435031.908669"
+    },
+    "usd": "38395443.82580307093"
+   },
+   "availableLiquidity": {
+    "amount": {
+     "value": "4431052.711981"
+    },
+    "usd": "4426488.72768765957"
+   },
+   "utilizationRate": {
+    "value": "0.896630337218939364861630075"
+   },
+   "optimalUsageRate": {
+    "value": "0.90"
+   },
+   "baseVariableBorrowRate": {
+    "value": "0"
+   },
+   "variableRateSlope1": {
+    "value": "0.045"
+   },
+   "variableRateSlope2": {
+    "value": "0.10"
+   },
+   "reserveFactor": {
+    "value": "0.10"
+   },
+   "borrowCap": {
+    "amount": {
+     "value": "52400000"
+    },
+    "usd": "52346028.00000"
+   },
+   "borrowingState": "ENABLED"
+  }
+ },
+ {
+  "market": "AaveV3Arbitrum",
+  "chain": 42161,
+  "symbol": "WBTC",
+  "address": "0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f",
+  "usd": 74062.59845868,
+  "frozen": false,
+  "paused": false,
+  "supply": {
+   "apy": {
+    "value": "0.000154658696626954336004339"
+   },
+   "maxLTV": {
+    "value": "0.78"
+   },
+   "liquidationThreshold": {
+    "value": "0.82"
+   },
+   "liquidationBonus": {
+    "value": "0.07"
+   },
+   "canBeCollateral": true,
+   "supplyCapReached": false,
+   "supplyCap": {
+    "amount": {
+     "value": "3500"
+    },
+    "usd": "259219094.60538000"
+   },
+   "total": {
+    "value": "3125.29175619"
+   }
+  },
+  "borrow": {
+   "apy": {
+    "value": "0.007185594133048939235794437"
+   },
+   "total": {
+    "amount": {
+     "value": "135.00639347"
+    },
+    "usd": "9998924.3089231676168196"
+   },
+   "availableLiquidity": {
+    "amount": {
+     "value": "2990.28510486"
+    },
+    "usd": "221468284.9982179981771848"
+   },
+   "utilizationRate": {
+    "value": "0.043198016422513127951615688"
+   },
+   "optimalUsageRate": {
+    "value": "0.80"
+   },
+   "baseVariableBorrowRate": {
+    "value": "0.005"
+   },
+   "variableRateSlope1": {
+    "value": "0.04"
+   },
+   "variableRateSlope2": {
+    "value": "3"
+   },
+   "reserveFactor": {
+    "value": "0.50"
+   },
+   "borrowCap": {
+    "amount": {
+     "value": "250"
+    },
+    "usd": "18515649.61467000"
+   },
+   "borrowingState": "ENABLED"
+  }
+ },
+ {
+  "market": "AaveV3Arbitrum",
+  "chain": 42161,
+  "symbol": "tBTC",
+  "address": "0x6c84a8f1c29108F47a79964b5Fe888D4f4D0dE40",
+  "usd": 74062.59845868,
+  "frozen": true,
+  "paused": false,
+  "supply": {
+   "apy": {
+    "value": "0"
+   },
+   "maxLTV": {
+    "value": "0"
+   },
+   "liquidationThreshold": {
+    "value": "0.78"
+   },
+   "liquidationBonus": {
+    "value": "0.075"
+   },
+   "canBeCollateral": false,
+   "supplyCapReached": true,
+   "supplyCap": {
+    "amount": {
+     "value": "1"
+    },
+    "usd": "74062.59845868"
+   },
+   "total": {
+    "value": "8.71020508380933363"
+   }
+  },
+  "borrow": {
+   "apy": {
+    "value": "0"
+   },
+   "total": {
+    "amount": {
+     "value": "0"
+    },
+    "usd": "0"
+   },
+   "availableLiquidity": {
+    "amount": {
+     "value": "8.71020508380933363"
+    },
+    "usd": "645100.42161492385312823588941"
+   },
+   "utilizationRate": {
+    "value": "0"
+   },
+   "optimalUsageRate": {
+    "value": "0.45"
+   },
+   "baseVariableBorrowRate": {
+    "value": "0"
+   },
+   "variableRateSlope1": {
+    "value": "0.04"
+   },
+   "variableRateSlope2": {
+    "value": "3"
+   },
+   "reserveFactor": {
+    "value": "0.20"
+   },
+   "borrowCap": {
+    "amount": {
+     "value": "1"
+    },
+    "usd": "74062.59845868"
+   },
+   "borrowingState": "DISABLED"
+  }
+ },
+ {
+  "market": "AaveV3Base",
+  "chain": 8453,
+  "symbol": "LBTC",
+  "address": "0xecAc9C5F704e954931349Da37F60E39f515c11c1",
+  "usd": 74387.70980076,
+  "frozen": false,
+  "paused": false,
+  "supply": {
+   "apy": {
+    "value": "0"
+   },
+   "maxLTV": {
+    "value": "0"
+   },
+   "liquidationThreshold": {
+    "value": "0.73"
+   },
+   "liquidationBonus": {
+    "value": "0.085"
+   },
+   "canBeCollateral": false,
+   "supplyCapReached": false,
+   "supplyCap": {
+    "amount": {
+     "value": "50"
+    },
+    "usd": "3719385.49003800"
+   },
+   "total": {
+    "value": "20.35945576"
+   }
+  },
+  "borrow": {
+   "apy": {
+    "value": "0"
+   },
+   "total": {
+    "amount": {
+     "value": "0"
+    },
+    "usd": "0"
+   },
+   "availableLiquidity": {
+    "amount": {
+     "value": "20.35945576"
+    },
+    "usd": "1514493.2867762916343776"
+   },
+   "utilizationRate": {
+    "value": "0"
+   },
+   "optimalUsageRate": {
+    "value": "0.45"
+   },
+   "baseVariableBorrowRate": {
+    "value": "0"
+   },
+   "variableRateSlope1": {
+    "value": "0.04"
+   },
+   "variableRateSlope2": {
+    "value": "3"
+   },
+   "reserveFactor": {
+    "value": "0.50"
+   },
+   "borrowCap": {
+    "amount": {
+     "value": "1"
+    },
+    "usd": "74387.70980076"
+   },
+   "borrowingState": "DISABLED"
+  }
+ },
+ {
+  "market": "AaveV3Base",
+  "chain": 8453,
+  "symbol": "USDC",
+  "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+  "usd": 0.99978,
+  "frozen": false,
+  "paused": false,
+  "supply": {
+   "apy": {
+    "value": "0.041765309207502764278201621"
+   },
+   "maxLTV": {
+    "value": "0"
+   },
+   "liquidationThreshold": {
+    "value": "0.78"
+   },
+   "liquidationBonus": {
+    "value": "0.05"
+   },
+   "canBeCollateral": false,
+   "supplyCapReached": false,
+   "supplyCap": {
+    "amount": {
+     "value": "230000000"
+    },
+    "usd": "229949400.00000"
+   },
+   "total": {
+    "value": "197589526.366717"
+   }
+  },
+  "borrow": {
+   "apy": {
+    "value": "0.051644064867787584215204519"
+   },
+   "total": {
+    "amount": {
+     "value": "178394609.082952"
+    },
+    "usd": "178355362.26895375056"
+   },
+   "availableLiquidity": {
+    "amount": {
+     "value": "19194886.408734"
+    },
+    "usd": "19190663.53372407852"
+   },
+   "utilizationRate": {
+    "value": "0.902854722307129602247815221"
+   },
+   "optimalUsageRate": {
+    "value": "0.90"
+   },
+   "baseVariableBorrowRate": {
+    "value": "0"
+   },
+   "variableRateSlope1": {
+    "value": "0.0475"
+   },
+   "variableRateSlope2": {
+    "value": "0.10"
+   },
+   "reserveFactor": {
+    "value": "0.10"
+   },
+   "borrowCap": {
+    "amount": {
+     "value": "195000000"
+    },
+    "usd": "194957100.00000"
+   },
+   "borrowingState": "ENABLED"
+  }
+ },
+ {
+  "market": "AaveV3Base",
+  "chain": 8453,
+  "symbol": "cbBTC",
+  "address": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+  "usd": 73976.76311366,
+  "frozen": false,
+  "paused": false,
+  "supply": {
+   "apy": {
+    "value": "0.000086424775055386945225949"
+   },
+   "maxLTV": {
+    "value": "0.81"
+   },
+   "liquidationThreshold": {
+    "value": "0.84"
+   },
+   "liquidationBonus": {
+    "value": "0.06"
+   },
+   "canBeCollateral": true,
+   "supplyCapReached": false,
+   "supplyCap": {
+    "amount": {
+     "value": "4000"
+    },
+    "usd": "295907052.45464000"
+   },
+   "total": {
+    "value": "3180.60107893"
+   }
+  },
+  "borrow": {
+   "apy": {
+    "value": "0.006379290453273943137733544"
+   },
+   "total": {
+    "amount": {
+     "value": "86.45057585"
+    },
+    "usd": "6395333.7706949460011110"
+   },
+   "availableLiquidity": {
+    "amount": {
+     "value": "3094.15049555"
+    },
+    "usd": "228895238.2473160499742130"
+   },
+   "utilizationRate": {
+    "value": "0.027180578107504438036768247"
+   },
+   "optimalUsageRate": {
+    "value": "0.80"
+   },
+   "baseVariableBorrowRate": {
+    "value": "0.005"
+   },
+   "variableRateSlope1": {
+    "value": "0.04"
+   },
+   "variableRateSlope2": {
+    "value": "0.60"
+   },
+   "reserveFactor": {
+    "value": "0.50"
+   },
+   "borrowCap": {
+    "amount": {
+     "value": "380"
+    },
+    "usd": "28111169.98319080"
+   },
+   "borrowingState": "ENABLED"
+  }
+ },
+ {
+  "market": "AaveV3Base",
+  "chain": 8453,
+  "symbol": "tBTC",
+  "address": "0x236aa50979D5f3De3Bd1Eeb40E81137F22ab794b",
+  "usd": 73976.76311366,
+  "frozen": true,
+  "paused": false,
+  "supply": {
+   "apy": {
+    "value": "0.001054310192142848414383762"
+   },
+   "maxLTV": {
+    "value": "0"
+   },
+   "liquidationThreshold": {
+    "value": "0.78"
+   },
+   "liquidationBonus": {
+    "value": "0.075"
+   },
+   "canBeCollateral": false,
+   "supplyCapReached": true,
+   "supplyCap": {
+    "amount": {
+     "value": "1"
+    },
+    "usd": "73976.76311366"
+   },
+   "total": {
+    "value": "2.942510039656394342"
+   }
+  },
+  "borrow": {
+   "apy": {
+    "value": "0.016548894156802844127916839"
+   },
+   "total": {
+    "amount": {
+     "value": "0.377832970332659313"
+    },
+    "usd": "27950.860142829664565553876516"
+   },
+   "availableLiquidity": {
+    "amount": {
+     "value": "2.564677066343356049"
+    },
+    "usd": "189726.50779991892242207523553"
+   },
+   "utilizationRate": {
+    "value": "0.128404989489679201062724368"
+   },
+   "optimalUsageRate": {
+    "value": "0.45"
+   },
+   "baseVariableBorrowRate": {
+    "value": "0.005"
+   },
+   "variableRateSlope1": {
+    "value": "0.04"
+   },
+   "variableRateSlope2": {
+    "value": "0.60"
+   },
+   "reserveFactor": {
+    "value": "0.50"
+   },
+   "borrowCap": {
+    "amount": {
+     "value": "1"
+    },
+    "usd": "73976.76311366"
+   },
+   "borrowingState": "DISABLED"
+  }
+ }
+]

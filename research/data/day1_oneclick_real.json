@@ -1,0 +1,213 @@
+{
+ "generated_utc": "2026-11-06 22:44:35",
+ "rows": [
+  {
+   "route": "nBTC -> NEAR USDC",
+   "usd": 10000,
+   "dry_keyed": {
+    "http": 201,
+    "amountIn": "13170025",
+    "amountOut": "9981923261",
+    "depositAddress": null,
+    "timeEstimate": 20,
+    "error": null
+   },
+   "real_keyed": {
+    "http": 201,
+    "amountIn": "13170025",
+    "amountOut": "9981923261",
+    "depositAddress": "5c224b2664c92e6bd71e04d7f7af7380de6e1c68c09e2872b25f94a2cfcb3bee",
+    "timeEstimate": 20,
+    "error": null
+   },
+   "real_keyless": {
+    "http": 201,
+    "amountIn": "13170025",
+    "amountOut": "9983687868",
+    "depositAddress": "9f73c25b970169e5dd6a0e0206682a1017c8b0401795b6fd330f824123a1fcdb",
+    "timeEstimate": 20,
+    "error": null
+   },
+   "real_keyed_vs_dry_bp": 0.0,
+   "real_keyless_vs_dry_bp": 1.8,
+   "deposit_storage": {
+    "contract": "nbtc.bridge.near",
+    "storage_balance_of": null,
+    "address_kind": "implicit (64 hex)"
+   }
+  },
+  {
+   "route": "nBTC -> NEAR USDC",
+   "usd": 50000,
+   "dry_keyed": {
+    "http": 201,
+    "amountIn": "65850125",
+    "amountOut": "49887903580",
+    "depositAddress": null,
+    "timeEstimate": 22,
+    "error": null
+   },
+   "real_keyed": {
+    "http": 201,
+    "amountIn": "65850125",
+    "amountOut": "49888849740",
+    "depositAddress": "0b16a66171b82445fe742ede5552b64ce8c53007ba3b38fa9116bb950f398d8d",
+    "timeEstimate": 22,
+    "error": null
+   },
+   "real_keyless": {
+    "http": 201,
+    "amountIn": "65850125",
+    "amountOut": "49838412384",
+    "depositAddress": "9879302af02aaa5ad04a7a3451e5f92bc96c3cda160cfe51da6eb4e7b70733a0",
+    "timeEstimate": 22,
+    "error": null
+   },
+   "real_keyed_vs_dry_bp": 0.2,
+   "real_keyless_vs_dry_bp": -9.9,
+   "deposit_storage": {
+    "contract": "nbtc.bridge.near",
+    "storage_balance_of": null,
+    "address_kind": "implicit (64 hex)"
+   }
+  },
+  {
+   "route": "ETH (bridged) -> NEAR USDC",
+   "usd": 10000,
+   "dry_keyed": {
+    "http": 201,
+    "amountIn": "4464066496734535168",
+    "amountOut": "9975633061",
+    "depositAddress": null,
+    "timeEstimate": 22,
+    "error": null
+   },
+   "real_keyed": {
+    "http": 201,
+    "amountIn": "4464066496734535168",
+    "amountOut": "9975623082",
+    "depositAddress": "2f32d7f102ca8c6f8ff7e8011c3a29d06c23a952aec01a26e283588587087b8c",
+    "timeEstimate": 22,
+    "error": null
+   },
+   "real_keyless": {
+    "http": 201,
+    "amountIn": "4464066496734535168",
+    "amountOut": "9965652327",
+    "depositAddress": "071ec8327561dce92219660a0ee9d77106cd77ba388655b8c738b5d9b20a05fa",
+    "timeEstimate": 22,
+    "error": null
+   },
+   "real_keyed_vs_dry_bp": -0.0,
+   "real_keyless_vs_dry_bp": -10.0,
+   "deposit_storage": {
+    "contract": "eth.bridge.near",
+    "storage_balance_of": {
+     "total": "0",
+     "available": "0"
+    },
+    "address_kind": "implicit (64 hex)"
+   }
+  },
+  {
+   "route": "USDT -> NEAR USDC",
+   "usd": 10000,
+   "dry_keyed": {
+    "http": 201,
+    "amountIn": "10009549110",
+    "amountOut": "9995720950",
+    "depositAddress": null,
+    "timeEstimate": 20,
+    "error": null
+   },
+   "real_keyed": {
+    "http": 201,
+    "amountIn": "10009549110",
+    "amountOut": "9995720950",
+    "depositAddress": "7f51c0992bb2c25c4fca33aae3fd492f7353a2d77549c011b420da7bb23f3be6",
+    "timeEstimate": 20,
+    "error": null
+   },
+   "real_keyless": {
+    "http": 201,
+    "amountIn": "10009549110",
+    "amountOut": "9995820794",
+    "depositAddress": "935e97e517dfbf1b066fec16d8bb990623129cefd26fcb372f24e7261041a44d",
+    "timeEstimate": 20,
+    "error": null
+   },
+   "real_keyed_vs_dry_bp": 0.0,
+   "real_keyless_vs_dry_bp": 0.1,
+   "deposit_storage": {
+    "contract": "usdt.tether-token.near",
+    "storage_balance_of": null,
+    "address_kind": "implicit (64 hex)"
+   }
+  },
+  {
+   "route": "NEAR USDC -> Hyperliquid USDC",
+   "usd": 1000,
+   "dry_keyed": {
+    "http": 201,
+    "amountIn": "1000407166",
+    "amountOut": "99999086000",
+    "depositAddress": null,
+    "timeEstimate": 30,
+    "error": null
+   },
+   "real_keyed": {
+    "http": 201,
+    "amountIn": "1000407166",
+    "amountOut": "99999086000",
+    "depositAddress": "767c5702db009ea54a9ca213234e2026e8ebce1e270a21b9869f6e1a3cf9c9af",
+    "timeEstimate": 30,
+    "error": null
+   },
+   "real_keyless": {
+    "http": 201,
+    "amountIn": "1000407166",
+    "amountOut": "99999086000",
+    "depositAddress": "da03350324d725c4a571f0d94b3da55ac8206270431cee7c0828156b3f1125c3",
+    "timeEstimate": 30,
+    "error": null
+   },
+   "real_keyed_vs_dry_bp": 0.0,
+   "real_keyless_vs_dry_bp": 0.0,
+   "deposit_storage": {
+    "contract": "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
+    "storage_balance_of": null,
+    "address_kind": "implicit (64 hex)"
+   }
+  },
+  {
+   "route": "Hyperliquid USDC -> NEAR USDC",
+   "usd": 1000,
+   "dry_keyed": {
+    "http": 201,
+    "amountIn": "100040716500",
+    "amountOut": "1000016140",
+    "depositAddress": null,
+    "timeEstimate": 35,
+    "error": null
+   },
+   "real_keyed": {
+    "http": 201,
+    "amountIn": "100040716500",
+    "amountOut": "1000016140",
+    "depositAddress": "0xB0B8C09dc3703715a4A6Ee2F423D1573d0adD527",
+    "timeEstimate": 35,
+    "error": null
+   },
+   "real_keyless": {
+    "http": 201,
+    "amountIn": "100040716500",
+    "amountOut": "1000016140",
+    "depositAddress": "0xFa8dD1752eC2eAE0E2236b7c53de9144ebf9a9a3",
+    "timeEstimate": 35,
+    "error": null
+   },
+   "real_keyed_vs_dry_bp": 0.0,
+   "real_keyless_vs_dry_bp": 0.0
+  }
+ ]
+}

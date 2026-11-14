@@ -1,0 +1,85 @@
+{
+ "generated_utc": "2026-11-06 23:20:42",
+ "source": {
+  "Project": {
+   "project_id": "pbf-keeper.testnet/pb-probe",
+   "version_key": "3f89e6441848ad7d323e37888d3fa560d636577d95ace635b7f984f3fa4de466"
+  }
+ },
+ "limits": {
+  "max_instructions": 1000000000,
+  "max_memory_mb": 128,
+  "max_execution_seconds": 30
+ },
+ "deposit_yocto": "10000000000000000000000",
+ "runs": [
+  {
+   "label": "hello 1",
+   "input": {
+    "mode": "hello"
+   },
+   "wall_seconds": 10.91,
+   "tx": "Fysdph3iK9SF52n5UceA8KN47kaTC9A6JkeUtgpZs5pP",
+   "cli_exit": 0,
+   "result": {
+    "ok": true,
+    "bytes": 404,
+    "verdict_ok": true,
+    "start_height": 276552050,
+    "end_height": 276552061,
+    "callback_gas_used": 461030178388
+   },
+   "status": "SuccessValue",
+   "blocks": 11,
+   "callback_receipt_gas_tgas": 1.495,
+   "gas_burnt_tgas": 12.478,
+   "tokens_burnt_near": 0.0011362322597496001,
+   "probe_balance_change_near": -0.0010777
+  },
+  {
+   "label": "big 2048",
+   "input": {
+    "mode": "big",
+    "bytes": 2048
+   },
+   "wall_seconds": 10.93,
+   "tx": "D9xSBbrLVpZP9u9wNTEawA6a9KJVDf7pkkFYFKFXphuT",
+   "cli_exit": 0,
+   "result": {
+    "ok": true,
+    "bytes": 2048,
+    "verdict_ok": true,
+    "start_height": 276552069,
+    "end_height": 276552080,
+    "callback_gas_used": 600271381852
+   },
+   "status": "SuccessValue",
+   "blocks": 11,
+   "callback_receipt_gas_tgas": 1.634,
+   "gas_burnt_tgas": 12.719,
+   "tokens_burnt_near": 0.001160350646115,
+   "probe_balance_change_near": -0.0011012
+  }
+ ],
+ "summary": {
+  "hello_runs": 1,
+  "hello_ok": 1,
+  "wall_seconds_min_median_max": [
+   10.91,
+   10.91,
+   10.91
+  ],
+  "blocks_min_median_max": [
+   11,
+   11,
+   11
+  ],
+  "big": {
+   "big 2048": {
+    "ok": true,
+    "bytes": 2048,
+    "callback_gas_used": 600271381852
+   }
+  }
+ }
+}

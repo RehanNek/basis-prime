@@ -1,0 +1,358 @@
+{
+  "about": "The raw answers of our Rhea copy's views in the local sandbox, under the names it will have on testnet. The contract is Rhea's own release file. Written by contracts/tests/tests/rhea.rs when RHEA_VIEWS_OUT names this file.",
+  "account": "demo.pbf.testnet",
+  "after": {
+    "btc_usd": 50000,
+    "health_bp": 9499,
+    "views": {
+      "block_height": 143,
+      "get_account": {
+        "account_id": "demo.pbf.testnet",
+        "booster_staking": null,
+        "booster_stakings": {},
+        "borrowed": [
+          {
+            "apr": "0.002888763873526510255639752",
+            "balance": "40000000018113813475486",
+            "shares": "40000000000000000000000",
+            "token_id": "musdc.pbf-ops.testnet"
+          }
+        ],
+        "collateral": [
+          {
+            "apr": "0.0",
+            "balance": "1000000000000000000",
+            "shares": "1000000000000000000",
+            "token_id": "mnbtc.pbf-ops.testnet"
+          }
+        ],
+        "farms": [],
+        "has_non_farmed_assets": false,
+        "supplied": []
+      },
+      "get_assets": [
+        {
+          "beneficiary_fees": {},
+          "borrow_apr": "0.002888763873526510255639752",
+          "borrowed": {
+            "balance": "40000000018113813475486",
+            "shares": "40000000000000000000000"
+          },
+          "config": {
+            "beneficiaries": {},
+            "borrowed_limit": "25000000000000000000000000",
+            "can_borrow": true,
+            "can_deposit": true,
+            "can_use_as_collateral": true,
+            "can_withdraw": true,
+            "extra_decimals": 12,
+            "holding_position_fee_rate": "1000000000000000000000000000",
+            "max_change_rate": null,
+            "max_utilization_rate": "1000000000012857214234867166",
+            "min_borrowed_amount": "1000000000",
+            "net_tvl_multiplier": 10000,
+            "reserve_ratio": 2500,
+            "supplied_limit": "60000000000000000000000000",
+            "target_utilization": 8000,
+            "target_utilization_rate": "1000000000001847694955734069",
+            "volatility_ratio": 9500
+          },
+          "farms": [],
+          "last_update_timestamp": "1794400763489592000",
+          "lostfound_shares": "0",
+          "margin_debt": {
+            "balance": "0",
+            "shares": "0"
+          },
+          "margin_pending_debt": "0",
+          "margin_position": "0",
+          "prot_fee": "0",
+          "reserved": "4528453368871",
+          "supplied": {
+            "balance": "1010000000013585360106615",
+            "shares": "1009999999999917546612589"
+          },
+          "supply_apr": "0.000085804867568192589235827",
+          "token_id": "musdc.pbf-ops.testnet",
+          "uahpi": "0"
+        },
+        {
+          "beneficiary_fees": {},
+          "borrow_apr": "0.0",
+          "borrowed": {
+            "balance": "0",
+            "shares": "0"
+          },
+          "config": {
+            "beneficiaries": {},
+            "borrowed_limit": "4000000000000000000",
+            "can_borrow": true,
+            "can_deposit": true,
+            "can_use_as_collateral": true,
+            "can_withdraw": true,
+            "extra_decimals": 10,
+            "holding_position_fee_rate": "1000000000000000000000000000",
+            "max_change_rate": null,
+            "max_utilization_rate": "1000000000039724853136740579",
+            "min_borrowed_amount": "1000000000",
+            "net_tvl_multiplier": 0,
+            "reserve_ratio": 2500,
+            "supplied_limit": "20000000000000000000",
+            "target_utilization": 8000,
+            "target_utilization_rate": "1000000000001547125956667610",
+            "volatility_ratio": 8000
+          },
+          "farms": [],
+          "last_update_timestamp": "1794400763488826000",
+          "lostfound_shares": "0",
+          "margin_debt": {
+            "balance": "0",
+            "shares": "0"
+          },
+          "margin_pending_debt": "0",
+          "margin_position": "0",
+          "prot_fee": "0",
+          "reserved": "0",
+          "supplied": {
+            "balance": "1000000000000000000",
+            "shares": "1000000000000000000"
+          },
+          "supply_apr": "0.0",
+          "token_id": "mnbtc.pbf-ops.testnet",
+          "uahpi": "0"
+        }
+      ],
+      "get_config": {
+        "boost_suppress_factor": 1000,
+        "booster_decimals": 18,
+        "booster_token_id": "no-booster.rhea.pbf-ops.testnet",
+        "dcl_id": "no-dcl.rhea.pbf-ops.testnet",
+        "enable_price_oracle": false,
+        "enable_pyth_oracle": true,
+        "force_closing_enabled": true,
+        "lp_tokens_info_valid_duration_sec": 600,
+        "max_num_assets": 20,
+        "maximum_recency_duration_sec": 90,
+        "maximum_staking_duration_sec": 7776000,
+        "maximum_staleness_duration_sec": 90,
+        "minimum_staking_duration_sec": 2592000,
+        "oracle_account_id": "no-price-oracle.rhea.pbf-ops.testnet",
+        "owner_id": "pbf-keeper.testnet",
+        "pyth_oracle_account_id": "no-pyth-oracle.rhea.pbf-ops.testnet",
+        "pyth_price_valid_duration_sec": 60,
+        "ref_exchange_id": "no-ref-exchange.rhea.pbf-ops.testnet",
+        "x_booster_multiplier_at_maximum_staking_duration": 30000
+      },
+      "get_token_pyth_info": {
+        "mnbtc.pbf-ops.testnet": {
+          "decimals": 8,
+          "default_price": {
+            "decimals": 10,
+            "multiplier": "5000000"
+          },
+          "extra_call": null,
+          "fraction_digits": 2,
+          "price_identifier": "e62df6c8b4a85fe1a67db44dc12de5db330f7ac66b72dc658afedf0f4a415b43"
+        },
+        "musdc.pbf-ops.testnet": {
+          "decimals": 6,
+          "default_price": {
+            "decimals": 10,
+            "multiplier": "10000"
+          },
+          "extra_call": null,
+          "fraction_digits": 4,
+          "price_identifier": "eaa020c61cc479712813461ce153894a96a6c00b21ed0cfc2798d1f9a9e9c94a"
+        }
+      }
+    }
+  },
+  "args": {
+    "get_account": {
+      "account_id": "demo.pbf.testnet"
+    },
+    "get_assets": {
+      "token_ids": [
+        "musdc.pbf-ops.testnet",
+        "mnbtc.pbf-ops.testnet"
+      ]
+    },
+    "get_config": {},
+    "get_token_pyth_info": {
+      "token_id": "<the token: one answer for each, keyed by token>"
+    }
+  },
+  "before": {
+    "btc_usd": 75000,
+    "health_bp": 14249,
+    "views": {
+      "block_height": 111,
+      "get_account": {
+        "account_id": "demo.pbf.testnet",
+        "booster_staking": null,
+        "booster_stakings": {},
+        "borrowed": [
+          {
+            "apr": "0.002917693612980269560838081",
+            "balance": "40000000001053186124782",
+            "shares": "40000000000000000000000",
+            "token_id": "musdc.pbf-ops.testnet"
+          }
+        ],
+        "collateral": [
+          {
+            "apr": "0.0",
+            "balance": "1000000000000000000",
+            "shares": "1000000000000000000",
+            "token_id": "mnbtc.pbf-ops.testnet"
+          }
+        ],
+        "farms": [],
+        "has_non_farmed_assets": false,
+        "supplied": []
+      },
+      "get_assets": [
+        {
+          "beneficiary_fees": {},
+          "borrow_apr": "0.002917693612980269560838081",
+          "borrowed": {
+            "balance": "40000000001053186124782",
+            "shares": "40000000000000000000000"
+          },
+          "config": {
+            "beneficiaries": {},
+            "borrowed_limit": "25000000000000000000000000",
+            "can_borrow": true,
+            "can_deposit": true,
+            "can_use_as_collateral": true,
+            "can_withdraw": true,
+            "extra_decimals": 12,
+            "holding_position_fee_rate": "1000000000000000000000000000",
+            "max_change_rate": null,
+            "max_utilization_rate": "1000000000012857214234867166",
+            "min_borrowed_amount": "1000000000",
+            "net_tvl_multiplier": 10000,
+            "reserve_ratio": 2500,
+            "supplied_limit": "60000000000000000000000000",
+            "target_utilization": 8000,
+            "target_utilization_rate": "1000000000001847694955734069",
+            "volatility_ratio": 9500
+          },
+          "farms": [],
+          "last_update_timestamp": "1794400758853592000",
+          "lostfound_shares": "0",
+          "margin_debt": {
+            "balance": "0",
+            "shares": "0"
+          },
+          "margin_pending_debt": "0",
+          "margin_position": "0",
+          "prot_fee": "0",
+          "reserved": "263296531195",
+          "supplied": {
+            "balance": "1000000000000789889593587",
+            "shares": "1000000000000000000000000"
+          },
+          "supply_apr": "0.000087530808391643602972333",
+          "token_id": "musdc.pbf-ops.testnet",
+          "uahpi": "0"
+        },
+        {
+          "beneficiary_fees": {},
+          "borrow_apr": "0.0",
+          "borrowed": {
+            "balance": "0",
+            "shares": "0"
+          },
+          "config": {
+            "beneficiaries": {},
+            "borrowed_limit": "4000000000000000000",
+            "can_borrow": true,
+            "can_deposit": true,
+            "can_use_as_collateral": true,
+            "can_withdraw": true,
+            "extra_decimals": 10,
+            "holding_position_fee_rate": "1000000000000000000000000000",
+            "max_change_rate": null,
+            "max_utilization_rate": "1000000000039724853136740579",
+            "min_borrowed_amount": "1000000000",
+            "net_tvl_multiplier": 0,
+            "reserve_ratio": 2500,
+            "supplied_limit": "20000000000000000000",
+            "target_utilization": 8000,
+            "target_utilization_rate": "1000000000001547125956667610",
+            "volatility_ratio": 8000
+          },
+          "farms": [],
+          "last_update_timestamp": "1794400758853826000",
+          "lostfound_shares": "0",
+          "margin_debt": {
+            "balance": "0",
+            "shares": "0"
+          },
+          "margin_pending_debt": "0",
+          "margin_position": "0",
+          "prot_fee": "0",
+          "reserved": "0",
+          "supplied": {
+            "balance": "1000000000000000000",
+            "shares": "1000000000000000000"
+          },
+          "supply_apr": "0.0",
+          "token_id": "mnbtc.pbf-ops.testnet",
+          "uahpi": "0"
+        }
+      ],
+      "get_config": {
+        "boost_suppress_factor": 1000,
+        "booster_decimals": 18,
+        "booster_token_id": "no-booster.rhea.pbf-ops.testnet",
+        "dcl_id": "no-dcl.rhea.pbf-ops.testnet",
+        "enable_price_oracle": false,
+        "enable_pyth_oracle": true,
+        "force_closing_enabled": true,
+        "lp_tokens_info_valid_duration_sec": 600,
+        "max_num_assets": 20,
+        "maximum_recency_duration_sec": 90,
+        "maximum_staking_duration_sec": 7776000,
+        "maximum_staleness_duration_sec": 90,
+        "minimum_staking_duration_sec": 2592000,
+        "oracle_account_id": "no-price-oracle.rhea.pbf-ops.testnet",
+        "owner_id": "pbf-keeper.testnet",
+        "pyth_oracle_account_id": "no-pyth-oracle.rhea.pbf-ops.testnet",
+        "pyth_price_valid_duration_sec": 60,
+        "ref_exchange_id": "no-ref-exchange.rhea.pbf-ops.testnet",
+        "x_booster_multiplier_at_maximum_staking_duration": 30000
+      },
+      "get_token_pyth_info": {
+        "mnbtc.pbf-ops.testnet": {
+          "decimals": 8,
+          "default_price": {
+            "decimals": 10,
+            "multiplier": "7500000"
+          },
+          "extra_call": null,
+          "fraction_digits": 2,
+          "price_identifier": "e62df6c8b4a85fe1a67db44dc12de5db330f7ac66b72dc658afedf0f4a415b43"
+        },
+        "musdc.pbf-ops.testnet": {
+          "decimals": 6,
+          "default_price": {
+            "decimals": 10,
+            "multiplier": "10000"
+          },
+          "extra_call": null,
+          "fraction_digits": 4,
+          "price_identifier": "eaa020c61cc479712813461ce153894a96a6c00b21ed0cfc2798d1f9a9e9c94a"
+        }
+      }
+    }
+  },
+  "code_sha256": "bdd286fece512c3def8119f58063e9d42571069cfa221ee32ec488d0fe395055",
+  "contract_id": "rhea.pbf-ops.testnet",
+  "health_bp": "worked out by the test from these answers, in millionths of a dollar: collateral value x ratio / 10000 over debt value x 10000 / ratio. Rhea has no view for it.",
+  "nbtc": "mnbtc.pbf-ops.testnet",
+  "position": "1 nBTC posted as collateral, 40,000 USDC borrowed",
+  "usdc": "musdc.pbf-ops.testnet",
+  "version": "0.15.7"
+}

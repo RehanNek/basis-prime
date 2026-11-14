@@ -1,0 +1,112 @@
+{
+ "meta": {
+  "check": "calls",
+  "date_utc": "2026-11-06T23:07:02+00:00",
+  "api": "https://testnet-api.outlayer.ai",
+  "project": "pbf-keeper.testnet/pb-probe",
+  "version_key": "c6ea51a6db131c84a2360535a7be458ab5334a5980758384330b22110080238b",
+  "compute_limit_micro_usd": 20000
+ },
+ "summary": [
+  {
+   "n": 500,
+   "status": "completed",
+   "made": 500,
+   "succeeded": 500,
+   "first_error": null,
+   "first_error_at": null,
+   "ms_total": 13424,
+   "time_ms": 14191,
+   "instructions": 20712029,
+   "compute_cost_usd": 0.001034,
+   "error": null
+  },
+  {
+   "n": 1000,
+   "status": "completed",
+   "made": 1000,
+   "succeeded": 1000,
+   "first_error": null,
+   "first_error_at": null,
+   "ms_total": 28197,
+   "time_ms": 28953,
+   "instructions": 41437703,
+   "compute_cost_usd": 0.001069,
+   "error": null
+  }
+ ],
+ "runs": [
+  {
+   "input": {
+    "mode": "calls",
+    "n": 500
+   },
+   "sent_ms": 1794006374601,
+   "http": 200,
+   "wall_ms": 515,
+   "call_id": "47140d26-da1a-4883-8a5e-f82888090644",
+   "status": "completed",
+   "attestation_url": "/attestations/by-call/47140d26-da1a-4883-8a5e-f82888090644",
+   "poll_url": "/calls/47140d26-da1a-4883-8a5e-f82888090644",
+   "output": {
+    "first_error": null,
+    "first_error_at": null,
+    "http_errors": 0,
+    "made": 500,
+    "mode": "calls",
+    "ms_max": 42,
+    "ms_min": 21,
+    "ms_total": 13424,
+    "n": 500,
+    "ok": true,
+    "statuses": {
+     "200": 500
+    },
+    "stopped_early": false,
+    "succeeded": 500,
+    "transport_errors": 0,
+    "url": "https://www.cloudflare.com/cdn-cgi/trace"
+   },
+   "compute_cost": "1034",
+   "instructions": 20712029,
+   "time_ms": 14191,
+   "settled_after_s": 16.4
+  },
+  {
+   "input": {
+    "mode": "calls",
+    "n": 1000
+   },
+   "sent_ms": 1794006391481,
+   "http": 200,
+   "wall_ms": 847,
+   "call_id": "29da1ed8-7125-426e-9f74-2c48226f72fe",
+   "status": "completed",
+   "attestation_url": "/attestations/by-call/29da1ed8-7125-426e-9f74-2c48226f72fe",
+   "poll_url": "/calls/29da1ed8-7125-426e-9f74-2c48226f72fe",
+   "output": {
+    "first_error": null,
+    "first_error_at": null,
+    "http_errors": 0,
+    "made": 1000,
+    "mode": "calls",
+    "ms_max": 527,
+    "ms_min": 20,
+    "ms_total": 28197,
+    "n": 1000,
+    "ok": true,
+    "statuses": {
+     "200": 1000
+    },
+    "stopped_early": false,
+    "succeeded": 1000,
+    "transport_errors": 0,
+    "url": "https://www.cloudflare.com/cdn-cgi/trace"
+   },
+   "compute_cost": "1069",
+   "instructions": 41437703,
+   "time_ms": 28953,
+   "settled_after_s": 29.8
+  }
+ ]
+}

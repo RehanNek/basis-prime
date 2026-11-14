@@ -1,0 +1,15 @@
+[package]
+name = "backtest"
+description = "Backtest CLI: RISK_ENGINE.md 13 side by side with the reference, and pb-risk verdicts replayed from their inputs; later the five crash days with 2-, 15- and 60-minute rebalancing delays (PLAN.md 10)"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+risk-core = { path = "../risk-core" }
+pb-risk = { path = "../pb-risk" }
+serde = { version = "=1.0.229", features = ["derive"] }
+# raw_value: a snapshot's verdict is compared with the replay as the exact bytes pb-risk printed.
+serde_json = { version = "=1.0.154", features = ["raw_value"] }

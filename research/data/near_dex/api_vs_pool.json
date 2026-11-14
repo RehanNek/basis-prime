@@ -1,0 +1,50 @@
+[
+ {
+  "api_utc": "19:32:55Z",
+  "api": {
+   "nbtc.bridge.near": "75812.371311043782",
+   "eth.bridge.near": "2240.58987795441",
+   "wrap.near": "3.66",
+   "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1": "0.999511"
+  },
+  "block": 223209924,
+  "nbtc.bridge.near": {
+   "route_5515_usdc_per_token": "75468.69300911854103343465046",
+   "oracle_token_usd": "76005.10556467",
+   "oracle_near_usd": "3.66888201",
+   "pool_wnear_per_token": "20614.97026670373368089574468",
+   "api_x_wnear_route": "75450.79117613566527207842553"
+  },
+  "eth.bridge.near": {
+   "route_5515_usdc_per_token": "2229.983636363636363636363636",
+   "oracle_token_usd": "2249.95240937",
+   "oracle_near_usd": "3.66888201",
+   "pool_wnear_per_token": "609.1410522635482881802275",
+   "api_x_wnear_route": "2229.456251284586734739632650"
+  }
+ },
+ {
+  "api_utc": "19:33:19Z",
+  "api": {
+   "nbtc.bridge.near": "75812.371311043782",
+   "eth.bridge.near": "2240.58987795441",
+   "wrap.near": "3.66",
+   "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1": "0.999511"
+  },
+  "block": 223209966,
+  "nbtc.bridge.near": {
+   "route_5515_usdc_per_token": "75467.47720364741641337386018",
+   "oracle_token_usd": "76014.99326622",
+   "oracle_near_usd": "3.66786202",
+   "pool_wnear_per_token": "20622.98408764328275372393617",
+   "api_x_wnear_route": "75480.12176077441487862960638"
+  },
+  "eth.bridge.near": {
+   "route_5515_usdc_per_token": "2229.609318181818181818181818",
+   "oracle_token_usd": "2249.88580444",
+   "oracle_near_usd": "3.66786202",
+   "pool_wnear_per_token": "609.2851442715899276746072727",
+   "api_x_wnear_route": "2229.983628034019135289062618"
+  }
+ }
+]

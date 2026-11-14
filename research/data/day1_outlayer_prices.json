@@ -1,0 +1,392 @@
+{
+ "meta": {
+  "check": "prices",
+  "date_utc": "2026-11-06T23:05:00+00:00",
+  "api": "https://testnet-api.outlayer.ai",
+  "project": "pbf-keeper.testnet/pb-probe",
+  "version_key": "c6ea51a6db131c84a2360535a7be458ab5334a5980758384330b22110080238b",
+  "compute_limit_micro_usd": 20000
+ },
+ "per_source": {
+  "binance": {
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "ms": [
+    237,
+    237,
+    235
+   ],
+   "px": [
+    "75900.01000000",
+    "75900.01000000",
+    "75900.01000000"
+   ],
+   "ms_median": 237
+  },
+  "okx": {
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "ms": [
+    258,
+    263,
+    257
+   ],
+   "px": [
+    "75897.4",
+    "75902.6",
+    "75902.6"
+   ],
+   "ms_median": 258
+  },
+  "bybit": {
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "ms": [
+    183,
+    183,
+    183
+   ],
+   "px": [
+    "75898.7",
+    "75898.2",
+    "75900.2"
+   ],
+   "ms_median": 183
+  },
+  "coinbase": {
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "ms": [
+    22,
+    23,
+    22
+   ],
+   "px": [
+    "75783.57",
+    "75783.56",
+    "75787.77"
+   ],
+   "ms_median": 22
+  },
+  "hermes": {
+   "statuses": [
+    401,
+    401,
+    401
+   ],
+   "ms": [
+    76,
+    38,
+    123
+   ],
+   "px": [
+    null,
+    null,
+    null
+   ],
+   "ms_median": 76
+  },
+  "oneclick": {
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "ms": [
+    85,
+    70,
+    92
+   ],
+   "px": [
+    "75842",
+    "75842",
+    "75842"
+   ],
+   "ms_median": 85
+  },
+  "hyperliquid": {
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "ms": [
+    236,
+    281,
+    458
+   ],
+   "px": [
+    "75885.5",
+    "75885.5",
+    "75885.5"
+   ],
+   "ms_median": 281
+  },
+  "hyperliquid_testnet": {
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "ms": [
+    239,
+    666,
+    234
+   ],
+   "px": [
+    "75895.5",
+    "75895.5",
+    "75895.5"
+   ],
+   "ms_median": 239
+  }
+ },
+ "runs": [
+  {
+   "input": {
+    "mode": "prices"
+   },
+   "sent_ms": 1794006283035,
+   "http": 200,
+   "wall_ms": 3766,
+   "call_id": "a4605c65-54fe-4e3d-8178-1a10ef99080b",
+   "status": "completed",
+   "output": {
+    "mode": "prices",
+    "ms_total": 1358,
+    "now_ms": 1794006286590,
+    "ok": true,
+    "sources": [
+     {
+      "bytes": 45,
+      "ms": 237,
+      "px": "75900.01000000",
+      "src": "binance",
+      "status": 200
+     },
+     {
+      "bytes": 364,
+      "ms": 258,
+      "px": "75897.4",
+      "src": "okx",
+      "status": 200
+     },
+     {
+      "bytes": 421,
+      "ms": 183,
+      "px": "75898.7",
+      "src": "bybit",
+      "status": 200
+     },
+     {
+      "bytes": 186,
+      "ms": 22,
+      "px": "75783.57",
+      "src": "coinbase",
+      "status": 200
+     },
+     {
+      "bytes": 12,
+      "ms": 76,
+      "snip": "unauthorized",
+      "src": "hermes",
+      "status": 401
+     },
+     {
+      "bytes": 54910,
+      "ms": 85,
+      "px": "75842",
+      "src": "oneclick",
+      "status": 200
+     },
+     {
+      "bytes": 25516,
+      "ms": 236,
+      "px": "75885.5",
+      "src": "hyperliquid",
+      "status": 200
+     },
+     {
+      "bytes": 58225,
+      "ms": 239,
+      "px": "75895.5",
+      "src": "hyperliquid_testnet",
+      "status": 200
+     }
+    ]
+   },
+   "compute_cost": "1033",
+   "instructions": 31680248,
+   "time_ms": 2101,
+   "attestation_url": "/attestations/by-call/a4605c65-54fe-4e3d-8178-1a10ef99080b"
+  },
+  {
+   "input": {
+    "mode": "prices"
+   },
+   "sent_ms": 1794006288809,
+   "http": 200,
+   "wall_ms": 3725,
+   "call_id": "57182d21-15a1-478a-8721-61535391534f",
+   "status": "completed",
+   "output": {
+    "mode": "prices",
+    "ms_total": 1782,
+    "now_ms": 1794006292384,
+    "ok": true,
+    "sources": [
+     {
+      "bytes": 45,
+      "ms": 237,
+      "px": "75900.01000000",
+      "src": "binance",
+      "status": 200
+     },
+     {
+      "bytes": 363,
+      "ms": 263,
+      "px": "75902.6",
+      "src": "okx",
+      "status": 200
+     },
+     {
+      "bytes": 422,
+      "ms": 183,
+      "px": "75898.2",
+      "src": "bybit",
+      "status": 200
+     },
+     {
+      "bytes": 185,
+      "ms": 23,
+      "px": "75783.56",
+      "src": "coinbase",
+      "status": 200
+     },
+     {
+      "bytes": 12,
+      "ms": 38,
+      "snip": "unauthorized",
+      "src": "hermes",
+      "status": 401
+     },
+     {
+      "bytes": 54910,
+      "ms": 70,
+      "px": "75842",
+      "src": "oneclick",
+      "status": 200
+     },
+     {
+      "bytes": 25532,
+      "ms": 281,
+      "px": "75885.5",
+      "src": "hyperliquid",
+      "status": 200
+     },
+     {
+      "bytes": 58220,
+      "ms": 666,
+      "px": "75895.5",
+      "src": "hyperliquid_testnet",
+      "status": 200
+     }
+    ]
+   },
+   "compute_cost": "1033",
+   "instructions": 31678490,
+   "time_ms": 2513,
+   "attestation_url": "/attestations/by-call/57182d21-15a1-478a-8721-61535391534f"
+  },
+  {
+   "input": {
+    "mode": "prices"
+   },
+   "sent_ms": 1794006294550,
+   "http": 200,
+   "wall_ms": 3597,
+   "call_id": "e906e910-2750-4965-822e-6b7a7df74229",
+   "status": "completed",
+   "output": {
+    "mode": "prices",
+    "ms_total": 1624,
+    "now_ms": 1794006297978,
+    "ok": true,
+    "sources": [
+     {
+      "bytes": 45,
+      "ms": 235,
+      "px": "75900.01000000",
+      "src": "binance",
+      "status": 200
+     },
+     {
+      "bytes": 363,
+      "ms": 257,
+      "px": "75902.6",
+      "src": "okx",
+      "status": 200
+     },
+     {
+      "bytes": 421,
+      "ms": 183,
+      "px": "75900.2",
+      "src": "bybit",
+      "status": 200
+     },
+     {
+      "bytes": 187,
+      "ms": 22,
+      "px": "75787.77",
+      "src": "coinbase",
+      "status": 200
+     },
+     {
+      "bytes": 12,
+      "ms": 123,
+      "snip": "unauthorized",
+      "src": "hermes",
+      "status": 401
+     },
+     {
+      "bytes": 54910,
+      "ms": 92,
+      "px": "75842",
+      "src": "oneclick",
+      "status": 200
+     },
+     {
+      "bytes": 25513,
+      "ms": 458,
+      "px": "75885.5",
+      "src": "hyperliquid",
+      "status": 200
+     },
+     {
+      "bytes": 58227,
+      "ms": 234,
+      "px": "75895.5",
+      "src": "hyperliquid_testnet",
+      "status": 200
+     }
+    ]
+   },
+   "compute_cost": "1033",
+   "instructions": 31679952,
+   "time_ms": 2369,
+   "attestation_url": "/attestations/by-call/e906e910-2750-4965-822e-6b7a7df74229"
+  }
+ ]
+}

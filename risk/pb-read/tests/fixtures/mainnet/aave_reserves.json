@@ -1,0 +1,57 @@
+{
+ "url": "https://api.v3.aave.com/graphql",
+ "read_at": "2026-11-10T22:20Z",
+ "request": {
+  "query": "{ usdc: reserve(request: {market: \"0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2\", underlyingToken: \"0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48\", chainId: 1}) { underlyingToken { symbol address } isFrozen isPaused supplyInfo { apy { value } } borrowInfo { apy { value } availableLiquidity { usd } borrowingState borrowCapReached } } wbtc: reserve(request: {market: \"0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2\", underlyingToken: \"0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599\", chainId: 1}) { underlyingToken { symbol address } isFrozen isPaused supplyInfo { maxLTV { value } liquidationThreshold { value } liquidationBonus { value } canBeCollateral supplyCapReached } } }"
+ },
+ "status": 200,
+ "ms": 166,
+ "response": {
+  "data": {
+   "usdc": {
+    "underlyingToken": {
+     "symbol": "USDC",
+     "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
+    },
+    "isFrozen": false,
+    "isPaused": false,
+    "supplyInfo": {
+     "apy": {
+      "value": "0.042974790663385664082147908"
+     }
+    },
+    "borrowInfo": {
+     "apy": {
+      "value": "0.050841306485493906329150411"
+     },
+     "availableLiquidity": {
+      "usd": "163198398.22828184584368"
+     },
+     "borrowingState": "ENABLED",
+     "borrowCapReached": false
+    }
+   },
+   "wbtc": {
+    "underlyingToken": {
+     "symbol": "WBTC",
+     "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599"
+    },
+    "isFrozen": false,
+    "isPaused": false,
+    "supplyInfo": {
+     "maxLTV": {
+      "value": "0.81"
+     },
+     "liquidationThreshold": {
+      "value": "0.85"
+     },
+     "liquidationBonus": {
+      "value": "0.05"
+     },
+     "canBeCollateral": true,
+     "supplyCapReached": false
+    }
+   }
+  }
+ }
+}

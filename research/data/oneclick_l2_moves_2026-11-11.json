@@ -1,0 +1,281 @@
+{
+ "read_at": "2026-11-11T10:37:46.053365+00:00",
+ "quotes": [
+  {
+   "name": "nBTC -> cbBTC on Base",
+   "usd": 100000,
+   "request": {
+    "dry": true,
+    "swapType": "EXACT_INPUT",
+    "slippageTolerance": 100,
+    "originAsset": "nep141:nbtc.bridge.near",
+    "depositType": "ORIGIN_CHAIN",
+    "destinationAsset": "nep141:base-0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf.omft.near",
+    "amount": "135171668",
+    "refundTo": "aurora",
+    "refundType": "ORIGIN_CHAIN",
+    "recipient": "0xce4bd513b9457d3cfa29b804fba54b11193a2f4d",
+    "recipientType": "DESTINATION_CHAIN",
+    "deadline": "2026-11-11T10:47:33.000Z"
+   },
+   "status": 201,
+   "answer": {
+    "quote": {
+     "amountIn": "135171668",
+     "amountInFormatted": "1.35171668",
+     "amountInUsd": "99999.999986399998",
+     "minAmountIn": "135171668",
+     "amountOut": "134772895",
+     "amountOutFormatted": "1.34772895",
+     "amountOutUsd": "99692.858160450007",
+     "minAmountOut": "133425166",
+     "timeEstimate": 22,
+     "refundFee": "7",
+     "withdrawFee": "2"
+    },
+    "quoteRequest": {
+     "dry": true,
+     "depositMode": "SIMPLE",
+     "swapType": "EXACT_INPUT",
+     "slippageTolerance": 100,
+     "originAsset": "nep141:nbtc.bridge.near",
+     "depositType": "ORIGIN_CHAIN",
+     "destinationAsset": "nep141:base-0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf.omft.near",
+     "amount": "135171668",
+     "refundTo": "aurora",
+     "refundType": "ORIGIN_CHAIN",
+     "recipient": "0xce4bd513b9457d3cfa29b804fba54b11193a2f4d",
+     "recipientType": "DESTINATION_CHAIN",
+     "deadline": "2026-11-11T10:47:33.000Z",
+     "confidentiality": "public",
+     "quoteWaitingTimeMs": 0,
+     "insured": false,
+     "appFees": [
+      {
+       "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+       "fee": 20
+      }
+     ]
+    },
+    "signature": "ed25519:49vy5giH9nZh7grZLvPw8fxPBBu3dgS2Dxp9DTNMoz4jKNSxLeppNQGYtWCFpZ6FAa246uWXqMHbUmFF1tsprVoJ",
+    "timestamp": "2026-11-11T10:37:33.778Z",
+    "correlationId": "99466f43-7355-45ff-96c8-f6f895196d75"
+   }
+  },
+  {
+   "name": "nBTC -> WBTC on Ethereum",
+   "usd": 100000,
+   "request": {
+    "dry": true,
+    "swapType": "EXACT_INPUT",
+    "slippageTolerance": 100,
+    "originAsset": "nep141:nbtc.bridge.near",
+    "depositType": "ORIGIN_CHAIN",
+    "destinationAsset": "nep141:eth-0x2260fac5e5542a773aa44fbcfedf7c193bc2c599.omft.near",
+    "amount": "135171668",
+    "refundTo": "aurora",
+    "refundType": "ORIGIN_CHAIN",
+    "recipient": "0xce4bd513b9457d3cfa29b804fba54b11193a2f4d",
+    "recipientType": "DESTINATION_CHAIN",
+    "deadline": "2026-11-11T10:47:34.000Z"
+   },
+   "status": 201,
+   "answer": {
+    "quote": {
+     "amountIn": "135171668",
+     "amountInFormatted": "1.35171668",
+     "amountInUsd": "99999.999986399998",
+     "minAmountIn": "135171668",
+     "amountOut": "134644279",
+     "amountOutFormatted": "1.34644279",
+     "amountOutUsd": "99508.854394950002",
+     "minAmountOut": "133297836",
+     "timeEstimate": 29,
+     "refundFee": "7",
+     "withdrawFee": "180"
+    },
+    "quoteRequest": {
+     "dry": true,
+     "depositMode": "SIMPLE",
+     "swapType": "EXACT_INPUT",
+     "slippageTolerance": 100,
+     "originAsset": "nep141:nbtc.bridge.near",
+     "depositType": "ORIGIN_CHAIN",
+     "destinationAsset": "nep141:eth-0x2260fac5e5542a773aa44fbcfedf7c193bc2c599.omft.near",
+     "amount": "135171668",
+     "refundTo": "aurora",
+     "refundType": "ORIGIN_CHAIN",
+     "recipient": "0xce4bd513b9457d3cfa29b804fba54b11193a2f4d",
+     "recipientType": "DESTINATION_CHAIN",
+     "deadline": "2026-11-11T10:47:34.000Z",
+     "confidentiality": "public",
+     "quoteWaitingTimeMs": 0,
+     "insured": false,
+     "appFees": [
+      {
+       "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+       "fee": 20
+      }
+     ]
+    },
+    "signature": "ed25519:3MDkMirnfBrsFDabWKiZUNGuR6NR9P6AfR6Sfh451rmUc4Bso3fVr326ZW4whxnScYeemjNRSoGfwq2GLUsR6nT6",
+    "timestamp": "2026-11-11T10:37:34.997Z",
+    "correlationId": "27dac4ad-2708-4bd1-bdbd-5b7c0ddba824"
+   }
+  },
+  {
+   "name": "cbBTC on Base -> nBTC",
+   "usd": 100000,
+   "request": {
+    "dry": true,
+    "swapType": "EXACT_INPUT",
+    "slippageTolerance": 100,
+    "originAsset": "nep141:base-0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf.omft.near",
+    "depositType": "ORIGIN_CHAIN",
+    "destinationAsset": "nep141:nbtc.bridge.near",
+    "amount": "135171668",
+    "refundTo": "0xce4bd513b9457d3cfa29b804fba54b11193a2f4d",
+    "refundType": "ORIGIN_CHAIN",
+    "recipient": "aurora",
+    "recipientType": "DESTINATION_CHAIN",
+    "deadline": "2026-11-11T10:47:35.000Z"
+   },
+   "status": 400,
+   "answer": {
+    "error": "{\"message\":\"Quoting for this pair is not available\",\"correlationId\":\"9a7297c2-0586-4346-bb4e-07eb38d8f5ee\",\"timestamp\":\"2026-11-11T10:37:35.906Z\",\"path\":\"/v0/quote\"}"
+   }
+  },
+  {
+   "name": "WBTC on Ethereum -> nBTC",
+   "usd": 100000,
+   "request": {
+    "dry": true,
+    "swapType": "EXACT_INPUT",
+    "slippageTolerance": 100,
+    "originAsset": "nep141:eth-0x2260fac5e5542a773aa44fbcfedf7c193bc2c599.omft.near",
+    "depositType": "ORIGIN_CHAIN",
+    "destinationAsset": "nep141:nbtc.bridge.near",
+    "amount": "135171668",
+    "refundTo": "0xce4bd513b9457d3cfa29b804fba54b11193a2f4d",
+    "refundType": "ORIGIN_CHAIN",
+    "recipient": "aurora",
+    "recipientType": "DESTINATION_CHAIN",
+    "deadline": "2026-11-11T10:47:36.000Z"
+   },
+   "status": 400,
+   "answer": {
+    "error": "{\"message\":\"Quoting for this pair is not available\",\"correlationId\":\"dd03dd7d-ab47-47fa-a816-fbb86c094d20\",\"timestamp\":\"2026-11-11T10:37:36.286Z\",\"path\":\"/v0/quote\"}"
+   }
+  },
+  {
+   "name": "USDC on Base -> USDC on NEAR ($56,000)",
+   "usd": 100000,
+   "request": {
+    "dry": true,
+    "swapType": "EXACT_INPUT",
+    "slippageTolerance": 100,
+    "originAsset": "nep141:base-0x833589fcd6edb6e08f4c7c32d4f71b54bda02913.omft.near",
+    "depositType": "ORIGIN_CHAIN",
+    "destinationAsset": "nep141:17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
+    "amount": "56000000000",
+    "refundTo": "0xce4bd513b9457d3cfa29b804fba54b11193a2f4d",
+    "refundType": "ORIGIN_CHAIN",
+    "recipient": "aurora",
+    "recipientType": "DESTINATION_CHAIN",
+    "deadline": "2026-11-11T10:47:36.000Z"
+   },
+   "status": 400,
+   "answer": {
+    "error": "{\"message\":\"Quoting for this pair is not available\",\"correlationId\":\"12524e85-6d43-48f5-bcee-bb2d91d31eb2\",\"timestamp\":\"2026-11-11T10:37:36.717Z\",\"path\":\"/v0/quote\"}"
+   }
+  },
+  {
+   "name": "nBTC -> cbBTC on Base",
+   "usd": 500000,
+   "request": {
+    "dry": true,
+    "swapType": "EXACT_INPUT",
+    "slippageTolerance": 100,
+    "originAsset": "nep141:nbtc.bridge.near",
+    "depositType": "ORIGIN_CHAIN",
+    "destinationAsset": "nep141:base-0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf.omft.near",
+    "amount": "675858340",
+    "refundTo": "aurora",
+    "refundType": "ORIGIN_CHAIN",
+    "recipient": "0xce4bd513b9457d3cfa29b804fba54b11193a2f4d",
+    "recipientType": "DESTINATION_CHAIN",
+    "deadline": "2026-11-11T10:47:37.000Z"
+   },
+   "status": 400,
+   "answer": {
+    "error": "{\"message\":\"No liquidity available\",\"correlationId\":\"b7954a49-9dcc-42b8-8d15-3894c40ff8f7\",\"timestamp\":\"2026-11-11T10:37:40.257Z\",\"path\":\"/v0/quote\"}"
+   }
+  },
+  {
+   "name": "nBTC -> WBTC on Ethereum",
+   "usd": 500000,
+   "request": {
+    "dry": true,
+    "swapType": "EXACT_INPUT",
+    "slippageTolerance": 100,
+    "originAsset": "nep141:nbtc.bridge.near",
+    "depositType": "ORIGIN_CHAIN",
+    "destinationAsset": "nep141:eth-0x2260fac5e5542a773aa44fbcfedf7c193bc2c599.omft.near",
+    "amount": "675858340",
+    "refundTo": "aurora",
+    "refundType": "ORIGIN_CHAIN",
+    "recipient": "0xce4bd513b9457d3cfa29b804fba54b11193a2f4d",
+    "recipientType": "DESTINATION_CHAIN",
+    "deadline": "2026-11-11T10:47:40.000Z"
+   },
+   "status": 400,
+   "answer": {
+    "error": "{\"message\":\"No liquidity available\",\"correlationId\":\"b0ce6747-62dd-4f4d-b61e-1029d27b5bad\",\"timestamp\":\"2026-11-11T10:37:44.199Z\",\"path\":\"/v0/quote\"}"
+   }
+  },
+  {
+   "name": "cbBTC on Base -> nBTC",
+   "usd": 500000,
+   "request": {
+    "dry": true,
+    "swapType": "EXACT_INPUT",
+    "slippageTolerance": 100,
+    "originAsset": "nep141:base-0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf.omft.near",
+    "depositType": "ORIGIN_CHAIN",
+    "destinationAsset": "nep141:nbtc.bridge.near",
+    "amount": "675858340",
+    "refundTo": "0xce4bd513b9457d3cfa29b804fba54b11193a2f4d",
+    "refundType": "ORIGIN_CHAIN",
+    "recipient": "aurora",
+    "recipientType": "DESTINATION_CHAIN",
+    "deadline": "2026-11-11T10:47:44.000Z"
+   },
+   "status": 400,
+   "answer": {
+    "error": "{\"message\":\"Quoting for this pair is not available\",\"correlationId\":\"6e7d69f3-7988-4ee8-88c8-cb971a7314c9\",\"timestamp\":\"2026-11-11T10:37:44.790Z\",\"path\":\"/v0/quote\"}"
+   }
+  },
+  {
+   "name": "WBTC on Ethereum -> nBTC",
+   "usd": 500000,
+   "request": {
+    "dry": true,
+    "swapType": "EXACT_INPUT",
+    "slippageTolerance": 100,
+    "originAsset": "nep141:eth-0x2260fac5e5542a773aa44fbcfedf7c193bc2c599.omft.near",
+    "depositType": "ORIGIN_CHAIN",
+    "destinationAsset": "nep141:nbtc.bridge.near",
+    "amount": "675858340",
+    "refundTo": "0xce4bd513b9457d3cfa29b804fba54b11193a2f4d",
+    "refundType": "ORIGIN_CHAIN",
+    "recipient": "aurora",
+    "recipientType": "DESTINATION_CHAIN",
+    "deadline": "2026-11-11T10:47:45.000Z"
+   },
+   "status": 400,
+   "answer": {
+    "error": "{\"message\":\"Quoting for this pair is not available\",\"correlationId\":\"ac0a412a-0914-48ae-bed0-ddbc2f0cd578\",\"timestamp\":\"2026-11-11T10:37:45.522Z\",\"path\":\"/v0/quote\"}"
+   }
+  }
+ ]
+}

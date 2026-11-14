@@ -1,0 +1,2 @@
+# The keeper's JSON-lines log (KEEPER_LOG_FILE): an audit trail on this machine, not for the repo.
+logs/

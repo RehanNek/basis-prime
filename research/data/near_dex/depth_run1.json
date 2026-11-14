@@ -1,0 +1,647 @@
+{
+ "cex_before": {
+  "utc": "2026-11-05T19:17:16Z",
+  "coinbase_BTC-USD": {
+   "ask": "76242.98",
+   "bid": "76242.97",
+   "volume": "13161.37977619",
+   "trade_id": 1115874920,
+   "price": "76245.68",
+   "size": "0.00039739",
+   "time": "2026-11-05T19:17:16.708492851Z",
+   "rfq_volume": "223.971420"
+  },
+  "coinbase_ETH-USD": {
+   "ask": "2258.65",
+   "bid": "2258.64",
+   "volume": "187301.61825658",
+   "trade_id": 852514603,
+   "price": "2258.65",
+   "size": "0.25",
+   "time": "2026-11-05T19:17:16.852466768Z",
+   "rfq_volume": "1193.628901"
+  },
+  "binance_BTCUSDT": {
+   "symbol": "BTCUSDT",
+   "bidPrice": "76380.78000000",
+   "bidQty": "0.35833000",
+   "askPrice": "76380.79000000",
+   "askQty": "4.01543000"
+  },
+  "binance_ETHUSDT": {
+   "symbol": "ETHUSDT",
+   "bidPrice": "2262.36000000",
+   "bidQty": "64.11920000",
+   "askPrice": "2262.37000000",
+   "askQty": "13.63570000"
+  }
+ },
+ "block_height": 223208308,
+ "block_time_utc": "2026-11-05T19:17:18Z",
+ "pool_state": {
+  "5949": {
+   "token_account_ids": [
+    "nbtc.bridge.near",
+    "wrap.near"
+   ],
+   "decimals": [
+    8,
+    24
+   ],
+   "amounts": [
+    "7702084",
+    "1533742158774798012065120080"
+   ],
+   "c_amounts": [
+    "77020847265430197222133",
+    "1533742158774798012065120080"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "9380676821389277602959205971",
+   "amp": 10,
+   "degens": [
+    "76169085342070000000000000000",
+    "3684691990000000000000000"
+   ]
+  },
+  "6354": {
+   "token_account_ids": [
+    "eth.bridge.near",
+    "wrap.near"
+   ],
+   "decimals": [
+    18,
+    24
+   ],
+   "amounts": [
+    "2129844217350921337",
+    "1210713734599003568649811350"
+   ],
+   "c_amounts": [
+    "2129844217350921337527100",
+    "1210713734599003568649811350"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "4219391504058081133178638902",
+   "amp": 10,
+   "degens": [
+    "2255762165640000000000000000",
+    "3684691990000000000000000"
+   ]
+  },
+  "dcl_nbtc_wnear_400": {
+   "pool_id": "nbtc.bridge.near|wrap.near|400",
+   "token_x": "nbtc.bridge.near",
+   "token_y": "wrap.near",
+   "fee": 400,
+   "point_delta": 8,
+   "current_point": 467472,
+   "liquidity": "0",
+   "liquidity_x": "0",
+   "max_liquidity_per_point": "1701403327588054377044987812219779",
+   "total_fee_x_charged": "0",
+   "total_fee_y_charged": "80011664808291025257851",
+   "volume_x_in": "0",
+   "volume_y_in": "200029162020727563144622830",
+   "volume_x_out": "999732",
+   "volume_y_out": "0",
+   "total_liquidity": "0",
+   "total_order_x": "268",
+   "total_order_y": "0",
+   "total_x": "269",
+   "total_y": "200029162020727563144622832",
+   "state": "Running",
+   "whitelist": null,
+   "tax": null
+  },
+  "dcl_wbtc_nbtc_2000": {
+   "pool_id": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near|nbtc.bridge.near|2000",
+   "token_x": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+   "token_y": "nbtc.bridge.near",
+   "fee": 2000,
+   "point_delta": 40,
+   "current_point": 0,
+   "liquidity": "0",
+   "liquidity_x": "0",
+   "max_liquidity_per_point": "8506846501860915063707772491481918",
+   "total_fee_x_charged": "13710",
+   "total_fee_y_charged": "3755",
+   "volume_x_in": "6857895",
+   "volume_y_in": "1861454",
+   "volume_x_out": "1864988",
+   "volume_y_out": "6835850",
+   "total_liquidity": "0",
+   "total_order_x": "0",
+   "total_order_y": "86",
+   "total_x": "13724",
+   "total_y": "1846560",
+   "state": "Running",
+   "whitelist": null,
+   "tax": null
+  },
+  "ref_4512": {
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
+    "wrap.near"
+   ],
+   "amounts": [
+    "967659187063",
+    "262826443576983355446173062783"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "93934028467763197876048421123",
+   "amp": 0
+  },
+  "ref_5515": {
+   "token_account_ids": [
+    "wrap.near",
+    "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1"
+   ],
+   "decimals": [
+    24,
+    6
+   ],
+   "amounts": [
+    "75709971712292291488542676249",
+    "278920317676"
+   ],
+   "c_amounts": [
+    "75709971712292291488542676249",
+    "278920317676697306510031632889"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "618559272115421350067410170998",
+   "amp": 15,
+   "degens": [
+    "3684691990000000000000000",
+    "999698280000000000000000"
+   ]
+  }
+ },
+ "sims": {
+  "nbtc.bridge.near": {
+   "pool": 5949,
+   "probe_raw": 13115,
+   "probe_hop1_wnear_raw": "2697936116028173125460532",
+   "probe_hop2_usdc_raw": 9951524,
+   "probe_hop2_pool": "dcl_USDC|wNEAR|100",
+   "spot_route_usdc_per_token_incl_fees": "75878.9477697293175752954632100648112847884102173084254670225",
+   "spot_hop1_wnear_per_token_incl_fee": "20571.3771713928564655778269157453297750667174990468928707587",
+   "rows": [
+    {
+     "usd_notional": 10000,
+     "amount_in_raw": "13115962",
+     "amount_in": "0.13115962",
+     "hop1_pool": 5949,
+     "hop1_out_wnear_raw": "1494860738330782824253779422",
+     "hop1_out_wnear": "1494.860738330782824253779422",
+     "hop2_candidates": {
+      "ref_4512_simple": "5456240662",
+      "ref_5515_degen": "5489652170",
+      "dcl_USDC|wNEAR|100": {
+       "amount": "5493600721",
+       "tag": null
+      },
+      "dcl_USDC|wNEAR|2000": {
+       "amount": "0",
+       "tag": null
+      }
+     },
+     "hop2_best": "dcl_USDC|wNEAR|100",
+     "usdc_out_raw": 5493600721,
+     "usdc_out": "5493.600721",
+     "eff_price_usdc_per_token": "41884.8477984306450415150638588309420231623116931872782187079",
+     "vs_route_spot_pct": "-44.8004367093504563000129364599263585523409562338239696916418",
+     "vs_coinbase_mid_pct": "-45.0639907500584217214568767039442754913979790358557254373824",
+     "dcl_nbtc_wnear_400_quote": {
+      "amount": "0",
+      "tag": null
+     },
+     "dcl_nbtc_to_wbtc_2000_quote": {
+      "amount": "0",
+      "tag": null
+     }
+    },
+    {
+     "usd_notional": 50000,
+     "amount_in_raw": "65579812",
+     "amount_in": "0.65579812",
+     "hop1_pool": 5949,
+     "hop1_out_wnear_raw": "1528102785888241570452731091",
+     "hop1_out_wnear": "1528.102785888241570452731091",
+     "hop2_candidates": {
+      "ref_4512_simple": "5576874836",
+      "ref_5515_degen": "5611649070",
+      "dcl_USDC|wNEAR|100": {
+       "amount": "5615298905",
+       "tag": null
+      },
+      "dcl_USDC|wNEAR|2000": {
+       "amount": "0",
+       "tag": null
+      }
+     },
+     "hop2_best": "dcl_USDC|wNEAR|100",
+     "usdc_out_raw": 5615298905,
+     "usdc_out": "5615.298905",
+     "eff_price_usdc_per_token": "8562.54193744867704103817802954360405912722043179995697456406",
+     "vs_route_spot_pct": "-88.7155236213428818145627036765962311666581424148646543261708",
+     "vs_coinbase_mid_pct": "-88.7694021154753247219980883097182342909268422017897950931688",
+     "dcl_nbtc_wnear_400_quote": {
+      "amount": "0",
+      "tag": null
+     },
+     "dcl_nbtc_to_wbtc_2000_quote": {
+      "amount": "0",
+      "tag": null
+     }
+    },
+    {
+     "usd_notional": 100000,
+     "amount_in_raw": "131159624",
+     "amount_in": "1.31159624",
+     "hop1_pool": 5949,
+     "hop1_out_wnear_raw": "1528882521057229586023111438",
+     "hop1_out_wnear": "1528.882521057229586023111438",
+     "hop2_candidates": {
+      "ref_4512_simple": "5579704103",
+      "ref_5515_degen": "5614510624",
+      "dcl_USDC|wNEAR|100": {
+       "amount": "5618153237",
+       "tag": null
+      },
+      "dcl_USDC|wNEAR|2000": {
+       "amount": "0",
+       "tag": null
+      }
+     },
+     "hop2_best": "dcl_USDC|wNEAR|100",
+     "usdc_out_raw": 5618153237,
+     "usdc_out": "5618.153237",
+     "eff_price_usdc_per_token": "4283.44719637195666251681233852881432474981782503432611243228",
+     "vs_route_spot_pct": "-94.3548937850706875018431354011902699657767131169733211752743",
+     "vs_coinbase_mid_pct": "-94.3818467257187214133278346778456450253288019977783840249777",
+     "dcl_nbtc_wnear_400_quote": {
+      "amount": "0",
+      "tag": null
+     },
+     "dcl_nbtc_to_wbtc_2000_quote": {
+      "amount": "0",
+      "tag": null
+     }
+    }
+   ]
+  },
+  "eth.bridge.near": {
+   "pool": 6354,
+   "probe_raw": 4427433261977867,
+   "probe_hop1_wnear_raw": "2692514289465748869537041",
+   "probe_hop2_usdc_raw": 9931525,
+   "probe_hop2_pool": "dcl_USDC|wNEAR|100",
+   "spot_route_usdc_per_token_incl_fees": "2243.17892836250013229932842642771405281594159806693326400501",
+   "spot_hop1_wnear_per_token_incl_fee": "608.143393733036671410934144228403324809779425374885492293576",
+   "rows": [
+    {
+     "usd_notional": 10000,
+     "amount_in_raw": "4427433261977867261",
+     "amount_in": "4.427433261977867261",
+     "hop1_pool": 6354,
+     "hop1_out_wnear_raw": "1191446082738707609408497340",
+     "hop1_out_wnear": "1191.44608273870760940849734",
+     "hop2_candidates": {
+      "ref_4512_simple": "4353760155",
+      "ref_5515_degen": "4375973293",
+      "dcl_USDC|wNEAR|100": {
+       "amount": "4381872162",
+       "tag": null
+      },
+      "dcl_USDC|wNEAR|2000": {
+       "amount": "0",
+       "tag": null
+      }
+     },
+     "hop2_best": "dcl_USDC|wNEAR|100",
+     "usdc_out_raw": 4381872162,
+     "usdc_out": "4381.872162",
+     "eff_price_usdc_per_token": "989.709364934049000027578746308569742410268495555261450157133",
+     "vs_route_spot_pct": "-55.8791609344989843786744155382661676549981275437226686644808",
+     "vs_coinbase_mid_pct": "-56.1812783799999999987789694126978899999659753721695330537941",
+     "dcl_eth_usdt_10000_quote": {
+      "amount": "1219",
+      "tag": null
+     }
+    },
+    {
+     "usd_notional": 50000,
+     "amount_in_raw": "22137166309889336305",
+     "amount_in": "22.137166309889336305",
+     "hop1_pool": 6354,
+     "hop1_out_wnear_raw": "1206544028669532674436643040",
+     "hop1_out_wnear": "1206.54402866953267443664304",
+     "hop2_candidates": {
+      "ref_4512_simple": "4408679430",
+      "ref_5515_degen": "4431396891",
+      "dcl_USDC|wNEAR|100": {
+       "amount": "4437231747",
+       "tag": null
+      },
+      "dcl_USDC|wNEAR|2000": {
+       "amount": "0",
+       "tag": null
+      }
+     },
+     "hop2_best": "dcl_USDC|wNEAR|100",
+     "usdc_out_raw": 4437231747,
+     "usdc_out": "4437.231747",
+     "eff_price_usdc_per_token": "200.442625984056300005585433994358720827805640910969802935227",
+     "vs_route_spot_pct": "-91.0643496401610029911370648700848490182303148059097282245906",
+     "vs_coinbase_mid_pct": "-91.1255365059999999997527086375079429999931091025384775856663",
+     "dcl_eth_usdt_10000_quote": {
+      "amount": "6096",
+      "tag": null
+     }
+    },
+    {
+     "usd_notional": 100000,
+     "amount_in_raw": "44274332619778672611",
+     "amount_in": "44.274332619778672611",
+     "hop1_pool": 6354,
+     "hop1_out_wnear_raw": "1206947244117868220230052977",
+     "hop1_out_wnear": "1206.947244117868220230052977",
+     "hop2_candidates": {
+      "ref_4512_simple": "4410146054",
+      "ref_5515_degen": "4432877060",
+      "dcl_USDC|wNEAR|100": {
+       "amount": "4438710139",
+       "tag": null
+      },
+      "dcl_USDC|wNEAR|2000": {
+       "amount": "0",
+       "tag": null
+      }
+     },
+     "hop2_best": "dcl_USDC|wNEAR|100",
+     "usdc_out_raw": 4438710139,
+     "usdc_out": "4438.710139",
+     "eff_price_usdc_per_token": "100.254704619016550000529249598419019318280293935092533923932",
+     "vs_route_spot_pct": "-95.5306862349941225156912294539380528683982275647214898417210",
+     "vs_coinbase_mid_pct": "-95.5612898609999999999765678272407120499998763003883950809476",
+     "dcl_eth_usdt_10000_quote": {
+      "amount": "12193",
+      "tag": null
+     }
+    }
+   ]
+  }
+ },
+ "cex_after": {
+  "utc": "2026-11-05T19:17:59Z",
+  "coinbase_BTC-USD": {
+   "ask": "76281.24",
+   "bid": "76281.23",
+   "volume": "13175.96483226",
+   "trade_id": 1115875209,
+   "price": "76270.02",
+   "size": "0.00002492",
+   "time": "2026-11-05T19:17:57.973638126Z",
+   "rfq_volume": "223.529887"
+  },
+  "coinbase_ETH-USD": {
+   "ask": "2261.39",
+   "bid": "2261.38",
+   "volume": "187500.47057973",
+   "trade_id": 852514926,
+   "price": "2261.36",
+   "size": "0.00644207",
+   "time": "2026-11-05T19:17:57.288004826Z",
+   "rfq_volume": "1192.734544"
+  },
+  "binance_BTCUSDT": {
+   "symbol": "BTCUSDT",
+   "bidPrice": "76401.80000000",
+   "bidQty": "0.22251000",
+   "askPrice": "76401.81000000",
+   "askQty": "7.98984000"
+  },
+  "binance_ETHUSDT": {
+   "symbol": "ETHUSDT",
+   "bidPrice": "2264.63000000",
+   "bidQty": "91.20650000",
+   "askPrice": "2264.64000000",
+   "askQty": "5.25650000"
+  }
+ },
+ "smartrouter": {
+  "nbtc.bridge.near_10000": {
+   "result_code": 0,
+   "result_message": "",
+   "result_data": {
+    "routes": [
+     {
+      "pools": [
+       {
+        "pool_id": "5949",
+        "token_in": "nbtc.bridge.near",
+        "token_out": "wrap.near",
+        "amount_in": "13115962",
+        "amount_out": "0",
+        "min_amount_out": "0"
+       },
+       {
+        "pool_id": "5515",
+        "token_in": "wrap.near",
+        "token_out": "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
+        "amount_in": "0",
+        "amount_out": "0",
+        "min_amount_out": "5471281958"
+       }
+      ],
+      "amount_in": "13115962",
+      "min_amount_out": "5471281958",
+      "amount_out": "0"
+     }
+    ],
+    "contract_in": "nbtc.bridge.near",
+    "contract_out": "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
+    "amount_in": "13115962",
+    "amount_out": "5498775838"
+   }
+  },
+  "nbtc.bridge.near_50000": {
+   "result_code": 0,
+   "result_message": "",
+   "result_data": {
+    "routes": [
+     {
+      "pools": [
+       {
+        "pool_id": "5949",
+        "token_in": "nbtc.bridge.near",
+        "token_out": "wrap.near",
+        "amount_in": "65579812",
+        "amount_out": "0",
+        "min_amount_out": "0"
+       },
+       {
+        "pool_id": "5515",
+        "token_in": "wrap.near",
+        "token_out": "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
+        "amount_in": "0",
+        "amount_out": "0",
+        "min_amount_out": "5592918413"
+       }
+      ],
+      "amount_in": "65579812",
+      "min_amount_out": "5592918413",
+      "amount_out": "0"
+     }
+    ],
+    "contract_in": "nbtc.bridge.near",
+    "contract_out": "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
+    "amount_in": "65579812",
+    "amount_out": "5621023531"
+   }
+  },
+  "nbtc.bridge.near_100000": {
+   "result_code": 0,
+   "result_message": "",
+   "result_data": {
+    "routes": [
+     {
+      "pools": [
+       {
+        "pool_id": "5949",
+        "token_in": "nbtc.bridge.near",
+        "token_out": "wrap.near",
+        "amount_in": "131159624",
+        "amount_out": "0",
+        "min_amount_out": "0"
+       },
+       {
+        "pool_id": "5515",
+        "token_in": "wrap.near",
+        "token_out": "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
+        "amount_in": "0",
+        "amount_out": "0",
+        "min_amount_out": "5599507539"
+       }
+      ],
+      "amount_in": "131159624",
+      "min_amount_out": "5599507539",
+      "amount_out": "0"
+     }
+    ],
+    "contract_in": "nbtc.bridge.near",
+    "contract_out": "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
+    "amount_in": "131159624",
+    "amount_out": "5627645768"
+   }
+  },
+  "eth.bridge.near_10000": {
+   "result_code": 0,
+   "result_message": "",
+   "result_data": {
+    "routes": [
+     {
+      "pools": [
+       {
+        "pool_id": "6354",
+        "token_in": "eth.bridge.near",
+        "token_out": "wrap.near",
+        "amount_in": "4427433261977867261",
+        "amount_out": "0",
+        "min_amount_out": "0"
+       },
+       {
+        "pool_id": "5515",
+        "token_in": "wrap.near",
+        "token_out": "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
+        "amount_in": "0",
+        "amount_out": "0",
+        "min_amount_out": "4364297625"
+       }
+      ],
+      "amount_in": "4427433261977867261",
+      "min_amount_out": "4364297625",
+      "amount_out": "0"
+     }
+    ],
+    "contract_in": "eth.bridge.near",
+    "contract_out": "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
+    "amount_in": "4427433261977867261",
+    "amount_out": "4386228769"
+   }
+  },
+  "eth.bridge.near_50000": {
+   "result_code": 0,
+   "result_message": "",
+   "result_data": {
+    "routes": [
+     {
+      "pools": [
+       {
+        "pool_id": "6354",
+        "token_in": "eth.bridge.near",
+        "token_out": "wrap.near",
+        "amount_in": "22137166309889336305",
+        "amount_out": "0",
+        "min_amount_out": "0"
+       },
+       {
+        "pool_id": "5515",
+        "token_in": "wrap.near",
+        "token_out": "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
+        "amount_in": "0",
+        "amount_out": "0",
+        "min_amount_out": "4419556810"
+       }
+      ],
+      "amount_in": "22137166309889336305",
+      "min_amount_out": "4419556810",
+      "amount_out": "0"
+     }
+    ],
+    "contract_in": "eth.bridge.near",
+    "contract_out": "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
+    "amount_in": "22137166309889336305",
+    "amount_out": "4441765639"
+   }
+  },
+  "eth.bridge.near_100000": {
+   "result_code": 0,
+   "result_message": "",
+   "result_data": {
+    "routes": [
+     {
+      "pools": [
+       {
+        "pool_id": "6354",
+        "token_in": "eth.bridge.near",
+        "token_out": "wrap.near",
+        "amount_in": "44274332619778672611",
+        "amount_out": "0",
+        "min_amount_out": "0"
+       },
+       {
+        "pool_id": "5515",
+        "token_in": "wrap.near",
+        "token_out": "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
+        "amount_in": "0",
+        "amount_out": "0",
+        "min_amount_out": "4421032820"
+       }
+      ],
+      "amount_in": "44274332619778672611",
+      "min_amount_out": "4421032820",
+      "amount_out": "0"
+     }
+    ],
+    "contract_in": "eth.bridge.near",
+    "contract_out": "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
+    "amount_in": "44274332619778672611",
+    "amount_out": "4443249066"
+   }
+  }
+ }
+}

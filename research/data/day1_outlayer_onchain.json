@@ -1,0 +1,625 @@
+{
+ "generated_utc": "2026-11-06 23:15:41",
+ "source": {
+  "Project": {
+   "project_id": "pbf-keeper.testnet/pb-probe",
+   "version_key": "3f89e6441848ad7d323e37888d3fa560d636577d95ace635b7f984f3fa4de466"
+  }
+ },
+ "limits": {
+  "max_instructions": 1000000000,
+  "max_memory_mb": 128,
+  "max_execution_seconds": 30
+ },
+ "deposit_yocto": "10000000000000000000000",
+ "runs": [
+  {
+   "label": "hello 1",
+   "input": {
+    "mode": "hello"
+   },
+   "wall_seconds": 11.02,
+   "tx": "A6zno4ENepDYGiT1KcAu18ez44tcj6exhwGaLU5HScRi",
+   "cli_exit": 0,
+   "result": {
+    "ok": true,
+    "bytes": 404,
+    "verdict_ok": true,
+    "start_height": 276551551,
+    "end_height": 276551562,
+    "callback_gas_used": 461030178388
+   },
+   "status": "SuccessValue",
+   "blocks": 11,
+   "callback_receipt_gas_tgas": 1.495,
+   "gas_burnt_tgas": 12.479,
+   "tokens_burnt_near": 0.0011363382448533,
+   "probe_balance_change_near": -0.001078
+  },
+  {
+   "label": "hello 2",
+   "input": {
+    "mode": "hello"
+   },
+   "wall_seconds": 11.12,
+   "tx": "HbSbSh4AFJZg2ePtj4JatvSdowxq1weEa2LyvuaLiNq3",
+   "cli_exit": 0,
+   "result": {
+    "ok": true,
+    "bytes": 404,
+    "verdict_ok": true,
+    "start_height": 276551571,
+    "end_height": 276551582,
+    "callback_gas_used": 461030178388
+   },
+   "status": "SuccessValue",
+   "blocks": 11,
+   "callback_receipt_gas_tgas": 1.495,
+   "gas_burnt_tgas": 12.476,
+   "tokens_burnt_near": 0.0011359965071835,
+   "probe_balance_change_near": -0.0010775000000000001
+  },
+  {
+   "label": "hello 3",
+   "input": {
+    "mode": "hello"
+   },
+   "wall_seconds": 10.1,
+   "tx": "CADoiVGym96xw4KoU1HqLXuErjuWaJ4NcYssXuKpDwad",
+   "cli_exit": 0,
+   "result": {
+    "ok": true,
+    "bytes": 404,
+    "verdict_ok": true,
+    "start_height": 276551590,
+    "end_height": 276551601,
+    "callback_gas_used": 461030178388
+   },
+   "status": "SuccessValue",
+   "blocks": 11,
+   "callback_receipt_gas_tgas": 1.495,
+   "gas_burnt_tgas": 12.478,
+   "tokens_burnt_near": 0.0011361999207285,
+   "probe_balance_change_near": -0.0010753
+  },
+  {
+   "label": "hello 4",
+   "input": {
+    "mode": "hello"
+   },
+   "wall_seconds": 10.92,
+   "tx": "2QgLHUZHD9bEv7CQcp1KAPQ7E3TRupDrVE81Ed31oCsZ",
+   "cli_exit": 0,
+   "result": {
+    "ok": true,
+    "bytes": 404,
+    "verdict_ok": true,
+    "start_height": 276551609,
+    "end_height": 276551620,
+    "callback_gas_used": 461030178388
+   },
+   "status": "SuccessValue",
+   "blocks": 11,
+   "callback_receipt_gas_tgas": 1.495,
+   "gas_burnt_tgas": 12.479,
+   "tokens_burnt_near": 0.0011363042603202,
+   "probe_balance_change_near": -0.0010756000000000001
+  },
+  {
+   "label": "hello 5",
+   "input": {
+    "mode": "hello"
+   },
+   "wall_seconds": 10.04,
+   "tx": "ECtHPEc7qq5sodeDicaVEgy3eeeqyBi517146vayM4qX",
+   "cli_exit": 0,
+   "result": {
+    "ok": true,
+    "bytes": 404,
+    "verdict_ok": true,
+    "start_height": 276551627,
+    "end_height": 276551638,
+    "callback_gas_used": 461030178388
+   },
+   "status": "SuccessValue",
+   "blocks": 11,
+   "callback_receipt_gas_tgas": 1.495,
+   "gas_burnt_tgas": 12.479,
+   "tokens_burnt_near": 0.0011362731554331,
+   "probe_balance_change_near": -0.0010764
+  },
+  {
+   "label": "hello 6",
+   "input": {
+    "mode": "hello"
+   },
+   "wall_seconds": 11.23,
+   "tx": "DkXccVUbBHjEqDAJd9Z44kBea8ywnK4N5iKenynPWiP8",
+   "cli_exit": 0,
+   "result": {
+    "ok": true,
+    "bytes": 404,
+    "verdict_ok": true,
+    "start_height": 276551646,
+    "end_height": 276551657,
+    "callback_gas_used": 461030178388
+   },
+   "status": "SuccessValue",
+   "blocks": 11,
+   "callback_receipt_gas_tgas": 1.495,
+   "gas_burnt_tgas": 12.478,
+   "tokens_burnt_near": 0.0011361659361954,
+   "probe_balance_change_near": -0.0010771
+  },
+  {
+   "label": "hello 7",
+   "input": {
+    "mode": "hello"
+   },
+   "wall_seconds": 10.56,
+   "tx": "FAexrBvvQFu8HwsvZAgk9WYCd12NTHH8CYUK9WUjeo9E",
+   "cli_exit": 0,
+   "result": {
+    "ok": true,
+    "bytes": 404,
+    "verdict_ok": true,
+    "start_height": 276551665,
+    "end_height": 276551676,
+    "callback_gas_used": 461030178388
+   },
+   "status": "SuccessValue",
+   "blocks": 11,
+   "callback_receipt_gas_tgas": 1.495,
+   "gas_burnt_tgas": 12.478,
+   "tokens_burnt_near": 0.001136171366385,
+   "probe_balance_change_near": -0.0010757
+  },
+  {
+   "label": "hello 8",
+   "input": {
+    "mode": "hello"
+   },
+   "wall_seconds": 10.12,
+   "tx": "C9y8LKZE4unhMBVLtP7RcVhsFVrjrwb2WM5rpPg7h96k",
+   "cli_exit": 0,
+   "result": {
+    "ok": true,
+    "bytes": 404,
+    "verdict_ok": true,
+    "start_height": 276551684,
+    "end_height": 276551695,
+    "callback_gas_used": 461030178388
+   },
+   "status": "SuccessValue",
+   "blocks": 11,
+   "callback_receipt_gas_tgas": 1.495,
+   "gas_burnt_tgas": 12.482,
+   "tokens_burnt_near": 0.0011365944514347,
+   "probe_balance_change_near": -0.0010779000000000001
+  },
+  {
+   "label": "hello 9",
+   "input": {
+    "mode": "hello"
+   },
+   "wall_seconds": 0.57,
+   "tx": null,
+   "cli_exit": 1,
+   "error": ".testnet outlayer_probe json-args '{\"source\": {\"Project\": {\"project_id\": \"pbf-keeper.testnet/pb-probe\", \"version_key\": \"3f89e6441848ad7d323e37888d3fa560d636577d95ace635b7f984f3fa4de466\"}}, \"resource_limits\": {\"max_instructions\": 1000000000, \"max_memory_mb\": 128, \"max_execution_seconds\": 30}, \"input\": \"{\\\"mode\\\": \\\"hello\\\"}\", \"deposit\": \"10000000000000000000000\"}' prepaid-gas '300.0 Tgas' attached-deposit '0 NEAR' sign-as pbf-keeper.testnet network-config testnet sign-with-keychain send\n\n\n`near` CLI has a new update available 0.30.1 \u2192  0.31.1\nTo update `near` CLI use: near extensions self-update\nError: \n   0: Error: Transaction has expired.\n\nLocation:\n   ~/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/near-cli-rs-0.30.1/src/transaction_signature_options/send/mod.rs:181\n"
+  },
+  {
+   "label": "hello 10",
+   "input": {
+    "mode": "hello"
+   },
+   "wall_seconds": 10.79,
+   "tx": "2N6wpxt7syCDyHj7iYChf51PbsQrbCZ8YRYA3icGE4fp",
+   "cli_exit": 0,
+   "result": {
+    "ok": true,
+    "bytes": 404,
+    "verdict_ok": true,
+    "start_height": 276551705,
+    "end_height": 276551716,
+    "callback_gas_used": 461030178388
+   },
+   "status": "SuccessValue",
+   "blocks": 11,
+   "callback_receipt_gas_tgas": 1.495,
+   "gas_burnt_tgas": 12.478,
+   "tokens_burnt_near": 0.0011362304496863999,
+   "probe_balance_change_near": -0.0010744
+  },
+  {
+   "label": "hello 11",
+   "input": {
+    "mode": "hello"
+   },
+   "wall_seconds": 10.92,
+   "tx": "88nozwLgjK1pBQ8GamQTMoXxAYxPUNjBK1PSB1mNeQKr",
+   "cli_exit": 0,
+   "result": {
+    "ok": true,
+    "bytes": 404,
+    "verdict_ok": true,
+    "start_height": 276551724,
+    "end_height": 276551735,
+    "callback_gas_used": 461030178388
+   },
+   "status": "SuccessValue",
+   "blocks": 11,
+   "callback_receipt_gas_tgas": 1.495,
+   "gas_burnt_tgas": 12.479,
+   "tokens_burnt_near": 0.0011363418649797,
+   "probe_balance_change_near": -0.0010747
+  },
+  {
+   "label": "hello 12",
+   "input": {
+    "mode": "hello"
+   },
+   "wall_seconds": 11.02,
+   "tx": "HjwkHNeYmwo3L388K87vVtA2GZp9NRpmyX6D1sPGfNgb",
+   "cli_exit": 0,
+   "result": {
+    "ok": true,
+    "bytes": 404,
+    "verdict_ok": true,
+    "start_height": 276551744,
+    "end_height": 276551755,
+    "callback_gas_used": 461030178388
+   },
+   "status": "SuccessValue",
+   "blocks": 11,
+   "callback_receipt_gas_tgas": 1.495,
+   "gas_burnt_tgas": 12.483,
+   "tokens_burnt_near": 0.0011367327755595,
+   "probe_balance_change_near": -0.0010752000000000001
+  },
+  {
+   "label": "hello 13",
+   "input": {
+    "mode": "hello"
+   },
+   "wall_seconds": 10.93,
+   "tx": "CDES1TGCY34YHSknV7FbgVgMnYfQA3MKUPp65RmULCfN",
+   "cli_exit": 0,
+   "result": {
+    "ok": true,
+    "bytes": 404,
+    "verdict_ok": true,
+    "start_height": 276551763,
+    "end_height": 276551774,
+    "callback_gas_used": 461030178388
+   },
+   "status": "SuccessValue",
+   "blocks": 11,
+   "callback_receipt_gas_tgas": 1.495,
+   "gas_burnt_tgas": 12.479,
+   "tokens_burnt_near": 0.0011362877865405,
+   "probe_balance_change_near": -0.0010774
+  },
+  {
+   "label": "hello 14",
+   "input": {
+    "mode": "hello"
+   },
+   "wall_seconds": 10.49,
+   "tx": "5YDvn9iHrVYtGy8ovobZN1PM1PHWz1UWi6mKKdBE33JQ",
+   "cli_exit": 0,
+   "result": {
+    "ok": true,
+    "bytes": 404,
+    "verdict_ok": true,
+    "start_height": 276551782,
+    "end_height": 276551793,
+    "callback_gas_used": 461030178388
+   },
+   "status": "SuccessValue",
+   "blocks": 11,
+   "callback_receipt_gas_tgas": 1.495,
+   "gas_burnt_tgas": 12.479,
+   "tokens_burnt_near": 0.0011362731554331,
+   "probe_balance_change_near": -0.001076
+  },
+  {
+   "label": "hello 15",
+   "input": {
+    "mode": "hello"
+   },
+   "wall_seconds": 11.26,
+   "tx": "3WWsdKQufCBdEWXo1Tv3952BqGcW4mrixQpVZcLR9Ejn",
+   "cli_exit": 0,
+   "result": {
+    "ok": true,
+    "bytes": 404,
+    "verdict_ok": true,
+    "start_height": 276551801,
+    "end_height": 276551813,
+    "callback_gas_used": 461030178388
+   },
+   "status": "SuccessValue",
+   "blocks": 12,
+   "callback_receipt_gas_tgas": 1.495,
+   "gas_burnt_tgas": 12.479,
+   "tokens_burnt_near": 0.0011362764464570999,
+   "probe_balance_change_near": -0.0010708
+  },
+  {
+   "label": "hello 16",
+   "input": {
+    "mode": "hello"
+   },
+   "wall_seconds": 9.69,
+   "tx": "MYqhhU2HRR3UYybwRsfknbGrkxHPsbhBsrmvnzt7rwD",
+   "cli_exit": 0,
+   "result": {
+    "ok": true,
+    "bytes": 404,
+    "verdict_ok": true,
+    "start_height": 276551821,
+    "end_height": 276551832,
+    "callback_gas_used": 461030178388
+   },
+   "status": "SuccessValue",
+   "blocks": 11,
+   "callback_receipt_gas_tgas": 1.495,
+   "gas_burnt_tgas": 12.478,
+   "tokens_burnt_near": 0.0011361677462586,
+   "probe_balance_change_near": -0.0010755
+  },
+  {
+   "label": "hello 17",
+   "input": {
+    "mode": "hello"
+   },
+   "wall_seconds": 11.37,
+   "tx": "BWXYp2Jx2onBYf8ju9pTHUnWBVyc6oqsntEaiD4MpC2B",
+   "cli_exit": 0,
+   "result": {
+    "ok": true,
+    "bytes": 404,
+    "verdict_ok": true,
+    "start_height": 276551840,
+    "end_height": 276551851,
+    "callback_gas_used": 461030178388
+   },
+   "status": "SuccessValue",
+   "blocks": 11,
+   "callback_receipt_gas_tgas": 1.495,
+   "gas_burnt_tgas": 12.48,
+   "tokens_burnt_near": 0.0011363723939376,
+   "probe_balance_change_near": -0.0010774
+  },
+  {
+   "label": "hello 18",
+   "input": {
+    "mode": "hello"
+   },
+   "wall_seconds": 10.53,
+   "tx": "DysTiMnFVKawAYngv1YVgnjsSsyFPEkvFyjE3xoTeA4L",
+   "cli_exit": 0,
+   "result": {
+    "ok": true,
+    "bytes": 404,
+    "verdict_ok": true,
+    "start_height": 276551860,
+    "end_height": 276551870,
+    "callback_gas_used": 461030178388
+   },
+   "status": "SuccessValue",
+   "blocks": 10,
+   "callback_receipt_gas_tgas": 1.495,
+   "gas_burnt_tgas": 12.478,
+   "tokens_burnt_near": 0.0011362035408549,
+   "probe_balance_change_near": -0.0010757
+  },
+  {
+   "label": "hello 19",
+   "input": {
+    "mode": "hello"
+   },
+   "wall_seconds": 10.95,
+   "tx": "ExD8kV5ASChBXJgcmQRUdn9xtdAVKsm4tzQFZSiSZw29",
+   "cli_exit": 0,
+   "result": {
+    "ok": true,
+    "bytes": 404,
+    "verdict_ok": true,
+    "start_height": 276551878,
+    "end_height": 276551889,
+    "callback_gas_used": 461030178388
+   },
+   "status": "SuccessValue",
+   "blocks": 11,
+   "callback_receipt_gas_tgas": 1.495,
+   "gas_burnt_tgas": 12.479,
+   "tokens_burnt_near": 0.0011363060703834002,
+   "probe_balance_change_near": -0.0010768
+  },
+  {
+   "label": "hello 20",
+   "input": {
+    "mode": "hello"
+   },
+   "wall_seconds": 10.2,
+   "tx": "H5ydbMXBVFFnaNq2CHy3vAP11DPyn8QNHt3WB2ou28ef",
+   "cli_exit": 0,
+   "result": {
+    "ok": true,
+    "bytes": 404,
+    "verdict_ok": true,
+    "start_height": 276551897,
+    "end_height": 276551907,
+    "callback_gas_used": 461030178388
+   },
+   "status": "SuccessValue",
+   "blocks": 10,
+   "callback_receipt_gas_tgas": 1.495,
+   "gas_burnt_tgas": 12.48,
+   "tokens_burnt_near": 0.0011364132896211,
+   "probe_balance_change_near": -0.0010756000000000001
+  },
+  {
+   "label": "big 256",
+   "input": {
+    "mode": "big",
+    "bytes": 256
+   },
+   "wall_seconds": 13.15,
+   "tx": "5eTkSxrQeZr6QK5piV7X4coTUpoYKrLHP5r6JeqpTSFB",
+   "cli_exit": 0,
+   "result": {
+    "ok": true,
+    "bytes": 256,
+    "verdict_ok": true,
+    "start_height": 276551916,
+    "end_height": 276551928,
+    "callback_gas_used": 386668015612
+   },
+   "status": "SuccessValue",
+   "blocks": 12,
+   "callback_receipt_gas_tgas": 1.42,
+   "gas_burnt_tgas": 12.341,
+   "tokens_burnt_near": 0.0011224898254317,
+   "probe_balance_change_near": -0.0011004
+  },
+  {
+   "label": "big 900",
+   "input": {
+    "mode": "big",
+    "bytes": 900
+   },
+   "wall_seconds": 10.61,
+   "tx": "2WYS8gBNhYSgfKGWkptoUwTcBSEUtf23LnEPpcmYGwWH",
+   "cli_exit": 0,
+   "result": {
+    "ok": true,
+    "bytes": 900,
+    "verdict_ok": true,
+    "start_height": 276551936,
+    "end_height": 276551947,
+    "callback_gas_used": 497961457696
+   },
+   "status": "SuccessValue",
+   "blocks": 11,
+   "callback_receipt_gas_tgas": 1.532,
+   "gas_burnt_tgas": 12.506,
+   "tokens_burnt_near": 0.0011389668311491,
+   "probe_balance_change_near": -0.0011014
+  },
+  {
+   "label": "big 1024",
+   "input": {
+    "mode": "big",
+    "bytes": 1024
+   },
+   "wall_seconds": 10.85,
+   "tx": "6CWfA6ELWrKgMdPJJ8g45LnM134r5VePUnXMBBYRSCme",
+   "cli_exit": 0,
+   "result": {
+    "ok": true,
+    "bytes": 1024,
+    "verdict_ok": true,
+    "start_height": 276551955,
+    "end_height": 276551966,
+    "callback_gas_used": 508974927196
+   },
+   "status": "SuccessValue",
+   "blocks": 11,
+   "callback_receipt_gas_tgas": 1.543,
+   "gas_burnt_tgas": 12.528,
+   "tokens_burnt_near": 0.0011412001417291,
+   "probe_balance_change_near": -0.001101
+  },
+  {
+   "label": "big 2048",
+   "input": {
+    "mode": "big",
+    "bytes": 2048
+   },
+   "wall_seconds": 11.14,
+   "tx": "CYWdjUatvMdKxMzWWJSxud8hccN438PZ7RDSudgcYHah",
+   "cli_exit": 0,
+   "result": {
+    "ok": true,
+    "bytes": 2048,
+    "verdict_ok": true,
+    "start_height": 276551974,
+    "end_height": 276551985,
+    "callback_gas_used": 600271381852
+   },
+   "status": "SuccessValue",
+   "blocks": 11,
+   "callback_receipt_gas_tgas": 1.634,
+   "gas_burnt_tgas": 12.72,
+   "tokens_burnt_near": 0.0011604578653527,
+   "probe_balance_change_near": -0.0011022
+  },
+  {
+   "label": "big 4096",
+   "input": {
+    "mode": "big",
+    "bytes": 4096
+   },
+   "wall_seconds": 11.2,
+   "tx": "EdRdngFu4WYdS4s9e2JYo6nPFCED7Qe6jPG5CsLrv8nm",
+   "cli_exit": 0,
+   "result": {
+    "ok": true,
+    "bytes": 4096,
+    "verdict_ok": true,
+    "start_height": 276551993,
+    "end_height": 276552004,
+    "callback_gas_used": 782870050456
+   },
+   "status": "SuccessValue",
+   "blocks": 11,
+   "callback_receipt_gas_tgas": 1.817,
+   "gas_burnt_tgas": 13.106,
+   "tokens_burnt_near": 0.0011990234231506,
+   "probe_balance_change_near": -0.0011012
+  }
+ ],
+ "summary": {
+  "hello_runs": 20,
+  "hello_ok": 19,
+  "wall_seconds_min_median_max": [
+   9.69,
+   10.92,
+   11.37
+  ],
+  "blocks_min_median_max": [
+   10,
+   11,
+   12
+  ],
+  "big": {
+   "big 256": {
+    "ok": true,
+    "bytes": 256,
+    "callback_gas_used": 386668015612
+   },
+   "big 900": {
+    "ok": true,
+    "bytes": 900,
+    "callback_gas_used": 497961457696
+   },
+   "big 1024": {
+    "ok": true,
+    "bytes": 1024,
+    "callback_gas_used": 508974927196
+   },
+   "big 2048": {
+    "ok": true,
+    "bytes": 2048,
+    "callback_gas_used": 600271381852
+   },
+   "big 4096": {
+    "ok": true,
+    "bytes": 4096,
+    "callback_gas_used": 782870050456
+   }
+  }
+ }
+}

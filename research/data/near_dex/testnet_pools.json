@@ -1,0 +1,1042 @@
+{
+ "chain_id": "testnet",
+ "height": 276383702,
+ "ft_metadata": {
+  "spec": "ft-1.0.0",
+  "name": "Near WTC",
+  "symbol": "NBTC",
+  "icon": "data:image/svg+xml,%",
+  "reference": null,
+  "reference_hash": null,
+  "decimals": 8
+ },
+ "ft_total_supply": "8751778",
+ "ref_testnet_n_pools": 2901,
+ "ref_testnet_btcish_pools": [
+  {
+   "pool_id": 456,
+   "pool_kind": "STABLE_SWAP",
+   "token_account_ids": [
+    "wbtc.fakes.testnet",
+    "hbtc.fakes.testnet"
+   ],
+   "amounts": [
+    "119616866479760",
+    "4243537188096164533"
+   ],
+   "total_fee": 5,
+   "shares_total_supply": "255271740278064812983024",
+   "amp": 240
+  },
+  {
+   "pool_id": 457,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "wrap.testnet",
+    "wbtc.fakes.testnet"
+   ],
+   "amounts": [
+    "20680827192974113988",
+    "10000004292787320911"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "1222464223059466319077869",
+   "amp": 0
+  },
+  {
+   "pool_id": 458,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "wbtc.fakes.testnet",
+    "hbtc.fakes.testnet"
+   ],
+   "amounts": [
+    "173860203734",
+    "5969070433727554416"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "1017160212381052006319281",
+   "amp": 0
+  },
+  {
+   "pool_id": 459,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "hbtc.fakes.testnet",
+    "wbtc.fakes.testnet"
+   ],
+   "amounts": [
+    "9546111114088471611",
+    "6783174136414"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "801228843421520639176552",
+   "amp": 0
+  },
+  {
+   "pool_id": 486,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "wbtc.fakes.testnet",
+    "wrap.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 506,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "stnear.fakes.testnet",
+    "wbtc.fakes.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 515,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "ref.fakes.testnet",
+    "wbtc.fakes.testnet"
+   ],
+   "amounts": [
+    "112223412529337442813",
+    "1611222627"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "3121638334008603805440061",
+   "amp": 0
+  },
+  {
+   "pool_id": 525,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "wrap.testnet",
+    "wbtc.fakes.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 533,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "usdn.testnet",
+    "wbtc.fakes.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 540,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "usdc.fakes.testnet",
+    "wbtc.fakes.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 548,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "usdt.fakes.testnet",
+    "wbtc.fakes.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 60,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 553,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "dai.fakes.testnet",
+    "wbtc.fakes.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 20,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 558,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "eth.fakes.testnet",
+    "wbtc.fakes.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 20,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 561,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "skyward.fakes.testnet",
+    "wbtc.fakes.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 20,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 563,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "stnear.fakes.testnet",
+    "wbtc.fakes.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 60,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 564,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "oct.fakes.testnet",
+    "wbtc.fakes.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 60,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 616,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "wbtc.fakes.testnet",
+    "stnear.fakes.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 60,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 730,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "wbtc.fakes.testnet",
+    "ref.fakes.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 961,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "wbtc.fakes.testnet",
+    "usdc.fakes.testnet"
+   ],
+   "amounts": [
+    "702674290",
+    "490548089065345"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "311014838448134720142186111618",
+   "amp": 0
+  },
+  {
+   "pool_id": 1307,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "usdt.fakes.testnet",
+    "wbtc.fakes.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 20,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 1798,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "wbtc.fakes.testnet",
+    "linear-protocol.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 1816,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "dai.fakes.testnet",
+    "wbtc.fakes.testnet"
+   ],
+   "amounts": [
+    "10553606943734582168694",
+    "3643753407"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "1076029858658500406268273",
+   "amp": 0
+  },
+  {
+   "pool_id": 1818,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "usdc.fakes.testnet",
+    "wbtc.fakes.testnet"
+   ],
+   "amounts": [
+    "697721380021",
+    "146582"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "1002251457092216638615407",
+   "amp": 0
+  },
+  {
+   "pool_id": 1826,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "wbtc.fakes.testnet",
+    "usdt.fakes.testnet"
+   ],
+   "amounts": [
+    "9760",
+    "281913517034"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "1033904014316113194720626",
+   "amp": 0
+  },
+  {
+   "pool_id": 1909,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "wrap.testnet",
+    "wbtc.ft.ref-labs.testnet"
+   ],
+   "amounts": [
+    "10080723605289359362186854",
+    "1018748"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "1002666004973291144728184",
+   "amp": 0
+  },
+  {
+   "pool_id": 2081,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "deltabtc.testnet",
+    "deltausdc.testnet"
+   ],
+   "amounts": [
+    "1004642036468269310",
+    "59724238229"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "1000002467181008385373902",
+   "amp": 0
+  },
+  {
+   "pool_id": 2302,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "atbtc_revamp_4.velar.testnet",
+    "wrap.testnet"
+   ],
+   "amounts": [
+    "100000",
+    "100000000000000000000000"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "1000000000000000000000000",
+   "amp": 0
+  },
+  {
+   "pool_id": 2303,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "wrap.testnet",
+    "atbtc_revamp_4.velar.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 2304,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "wrap.testnet",
+    "atbtc_revamp_4.velar.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 60,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 2305,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "atbtc_revamp_4.velar.testnet",
+    "wrap.testnet"
+   ],
+   "amounts": [
+    "106884619",
+    "4365423906437923893389891"
+   ],
+   "total_fee": 20,
+   "shares_total_supply": "2159211226646164144659690",
+   "amp": 0
+  },
+  {
+   "pool_id": 2320,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "wrap.testnet",
+    "nbtc2-nsp.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 2321,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "deltanear.testnet",
+    "nbtc2-nsp.testnet"
+   ],
+   "amounts": [
+    "228765763816997314199189766",
+    "430338"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "7003175108127378044344020",
+   "amp": 0
+  },
+  {
+   "pool_id": 2347,
+   "pool_kind": "DEGEN_SWAP",
+   "token_account_ids": [
+    "wbtc.ft.ref-labs.testnet",
+    "usdcc.ft.ref-labs.testnet"
+   ],
+   "amounts": [
+    "1111269",
+    "744557662"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "1546201722463688754836694002",
+   "amp": 10
+  },
+  {
+   "pool_id": 2351,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "atbtc_revamp_20241201.velar.testnet",
+    "wrap.testnet"
+   ],
+   "amounts": [
+    "100000000",
+    "1000000000000000000000000"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "1000000000000000000000000",
+   "amp": 0
+  },
+  {
+   "pool_id": 2482,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "atbtc_v2.atlas_public_testnet.testnet",
+    "wbtc.fakes.testnet"
+   ],
+   "amounts": [
+    "7179",
+    "1000052102249218426"
+   ],
+   "total_fee": 20,
+   "shares_total_supply": "84161397961332824799036108608",
+   "amp": 0
+  },
+  {
+   "pool_id": 2483,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "atbtc_v2.atlas_public_testnet.testnet",
+    "wbtc.fakes.testnet"
+   ],
+   "amounts": [
+    "64621084",
+    "22047513439144"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "51179290820548386685055211323",
+   "amp": 0
+  },
+  {
+   "pool_id": 2485,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "wrap.testnet",
+    "wbtc.fakes.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 20,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 2486,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "atbtc_v2.atlas_public_testnet.testnet",
+    "wrap.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 1500,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 2487,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "wrap.testnet",
+    "wbtc.fakes.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 60,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 2488,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "wbtc.fakes.testnet",
+    "usdc.fakes.testnet"
+   ],
+   "amounts": [
+    "601407",
+    "723025073764"
+   ],
+   "total_fee": 60,
+   "shares_total_supply": "1002460512433407624377682",
+   "amp": 0
+  },
+  {
+   "pool_id": 2489,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "atbtc_v2.atlas_public_testnet.testnet",
+    "3e2210e1184b45b64c8a434c0a7e7b23cc04ea7eb7a6c3c32520d03d4afcb8af"
+   ],
+   "amounts": [
+    "644227",
+    "14049"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "51575324865746068135037468",
+   "amp": 0
+  },
+  {
+   "pool_id": 2491,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "wbtc.fakes.testnet",
+    "usdtt.fakes.testnet"
+   ],
+   "amounts": [
+    "1422213212",
+    "464"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "1031067022206582947793158",
+   "amp": 0
+  },
+  {
+   "pool_id": 2492,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "atbtc_v2.atlas_public_testnet.testnet",
+    "wbtc.fakes.testnet"
+   ],
+   "amounts": [
+    "19641",
+    "4038740456"
+   ],
+   "total_fee": 60,
+   "shares_total_supply": "88331299672430158988834736",
+   "amp": 0
+  },
+  {
+   "pool_id": 2503,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "atbtc_v2.atlas_public_testnet.testnet",
+    "wnear.develop.v1.omomo-finance.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 2504,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "wrap.testnet",
+    "atbtc_v2.atlas_public_testnet.testnet"
+   ],
+   "amounts": [
+    "16736000034969994618299863",
+    "7180703"
+   ],
+   "total_fee": 60,
+   "shares_total_supply": "1018814986082076880833431",
+   "amp": 0
+  },
+  {
+   "pool_id": 2506,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "ref.fakes.testnet",
+    "wbtc.fakes.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 20,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 2512,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "ref.fakes.testnet",
+    "wbtc.fakes.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 60,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 2513,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "atbtc_v2.atlas_public_testnet.testnet",
+    "wrap.testnet"
+   ],
+   "amounts": [
+    "171940544",
+    "32002809147819422676467319"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "1009847196935600608991013",
+   "amp": 0
+  },
+  {
+   "pool_id": 2521,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "wbtc.fakes.testnet",
+    "3e2210e1184b45b64c8a434c0a7e7b23cc04ea7eb7a6c3c32520d03d4afcb8af"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 20,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 2524,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "deltabtc.testnet",
+    "ref.fakes.testnet"
+   ],
+   "amounts": [
+    "6680359592879",
+    "844401786730735246806"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "1003113229980367619969129",
+   "amp": 0
+  },
+  {
+   "pool_id": 2528,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "wrap.testnet",
+    "wbtc.orderly.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 2529,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "ref.fakes.testnet",
+    "wbtc.orderly.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 2530,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "ref.fakes.testnet",
+    "wbtc.ft.ref-labs.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 2531,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "wbtc.fakes.testnet",
+    "3e2210e1184b45b64c8a434c0a7e7b23cc04ea7eb7a6c3c32520d03d4afcb8af"
+   ],
+   "amounts": [
+    "138523099179",
+    "8631"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "1007211094810684223160165",
+   "amp": 0
+  },
+  {
+   "pool_id": 2532,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "wbtc.fakes.testnet",
+    "wbtc.ft.ref-labs.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 2534,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "atbtc_v2.atlas_public_testnet.testnet",
+    "usdc.fakes.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 2535,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "wrap.testnet",
+    "atbtc_v2.atlas_public_testnet.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 20,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 2536,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "atbtc_v2.atlas_public_testnet.testnet",
+    "wbtc.fakes.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 80,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 2537,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "atbtc_v2.atlas_public_testnet.testnet",
+    "wbtc.fakes.testnet"
+   ],
+   "amounts": [
+    "9423",
+    "2055752738"
+   ],
+   "total_fee": 90,
+   "shares_total_supply": "47561066558787452117133948",
+   "amp": 0
+  },
+  {
+   "pool_id": 2539,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "wbtc.fakes.testnet",
+    "eth.fakes.testnet"
+   ],
+   "amounts": [
+    "19147555505",
+    "13724566139132478"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "1005553475241662029943821",
+   "amp": 0
+  },
+  {
+   "pool_id": 2540,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "wbtc.fakes.testnet",
+    "brrr.ft.ref-labs.testnet"
+   ],
+   "amounts": [
+    "2343475217",
+    "4521693897698965096"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "1005812783986265417403293",
+   "amp": 0
+  },
+  {
+   "pool_id": 2541,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "wrap.testnet",
+    "deltabtc.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 30,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 2546,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "wbtc.fakes.testnet",
+    "wrap.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 2000,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 2586,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "wrap.testnet",
+    "wbtc.fakes.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 10,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 2588,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "nbtc2-nsp.testnet",
+    "wrap.testnet"
+   ],
+   "amounts": [
+    "0",
+    "0"
+   ],
+   "total_fee": 60,
+   "shares_total_supply": "0",
+   "amp": 0
+  },
+  {
+   "pool_id": 2589,
+   "pool_kind": "SIMPLE_POOL",
+   "token_account_ids": [
+    "nbtc2-nsp.testnet",
+    "wrap.testnet"
+   ],
+   "amounts": [
+    "168176",
+    "2402985918578795599814293"
+   ],
+   "total_fee": 60,
+   "shares_total_supply": "1001026735891709124824707",
+   "amp": 0
+  }
+ ],
+ "dcl_testnet_n_pools_scanned": 11700,
+ "dcl_testnet_btcish_pools": [
+  {
+   "pool_id": "usdt.fakes.testnet|wbtc.fakes.testnet|100",
+   "current_point": -62571,
+   "liquidity": "679480799",
+   "total_x": "276767294396875",
+   "total_y": "62720546525",
+   "state": "Running"
+  },
+  {
+   "pool_id": "wbtc.fakes.testnet|wrap.testnet|100",
+   "current_point": 367904,
+   "liquidity": "0",
+   "total_x": "1817060486",
+   "total_y": "500922075798650426684519322",
+   "state": "Running"
+  },
+  {
+   "pool_id": "ref.fakes.testnet|wbtc.fakes.testnet|400",
+   "current_point": -345633,
+   "liquidity": "999477465927",
+   "total_x": "50119515717465050214618",
+   "total_y": "91544922",
+   "state": "Running"
+  },
+  {
+   "pool_id": "wbtc.fakes.testnet|wrap.testnet|10000",
+   "current_point": 373541,
+   "liquidity": "0",
+   "total_x": "0",
+   "total_y": "0",
+   "state": "Running"
+  }
+ ]
+}

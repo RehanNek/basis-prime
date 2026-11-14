@@ -1,0 +1,18 @@
+[package]
+name = "pb-testnet-token"
+description = "Test tokens mUSDC (6 decimals) and mNBTC (8 decimals), NEP-141 with a public faucet; testnet only (PLAN.md 5.1)"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+near-sdk = { workspace = true }
+near-contract-standards = { workspace = true }
+
+[dev-dependencies]
+near-sdk = { workspace = true, features = ["unit-testing"] }

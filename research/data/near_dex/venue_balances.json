@@ -1,0 +1,34 @@
+{
+ "grid.deltatrade.near nbtc.bridge.near": "927158",
+ "grid.deltatrade.near eth.bridge.near": "0",
+ "dca.deltatrade.near nbtc.bridge.near": "1832",
+ "dca.deltatrade.near eth.bridge.near": "82112622969108",
+ "v2.ref-finance.near nbtc.bridge.near": "35194159",
+ "v2.ref-finance.near eth.bridge.near": "28228759913545497559",
+ "dclv2.ref-labs.near nbtc.bridge.near": "1846855",
+ "dclv2.ref-labs.near eth.bridge.near": "183673663112553872",
+ "aggregatedex.near nbtc.bridge.near": "22755",
+ "aggregatedex.near eth.bridge.near": "4619535402439632",
+ "v1.jumbo_exchange.near nbtc.bridge.near": "0",
+ "v1.jumbo_exchange.near eth.bridge.near": "41622399171908",
+ "intents.near nbtc.bridge.near": "15878475247",
+ "intents.near eth.bridge.near": "31186243123888213586",
+ "contract.main.burrow.near nbtc.bridge.near": "340499179",
+ "contract.main.burrow.near eth.bridge.near": "50573762097105213615",
+ "supply": {
+  "nbtc.bridge.near": "17494918025",
+  "eth.bridge.near": "2130230689403653810519"
+ },
+ "aurora eth.bridge.near": "1434103683756772844742",
+ "aurora nbtc.bridge.near": "0",
+ "aurora.get_version": "3.11.1\n",
+ "aurora.get_eth_connector_contract_account": "\u000f\u0000\u0000\u0000eth.bridge.near",
+ "aurora.get_bridge_prover": {
+  "__error__": "wasm execution failed with error: MethodResolveError(MethodNotFound)",
+  "block_height": 223210175
+ },
+ "aurora.ft_total_eth_supply_on_near": {
+  "__error__": "wasm execution failed with error: MethodResolveError(MethodNotFound)",
+  "block_height": 223210176
+ }
+}

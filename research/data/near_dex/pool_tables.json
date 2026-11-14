@@ -1,0 +1,6410 @@
+{
+ "block_height": 223207588,
+ "groups": {
+  "nbtc.bridge.near": [
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 6425,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 25,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "13680785",
+      "human": "0.13680785",
+      "usd": 10363.675708128483
+     },
+     {
+      "token": "blackdragonbtc.tok.rune-shot.near",
+      "symbol": "BLACKDRAGONBTC",
+      "raw": "75889524796609622",
+      "human": "758895247.96609622",
+      "usd": 10496.819531042089
+     }
+    ],
+    "tvl_usd": 20860.495239170574,
+    "tvl_partial": false,
+    "shares": "1003758672893532643658388"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 6426,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 25,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "12976117",
+      "human": "0.12976117",
+      "usd": 9829.864919208441
+     },
+     {
+      "token": "jeffforgov.tok.rune-shot.near",
+      "symbol": "JEFFFORGOV",
+      "raw": "78312347931216302",
+      "human": "783123479.31216302",
+      "usd": 8775.571100026875
+     }
+    ],
+    "tvl_usd": 18605.436019235316,
+    "tvl_partial": false,
+    "shares": "1001608181510918089950777"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 5949,
+    "type": "DEGEN_SWAP",
+    "fee_bps": 30,
+    "amp": 10,
+    "legs": [
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "7702084",
+      "human": "0.07702084",
+      "usd": 5834.599465802954
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "1533742158774798012065120080",
+      "human": "1533.74215877479801206512008",
+      "usd": 5628.833722703509
+     }
+    ],
+    "tvl_usd": 11463.433188506462,
+    "tvl_partial": false,
+    "shares": "9380676821389277602959205971"
+   },
+   {
+    "contract": "dclv2.ref-labs.near",
+    "pool_id": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near|nbtc.bridge.near|2000",
+    "type": "DCL",
+    "fee_bps": 20.0,
+    "current_point": 0,
+    "liquidity_at_point": "0",
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "13724",
+      "human": "0.00013724",
+      "usd": 10.406223
+     },
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "1846560",
+      "human": "0.0184656",
+      "usd": 1398.8341323689929
+     }
+    ],
+    "tvl_usd": 1409.2403553689928,
+    "tvl_partial": false,
+    "total_order_x": "0",
+    "total_order_y": "86",
+    "state": "Running"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 6664,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 300,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "607688",
+      "human": "0.00607688",
+      "usd": 460.3450287188332
+     },
+     {
+      "token": "lst.rhealab.near",
+      "symbol": "rNEAR",
+      "raw": "113999865889492247067167992",
+      "human": "113.999865889492247067167992",
+      "usd": 446.14159708418526
+     }
+    ],
+    "tvl_usd": 906.4866258030185,
+    "tvl_partial": false,
+    "shares": "67013602022983935276727"
+   },
+   {
+    "contract": "dclv2.ref-labs.near",
+    "pool_id": "nbtc.bridge.near|wrap.near|400",
+    "type": "DCL",
+    "fee_bps": 4.0,
+    "current_point": 467472,
+    "liquidity_at_point": "0",
+    "legs": [
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "269",
+      "human": "0.00000269",
+      "usd": 0.20377695910626198
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "200029162020727563144622832",
+      "human": "200.029162020727563144622832",
+      "usd": 734.1070246160701
+     }
+    ],
+    "tvl_usd": 734.3108015751765,
+    "tvl_partial": false,
+    "total_order_x": "268",
+    "total_order_y": "0",
+    "state": "Running"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 5991,
+    "type": "RATED_SWAP",
+    "fee_bps": 5,
+    "amp": 100,
+    "legs": [
+     {
+      "token": "31761a152f1e96f966c041291644129144233b0b.factory.bridge.near",
+      "symbol": "aBTC",
+      "raw": "3915354591191412",
+      "human": "0.003915354591191412",
+      "usd": 275.5757130359831
+     },
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "121284",
+      "human": "0.00121284",
+      "usd": 91.87689482618542
+     }
+    ],
+    "tvl_usd": 367.45260786216846,
+    "tvl_partial": false,
+    "shares": "5116537088211948458112"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 6424,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "dog-bitcoin.near",
+      "symbol": "DOG",
+      "raw": "3781379879230",
+      "human": "37813.7987923",
+      "usd": 49.30067289887538
+     },
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "63272",
+      "human": "0.00063272",
+      "usd": 47.9307648943175
+     }
+    ],
+    "tvl_usd": 97.23143779319288,
+    "tvl_partial": false,
+    "shares": "21130594882891510880575"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 6720,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 188,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "20117",
+      "human": "0.00020117",
+      "usd": 15.239334893459747
+     },
+     {
+      "token": "lst.rhealab.near",
+      "symbol": "rNEAR",
+      "raw": "3814837956541439247057036",
+      "human": "3.814837956541439247057036",
+      "usd": 14.929472813578482
+     }
+    ],
+    "tvl_usd": 30.16880770703823,
+    "tvl_partial": false,
+    "shares": "721705539629975922328"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 6414,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "mineminemine.tkn.primitives.near",
+      "symbol": "MINEMINEMINE",
+      "raw": "7296516371709",
+      "human": "72965.16371709",
+      "usd": 3.5539173747541883
+     },
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "2737",
+      "human": "0.00002737",
+      "usd": 2.073373743768918
+     }
+    ],
+    "tvl_usd": 5.6272911185231065,
+    "tvl_partial": false,
+    "shares": "2313342618232778150821"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 5972,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 1,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "1593",
+      "human": "0.00001593",
+      "usd": 1.206753516194332
+     },
+     {
+      "token": "uniinstwo.tknx.near",
+      "symbol": "UniINSTwo",
+      "raw": "94357252829621",
+      "human": "94357252.829621",
+      "usd": 1.5635467843946953
+     }
+    ],
+    "tvl_usd": 2.770300300589027,
+    "tvl_partial": false,
+    "shares": "1000073954920413721271892"
+   },
+   {
+    "contract": "dclv2.ref-labs.near",
+    "pool_id": "hbsc.tkn.near|nbtc.bridge.near|400",
+    "type": "DCL",
+    "fee_bps": 4.0,
+    "current_point": -368432,
+    "liquidity_at_point": "0",
+    "legs": [
+     {
+      "token": "hbsc.tkn.near",
+      "symbol": "HBSC",
+      "raw": "99760000846111274396",
+      "human": "99.760000846111274396",
+      "usd": 0.10709601489234777
+     },
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "25",
+      "human": "2.5E-7",
+      "usd": 0.018938379099094977
+     }
+    ],
+    "tvl_usd": 0.12603439399144276,
+    "tvl_partial": false,
+    "total_order_x": "99760000846111274396",
+    "total_order_y": "0",
+    "state": "Running"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 6737,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 0,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "84",
+      "human": "8.4E-7",
+      "usd": 0.06363295377295913
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "15313033320315927984717",
+      "human": "0.015313033320315927984717",
+      "usd": 0.056198832285559455
+     }
+    ],
+    "tvl_usd": 0.11983178605851859,
+    "tvl_partial": false,
+    "shares": "102348721499021571810"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 6486,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "39",
+      "human": "3.9E-7",
+      "usd": 0.029543871394588167
+     },
+     {
+      "token": "gp.token0.near",
+      "symbol": "GP",
+      "raw": "8133101650526985382268",
+      "human": "8133.101650526985382268",
+      "usd": 0.021175083198059243
+     }
+    ],
+    "tvl_usd": 0.05071895459264741,
+    "tvl_partial": false,
+    "shares": "558182581381333898371"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 6438,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 0,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "22",
+      "human": "2.2E-7",
+      "usd": 0.01666577360720358
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "5173402110432986294330",
+      "human": "0.00517340211043298629433",
+      "usd": 0.01898638574528906
+     }
+    ],
+    "tvl_usd": 0.03565215935249264,
+    "tvl_partial": false,
+    "shares": "12782144975647605294"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 6437,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 0,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "651549082586684926151",
+      "human": "0.000651549082586684926151",
+      "usd": 0.002391185133093134
+     },
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "3",
+      "human": "3E-8",
+      "usd": 0.0022726054918913974
+     }
+    ],
+    "tvl_usd": 0.004663790624984531,
+    "tvl_partial": false,
+    "shares": "1314179088515917578"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 6495,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "2",
+      "human": "2E-8",
+      "usd": 0.0015165
+     },
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "2",
+      "human": "2E-8",
+      "usd": 0.0015150703279275984
+     }
+    ],
+    "tvl_usd": 0.003031570327927598,
+    "tvl_partial": false,
+    "shares": "16221701003924190006"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 6746,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "hbsc.tkn.near",
+      "symbol": "HBSC",
+      "raw": "458079758206055674",
+      "human": "0.458079758206055674",
+      "usd": 0.0004917653988635781
+     },
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "1",
+      "human": "1E-8",
+      "usd": 0.0007575351639637992
+     }
+    ],
+    "tvl_usd": 0.0012493005628273772,
+    "tvl_partial": false,
+    "shares": "116102736314818979371"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 5968,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 1,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "uniinscription.tknx.near",
+      "symbol": "UniINSCRIPTION",
+      "raw": "0",
+      "human": "0",
+      "usd": null
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": true,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 5969,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 1,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "uniinscription.tknx.near",
+      "symbol": "UniINSCRIPTION",
+      "raw": "0",
+      "human": "0",
+      "usd": null
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": true,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 5970,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 1,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "uniinscription.tknx.near",
+      "symbol": "UniINSCRIPTION",
+      "raw": "0",
+      "human": "0",
+      "usd": null
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": true,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 5971,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 1,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "uniinscription.tknx.near",
+      "symbol": "UniINSCRIPTION",
+      "raw": "0",
+      "human": "0",
+      "usd": null
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": true,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 5983,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 20,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 5984,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 20,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 5985,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 20,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 5986,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 60,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 5987,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 40,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 5988,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 40,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 5989,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 10,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 6435,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 2,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "dclv2.ref-labs.near",
+    "pool_id": "nbtc.bridge.near|wrap.near|100",
+    "type": "DCL",
+    "fee_bps": 1.0,
+    "current_point": 471333,
+    "liquidity_at_point": "0",
+    "legs": [
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "total_order_x": "0",
+    "total_order_y": "0",
+    "state": "Running"
+   }
+  ],
+  "eth.bridge.near": [
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 6354,
+    "type": "DEGEN_SWAP",
+    "fee_bps": 30,
+    "amp": 10,
+    "legs": [
+     {
+      "token": "eth.bridge.near",
+      "symbol": "ETH",
+      "raw": "2129844217350921337",
+      "human": "2.129844217350921337",
+      "usd": 4763.153641330227
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "1210713734599003568649811350",
+      "human": "1210.71373459900356864981135",
+      "usd": 4443.319405978343
+     }
+    ],
+    "tvl_usd": 9206.473047308571,
+    "tvl_partial": false,
+    "shares": "4219391504058081133178638902"
+   },
+   {
+    "contract": "dclv2.ref-labs.near",
+    "pool_id": "eth.bridge.near|puncs.nearlytrade.near|10000",
+    "type": "DCL",
+    "fee_bps": 100.0,
+    "current_point": 199253,
+    "liquidity_at_point": "2293898454928956708",
+    "legs": [
+     {
+      "token": "eth.bridge.near",
+      "symbol": "ETH",
+      "raw": "58468260153432723",
+      "human": "0.058468260153432723",
+      "usd": 130.75759437394592
+     },
+     {
+      "token": "puncs.nearlytrade.near",
+      "symbol": "PUNCS",
+      "raw": "973186903954176741947819220",
+      "human": "973186903.95417674194781922",
+      "usd": 5759.398054112205
+     }
+    ],
+    "tvl_usd": 5890.15564848615,
+    "tvl_partial": false,
+    "total_order_x": "0",
+    "total_order_y": "0",
+    "state": "Running"
+   },
+   {
+    "contract": "dclv2.ref-labs.near",
+    "pool_id": "eth.bridge.near|npepe.nearlytrade.near|10000",
+    "type": "DCL",
+    "fee_bps": 100.0,
+    "current_point": 200174,
+    "liquidity_at_point": "2226106848934805306",
+    "legs": [
+     {
+      "token": "eth.bridge.near",
+      "symbol": "ETH",
+      "raw": "23989360662571116",
+      "human": "0.023989360662571116",
+      "usd": 53.649468661718075
+     },
+     {
+      "token": "npepe.nearlytrade.near",
+      "symbol": "NPEPE",
+      "raw": "990116106966536973578820602",
+      "human": "990116106.966536973578820602",
+      "usd": 5381.839414336101
+     }
+    ],
+    "tvl_usd": 5435.488882997819,
+    "tvl_partial": false,
+    "total_order_x": "0",
+    "total_order_y": "0",
+    "state": "Running"
+   },
+   {
+    "contract": "dclv2.ref-labs.near",
+    "pool_id": "eth.bridge.near|usdt.tether-token.near|10000",
+    "type": "DCL",
+    "fee_bps": 100.0,
+    "current_point": -197257,
+    "liquidity_at_point": "0",
+    "legs": [
+     {
+      "token": "eth.bridge.near",
+      "symbol": "ETH",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "usdt.tether-token.near",
+      "symbol": "USDt",
+      "raw": "100000",
+      "human": "0.1",
+      "usd": 0.0998982
+     }
+    ],
+    "tvl_usd": 0.0998982,
+    "tvl_partial": false,
+    "total_order_x": "0",
+    "total_order_y": "100000",
+    "state": "Running"
+   },
+   {
+    "contract": "dclv2.ref-labs.near",
+    "pool_id": "eth.bridge.near|gp.token0.near|100",
+    "type": "DCL",
+    "fee_bps": 1.0,
+    "current_point": -1054,
+    "liquidity_at_point": "0",
+    "legs": [
+     {
+      "token": "eth.bridge.near",
+      "symbol": "ETH",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "gp.token0.near",
+      "symbol": "GP",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "total_order_x": "0",
+    "total_order_y": "0",
+    "state": "Running"
+   },
+   {
+    "contract": "dclv2.ref-labs.near",
+    "pool_id": "eth.bridge.near|test-69.nearlytrade.near|10000",
+    "type": "DCL",
+    "fee_bps": 100.0,
+    "current_point": 200600,
+    "liquidity_at_point": "0",
+    "legs": [
+     {
+      "token": "eth.bridge.near",
+      "symbol": "ETH",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "test-69.nearlytrade.near",
+      "symbol": "TEST",
+      "raw": "999999999999999999728257166",
+      "human": "999999999.999999999728257166",
+      "usd": null
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": true,
+    "total_order_x": "0",
+    "total_order_y": "0",
+    "state": "Running"
+   },
+   {
+    "contract": "dclv2.ref-labs.near",
+    "pool_id": "eth.bridge.near|test-102.nearlytrade.near|10000",
+    "type": "DCL",
+    "fee_bps": 100.0,
+    "current_point": 200600,
+    "liquidity_at_point": "0",
+    "legs": [
+     {
+      "token": "eth.bridge.near",
+      "symbol": "ETH",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "test-102.nearlytrade.near",
+      "symbol": "TEST",
+      "raw": "999999999999999999728257166",
+      "human": "999999999.999999999728257166",
+      "usd": null
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": true,
+    "total_order_x": "0",
+    "total_order_y": "0",
+    "state": "Running"
+   },
+   {
+    "contract": "dclv2.ref-labs.near",
+    "pool_id": "eth.bridge.near|zec.omft.near|2000",
+    "type": "DCL",
+    "fee_bps": 20.0,
+    "current_point": -223028,
+    "liquidity_at_point": "0",
+    "legs": [
+     {
+      "token": "eth.bridge.near",
+      "symbol": "ETH",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "zec.omft.near",
+      "symbol": "ZEC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "total_order_x": "0",
+    "total_order_y": "0",
+    "state": "Running"
+   }
+  ],
+  "peer BTC: WBTC (Rainbow)": [
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2734,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "83160121",
+      "human": "0.83160121",
+      "usd": 63056.16174825
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "15886486106746796005",
+      "human": "15.886486106746796005",
+      "usd": 35663.25493131375
+     }
+    ],
+    "tvl_usd": 98719.41667956374,
+    "tvl_partial": false,
+    "shares": "46479152450107091740873542"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 974,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "4806541477039366241093703971",
+      "human": "4806.541477039366241093703971",
+      "usd": 17640.007220734475
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "23297521",
+      "human": "0.23297521",
+      "usd": 17665.34529825
+     }
+    ],
+    "tvl_usd": 35305.35251898447,
+    "tvl_partial": false,
+    "shares": "16781700992322136374062474"
+   },
+   {
+    "contract": "dclv2.ref-labs.near",
+    "pool_id": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near|btc.nearlytrade.near|10000",
+    "type": "DCL",
+    "fee_bps": 100.0,
+    "current_point": 462307,
+    "liquidity_at_point": "3960723719253",
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "984027",
+      "human": "0.00984027",
+      "usd": 746.13847275
+     },
+     {
+      "token": "btc.nearlytrade.near",
+      "symbol": "BTC",
+      "raw": "865998724043277615669634870",
+      "human": "865998724.04327761566963487",
+      "usd": 5899.664481090268
+     }
+    ],
+    "tvl_usd": 6645.802953840268,
+    "tvl_partial": false,
+    "total_order_x": "0",
+    "total_order_y": "0",
+    "state": "Running"
+   },
+   {
+    "contract": "dclv2.ref-labs.near",
+    "pool_id": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near|xbt.nearlytrade.near|10000",
+    "type": "DCL",
+    "fee_bps": 100.0,
+    "current_point": 464790,
+    "liquidity_at_point": "4040731605394",
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "4097",
+      "human": "0.00004097",
+      "usd": 3.10655025
+     },
+     {
+      "token": "xbt.nearlytrade.near",
+      "symbol": "XBT",
+      "raw": "999773150337516874782976561",
+      "human": "999773150.337516874782976561",
+      "usd": 5397.73599058035
+     }
+    ],
+    "tvl_usd": 5400.84254083035,
+    "tvl_partial": false,
+    "total_order_x": "0",
+    "total_order_y": "0",
+    "state": "Running"
+   },
+   {
+    "contract": "dclv2.ref-labs.near",
+    "pool_id": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near|mim-5.nearlytrade.near|10000",
+    "type": "DCL",
+    "fee_bps": 100.0,
+    "current_point": 464823,
+    "liquidity_at_point": "3960723719253",
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "119488",
+      "human": "0.00119488",
+      "usd": 90.601776
+     },
+     {
+      "token": "mim-5.nearlytrade.near",
+      "symbol": "MIM",
+      "raw": "981355279072644917651375264",
+      "human": "981355279.072644917651375264",
+      "usd": 5252.010475950444
+     }
+    ],
+    "tvl_usd": 5342.612251950444,
+    "tvl_partial": false,
+    "total_order_x": "0",
+    "total_order_y": "0",
+    "state": "Running"
+   },
+   {
+    "contract": "dclv2.ref-labs.near",
+    "pool_id": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near|mim-3.nearlytrade.near|10000",
+    "type": "DCL",
+    "fee_bps": 100.0,
+    "current_point": 464998,
+    "liquidity_at_point": "4000527654275",
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "723",
+      "human": "0.00000723",
+      "usd": 0.54821475
+     },
+     {
+      "token": "mim-3.nearlytrade.near",
+      "symbol": "MIM",
+      "raw": "999925260439606039847394501",
+      "human": "999925260.439606039847394501",
+      "usd": 5317.556367161466
+     }
+    ],
+    "tvl_usd": 5318.104581911467,
+    "tvl_partial": false,
+    "total_order_x": "0",
+    "total_order_y": "0",
+    "state": "Running"
+   },
+   {
+    "contract": "dclv2.ref-labs.near",
+    "pool_id": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near|saylormoon.nearlytrade.near|10000",
+    "type": "DCL",
+    "fee_bps": 100.0,
+    "current_point": 465179,
+    "liquidity_at_point": "3960723719253",
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "7932",
+      "human": "0.00007932",
+      "usd": 6.014439
+     },
+     {
+      "token": "saylormoon.nearlytrade.near",
+      "symbol": "SAYLORMOON",
+      "raw": "999952114767973819061719593",
+      "human": "999952114.767973819061719593",
+      "usd": 5181.704666795483
+     }
+    ],
+    "tvl_usd": 5187.719105795482,
+    "tvl_partial": false,
+    "total_order_x": "0",
+    "total_order_y": "0",
+    "state": "Running"
+   },
+   {
+    "contract": "dclv2.ref-labs.near",
+    "pool_id": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near|buckazoids.nearlytrade.near|10000",
+    "type": "DCL",
+    "fee_bps": 100.0,
+    "current_point": 465180,
+    "liquidity_at_point": "3960723719253",
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "7332",
+      "human": "0.00007332",
+      "usd": 5.559489
+     },
+     {
+      "token": "buckazoids.nearlytrade.near",
+      "symbol": "BUCKAZOIDS",
+      "raw": "999994318850227379466738729",
+      "human": "999994318.850227379466738729",
+      "usd": 5181.573926373179
+     }
+    ],
+    "tvl_usd": 5187.13341537318,
+    "tvl_partial": false,
+    "total_order_x": "0",
+    "total_order_y": "0",
+    "state": "Running"
+   },
+   {
+    "contract": "dclv2.ref-labs.near",
+    "pool_id": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near|boshi.nearlytrade.near|10000",
+    "type": "DCL",
+    "fee_bps": 100.0,
+    "current_point": 465590,
+    "liquidity_at_point": "3882300016986",
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "3396",
+      "human": "0.00003396",
+      "usd": 2.575017
+     },
+     {
+      "token": "boshi.nearlytrade.near",
+      "symbol": "BOSHI",
+      "raw": "999716534760400974332277800",
+      "human": "999716534.7604009743322778",
+      "usd": 5124.740050569586
+     }
+    ],
+    "tvl_usd": 5127.315067569585,
+    "tvl_partial": false,
+    "total_order_x": "0",
+    "total_order_y": "0",
+    "state": "Running"
+   },
+   {
+    "contract": "dclv2.ref-labs.near",
+    "pool_id": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near|sail.nearlytrade.near|10000",
+    "type": "DCL",
+    "fee_bps": 100.0,
+    "current_point": 465584,
+    "liquidity_at_point": "3882300016986",
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "5594",
+      "human": "0.00005594",
+      "usd": 4.2416505
+     },
+     {
+      "token": "sail.nearlytrade.near",
+      "symbol": "SAIL",
+      "raw": "999449881069697565726688521",
+      "human": "999449881.069697565726688521",
+      "usd": 4850.070786028831
+     }
+    ],
+    "tvl_usd": 4854.312436528831,
+    "tvl_partial": false,
+    "total_order_x": "0",
+    "total_order_y": "0",
+    "state": "Running"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3364,
+    "type": "STABLE_SWAP",
+    "fee_bps": 5,
+    "amp": 240,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "472711",
+      "human": "0.00472711",
+      "usd": 358.43311575
+     },
+     {
+      "token": "0316eb71485b0ab14103307bf65a021042c6d380.factory.bridge.near",
+      "symbol": "HBTC",
+      "raw": "2132230934867574701",
+      "human": "2.132230934867574701",
+      "usd": 4411.031424197947
+     }
+    ],
+    "tvl_usd": 4769.464539947947,
+    "tvl_partial": false,
+    "shares": "1945989766735646042"
+   },
+   {
+    "contract": "dclv2.ref-labs.near",
+    "pool_id": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near|qbtc.nearlytrade.near|10000",
+    "type": "DCL",
+    "fee_bps": 100.0,
+    "current_point": 465370,
+    "liquidity_at_point": "3921315820300",
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "11088",
+      "human": "0.00011088",
+      "usd": 8.407476
+     },
+     {
+      "token": "qbtc.nearlytrade.near",
+      "symbol": "QBTC",
+      "raw": "999645888802905933131664571",
+      "human": "999645888.802905933131664571",
+      "usd": 4747.033123321285
+     }
+    ],
+    "tvl_usd": 4755.440599321284,
+    "tvl_partial": false,
+    "total_order_x": "0",
+    "total_order_y": "0",
+    "state": "Running"
+   },
+   {
+    "contract": "dclv2.ref-labs.near",
+    "pool_id": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near|nbtc.bridge.near|2000",
+    "type": "DCL",
+    "fee_bps": 20.0,
+    "current_point": 0,
+    "liquidity_at_point": "0",
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "13724",
+      "human": "0.00013724",
+      "usd": 10.406223
+     },
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "1846560",
+      "human": "0.0184656",
+      "usd": 1398.8341323689929
+     }
+    ],
+    "tvl_usd": 1409.2403553689928,
+    "tvl_partial": false,
+    "total_order_x": "0",
+    "total_order_y": "86",
+    "state": "Running"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 5369,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 77,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "token.pumpopoly.near",
+      "symbol": "PUMPOPOLY",
+      "raw": "60566259412687367946617638",
+      "human": "60.566259412687367946617638",
+      "usd": 234.56331232551432
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "315531",
+      "human": "0.00315531",
+      "usd": 239.25138075
+     }
+    ],
+    "tvl_usd": 473.8146930755143,
+    "tvl_partial": false,
+    "shares": "2207867010209225582266025"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3727,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 1990,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "104216",
+      "human": "0.00104216",
+      "usd": 79.021782
+     },
+     {
+      "token": "usdt.tether-token.near",
+      "symbol": "USDt",
+      "raw": "73553523",
+      "human": "73.553523",
+      "usd": 73.478645513586
+     }
+    ],
+    "tvl_usd": 152.500427513586,
+    "tvl_partial": false,
+    "shares": "2005933228015905256479983"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 5429,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "c.tkn.near",
+      "symbol": "C",
+      "raw": "20046701440912436080746811",
+      "human": "20046701.440912436080746811",
+      "usd": 23.381024267027215
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "30664",
+      "human": "0.00030664",
+      "usd": 23.250978
+     }
+    ],
+    "tvl_usd": 46.63200226702722,
+    "tvl_partial": false,
+    "shares": "1487995873006123077486144"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 4239,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "5740772252382548843603584",
+      "human": "5.740772252382548843603584",
+      "usd": 21.068634166243953
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "28038",
+      "human": "0.00028038",
+      "usd": 21.2598135
+     }
+    ],
+    "tvl_usd": 42.32844766624395,
+    "tvl_partial": false,
+    "shares": "3697978815901181936384"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3040,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 60,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "meta-pool.near",
+      "symbol": "STNEAR",
+      "raw": "381024321931766695445628",
+      "human": "0.381024321931766695445628",
+      "usd": 2.115930329292946
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "2885",
+      "human": "0.00002885",
+      "usd": 2.18755125
+     }
+    ],
+    "tvl_usd": 4.303481579292946,
+    "tvl_partial": false,
+    "shares": "1069417458313630925467"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 5864,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 43,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "lucky-273.meme-cooking.near",
+      "symbol": "LUCKY",
+      "raw": "17072474553695934117068434",
+      "human": "17072474.553695934117068434",
+      "usd": 1.4748057143210234
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "1966",
+      "human": "0.00001966",
+      "usd": 1.4907195
+     }
+    ],
+    "tvl_usd": 2.965525214321023,
+    "tvl_partial": false,
+    "shares": "1004083540580669314113830"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2749,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "1198",
+      "human": "0.00001198",
+      "usd": 0.9083835
+     },
+     {
+      "token": "token.v2.ref-finance.near",
+      "symbol": "REF",
+      "raw": "13124502300598843927",
+      "human": "13.124502300598843927",
+      "usd": 0.7540084060032748
+     }
+    ],
+    "tvl_usd": 1.6623919060032748,
+    "tvl_partial": false,
+    "shares": "1020441821556236020481947"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3139,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 10,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "dac17f958d2ee523a2206206994597c13d831ec7.factory.bridge.near",
+      "symbol": "USDT.e",
+      "raw": "157134",
+      "human": "0.157134",
+      "usd": 0.156974037588
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "191",
+      "human": "0.00000191",
+      "usd": 0.14482575
+     }
+    ],
+    "tvl_usd": 0.301799787588,
+    "tvl_partial": false,
+    "shares": "85258006166360353764"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 4176,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 120,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "token.sweat",
+      "symbol": "SWEAT",
+      "raw": "1430118371398908449822",
+      "human": "1430.118371398908449822",
+      "usd": 0.10445554695223665
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "185",
+      "human": "0.00000185",
+      "usd": 0.14027625
+     }
+    ],
+    "tvl_usd": 0.24473179695223665,
+    "tvl_partial": false,
+    "shares": "29763234305625592042679"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2758,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 60,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "3628674886290884129914",
+      "human": "0.003628674886290884129914",
+      "usd": 0.013317236832687545
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "17",
+      "human": "1.7E-7",
+      "usd": 0.01289025
+     }
+    ],
+    "tvl_usd": 0.026207486832687546,
+    "tvl_partial": false,
+    "shares": "137198483885684421738"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3164,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "3243492292476641315477",
+      "human": "0.003243492292476641315477",
+      "usd": 0.011903616713389274
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "16",
+      "human": "1.6E-7",
+      "usd": 0.012132
+     }
+    ],
+    "tvl_usd": 0.024035616713389274,
+    "tvl_partial": false,
+    "shares": "71889002309457053288"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 5554,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 20,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "13",
+      "human": "1.3E-7",
+      "usd": 0.00985725
+     },
+     {
+      "token": "nersig-282.meme-cooking.near",
+      "symbol": "NERSIG",
+      "raw": "2529456559426369601519",
+      "human": "2529.456559426369601519",
+      "usd": 0.007811431184267891
+     }
+    ],
+    "tvl_usd": 0.01766868118426789,
+    "tvl_partial": false,
+    "shares": "139632560473757592569"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3898,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 10,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "4",
+      "human": "4E-8",
+      "usd": 0.003033
+     },
+     {
+      "token": "t.tkn.near",
+      "symbol": "T",
+      "raw": "172832312579660844203",
+      "human": "172.832312579660844203",
+      "usd": 0.003960657315991727
+     }
+    ],
+    "tvl_usd": 0.006993657315991727,
+    "tvl_partial": false,
+    "shares": "8795368219888419155885"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3235,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "567019330979224061933",
+      "human": "0.000567019330979224061933",
+      "usd": 0.0020809609446937522
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "3",
+      "human": "3E-8",
+      "usd": 0.00227475
+     }
+    ],
+    "tvl_usd": 0.0043557109446937525,
+    "tvl_partial": false,
+    "shares": "12474833959023907666"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 6495,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "2",
+      "human": "2E-8",
+      "usd": 0.0015165
+     },
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "2",
+      "human": "2E-8",
+      "usd": 0.0015150703279275984
+     }
+    ],
+    "tvl_usd": 0.003031570327927598,
+    "tvl_partial": false,
+    "shares": "16221701003924190006"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 673,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.factory.bridge.near",
+      "symbol": "WETH",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 973,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 1154,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.factory.bridge.near",
+      "symbol": "WETH",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 1249,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2746,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 20,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.factory.bridge.near",
+      "symbol": "WETH",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2747,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2755,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 20,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2756,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2757,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2759,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2760,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2761,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2773,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2774,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2775,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2776,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2783,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2794,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2805,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 20,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2806,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2807,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2808,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 20,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2812,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2813,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2848,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2864,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2865,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2866,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2905,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2906,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3154,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3157,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3158,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3159,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 20,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3177,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 20,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3181,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3227,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3228,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3260,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3263,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3264,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3322,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "usn",
+      "symbol": "USN",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3333,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "0316eb71485b0ab14103307bf65a021042c6d380.factory.bridge.near",
+      "symbol": "HBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3363,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3365,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "0316eb71485b0ab14103307bf65a021042c6d380.factory.bridge.near",
+      "symbol": "HBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3399,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "0316eb71485b0ab14103307bf65a021042c6d380.factory.bridge.near",
+      "symbol": "HBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3531,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3619,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "hrt.tkn.near",
+      "symbol": "HRT",
+      "raw": "0",
+      "human": "0",
+      "usd": null
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": true,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3641,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3643,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3644,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3809,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "usdt.tether-token.near",
+      "symbol": "USDt",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 4238,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 4836,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "pussy.laboratory.jumpfinance.near",
+      "symbol": "PUSSY",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 5036,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "pussy.laboratory.jumpfinance.near",
+      "symbol": "PUSSY",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 5401,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "dac17f958d2ee523a2206206994597c13d831ec7.factory.bridge.near",
+      "symbol": "USDT.e",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 5840,
+    "type": "DEGEN_SWAP",
+    "fee_bps": 30,
+    "amp": 40,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
+      "symbol": "USDC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "dclv2.ref-labs.near",
+    "pool_id": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near|bob.nearlytrade.near|10000",
+    "type": "DCL",
+    "fee_bps": 100.0,
+    "current_point": 465400,
+    "liquidity_at_point": "0",
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "bob.nearlytrade.near",
+      "symbol": "BOB",
+      "raw": "999999999999844776542095103",
+      "human": "999999999.999844776542095103",
+      "usd": null
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": true,
+    "total_order_x": "0",
+    "total_order_y": "0",
+    "state": "Running"
+   },
+   {
+    "contract": "dclv2.ref-labs.near",
+    "pool_id": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near|poop.nearlytrade.near|10000",
+    "type": "DCL",
+    "fee_bps": 100.0,
+    "current_point": 465400,
+    "liquidity_at_point": "0",
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "poop.nearlytrade.near",
+      "symbol": "POOP",
+      "raw": "999999999999844776542095103",
+      "human": "999999999.999844776542095103",
+      "usd": null
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": true,
+    "total_order_x": "0",
+    "total_order_y": "0",
+    "state": "Running"
+   },
+   {
+    "contract": "dclv2.ref-labs.near",
+    "pool_id": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near|abtc.nearlytrade.near|10000",
+    "type": "DCL",
+    "fee_bps": 100.0,
+    "current_point": 465400,
+    "liquidity_at_point": "0",
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "abtc.nearlytrade.near",
+      "symbol": "ABTC",
+      "raw": "999999999999844776542095103",
+      "human": "999999999.999844776542095103",
+      "usd": null
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": true,
+    "total_order_x": "0",
+    "total_order_y": "0",
+    "state": "Running"
+   },
+   {
+    "contract": "dclv2.ref-labs.near",
+    "pool_id": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near|mim-2.nearlytrade.near|10000",
+    "type": "DCL",
+    "fee_bps": 100.0,
+    "current_point": 465400,
+    "liquidity_at_point": "0",
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "mim-2.nearlytrade.near",
+      "symbol": "MIM",
+      "raw": "999999999999844776542095103",
+      "human": "999999999.999844776542095103",
+      "usd": null
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": true,
+    "total_order_x": "0",
+    "total_order_y": "0",
+    "state": "Running"
+   },
+   {
+    "contract": "dclv2.ref-labs.near",
+    "pool_id": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near|pizza-2.nearlytrade.near|10000",
+    "type": "DCL",
+    "fee_bps": 100.0,
+    "current_point": 465200,
+    "liquidity_at_point": "0",
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "pizza-2.nearlytrade.near",
+      "symbol": "PIZZA",
+      "raw": "999999999999911274841840148",
+      "human": "999999999.999911274841840148",
+      "usd": null
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": true,
+    "total_order_x": "0",
+    "total_order_y": "0",
+    "state": "Running"
+   },
+   {
+    "contract": "dclv2.ref-labs.near",
+    "pool_id": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near|test-68.nearlytrade.near|10000",
+    "type": "DCL",
+    "fee_bps": 100.0,
+    "current_point": 465200,
+    "liquidity_at_point": "0",
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "test-68.nearlytrade.near",
+      "symbol": "TEST",
+      "raw": "999999999999911274841840148",
+      "human": "999999999.999911274841840148",
+      "usd": null
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": true,
+    "total_order_x": "0",
+    "total_order_y": "0",
+    "state": "Running"
+   },
+   {
+    "contract": "dclv2.ref-labs.near",
+    "pool_id": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near|test-101.nearlytrade.near|10000",
+    "type": "DCL",
+    "fee_bps": 100.0,
+    "current_point": 465200,
+    "liquidity_at_point": "0",
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "test-101.nearlytrade.near",
+      "symbol": "TEST",
+      "raw": "999999999999911274841840148",
+      "human": "999999999.999911274841840148",
+      "usd": null
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": true,
+    "total_order_x": "0",
+    "total_order_y": "0",
+    "state": "Running"
+   }
+  ],
+  "peer BTC: HBTC (Rainbow)": [
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3364,
+    "type": "STABLE_SWAP",
+    "fee_bps": 5,
+    "amp": 240,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "472711",
+      "human": "0.00472711",
+      "usd": 358.43311575
+     },
+     {
+      "token": "0316eb71485b0ab14103307bf65a021042c6d380.factory.bridge.near",
+      "symbol": "HBTC",
+      "raw": "2132230934867574701",
+      "human": "2.132230934867574701",
+      "usd": 4411.031424197947
+     }
+    ],
+    "tvl_usd": 4769.464539947947,
+    "tvl_partial": false,
+    "shares": "1945989766735646042"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3333,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "0316eb71485b0ab14103307bf65a021042c6d380.factory.bridge.near",
+      "symbol": "HBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3365,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "0316eb71485b0ab14103307bf65a021042c6d380.factory.bridge.near",
+      "symbol": "HBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3399,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "0316eb71485b0ab14103307bf65a021042c6d380.factory.bridge.near",
+      "symbol": "HBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   }
+  ],
+  "peer BTC: btc.omft.near": [],
+  "peer BTC: aBTC (Rainbow 0x3176...)": [
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 5991,
+    "type": "RATED_SWAP",
+    "fee_bps": 5,
+    "amp": 100,
+    "legs": [
+     {
+      "token": "31761a152f1e96f966c041291644129144233b0b.factory.bridge.near",
+      "symbol": "aBTC",
+      "raw": "3915354591191412",
+      "human": "0.003915354591191412",
+      "usd": 275.5757130359831
+     },
+     {
+      "token": "nbtc.bridge.near",
+      "symbol": "NBTC",
+      "raw": "121284",
+      "human": "0.00121284",
+      "usd": 91.87689482618542
+     }
+    ],
+    "tvl_usd": 367.45260786216846,
+    "tvl_partial": false,
+    "shares": "5116537088211948458112"
+   }
+  ],
+  "peer ETH: aurora (nETH)": [
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2734,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "83160121",
+      "human": "0.83160121",
+      "usd": 63056.16174825
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "15886486106746796005",
+      "human": "15.886486106746796005",
+      "usd": 35663.25493131375
+     }
+    ],
+    "tvl_usd": 98719.41667956374,
+    "tvl_partial": false,
+    "shares": "46479152450107091740873542"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 1207,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "7659867604984270013",
+      "human": "7.659867604984270013",
+      "usd": 17195.48358907709
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "8195069769373062989116925644",
+      "human": "8195.069769373062989116925644",
+      "usd": 30075.90605359914
+     }
+    ],
+    "tvl_usd": 47271.38964267623,
+    "tvl_partial": false,
+    "shares": "97584179978746167036904194"
+   },
+   {
+    "contract": "dclv2.ref-labs.near",
+    "pool_id": "a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.factory.bridge.near|aurora|2000",
+    "type": "DCL",
+    "fee_bps": 20.0,
+    "current_point": 192600,
+    "liquidity_at_point": "0",
+    "legs": [
+     {
+      "token": "a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.factory.bridge.near",
+      "symbol": "USDC.e",
+      "raw": "144553801",
+      "human": "144.553801",
+      "usd": 144.479789453888
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "101196749086467738",
+      "human": "0.101196749086467738",
+      "usd": 227.1745580892297
+     }
+    ],
+    "tvl_usd": 371.6543475431177,
+    "tvl_partial": false,
+    "total_order_x": "7030000",
+    "total_order_y": "119812356753",
+    "state": "Running"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3728,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 1990,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "usdt.tether-token.near",
+      "symbol": "USDt",
+      "raw": "90010829",
+      "human": "90.010829",
+      "usd": 89.919197976078
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "18918356305717302",
+      "human": "0.018918356305717302",
+      "usd": 42.46943970357866
+     }
+    ],
+    "tvl_usd": 132.38863767965665,
+    "tvl_partial": false,
+    "shares": "412965906257609213877855"
+   },
+   {
+    "contract": "dclv2.ref-labs.near",
+    "pool_id": "aurora|wrap.near|2000",
+    "type": "DCL",
+    "fee_bps": 20.0,
+    "current_point": 202680,
+    "liquidity_at_point": "1190465682792",
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "19272286244752",
+      "human": "0.000019272286244752",
+      "usd": 0.04326396994511887
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "33003543611955432426148960",
+      "human": "33.00354361195543242614896",
+      "usd": 121.12300505587643
+     }
+    ],
+    "tvl_usd": 121.16626902582155,
+    "tvl_partial": false,
+    "total_order_x": "0",
+    "total_order_y": "33000000000000000000000000",
+    "state": "Running"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 5992,
+    "type": "DEGEN_SWAP",
+    "fee_bps": 30,
+    "amp": 60,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "1107433281710526",
+      "human": "0.001107433281710526",
+      "usd": 2.4860548254463257
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "17799983862469325208317472",
+      "human": "17.799983862469325208317472",
+      "usd": 65.32594077526242
+     }
+    ],
+    "tvl_usd": 67.81199560070876,
+    "tvl_partial": false,
+    "shares": "43347035076022094806152382"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 4237,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "9142539769356398440338696",
+      "human": "9.142539769356398440338696",
+      "usd": 33.553120953537984
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "8520499833648262",
+      "human": "0.008520499833648262",
+      "usd": 19.12749966656031
+     }
+    ],
+    "tvl_usd": 52.680620620098296,
+    "tvl_partial": false,
+    "shares": "5984640871144006432224"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 5430,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "c.tkn.near",
+      "symbol": "C",
+      "raw": "22054133698577565008336935",
+      "human": "22054133.698577565008336935",
+      "usd": 25.722348223450908
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "6383216834947073",
+      "human": "0.006383216834947073",
+      "usd": 14.329555808435986
+     }
+    ],
+    "tvl_usd": 40.05190403188689,
+    "tvl_partial": false,
+    "shares": "1479406357671307374344239"
+   },
+   {
+    "contract": "dclv2.ref-labs.near",
+    "pool_id": "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1|aurora|10000",
+    "type": "DCL",
+    "fee_bps": 100.0,
+    "current_point": 193407,
+    "liquidity_at_point": "0",
+    "legs": [
+     {
+      "token": "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
+      "symbol": "USDC",
+      "raw": "12642837",
+      "human": "12.642837",
+      "usd": 12.636363867456
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "1201",
+      "human": "1.201E-15",
+      "usd": 2.69610088e-12
+     }
+    ],
+    "tvl_usd": 12.636363867458696,
+    "tvl_partial": false,
+    "total_order_x": "12000000",
+    "total_order_y": "0",
+    "state": "Running"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 5747,
+    "type": "DEGEN_SWAP",
+    "fee_bps": 30,
+    "amp": 10,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "1000000299688838",
+      "human": "0.001000000299688838",
+      "usd": 2.2448806727654786
+     },
+     {
+      "token": "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
+      "symbol": "USDC",
+      "raw": "8810384",
+      "human": "8.810384",
+      "usd": 8.805873083392
+     }
+    ],
+    "tvl_usd": 11.050753756157478,
+    "tvl_partial": false,
+    "shares": "12256141857304523437606799"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3023,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 19,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "marmaj.tkn.near",
+      "symbol": "marmaj",
+      "raw": "25141669505424953142",
+      "human": "25.141669505424953142",
+      "usd": 4.720352620797356
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "1227406308731254",
+      "human": "0.001227406308731254",
+      "usd": 2.7553798743446176
+     }
+    ],
+    "tvl_usd": 7.4757324951419735,
+    "tvl_partial": false,
+    "shares": "3323618277928097937998185"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 1251,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 60,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.factory.bridge.near",
+      "symbol": "WETH",
+      "raw": "1986084789635686",
+      "human": "0.001986084789635686",
+      "usd": 4.458680909340529
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "1105441920490246",
+      "human": "0.001105441920490246",
+      "usd": 2.4815844584701434
+     }
+    ],
+    "tvl_usd": 6.940265367810673,
+    "tvl_partial": false,
+    "shares": "7942471537444964888910"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 5835,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 33,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "lucky-273.meme-cooking.near",
+      "symbol": "LUCKY",
+      "raw": "44772698335654967611220982",
+      "human": "44772698.335654967611220982",
+      "usd": 3.8676895457255545
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "974005372186537",
+      "human": "0.000974005372186537",
+      "usd": 2.186525179914113
+     }
+    ],
+    "tvl_usd": 6.0542147256396674,
+    "tvl_partial": false,
+    "shares": "1505208220383784825824472"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3188,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 20,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "176481021058158993148779",
+      "human": "0.176481021058158993148779",
+      "usd": 0.6476853472834435
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "179133484128903",
+      "human": "0.000179133484128903",
+      "usd": 0.40213317585129177
+     }
+    ],
+    "tvl_usd": 1.0498185231347352,
+    "tvl_partial": false,
+    "shares": "1003173529345479986371834"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2837,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "45387286639132",
+      "human": "0.000045387286639132",
+      "usd": 0.10188901203045464
+     },
+     {
+      "token": "dac17f958d2ee523a2206206994597c13d831ec7.factory.bridge.near",
+      "symbol": "USDT.e",
+      "raw": "213052",
+      "human": "0.213052",
+      "usd": 0.212835113064
+     }
+    ],
+    "tvl_usd": 0.31472412509445463,
+    "tvl_partial": false,
+    "shares": "7593764084439266717752"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3436,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "13590963117131",
+      "human": "0.000013590963117131",
+      "usd": 0.03051008128238504
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "13816015459859287840837",
+      "human": "0.013816015459859287840837",
+      "usd": 0.05070477673768359
+     }
+    ],
+    "tvl_usd": 0.08121485802006863,
+    "tvl_partial": false,
+    "shares": "284004149987122592253"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 5553,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 20,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "1446609538718",
+      "human": "0.000001446609538718",
+      "usd": 0.003247464821277264
+     },
+     {
+      "token": "nersig-282.meme-cooking.near",
+      "symbol": "NERSIG",
+      "raw": "3321858143251208209465",
+      "human": "3321.858143251208209465",
+      "usd": 0.010258514301503291
+     }
+    ],
+    "tvl_usd": 0.013505979122780554,
+    "tvl_partial": false,
+    "shares": "129884074129664950520"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3816,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 33,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "811807861170",
+      "human": "8.1180786117E-7",
+      "usd": 0.0018224112313833096
+     },
+     {
+      "token": "sol.token.a11bd.near",
+      "symbol": "SOL",
+      "raw": "43194855155979722804",
+      "human": "0.000043194855155979722804",
+      "usd": 0.0038560047197743097
+     }
+    ],
+    "tvl_usd": 0.00567841595115762,
+    "tvl_partial": false,
+    "shares": "498634326896661875862"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3114,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "1051010960365232993459",
+      "human": "0.001051010960365232993459",
+      "usd": 0.003857210224540405
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "617756031971",
+      "human": "6.17756031971E-7",
+      "usd": 0.0013867881610510585
+     }
+    ],
+    "tvl_usd": 0.005243998385591464,
+    "tvl_partial": false,
+    "shares": "21036595092339762825"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3572,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 5,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "394475304594126823168",
+      "human": "0.000394475304594126823168",
+      "usd": 0.0014477243678604455
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "204499188174",
+      "human": "2.04499188174E-7",
+      "usd": 0.0004590761375480491
+     }
+    ],
+    "tvl_usd": 0.0019068005054084945,
+    "tvl_partial": false,
+    "shares": "35126502268032590727693706117172"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 4490,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 20,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "23.contract.portalbridge.near",
+      "symbol": "Aurora",
+      "raw": "417482567",
+      "human": "4.17482567",
+      "usd": 0.00010201987063349347
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "5362802957",
+      "human": "5.362802957E-9",
+      "usd": 1.203884910211016e-05
+     }
+    ],
+    "tvl_usd": 0.00011405871973560362,
+    "tvl_partial": false,
+    "shares": "14900734557151726757517"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3567,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 1,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "7717314845673379646",
+      "human": "0.000007717314845673379646",
+      "usd": 2.8322545483621303e-05
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "2840831960",
+      "human": "2.84083196E-9",
+      "usd": 6.3773268503648e-06
+     }
+    ],
+    "tvl_usd": 3.46998723339861e-05,
+    "tvl_partial": false,
+    "shares": "579107290130518161491139334474"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3897,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 1,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "3619103267",
+      "human": "3.619103267E-9",
+      "usd": 8.12445254202296e-06
+     },
+     {
+      "token": "t.tkn.near",
+      "symbol": "T",
+      "raw": "975521811481922944",
+      "human": "0.975521811481922944",
+      "usd": 2.2355238681276934e-05
+     }
+    ],
+    "tvl_usd": 3.0479691223299895e-05,
+    "tvl_partial": false,
+    "shares": "87815640463565054228"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 4590,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 60,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "23.contract.portalbridge.near",
+      "symbol": "Aurora",
+      "raw": "560155",
+      "human": "0.00560155",
+      "usd": 1.3688461543522255e-07
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "185411",
+      "human": "1.85411E-13",
+      "usd": 4.1622544568e-10
+     }
+    ],
+    "tvl_usd": 1.3730084088090256e-07,
+    "tvl_partial": false,
+    "shares": "1209353743791256167832"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 1257,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 20,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 1258,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 1260,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 1310,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 1347,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 1348,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 1349,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "dbio.near",
+      "symbol": "DBIO",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 1408,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 1409,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 1489,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 1738,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "token.v2.ref-finance.near",
+      "symbol": "REF",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 1755,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 1756,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 1812,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "dac17f958d2ee523a2206206994597c13d831ec7.factory.bridge.near",
+      "symbol": "USDT.e",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 1838,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 1860,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "token.skyward.near",
+      "symbol": "SKYWARD",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2000,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2153,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2154,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2166,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2174,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2341,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "token.v2.ref-finance.near",
+      "symbol": "REF",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2342,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "token.v2.ref-finance.near",
+      "symbol": "REF",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2367,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 20,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "token.v2.ref-finance.near",
+      "symbol": "REF",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2445,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2553,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "ikenga.tkn.near",
+      "symbol": "IKENGA",
+      "raw": "0",
+      "human": "0",
+      "usd": null
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": true,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2696,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2761,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2865,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2866,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2875,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2876,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2897,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2898,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2899,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3117,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3181,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3187,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3189,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 20,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3260,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3264,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3278,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3329,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3363,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3410,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 20,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3492,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 60,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "hrt.tkn.near",
+      "symbol": "HRT",
+      "raw": "0",
+      "human": "0",
+      "usd": null
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": true,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3506,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "usn",
+      "symbol": "USN",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3531,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3539,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3585,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 5,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3586,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 5,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3618,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "hrt.tkn.near",
+      "symbol": "HRT",
+      "raw": "0",
+      "human": "0",
+      "usd": null
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": true,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3629,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "test-token.staderlabs-test.near",
+      "symbol": "Test Token",
+      "raw": "0",
+      "human": "0",
+      "usd": null
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": true,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3658,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 4842,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "pussy.laboratory.jumpfinance.near",
+      "symbol": "PUSSY",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 5030,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 20,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "linear-protocol.near",
+      "symbol": "LINEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 5181,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 1,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
+      "symbol": "USDC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 6439,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 0,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 6440,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 0,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   }
+  ],
+  "peer ETH: WETH (Rainbow)": [
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 1,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.factory.bridge.near",
+      "symbol": "WETH",
+      "raw": "1206736069347351449",
+      "human": "1.206736069347351449",
+      "usd": 2709.07420624203
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "737447777312787693679229196",
+      "human": "737.447777312787693679229196",
+      "usd": 2706.4333427379306
+     }
+    ],
+    "tvl_usd": 5415.507548979961,
+    "tvl_partial": false,
+    "shares": "33588121242988913765880582"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 1251,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 60,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.factory.bridge.near",
+      "symbol": "WETH",
+      "raw": "1986084789635686",
+      "human": "0.001986084789635686",
+      "usd": 4.458680909340529
+     },
+     {
+      "token": "aurora",
+      "symbol": "ETH (nETH, Rainbow)",
+      "raw": "1105441920490246",
+      "human": "0.001105441920490246",
+      "usd": 2.4815844584701434
+     }
+    ],
+    "tvl_usd": 6.940265367810673,
+    "tvl_partial": false,
+    "shares": "7942471537444964888910"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 12,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 19,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "marmaj.tkn.near",
+      "symbol": "marmaj",
+      "raw": "600052286867175838",
+      "human": "0.600052286867175838",
+      "usd": 0.11265991641158697
+     },
+     {
+      "token": "c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.factory.bridge.near",
+      "symbol": "WETH",
+      "raw": "58637073495350",
+      "human": "0.00005863707349535",
+      "usd": 0.13163788451412092
+     }
+    ],
+    "tvl_usd": 0.2442978009257079,
+    "tvl_partial": false,
+    "shares": "104903377486125539096320"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 829,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "dac17f958d2ee523a2206206994597c13d831ec7.factory.bridge.near",
+      "symbol": "USDT.e",
+      "raw": "22868",
+      "human": "0.022868",
+      "usd": 0.022844720376
+     },
+     {
+      "token": "c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.factory.bridge.near",
+      "symbol": "WETH",
+      "raw": "8955399715515",
+      "human": "0.000008955399715515",
+      "usd": 0.020104514145342554
+     }
+    ],
+    "tvl_usd": 0.042949234521342555,
+    "tvl_partial": false,
+    "shares": "1312488630256705256791"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 3783,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.factory.bridge.near",
+      "symbol": "WETH",
+      "raw": "7355085218876",
+      "human": "0.000007355085218876",
+      "usd": 0.016511872112967865
+     },
+     {
+      "token": "sol.token.a11bd.near",
+      "symbol": "SOL",
+      "raw": "115796682164507478296",
+      "human": "0.000115796682164507478296",
+      "usd": 0.010337169816825583
+     }
+    ],
+    "tvl_usd": 0.026849041929793448,
+    "tvl_partial": false,
+    "shares": "445778652286567123067"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 123,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 20,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.factory.bridge.near",
+      "symbol": "WETH",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 269,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.factory.bridge.near",
+      "symbol": "WETH",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 409,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.factory.bridge.near",
+      "symbol": "WETH",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 411,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.factory.bridge.near",
+      "symbol": "WETH",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 490,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 20,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.factory.bridge.near",
+      "symbol": "WETH",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "6b175474e89094c44da98b954eedeac495271d0f.factory.bridge.near",
+      "symbol": "DAI",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 520,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 20,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.factory.bridge.near",
+      "symbol": "WETH",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 565,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.factory.bridge.near",
+      "symbol": "WETH",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 673,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.factory.bridge.near",
+      "symbol": "WETH",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 676,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.factory.bridge.near",
+      "symbol": "WETH",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "token.paras.near",
+      "symbol": "PARAS",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 877,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.factory.bridge.near",
+      "symbol": "WETH",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 911,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 20,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "111111111117dc0aa78b770fa6a738034120c302.factory.bridge.near",
+      "symbol": "1INCH",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.factory.bridge.near",
+      "symbol": "WETH",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 1038,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.factory.bridge.near",
+      "symbol": "WETH",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 1118,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.factory.bridge.near",
+      "symbol": "WETH",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "wrap.near",
+      "symbol": "wNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 1147,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 20,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "meta-pool.near",
+      "symbol": "STNEAR",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.factory.bridge.near",
+      "symbol": "WETH",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 1154,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 30,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.factory.bridge.near",
+      "symbol": "WETH",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 2746,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 20,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.factory.bridge.near",
+      "symbol": "WETH",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+      "symbol": "WBTC",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   },
+   {
+    "contract": "v2.ref-finance.near",
+    "pool_id": 5165,
+    "type": "SIMPLE_POOL",
+    "fee_bps": 1900,
+    "amp": 0,
+    "legs": [
+     {
+      "token": "dac17f958d2ee523a2206206994597c13d831ec7.factory.bridge.near",
+      "symbol": "USDT.e",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     },
+     {
+      "token": "c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.factory.bridge.near",
+      "symbol": "WETH",
+      "raw": "0",
+      "human": "0",
+      "usd": 0.0
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": false,
+    "shares": "0"
+   }
+  ],
+  "peer ETH: eth.omft.near": [
+   {
+    "contract": "dclv2.ref-labs.near",
+    "pool_id": "eth.omft.near|nearport-2b0fd9.nearportnear.near|10000",
+    "type": "DCL",
+    "fee_bps": 100.0,
+    "current_point": 210062,
+    "liquidity_at_point": "0",
+    "legs": [
+     {
+      "token": "eth.omft.near",
+      "symbol": "ETH",
+      "raw": "0",
+      "human": "0",
+      "usd": null
+     },
+     {
+      "token": "nearport-2b0fd9.nearportnear.near",
+      "symbol": "NEARPORT",
+      "raw": "999999999999999999984632380",
+      "human": "999999999.99999999998463238",
+      "usd": null
+     }
+    ],
+    "tvl_usd": 0.0,
+    "tvl_partial": true,
+    "total_order_x": "0",
+    "total_order_y": "0",
+    "state": "Running"
+   }
+  ]
+ }
+}

@@ -1,0 +1,17 @@
+[package]
+name = "pb-sandbox-tests"
+description = "Sandbox tests for the contracts, with an MPC mock and an OutLayer mock (PLAN.md 10)"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+# near-workspaces 0.24.0 needs Rust 1.95, so the tests use near-sandbox 0.4.0 with near-api 0.8.7 (PLAN.md 9).
+# The tests load the contracts' wasm from contracts/target/near/, so build them with cargo-near first (lib.rs).
+[dev-dependencies]
+near-api = "=0.8.7"
+near-sandbox = "=0.4.0"
+serde = "=1.0.229"
+serde_json = "=1.0.154"
+tokio = { version = "=1.54.1", features = ["macros", "rt-multi-thread", "time"] }

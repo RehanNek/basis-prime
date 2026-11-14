@@ -1,0 +1,3 @@
+# The style the contracts are written in: 120 columns, with short items kept on one line.
+max_width = 120
+use_small_heuristics = "Max"

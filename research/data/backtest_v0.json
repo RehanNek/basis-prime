@@ -1,0 +1,5448 @@
+{
+  "v": 1,
+  "what": "INTERFACES.md 20: the backtest with rebalancing delays (PLAN.md 6.9 step 9). Money in USD. A minute counts the window's one-minute closes from 0, as RISK_ENGINE.md 13.1 does; null is the window's start, when the loan is drawn. `table` is the README's: for each book and delay, the worst over the windows.",
+  "command": "cargo run -p backtest --release -- crash --delays 2,15,60 --json ../research/data/backtest_v0.json",
+  "params": "3d362b434adaad0e0c909605bd792232acf964b9143a95ccb2541a0f65c4c263",
+  "replays": "38c2aa03d4025b7edec54435e6ecef0801ab0f912fb0f613a1d217845050a723",
+  "model": "B-0.2",
+  "keeper": {
+    "delays_min": [
+      2,
+      15,
+      60
+    ],
+    "checks_per_minute": 1,
+    "confirm_after_min": 3,
+    "max_plan_steps": 4,
+    "max_transfers": 8,
+    "cosign_above": 50000.0
+  },
+  "assumptions": [
+    "Books: RISK_ENGINE.md 13.1's hedged book at full size (1.2774 nBTC, the same BTC short, $35k of margin), and 13.4's directional book ($100k of USDC on NEAR; long $150k SOL, short $100k ETH, long $60k HYPE and $30k kPEPE) with each of the two margins 13.4 gives it, $80k and $200k. All Standard tier, on section 13's market: 4 Nov 2026 prices, a $2M pool with $1.2M lent, so the Standard rate is 6.5%.",
+    "The loan: each book draws its full Standard line, worked out by the engine at the window's start, and the money leaves the account (RISK_ENGINE.md 7.2). The pool's $25k first-week limit is left out, as 13.1 does for an account a week old.",
+    "Prices: each minute is the engine's own replay path (RISK_ENGINE.md 4.5): recorded one-minute closes, or BTC's path times the window's scale, with the adverse perp gap on every perp and the normal depeg (bridged tokens -2%, USDT -1%) from minute 0 on. The volatility factor stays at the starting market's (1): the replay file holds only the window, not the 720 hours before it. The 1-hour TWAP is the price itself, which only matters for new credit.",
+    "Order within a minute: the price moves and a minute of carry accrues; Hyperliquid's replica checks the account first, before money due that minute lands and before we act; then arrivals; then the engine's check; then the keeper's steps; then Hyperliquid checks again at the same marks; money sent with no delay lands at the end of the minute.",
+    "Checks: one a minute. A DELEVERAGE plan is confirmed by the check 3 minutes after the first DELEVERAGE verdict, if every check in between also said DELEVERAGE (the contract would take 2 minutes; any other verdict starts the pair again); at once when Hyperliquid's margin ratio is 80% or more. Each confirmation opens the next pair, so a running unwind gets a new plan every 3 minutes. REBALANCE and REBALANCE_NOW plans run at the check that asks.",
+    "Plans: the engine's own (deleverage_steps, rebalance_steps), with 1Click's routes, written as at most 4 step objects, whole steps only (a pair is a perp and a sale), as pb-risk writes them. Quotes are always there. Perp sizes are not rounded to Hyperliquid's size decimals, and its $10 minimum is not applied.",
+    "Fills: a perp step fills in the minute it runs, at that minute's mark (gap included). Every trade pays the engine's unwind-cost formula (4.6) at the size traded so far in that coin or token during the window, as a marginal cost C(done + this) - C(done), so ten small trades never cost less than one big one.",
+    "1Click: a sale is priced at its quote, in the minute it runs, less the engine's 1Click cost; its USDC lands on NEAR after the delay. to_hl and home move USDC after the delay, less 1Click's 0.2 USDC fee. Nothing is refunded, and a transfer is never overdue (its quoted time is the delay).",
+    "Money in flight: the engine sees each transfer as the token sent, at 98%, marked with where it goes (pb-read's rule). A REBALANCE takes 98% of the USDC already on its way to Hyperliquid off what it asks for (rebalance_need, since 9 Nov), so while a top-up is in transit a check asks only for what it doesn't cover; the account allows 8 transfers under way. A repay after a sale waits for that sale to land (as built); a newer stored plan replaces the old one, and a plan older than the latest verdict runs no more steps once a verdict says NONE.",
+    "The pool's 24-hour limit: sales and transfers past $50k of plan steps in 24 hours need the operator's co-signature (PLAN.md 5.1). By default none comes during the window, so those steps are refused; a pair's perp leg still runs, because the gateway places perp steps on its own (as built). `--cosign` runs with the operator co-signing at once.",
+    "Carry: interest accrues each minute on the debt at the tier's normal rate, and funding on each perp at its trailing 30-day rate.",
+    "Hyperliquid's replica (RISK_ENGINE.md 4.3) at each minute's marks: below maintenance margin, a book liquidation closes every perp and pays the replica's slippage; below 2/3 of it, the backstop keeps everything. No ADL.",
+    "Pool loss: max(0, debt - what the account is worth closed out that minute): NEAR tokens and perps sold at that minute's prices with the costs above, Hyperliquid's side floored at 0 (non-recourse), money in flight at 98% of what it will deliver; never more than the debt.",
+    "Equity: the engine's mark equity at each minute's check, before that minute's steps, with that check's IM. The margin-call clock adds each minute that follows a check below MR. The client does nothing during the window."
+  ],
+  "books": [
+    {
+      "id": "hedged",
+      "name": "13.1 hedged",
+      "near": {
+        "nBTC": 1.2773512843767165
+      },
+      "hl_cash": 35000.0,
+      "perps": {
+        "BTC": -1.2773512843767165
+      },
+      "loan": 94500.0,
+      "binding": "C4 tier cap",
+      "equity_after_loan": 40500.0,
+      "mr": 15615.76,
+      "im": 19519.7,
+      "state": "HEALTHY"
+    },
+    {
+      "id": "directional-80k",
+      "name": "13.4 directional, $80k margin",
+      "near": {
+        "USDC": 100000.0
+      },
+      "hl_cash": 80000.0,
+      "perps": {
+        "SOL": 1616.3967284130215,
+        "ETH": -43.18721658389117,
+        "HYPE": 711.9802544142775,
+        "kPEPE": 6132461.161079314
+      },
+      "loan": 79015.02,
+      "binding": "C1 1.00S (1, -1, -1, -1)",
+      "equity_after_loan": 100984.98,
+      "mr": 80787.99,
+      "im": 100984.98,
+      "state": "HEALTHY"
+    },
+    {
+      "id": "directional-200k",
+      "name": "13.4 directional, $200k margin",
+      "near": {
+        "USDC": 100000.0
+      },
+      "hl_cash": 200000.0,
+      "perps": {
+        "SOL": 1616.3967284130215,
+        "ETH": -43.18721658389117,
+        "HYPE": 711.9802544142775,
+        "kPEPE": 6132461.161079314
+      },
+      "loan": 140619.55,
+      "binding": "C3 2S (1, -1, -1, -1)",
+      "equity_after_loan": 159380.45,
+      "mr": 86838.16,
+      "im": 108547.7,
+      "state": "HEALTHY"
+    }
+  ],
+  "table": [
+    {
+      "book": "hedged",
+      "name": "13.1 hedged",
+      "loan": 94500.0,
+      "delay_min": 2,
+      "windows": 10,
+      "lowest_equity": 27363.37,
+      "lowest_window": "2020-03-12 up",
+      "lowest_minute": 39,
+      "to_im": 0.6529,
+      "to_debt": 0.2896,
+      "worst_state": "DELEVERAGE",
+      "windows_in_worst_state": 1,
+      "liquidations": [
+        {
+          "window": "2020-03-12 up",
+          "minute": 23,
+          "kind": "backstop"
+        }
+      ],
+      "steps_run": 15,
+      "steps_refused": 0,
+      "pool_loss_end": 0.0,
+      "pool_loss_end_window": null,
+      "pool_loss_worst": 0.0,
+      "pool_loss_worst_window": null,
+      "pool_loss_worst_minute": null
+    },
+    {
+      "book": "hedged",
+      "name": "13.1 hedged",
+      "loan": 94500.0,
+      "delay_min": 15,
+      "windows": 10,
+      "lowest_equity": 26036.17,
+      "lowest_window": "2020-03-12 up",
+      "lowest_minute": 35,
+      "to_im": 0.4662,
+      "to_debt": 0.2755,
+      "worst_state": "DELEVERAGE",
+      "windows_in_worst_state": 1,
+      "liquidations": [
+        {
+          "window": "2020-03-12 up",
+          "minute": 23,
+          "kind": "backstop"
+        }
+      ],
+      "steps_run": 15,
+      "steps_refused": 8,
+      "pool_loss_end": 0.0,
+      "pool_loss_end_window": null,
+      "pool_loss_worst": 0.0,
+      "pool_loss_worst_window": null,
+      "pool_loss_worst_minute": null
+    },
+    {
+      "book": "hedged",
+      "name": "13.1 hedged",
+      "loan": 94500.0,
+      "delay_min": 60,
+      "windows": 10,
+      "lowest_equity": 24709.85,
+      "lowest_window": "2020-03-12 up",
+      "lowest_minute": 39,
+      "to_im": 0.4473,
+      "to_debt": 0.2615,
+      "worst_state": "DELEVERAGE",
+      "windows_in_worst_state": 1,
+      "liquidations": [
+        {
+          "window": "2020-03-12 up",
+          "minute": 23,
+          "kind": "backstop"
+        }
+      ],
+      "steps_run": 13,
+      "steps_refused": 36,
+      "pool_loss_end": 0.0,
+      "pool_loss_end_window": null,
+      "pool_loss_worst": 0.0,
+      "pool_loss_worst_window": null,
+      "pool_loss_worst_minute": null
+    },
+    {
+      "book": "directional-80k",
+      "name": "13.4 directional, $80k margin",
+      "loan": 79015.02,
+      "delay_min": 2,
+      "windows": 10,
+      "lowest_equity": 40124.66,
+      "lowest_window": "2020-03-12 down",
+      "lowest_minute": 230,
+      "to_im": 1.0384,
+      "to_debt": 0.5078,
+      "worst_state": "WATCH",
+      "windows_in_worst_state": 8,
+      "liquidations": [],
+      "steps_run": 21,
+      "steps_refused": 0,
+      "pool_loss_end": 0.0,
+      "pool_loss_end_window": null,
+      "pool_loss_worst": 0.0,
+      "pool_loss_worst_window": null,
+      "pool_loss_worst_minute": null
+    },
+    {
+      "book": "directional-80k",
+      "name": "13.4 directional, $80k margin",
+      "loan": 79015.02,
+      "delay_min": 15,
+      "windows": 10,
+      "lowest_equity": 40103.43,
+      "lowest_window": "2020-03-12 down",
+      "lowest_minute": 230,
+      "to_im": 1.069,
+      "to_debt": 0.5075,
+      "worst_state": "WATCH",
+      "windows_in_worst_state": 7,
+      "liquidations": [],
+      "steps_run": 22,
+      "steps_refused": 0,
+      "pool_loss_end": 0.0,
+      "pool_loss_end_window": null,
+      "pool_loss_worst": 0.0,
+      "pool_loss_worst_window": null,
+      "pool_loss_worst_minute": null
+    },
+    {
+      "book": "directional-80k",
+      "name": "13.4 directional, $80k margin",
+      "loan": 79015.02,
+      "delay_min": 60,
+      "windows": 10,
+      "lowest_equity": 39924.4,
+      "lowest_window": "2020-03-12 down",
+      "lowest_minute": 230,
+      "to_im": 1.5203,
+      "to_debt": 0.5053,
+      "worst_state": "WATCH",
+      "windows_in_worst_state": 6,
+      "liquidations": [],
+      "steps_run": 21,
+      "steps_refused": 6,
+      "pool_loss_end": 0.0,
+      "pool_loss_end_window": null,
+      "pool_loss_worst": 0.0,
+      "pool_loss_worst_window": null,
+      "pool_loss_worst_minute": null
+    },
+    {
+      "book": "directional-200k",
+      "name": "13.4 directional, $200k margin",
+      "loan": 140619.55,
+      "delay_min": 2,
+      "windows": 10,
+      "lowest_equity": 98519.97,
+      "lowest_window": "2020-03-12 down",
+      "lowest_minute": 230,
+      "to_im": 1.4749,
+      "to_debt": 0.7006,
+      "worst_state": "HEALTHY",
+      "windows_in_worst_state": 10,
+      "liquidations": [],
+      "steps_run": 0,
+      "steps_refused": 0,
+      "pool_loss_end": 0.0,
+      "pool_loss_end_window": null,
+      "pool_loss_worst": 0.0,
+      "pool_loss_worst_window": null,
+      "pool_loss_worst_minute": null
+    },
+    {
+      "book": "directional-200k",
+      "name": "13.4 directional, $200k margin",
+      "loan": 140619.55,
+      "delay_min": 15,
+      "windows": 10,
+      "lowest_equity": 98519.97,
+      "lowest_window": "2020-03-12 down",
+      "lowest_minute": 230,
+      "to_im": 1.4749,
+      "to_debt": 0.7006,
+      "worst_state": "HEALTHY",
+      "windows_in_worst_state": 10,
+      "liquidations": [],
+      "steps_run": 0,
+      "steps_refused": 0,
+      "pool_loss_end": 0.0,
+      "pool_loss_end_window": null,
+      "pool_loss_worst": 0.0,
+      "pool_loss_worst_window": null,
+      "pool_loss_worst_minute": null
+    },
+    {
+      "book": "directional-200k",
+      "name": "13.4 directional, $200k margin",
+      "loan": 140619.55,
+      "delay_min": 60,
+      "windows": 10,
+      "lowest_equity": 98519.97,
+      "lowest_window": "2020-03-12 down",
+      "lowest_minute": 230,
+      "to_im": 1.4749,
+      "to_debt": 0.7006,
+      "worst_state": "HEALTHY",
+      "windows_in_worst_state": 10,
+      "liquidations": [],
+      "steps_run": 0,
+      "steps_refused": 0,
+      "pool_loss_end": 0.0,
+      "pool_loss_end_window": null,
+      "pool_loss_worst": 0.0,
+      "pool_loss_worst_window": null,
+      "pool_loss_worst_minute": null
+    }
+  ],
+  "cases": [
+    {
+      "book": "hedged",
+      "window": "2020-03-12 down (from 2020-03-12 22:25 UTC)",
+      "delay_min": 2,
+      "loan": 94500.0,
+      "lowest_equity": {
+        "usd": 38203.16,
+        "minute": 0,
+        "to_im": 1.9265,
+        "to_debt": 0.4043
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 38968.89,
+        "debt": 94502.8,
+        "state": "HEALTHY",
+        "closeout": 133148.92
+      }
+    },
+    {
+      "book": "hedged",
+      "window": "2020-03-12 down (from 2020-03-12 22:25 UTC)",
+      "delay_min": 15,
+      "loan": 94500.0,
+      "lowest_equity": {
+        "usd": 38203.16,
+        "minute": 0,
+        "to_im": 1.9265,
+        "to_debt": 0.4043
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 38968.89,
+        "debt": 94502.8,
+        "state": "HEALTHY",
+        "closeout": 133148.92
+      }
+    },
+    {
+      "book": "hedged",
+      "window": "2020-03-12 down (from 2020-03-12 22:25 UTC)",
+      "delay_min": 60,
+      "loan": 94500.0,
+      "lowest_equity": {
+        "usd": 38203.16,
+        "minute": 0,
+        "to_im": 1.9265,
+        "to_debt": 0.4043
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 38968.89,
+        "debt": 94502.8,
+        "state": "HEALTHY",
+        "closeout": 133148.92
+      }
+    },
+    {
+      "book": "hedged",
+      "window": "2020-03-12 up (from 2020-03-13 02:16 UTC)",
+      "delay_min": 2,
+      "loan": 94500.0,
+      "lowest_equity": {
+        "usd": 27363.37,
+        "minute": 39,
+        "to_im": 0.6529,
+        "to_debt": 0.2896
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        },
+        {
+          "state": "WATCH",
+          "first_minute": 69
+        },
+        {
+          "state": "MARGIN_CALL",
+          "first_minute": 24
+        },
+        {
+          "state": "DELEVERAGE",
+          "first_minute": 23
+        }
+      ],
+      "liquidations": [
+        {
+          "minute": 23,
+          "kind": "backstop",
+          "hl_equity_before": 4566.45,
+          "hl_equity": -742.72,
+          "mm": 1297.15,
+          "lost": 0.0
+        }
+      ],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 2,
+        "refused": 0,
+        "by_kind": {
+          "perp": {
+            "run": 1,
+            "refused": 0,
+            "usd": 31951.45
+          },
+          "sell": {
+            "run": 1,
+            "refused": 0,
+            "usd": 31855.88
+          }
+        },
+        "list": [
+          {
+            "minute": 22,
+            "plan_minute": 22,
+            "action": "REBALANCE",
+            "k": "perp",
+            "what": "BTC",
+            "usd": 31951.45,
+            "cost": 19.92
+          },
+          {
+            "minute": 22,
+            "plan_minute": 22,
+            "action": "REBALANCE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 31855.88,
+            "cost": 103.78
+          }
+        ]
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 34797.77,
+        "debt": 94502.8,
+        "state": "MARGIN_CALL",
+        "closeout": 128686.12
+      }
+    },
+    {
+      "book": "hedged",
+      "window": "2020-03-12 up (from 2020-03-13 02:16 UTC)",
+      "delay_min": 15,
+      "loan": 94500.0,
+      "lowest_equity": {
+        "usd": 26036.17,
+        "minute": 35,
+        "to_im": 0.4662,
+        "to_debt": 0.2755
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        },
+        {
+          "state": "WATCH",
+          "first_minute": 41
+        },
+        {
+          "state": "MARGIN_CALL",
+          "first_minute": 37
+        },
+        {
+          "state": "DELEVERAGE",
+          "first_minute": 23
+        }
+      ],
+      "liquidations": [
+        {
+          "minute": 23,
+          "kind": "backstop",
+          "hl_equity_before": 4566.45,
+          "hl_equity": -742.72,
+          "mm": 1297.15,
+          "lost": 0.0
+        }
+      ],
+      "deleverage_confirmed": [
+        26,
+        29,
+        32,
+        35
+      ],
+      "steps": {
+        "run": 3,
+        "refused": 7,
+        "by_kind": {
+          "perp": {
+            "run": 1,
+            "refused": 0,
+            "usd": 31951.45
+          },
+          "sell": {
+            "run": 2,
+            "refused": 7,
+            "usd": 49878.03
+          }
+        },
+        "list": [
+          {
+            "minute": 22,
+            "plan_minute": 22,
+            "action": "REBALANCE",
+            "k": "perp",
+            "what": "BTC",
+            "usd": 31951.45,
+            "cost": 19.92
+          },
+          {
+            "minute": 22,
+            "plan_minute": 22,
+            "action": "REBALANCE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 31855.88,
+            "cost": 103.78
+          },
+          {
+            "minute": 26,
+            "plan_minute": 26,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 24029.54,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 26,
+            "plan_minute": 26,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 18022.15,
+            "cost": 87.01
+          },
+          {
+            "minute": 29,
+            "plan_minute": 29,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 19442.63,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 29,
+            "plan_minute": 29,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 14581.98,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 32,
+            "plan_minute": 32,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 19467.72,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 32,
+            "plan_minute": 32,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 14600.79,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 35,
+            "plan_minute": 35,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 18507.59,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 35,
+            "plan_minute": 35,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 13880.69,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          }
+        ]
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 34442.57,
+        "debt": 94502.8,
+        "state": "WATCH",
+        "closeout": 128420.03
+      }
+    },
+    {
+      "book": "hedged",
+      "window": "2020-03-12 up (from 2020-03-13 02:16 UTC)",
+      "delay_min": 60,
+      "loan": 94500.0,
+      "lowest_equity": {
+        "usd": 24709.85,
+        "minute": 39,
+        "to_im": 0.4473,
+        "to_debt": 0.2615
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        },
+        {
+          "state": "WATCH",
+          "first_minute": 82
+        },
+        {
+          "state": "MARGIN_CALL",
+          "first_minute": 72
+        },
+        {
+          "state": "DELEVERAGE",
+          "first_minute": 23
+        }
+      ],
+      "liquidations": [
+        {
+          "minute": 23,
+          "kind": "backstop",
+          "hl_equity_before": 4566.45,
+          "hl_equity": -742.72,
+          "mm": 1297.15,
+          "lost": 0.0
+        }
+      ],
+      "deleverage_confirmed": [
+        26,
+        29,
+        32,
+        35,
+        38,
+        41,
+        44,
+        47,
+        50,
+        53,
+        56,
+        59,
+        62,
+        65,
+        68,
+        71
+      ],
+      "steps": {
+        "run": 3,
+        "refused": 31,
+        "by_kind": {
+          "perp": {
+            "run": 1,
+            "refused": 0,
+            "usd": 31951.45
+          },
+          "sell": {
+            "run": 2,
+            "refused": 31,
+            "usd": 49878.03
+          }
+        },
+        "list": [
+          {
+            "minute": 22,
+            "plan_minute": 22,
+            "action": "REBALANCE",
+            "k": "perp",
+            "what": "BTC",
+            "usd": 31951.45,
+            "cost": 19.92
+          },
+          {
+            "minute": 22,
+            "plan_minute": 22,
+            "action": "REBALANCE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 31855.88,
+            "cost": 103.78
+          },
+          {
+            "minute": 26,
+            "plan_minute": 26,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 24029.54,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 26,
+            "plan_minute": 26,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 18022.15,
+            "cost": 87.01
+          },
+          {
+            "minute": 29,
+            "plan_minute": 29,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 19442.63,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 29,
+            "plan_minute": 29,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 14581.98,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 32,
+            "plan_minute": 32,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 19467.72,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 32,
+            "plan_minute": 32,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 14600.79,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 35,
+            "plan_minute": 35,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 18507.59,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 35,
+            "plan_minute": 35,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 13880.69,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 38,
+            "plan_minute": 38,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 19001.16,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 38,
+            "plan_minute": 38,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 14250.87,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 41,
+            "plan_minute": 41,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 18802.0,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 41,
+            "plan_minute": 41,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 14101.5,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 44,
+            "plan_minute": 44,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 19305.43,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 44,
+            "plan_minute": 44,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 14479.07,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 47,
+            "plan_minute": 47,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 19224.06,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 47,
+            "plan_minute": 47,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 14418.05,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 50,
+            "plan_minute": 50,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 19332.15,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 50,
+            "plan_minute": 50,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 14499.12,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 53,
+            "plan_minute": 53,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 19508.77,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 53,
+            "plan_minute": 53,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 14631.58,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 56,
+            "plan_minute": 56,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 19588.2,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 56,
+            "plan_minute": 56,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 14691.15,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 59,
+            "plan_minute": 59,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 19941.88,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 59,
+            "plan_minute": 59,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 14956.41,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 62,
+            "plan_minute": 62,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 20389.47,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 62,
+            "plan_minute": 62,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 15292.11,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 65,
+            "plan_minute": 65,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 20428.29,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 65,
+            "plan_minute": 65,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 15321.22,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 68,
+            "plan_minute": 68,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 20483.98,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 68,
+            "plan_minute": 68,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 15362.98,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 71,
+            "plan_minute": 71,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 20645.37,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          },
+          {
+            "minute": 71,
+            "plan_minute": 71,
+            "action": "DELEVERAGE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 15484.03,
+            "cost": 0.0,
+            "refused": "past the pool's $50,000 of plan steps in 24 hours, and no co-signature"
+          }
+        ]
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 34442.57,
+        "debt": 94502.8,
+        "state": "WATCH",
+        "closeout": 128420.03
+      }
+    },
+    {
+      "book": "hedged",
+      "window": "2021-05-19 down (from 2021-05-19 09:10 UTC)",
+      "delay_min": 2,
+      "loan": 94500.0,
+      "lowest_equity": {
+        "usd": 38202.77,
+        "minute": 0,
+        "to_im": 1.929,
+        "to_debt": 0.4043
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 38796.08,
+        "debt": 94502.8,
+        "state": "HEALTHY",
+        "closeout": 132925.68
+      }
+    },
+    {
+      "book": "hedged",
+      "window": "2021-05-19 down (from 2021-05-19 09:10 UTC)",
+      "delay_min": 15,
+      "loan": 94500.0,
+      "lowest_equity": {
+        "usd": 38202.77,
+        "minute": 0,
+        "to_im": 1.929,
+        "to_debt": 0.4043
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 38796.08,
+        "debt": 94502.8,
+        "state": "HEALTHY",
+        "closeout": 132925.68
+      }
+    },
+    {
+      "book": "hedged",
+      "window": "2021-05-19 down (from 2021-05-19 09:10 UTC)",
+      "delay_min": 60,
+      "loan": 94500.0,
+      "lowest_equity": {
+        "usd": 38202.77,
+        "minute": 0,
+        "to_im": 1.929,
+        "to_debt": 0.4043
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 38796.08,
+        "debt": 94502.8,
+        "state": "HEALTHY",
+        "closeout": 132925.68
+      }
+    },
+    {
+      "book": "hedged",
+      "window": "2021-05-19 up (from 2021-05-19 13:10 UTC)",
+      "delay_min": 2,
+      "loan": 94500.0,
+      "lowest_equity": {
+        "usd": 36898.05,
+        "minute": 130,
+        "to_im": 1.9556,
+        "to_debt": 0.3904
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 13,
+        "refused": 0,
+        "by_kind": {
+          "perp": {
+            "run": 1,
+            "refused": 0,
+            "usd": 30817.87
+          },
+          "sell": {
+            "run": 1,
+            "refused": 0,
+            "usd": 30725.7
+          },
+          "to_hl": {
+            "run": 11,
+            "refused": 0,
+            "usd": 5052.73
+          }
+        },
+        "list": [
+          {
+            "minute": 129,
+            "plan_minute": 129,
+            "action": "REBALANCE",
+            "k": "perp",
+            "what": "BTC",
+            "usd": 30817.87,
+            "cost": 19.12
+          },
+          {
+            "minute": 129,
+            "plan_minute": 129,
+            "action": "REBALANCE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 30725.7,
+            "cost": 98.85
+          },
+          {
+            "minute": 207,
+            "plan_minute": 207,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 187.38,
+            "cost": 0.2
+          },
+          {
+            "minute": 208,
+            "plan_minute": 208,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 418.6,
+            "cost": 0.2
+          },
+          {
+            "minute": 209,
+            "plan_minute": 209,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 274.6,
+            "cost": 0.2
+          },
+          {
+            "minute": 211,
+            "plan_minute": 211,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 723.13,
+            "cost": 0.2
+          },
+          {
+            "minute": 212,
+            "plan_minute": 212,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 1193.09,
+            "cost": 0.2
+          },
+          {
+            "minute": 215,
+            "plan_minute": 215,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 247.54,
+            "cost": 0.2
+          },
+          {
+            "minute": 216,
+            "plan_minute": 216,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 309.79,
+            "cost": 0.2
+          },
+          {
+            "minute": 217,
+            "plan_minute": 217,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 390.25,
+            "cost": 0.2
+          },
+          {
+            "minute": 220,
+            "plan_minute": 220,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 43.88,
+            "cost": 0.2
+          },
+          {
+            "minute": 231,
+            "plan_minute": 231,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 824.13,
+            "cost": 0.2
+          },
+          {
+            "minute": 232,
+            "plan_minute": 232,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 440.35,
+            "cost": 0.2
+          }
+        ]
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 37352.53,
+        "debt": 94502.8,
+        "state": "HEALTHY",
+        "closeout": 131164.82
+      }
+    },
+    {
+      "book": "hedged",
+      "window": "2021-05-19 up (from 2021-05-19 13:10 UTC)",
+      "delay_min": 15,
+      "loan": 94500.0,
+      "lowest_equity": {
+        "usd": 36182.07,
+        "minute": 140,
+        "to_im": 1.6583,
+        "to_debt": 0.3829
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 12,
+        "refused": 1,
+        "by_kind": {
+          "perp": {
+            "run": 1,
+            "refused": 0,
+            "usd": 30817.87
+          },
+          "sell": {
+            "run": 1,
+            "refused": 0,
+            "usd": 30725.7
+          },
+          "to_hl": {
+            "run": 10,
+            "refused": 1,
+            "usd": 5052.34
+          }
+        },
+        "list": [
+          {
+            "minute": 129,
+            "plan_minute": 129,
+            "action": "REBALANCE",
+            "k": "perp",
+            "what": "BTC",
+            "usd": 30817.87,
+            "cost": 19.12
+          },
+          {
+            "minute": 129,
+            "plan_minute": 129,
+            "action": "REBALANCE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 30725.7,
+            "cost": 98.85
+          },
+          {
+            "minute": 207,
+            "plan_minute": 207,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 187.38,
+            "cost": 0.2
+          },
+          {
+            "minute": 208,
+            "plan_minute": 208,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 418.6,
+            "cost": 0.2
+          },
+          {
+            "minute": 209,
+            "plan_minute": 209,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 278.15,
+            "cost": 0.2
+          },
+          {
+            "minute": 211,
+            "plan_minute": 211,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 736.66,
+            "cost": 0.2
+          },
+          {
+            "minute": 212,
+            "plan_minute": 212,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 1193.36,
+            "cost": 0.2
+          },
+          {
+            "minute": 215,
+            "plan_minute": 215,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 285.47,
+            "cost": 0.2
+          },
+          {
+            "minute": 216,
+            "plan_minute": 216,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 310.55,
+            "cost": 0.2
+          },
+          {
+            "minute": 217,
+            "plan_minute": 217,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 395.01,
+            "cost": 0.2
+          },
+          {
+            "minute": 220,
+            "plan_minute": 220,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 57.57,
+            "cost": 0.0,
+            "refused": "8 transfers are under way already"
+          },
+          {
+            "minute": 231,
+            "plan_minute": 231,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 814.7,
+            "cost": 0.2
+          },
+          {
+            "minute": 232,
+            "plan_minute": 232,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 432.46,
+            "cost": 0.2
+          }
+        ]
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 37328.19,
+        "debt": 94502.8,
+        "state": "HEALTHY",
+        "closeout": 131140.08
+      }
+    },
+    {
+      "book": "hedged",
+      "window": "2021-05-19 up (from 2021-05-19 13:10 UTC)",
+      "delay_min": 60,
+      "loan": 94500.0,
+      "lowest_equity": {
+        "usd": 36033.04,
+        "minute": 183,
+        "to_im": 1.6755,
+        "to_debt": 0.3813
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 10,
+        "refused": 5,
+        "by_kind": {
+          "perp": {
+            "run": 1,
+            "refused": 0,
+            "usd": 30817.87
+          },
+          "sell": {
+            "run": 1,
+            "refused": 0,
+            "usd": 30725.7
+          },
+          "to_hl": {
+            "run": 8,
+            "refused": 5,
+            "usd": 3805.19
+          }
+        },
+        "list": [
+          {
+            "minute": 129,
+            "plan_minute": 129,
+            "action": "REBALANCE",
+            "k": "perp",
+            "what": "BTC",
+            "usd": 30817.87,
+            "cost": 19.12
+          },
+          {
+            "minute": 129,
+            "plan_minute": 129,
+            "action": "REBALANCE",
+            "k": "sell",
+            "what": "nBTC",
+            "usd": 30725.7,
+            "cost": 98.85
+          },
+          {
+            "minute": 207,
+            "plan_minute": 207,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 187.38,
+            "cost": 0.2
+          },
+          {
+            "minute": 208,
+            "plan_minute": 208,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 418.6,
+            "cost": 0.2
+          },
+          {
+            "minute": 209,
+            "plan_minute": 209,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 278.15,
+            "cost": 0.2
+          },
+          {
+            "minute": 211,
+            "plan_minute": 211,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 736.66,
+            "cost": 0.2
+          },
+          {
+            "minute": 212,
+            "plan_minute": 212,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 1193.36,
+            "cost": 0.2
+          },
+          {
+            "minute": 215,
+            "plan_minute": 215,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 285.47,
+            "cost": 0.2
+          },
+          {
+            "minute": 216,
+            "plan_minute": 216,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 310.55,
+            "cost": 0.2
+          },
+          {
+            "minute": 217,
+            "plan_minute": 217,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 395.01,
+            "cost": 0.2
+          },
+          {
+            "minute": 220,
+            "plan_minute": 220,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 57.57,
+            "cost": 0.0,
+            "refused": "8 transfers are under way already"
+          },
+          {
+            "minute": 231,
+            "plan_minute": 231,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 881.5,
+            "cost": 0.0,
+            "refused": "8 transfers are under way already"
+          },
+          {
+            "minute": 232,
+            "plan_minute": 232,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 1305.37,
+            "cost": 0.0,
+            "refused": "8 transfers are under way already"
+          },
+          {
+            "minute": 233,
+            "plan_minute": 233,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 499.98,
+            "cost": 0.0,
+            "refused": "8 transfers are under way already"
+          },
+          {
+            "minute": 235,
+            "plan_minute": 235,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 158.4,
+            "cost": 0.0,
+            "refused": "8 transfers are under way already"
+          }
+        ]
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 37278.63,
+        "debt": 94502.8,
+        "state": "HEALTHY",
+        "closeout": 131089.35
+      }
+    },
+    {
+      "book": "hedged",
+      "window": "2022-11-08 down (from 2022-11-08 16:34 UTC)",
+      "delay_min": 2,
+      "loan": 94500.0,
+      "lowest_equity": {
+        "usd": 38200.83,
+        "minute": 8,
+        "to_im": 1.9414,
+        "to_debt": 0.4042
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 38470.67,
+        "debt": 94502.8,
+        "state": "HEALTHY",
+        "closeout": 132500.1
+      }
+    },
+    {
+      "book": "hedged",
+      "window": "2022-11-08 down (from 2022-11-08 16:34 UTC)",
+      "delay_min": 15,
+      "loan": 94500.0,
+      "lowest_equity": {
+        "usd": 38200.83,
+        "minute": 8,
+        "to_im": 1.9414,
+        "to_debt": 0.4042
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 38470.67,
+        "debt": 94502.8,
+        "state": "HEALTHY",
+        "closeout": 132500.1
+      }
+    },
+    {
+      "book": "hedged",
+      "window": "2022-11-08 down (from 2022-11-08 16:34 UTC)",
+      "delay_min": 60,
+      "loan": 94500.0,
+      "lowest_equity": {
+        "usd": 38200.83,
+        "minute": 8,
+        "to_im": 1.9414,
+        "to_debt": 0.4042
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 38470.67,
+        "debt": 94502.8,
+        "state": "HEALTHY",
+        "closeout": 132500.1
+      }
+    },
+    {
+      "book": "hedged",
+      "window": "2022-11-08 up (from 2022-11-08 19:33 UTC)",
+      "delay_min": 2,
+      "loan": 94500.0,
+      "lowest_equity": {
+        "usd": 37993.02,
+        "minute": 148,
+        "to_im": 2.0852,
+        "to_debt": 0.402
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 38028.36,
+        "debt": 94502.8,
+        "state": "HEALTHY",
+        "closeout": 131910.76
+      }
+    },
+    {
+      "book": "hedged",
+      "window": "2022-11-08 up (from 2022-11-08 19:33 UTC)",
+      "delay_min": 15,
+      "loan": 94500.0,
+      "lowest_equity": {
+        "usd": 37993.02,
+        "minute": 148,
+        "to_im": 2.0852,
+        "to_debt": 0.402
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 38028.36,
+        "debt": 94502.8,
+        "state": "HEALTHY",
+        "closeout": 131910.76
+      }
+    },
+    {
+      "book": "hedged",
+      "window": "2022-11-08 up (from 2022-11-08 19:33 UTC)",
+      "delay_min": 60,
+      "loan": 94500.0,
+      "lowest_equity": {
+        "usd": 37993.02,
+        "minute": 148,
+        "to_im": 2.0852,
+        "to_debt": 0.402
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 38028.36,
+        "debt": 94502.8,
+        "state": "HEALTHY",
+        "closeout": 131910.76
+      }
+    },
+    {
+      "book": "hedged",
+      "window": "2024-08-05 down (from 2024-08-04 22:12 UTC)",
+      "delay_min": 2,
+      "loan": 94500.0,
+      "lowest_equity": {
+        "usd": 38202.33,
+        "minute": 26,
+        "to_im": 1.9325,
+        "to_debt": 0.4043
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 38396.69,
+        "debt": 94502.8,
+        "state": "HEALTHY",
+        "closeout": 132402.33
+      }
+    },
+    {
+      "book": "hedged",
+      "window": "2024-08-05 down (from 2024-08-04 22:12 UTC)",
+      "delay_min": 15,
+      "loan": 94500.0,
+      "lowest_equity": {
+        "usd": 38202.33,
+        "minute": 26,
+        "to_im": 1.9325,
+        "to_debt": 0.4043
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 38396.69,
+        "debt": 94502.8,
+        "state": "HEALTHY",
+        "closeout": 132402.33
+      }
+    },
+    {
+      "book": "hedged",
+      "window": "2024-08-05 down (from 2024-08-04 22:12 UTC)",
+      "delay_min": 60,
+      "loan": 94500.0,
+      "lowest_equity": {
+        "usd": 38202.33,
+        "minute": 26,
+        "to_im": 1.9325,
+        "to_debt": 0.4043
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 38396.69,
+        "debt": 94502.8,
+        "state": "HEALTHY",
+        "closeout": 132402.33
+      }
+    },
+    {
+      "book": "hedged",
+      "window": "2024-08-05 up (from 2024-08-05 12:56 UTC)",
+      "delay_min": 2,
+      "loan": 94500.0,
+      "lowest_equity": {
+        "usd": 37926.79,
+        "minute": 213,
+        "to_im": 2.6164,
+        "to_debt": 0.4013
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 37983.03,
+        "debt": 94502.8,
+        "state": "HEALTHY",
+        "closeout": 131849.72
+      }
+    },
+    {
+      "book": "hedged",
+      "window": "2024-08-05 up (from 2024-08-05 12:56 UTC)",
+      "delay_min": 15,
+      "loan": 94500.0,
+      "lowest_equity": {
+        "usd": 37926.79,
+        "minute": 213,
+        "to_im": 2.6164,
+        "to_debt": 0.4013
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 37983.03,
+        "debt": 94502.8,
+        "state": "HEALTHY",
+        "closeout": 131849.72
+      }
+    },
+    {
+      "book": "hedged",
+      "window": "2024-08-05 up (from 2024-08-05 12:56 UTC)",
+      "delay_min": 60,
+      "loan": 94500.0,
+      "lowest_equity": {
+        "usd": 37926.79,
+        "minute": 213,
+        "to_im": 2.6164,
+        "to_debt": 0.4013
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 37983.03,
+        "debt": 94502.8,
+        "state": "HEALTHY",
+        "closeout": 131849.72
+      }
+    },
+    {
+      "book": "hedged",
+      "window": "2025-10-10 down (from 2025-10-10 17:24 UTC)",
+      "delay_min": 2,
+      "loan": 94500.0,
+      "lowest_equity": {
+        "usd": 38200.67,
+        "minute": 4,
+        "to_im": 1.9423,
+        "to_debt": 0.4042
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 38410.21,
+        "debt": 94502.8,
+        "state": "HEALTHY",
+        "closeout": 132420.19
+      }
+    },
+    {
+      "book": "hedged",
+      "window": "2025-10-10 down (from 2025-10-10 17:24 UTC)",
+      "delay_min": 15,
+      "loan": 94500.0,
+      "lowest_equity": {
+        "usd": 38200.67,
+        "minute": 4,
+        "to_im": 1.9423,
+        "to_debt": 0.4042
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 38410.21,
+        "debt": 94502.8,
+        "state": "HEALTHY",
+        "closeout": 132420.19
+      }
+    },
+    {
+      "book": "hedged",
+      "window": "2025-10-10 down (from 2025-10-10 17:24 UTC)",
+      "delay_min": 60,
+      "loan": 94500.0,
+      "lowest_equity": {
+        "usd": 38200.67,
+        "minute": 4,
+        "to_im": 1.9423,
+        "to_debt": 0.4042
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 38410.21,
+        "debt": 94502.8,
+        "state": "HEALTHY",
+        "closeout": 132420.19
+      }
+    },
+    {
+      "book": "hedged",
+      "window": "2025-10-10 up (from 2025-10-10 21:20 UTC)",
+      "delay_min": 2,
+      "loan": 94500.0,
+      "lowest_equity": {
+        "usd": 37963.39,
+        "minute": 141,
+        "to_im": 2.5316,
+        "to_debt": 0.4017
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 38032.81,
+        "debt": 94502.8,
+        "state": "HEALTHY",
+        "closeout": 131916.72
+      }
+    },
+    {
+      "book": "hedged",
+      "window": "2025-10-10 up (from 2025-10-10 21:20 UTC)",
+      "delay_min": 15,
+      "loan": 94500.0,
+      "lowest_equity": {
+        "usd": 37963.39,
+        "minute": 141,
+        "to_im": 2.5316,
+        "to_debt": 0.4017
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 38032.81,
+        "debt": 94502.8,
+        "state": "HEALTHY",
+        "closeout": 131916.72
+      }
+    },
+    {
+      "book": "hedged",
+      "window": "2025-10-10 up (from 2025-10-10 21:20 UTC)",
+      "delay_min": 60,
+      "loan": 94500.0,
+      "lowest_equity": {
+        "usd": 37963.39,
+        "minute": 141,
+        "to_im": 2.5316,
+        "to_debt": 0.4017
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 38032.81,
+        "debt": 94502.8,
+        "state": "HEALTHY",
+        "closeout": 131916.72
+      }
+    },
+    {
+      "book": "directional-80k",
+      "window": "2020-03-12 down (from 2020-03-12 22:25 UTC)",
+      "delay_min": 2,
+      "loan": 79015.02,
+      "lowest_equity": {
+        "usd": 40124.66,
+        "minute": 230,
+        "to_im": 1.0384,
+        "to_debt": 0.5078
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        },
+        {
+          "state": "WATCH",
+          "first_minute": 218
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 9,
+        "refused": 0,
+        "by_kind": {
+          "to_hl": {
+            "run": 9,
+            "refused": 0,
+            "usd": 11956.65
+          }
+        },
+        "list": [
+          {
+            "minute": 82,
+            "plan_minute": 82,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 1077.69,
+            "cost": 0.2
+          },
+          {
+            "minute": 200,
+            "plan_minute": 200,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 861.88,
+            "cost": 0.2
+          },
+          {
+            "minute": 206,
+            "plan_minute": 206,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 875.28,
+            "cost": 0.2
+          },
+          {
+            "minute": 207,
+            "plan_minute": 207,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 3184.58,
+            "cost": 0.2
+          },
+          {
+            "minute": 209,
+            "plan_minute": 209,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 1786.43,
+            "cost": 0.2
+          },
+          {
+            "minute": 212,
+            "plan_minute": 212,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 2029.28,
+            "cost": 0.2
+          },
+          {
+            "minute": 213,
+            "plan_minute": 213,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 131.15,
+            "cost": 0.2
+          },
+          {
+            "minute": 216,
+            "plan_minute": 216,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 1035.82,
+            "cost": 0.2
+          },
+          {
+            "minute": 230,
+            "plan_minute": 230,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 974.55,
+            "cost": 0.2
+          }
+        ]
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 42198.46,
+        "debt": 79017.36,
+        "state": "WATCH",
+        "closeout": 120832.12
+      }
+    },
+    {
+      "book": "directional-80k",
+      "window": "2020-03-12 down (from 2020-03-12 22:25 UTC)",
+      "delay_min": 15,
+      "loan": 79015.02,
+      "lowest_equity": {
+        "usd": 40103.43,
+        "minute": 230,
+        "to_im": 1.069,
+        "to_debt": 0.5075
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        },
+        {
+          "state": "WATCH",
+          "first_minute": 234
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 10,
+        "refused": 0,
+        "by_kind": {
+          "to_hl": {
+            "run": 10,
+            "refused": 0,
+            "usd": 11977.88
+          }
+        },
+        "list": [
+          {
+            "minute": 82,
+            "plan_minute": 82,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 1077.69,
+            "cost": 0.2
+          },
+          {
+            "minute": 200,
+            "plan_minute": 200,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 861.88,
+            "cost": 0.2
+          },
+          {
+            "minute": 205,
+            "plan_minute": 205,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 15.12,
+            "cost": 0.2
+          },
+          {
+            "minute": 206,
+            "plan_minute": 206,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 877.5,
+            "cost": 0.2
+          },
+          {
+            "minute": 207,
+            "plan_minute": 207,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 3184.62,
+            "cost": 0.2
+          },
+          {
+            "minute": 209,
+            "plan_minute": 209,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 1867.23,
+            "cost": 0.2
+          },
+          {
+            "minute": 212,
+            "plan_minute": 212,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 2066.42,
+            "cost": 0.2
+          },
+          {
+            "minute": 213,
+            "plan_minute": 213,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 131.89,
+            "cost": 0.2
+          },
+          {
+            "minute": 216,
+            "plan_minute": 216,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 1061.6,
+            "cost": 0.2
+          },
+          {
+            "minute": 230,
+            "plan_minute": 230,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 833.93,
+            "cost": 0.2
+          }
+        ]
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 42181.78,
+        "debt": 79017.36,
+        "state": "HEALTHY",
+        "closeout": 120815.25
+      }
+    },
+    {
+      "book": "directional-80k",
+      "window": "2020-03-12 down (from 2020-03-12 22:25 UTC)",
+      "delay_min": 60,
+      "loan": 79015.02,
+      "lowest_equity": {
+        "usd": 39924.4,
+        "minute": 230,
+        "to_im": 1.5203,
+        "to_debt": 0.5053
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 9,
+        "refused": 6,
+        "by_kind": {
+          "to_hl": {
+            "run": 9,
+            "refused": 6,
+            "usd": 11160.99
+          }
+        },
+        "list": [
+          {
+            "minute": 82,
+            "plan_minute": 82,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 1077.69,
+            "cost": 0.2
+          },
+          {
+            "minute": 200,
+            "plan_minute": 200,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 861.88,
+            "cost": 0.2
+          },
+          {
+            "minute": 205,
+            "plan_minute": 205,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 15.12,
+            "cost": 0.2
+          },
+          {
+            "minute": 206,
+            "plan_minute": 206,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 877.5,
+            "cost": 0.2
+          },
+          {
+            "minute": 207,
+            "plan_minute": 207,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 3184.62,
+            "cost": 0.2
+          },
+          {
+            "minute": 209,
+            "plan_minute": 209,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 1867.23,
+            "cost": 0.2
+          },
+          {
+            "minute": 212,
+            "plan_minute": 212,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 2066.42,
+            "cost": 0.2
+          },
+          {
+            "minute": 213,
+            "plan_minute": 213,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 131.89,
+            "cost": 0.2
+          },
+          {
+            "minute": 216,
+            "plan_minute": 216,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 1078.64,
+            "cost": 0.2
+          },
+          {
+            "minute": 230,
+            "plan_minute": 230,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 995.92,
+            "cost": 0.0,
+            "refused": "8 transfers are under way already"
+          },
+          {
+            "minute": 231,
+            "plan_minute": 231,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 627.32,
+            "cost": 0.0,
+            "refused": "8 transfers are under way already"
+          },
+          {
+            "minute": 236,
+            "plan_minute": 236,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 224.04,
+            "cost": 0.0,
+            "refused": "8 transfers are under way already"
+          },
+          {
+            "minute": 237,
+            "plan_minute": 237,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 318.92,
+            "cost": 0.0,
+            "refused": "8 transfers are under way already"
+          },
+          {
+            "minute": 238,
+            "plan_minute": 238,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 677.11,
+            "cost": 0.0,
+            "refused": "8 transfers are under way already"
+          },
+          {
+            "minute": 239,
+            "plan_minute": 239,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 267.6,
+            "cost": 0.0,
+            "refused": "8 transfers are under way already"
+          }
+        ]
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 41998.39,
+        "debt": 79017.36,
+        "state": "HEALTHY",
+        "closeout": 120630.49
+      }
+    },
+    {
+      "book": "directional-80k",
+      "window": "2020-03-12 up (from 2020-03-13 02:16 UTC)",
+      "delay_min": 2,
+      "loan": 79015.02,
+      "lowest_equity": {
+        "usd": 101695.01,
+        "minute": 0,
+        "to_im": 0.9983,
+        "to_debt": 1.287
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 15
+        },
+        {
+          "state": "WATCH",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 153715.42,
+        "debt": 79017.36,
+        "state": "HEALTHY",
+        "closeout": 231612.09
+      }
+    },
+    {
+      "book": "directional-80k",
+      "window": "2020-03-12 up (from 2020-03-13 02:16 UTC)",
+      "delay_min": 15,
+      "loan": 79015.02,
+      "lowest_equity": {
+        "usd": 101695.01,
+        "minute": 0,
+        "to_im": 0.9983,
+        "to_debt": 1.287
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 15
+        },
+        {
+          "state": "WATCH",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 153715.42,
+        "debt": 79017.36,
+        "state": "HEALTHY",
+        "closeout": 231612.09
+      }
+    },
+    {
+      "book": "directional-80k",
+      "window": "2020-03-12 up (from 2020-03-13 02:16 UTC)",
+      "delay_min": 60,
+      "loan": 79015.02,
+      "lowest_equity": {
+        "usd": 101695.01,
+        "minute": 0,
+        "to_im": 0.9983,
+        "to_debt": 1.287
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 15
+        },
+        {
+          "state": "WATCH",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 153715.42,
+        "debt": 79017.36,
+        "state": "HEALTHY",
+        "closeout": 231612.09
+      }
+    },
+    {
+      "book": "directional-80k",
+      "window": "2021-05-19 down (from 2021-05-19 09:10 UTC)",
+      "delay_min": 2,
+      "loan": 79015.02,
+      "lowest_equity": {
+        "usd": 41087.89,
+        "minute": 225,
+        "to_im": 1.3913,
+        "to_debt": 0.52
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        },
+        {
+          "state": "WATCH",
+          "first_minute": 227
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 4,
+        "refused": 0,
+        "by_kind": {
+          "to_hl": {
+            "run": 4,
+            "refused": 0,
+            "usd": 12665.35
+          }
+        },
+        "list": [
+          {
+            "minute": 218,
+            "plan_minute": 218,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 539.92,
+            "cost": 0.2
+          },
+          {
+            "minute": 219,
+            "plan_minute": 219,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 2164.0,
+            "cost": 0.2
+          },
+          {
+            "minute": 224,
+            "plan_minute": 224,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 1416.68,
+            "cost": 0.2
+          },
+          {
+            "minute": 225,
+            "plan_minute": 225,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 8544.75,
+            "cost": 0.2
+          }
+        ]
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 42270.78,
+        "debt": 79017.36,
+        "state": "WATCH",
+        "closeout": 120920.45
+      }
+    },
+    {
+      "book": "directional-80k",
+      "window": "2021-05-19 down (from 2021-05-19 09:10 UTC)",
+      "delay_min": 15,
+      "loan": 79015.02,
+      "lowest_equity": {
+        "usd": 41033.14,
+        "minute": 225,
+        "to_im": 1.569,
+        "to_debt": 0.5193
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 4,
+        "refused": 0,
+        "by_kind": {
+          "to_hl": {
+            "run": 4,
+            "refused": 0,
+            "usd": 12720.1
+          }
+        },
+        "list": [
+          {
+            "minute": 218,
+            "plan_minute": 218,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 539.92,
+            "cost": 0.2
+          },
+          {
+            "minute": 219,
+            "plan_minute": 219,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 2164.0,
+            "cost": 0.2
+          },
+          {
+            "minute": 224,
+            "plan_minute": 224,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 1470.36,
+            "cost": 0.2
+          },
+          {
+            "minute": 225,
+            "plan_minute": 225,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 8545.82,
+            "cost": 0.2
+          }
+        ]
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 42100.07,
+        "debt": 79017.36,
+        "state": "HEALTHY",
+        "closeout": 120749.54
+      }
+    },
+    {
+      "book": "directional-80k",
+      "window": "2021-05-19 down (from 2021-05-19 09:10 UTC)",
+      "delay_min": 60,
+      "loan": 79015.02,
+      "lowest_equity": {
+        "usd": 41033.14,
+        "minute": 225,
+        "to_im": 1.569,
+        "to_debt": 0.5193
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 4,
+        "refused": 0,
+        "by_kind": {
+          "to_hl": {
+            "run": 4,
+            "refused": 0,
+            "usd": 12720.1
+          }
+        },
+        "list": [
+          {
+            "minute": 218,
+            "plan_minute": 218,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 539.92,
+            "cost": 0.2
+          },
+          {
+            "minute": 219,
+            "plan_minute": 219,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 2164.0,
+            "cost": 0.2
+          },
+          {
+            "minute": 224,
+            "plan_minute": 224,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 1470.36,
+            "cost": 0.2
+          },
+          {
+            "minute": 225,
+            "plan_minute": 225,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 8545.82,
+            "cost": 0.2
+          }
+        ]
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 42017.18,
+        "debt": 79017.36,
+        "state": "HEALTHY",
+        "closeout": 120666.07
+      }
+    },
+    {
+      "book": "directional-80k",
+      "window": "2021-05-19 up (from 2021-05-19 13:10 UTC)",
+      "delay_min": 2,
+      "loan": 79015.02,
+      "lowest_equity": {
+        "usd": 99767.72,
+        "minute": 0,
+        "to_im": 1.0031,
+        "to_debt": 1.2626
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        },
+        {
+          "state": "WATCH",
+          "first_minute": 1
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 157331.32,
+        "debt": 79017.36,
+        "state": "HEALTHY",
+        "closeout": 235164.95
+      }
+    },
+    {
+      "book": "directional-80k",
+      "window": "2021-05-19 up (from 2021-05-19 13:10 UTC)",
+      "delay_min": 15,
+      "loan": 79015.02,
+      "lowest_equity": {
+        "usd": 99767.72,
+        "minute": 0,
+        "to_im": 1.0031,
+        "to_debt": 1.2626
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        },
+        {
+          "state": "WATCH",
+          "first_minute": 1
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 157331.32,
+        "debt": 79017.36,
+        "state": "HEALTHY",
+        "closeout": 235164.95
+      }
+    },
+    {
+      "book": "directional-80k",
+      "window": "2021-05-19 up (from 2021-05-19 13:10 UTC)",
+      "delay_min": 60,
+      "loan": 79015.02,
+      "lowest_equity": {
+        "usd": 99767.72,
+        "minute": 0,
+        "to_im": 1.0031,
+        "to_debt": 1.2626
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        },
+        {
+          "state": "WATCH",
+          "first_minute": 1
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 157331.32,
+        "debt": 79017.36,
+        "state": "HEALTHY",
+        "closeout": 235164.95
+      }
+    },
+    {
+      "book": "directional-80k",
+      "window": "2022-11-08 down (from 2022-11-08 16:34 UTC)",
+      "delay_min": 2,
+      "loan": 79015.02,
+      "lowest_equity": {
+        "usd": 45458.03,
+        "minute": 178,
+        "to_im": 1.1081,
+        "to_debt": 0.5753
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        },
+        {
+          "state": "WATCH",
+          "first_minute": 179
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 7,
+        "refused": 0,
+        "by_kind": {
+          "to_hl": {
+            "run": 7,
+            "refused": 0,
+            "usd": 11515.72
+          }
+        },
+        "list": [
+          {
+            "minute": 106,
+            "plan_minute": 106,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 220.02,
+            "cost": 0.2
+          },
+          {
+            "minute": 107,
+            "plan_minute": 107,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 1135.67,
+            "cost": 0.2
+          },
+          {
+            "minute": 172,
+            "plan_minute": 172,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 1872.91,
+            "cost": 0.2
+          },
+          {
+            "minute": 174,
+            "plan_minute": 174,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 3496.78,
+            "cost": 0.2
+          },
+          {
+            "minute": 175,
+            "plan_minute": 175,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 763.35,
+            "cost": 0.2
+          },
+          {
+            "minute": 177,
+            "plan_minute": 177,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 3339.46,
+            "cost": 0.2
+          },
+          {
+            "minute": 178,
+            "plan_minute": 178,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 687.54,
+            "cost": 0.2
+          }
+        ]
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 66889.77,
+        "debt": 79017.36,
+        "state": "WATCH",
+        "closeout": 145387.27
+      }
+    },
+    {
+      "book": "directional-80k",
+      "window": "2022-11-08 down (from 2022-11-08 16:34 UTC)",
+      "delay_min": 15,
+      "loan": 79015.02,
+      "lowest_equity": {
+        "usd": 45333.51,
+        "minute": 178,
+        "to_im": 1.359,
+        "to_debt": 0.5737
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        },
+        {
+          "state": "WATCH",
+          "first_minute": 192
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 7,
+        "refused": 0,
+        "by_kind": {
+          "to_hl": {
+            "run": 7,
+            "refused": 0,
+            "usd": 11640.24
+          }
+        },
+        "list": [
+          {
+            "minute": 106,
+            "plan_minute": 106,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 220.02,
+            "cost": 0.2
+          },
+          {
+            "minute": 107,
+            "plan_minute": 107,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 1135.67,
+            "cost": 0.2
+          },
+          {
+            "minute": 172,
+            "plan_minute": 172,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 1872.91,
+            "cost": 0.2
+          },
+          {
+            "minute": 174,
+            "plan_minute": 174,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 3534.03,
+            "cost": 0.2
+          },
+          {
+            "minute": 175,
+            "plan_minute": 175,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 764.1,
+            "cost": 0.2
+          },
+          {
+            "minute": 177,
+            "plan_minute": 177,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 3424.28,
+            "cost": 0.2
+          },
+          {
+            "minute": 178,
+            "plan_minute": 178,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 689.24,
+            "cost": 0.2
+          }
+        ]
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 66889.77,
+        "debt": 79017.36,
+        "state": "WATCH",
+        "closeout": 145387.27
+      }
+    },
+    {
+      "book": "directional-80k",
+      "window": "2022-11-08 down (from 2022-11-08 16:34 UTC)",
+      "delay_min": 60,
+      "loan": 79015.02,
+      "lowest_equity": {
+        "usd": 45333.51,
+        "minute": 178,
+        "to_im": 1.359,
+        "to_debt": 0.5737
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        },
+        {
+          "state": "WATCH",
+          "first_minute": 235
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 7,
+        "refused": 0,
+        "by_kind": {
+          "to_hl": {
+            "run": 7,
+            "refused": 0,
+            "usd": 11640.24
+          }
+        },
+        "list": [
+          {
+            "minute": 106,
+            "plan_minute": 106,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 220.02,
+            "cost": 0.2
+          },
+          {
+            "minute": 107,
+            "plan_minute": 107,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 1135.67,
+            "cost": 0.2
+          },
+          {
+            "minute": 172,
+            "plan_minute": 172,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 1872.91,
+            "cost": 0.2
+          },
+          {
+            "minute": 174,
+            "plan_minute": 174,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 3534.03,
+            "cost": 0.2
+          },
+          {
+            "minute": 175,
+            "plan_minute": 175,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 764.1,
+            "cost": 0.2
+          },
+          {
+            "minute": 177,
+            "plan_minute": 177,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 3424.28,
+            "cost": 0.2
+          },
+          {
+            "minute": 178,
+            "plan_minute": 178,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 689.24,
+            "cost": 0.2
+          }
+        ]
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 66889.77,
+        "debt": 79017.36,
+        "state": "WATCH",
+        "closeout": 145387.27
+      }
+    },
+    {
+      "book": "directional-80k",
+      "window": "2022-11-08 up (from 2022-11-08 19:33 UTC)",
+      "delay_min": 2,
+      "loan": 79015.02,
+      "lowest_equity": {
+        "usd": 103116.44,
+        "minute": 0,
+        "to_im": 0.9949,
+        "to_debt": 1.305
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 1
+        },
+        {
+          "state": "WATCH",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 130963.84,
+        "debt": 79017.36,
+        "state": "HEALTHY",
+        "closeout": 209113.73
+      }
+    },
+    {
+      "book": "directional-80k",
+      "window": "2022-11-08 up (from 2022-11-08 19:33 UTC)",
+      "delay_min": 15,
+      "loan": 79015.02,
+      "lowest_equity": {
+        "usd": 103116.44,
+        "minute": 0,
+        "to_im": 0.9949,
+        "to_debt": 1.305
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 1
+        },
+        {
+          "state": "WATCH",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 130963.84,
+        "debt": 79017.36,
+        "state": "HEALTHY",
+        "closeout": 209113.73
+      }
+    },
+    {
+      "book": "directional-80k",
+      "window": "2022-11-08 up (from 2022-11-08 19:33 UTC)",
+      "delay_min": 60,
+      "loan": 79015.02,
+      "lowest_equity": {
+        "usd": 103116.44,
+        "minute": 0,
+        "to_im": 0.9949,
+        "to_debt": 1.305
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 1
+        },
+        {
+          "state": "WATCH",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 130963.84,
+        "debt": 79017.36,
+        "state": "HEALTHY",
+        "closeout": 209113.73
+      }
+    },
+    {
+      "book": "directional-80k",
+      "window": "2024-08-05 down (from 2024-08-04 22:12 UTC)",
+      "delay_min": 2,
+      "loan": 79015.02,
+      "lowest_equity": {
+        "usd": 83422.78,
+        "minute": 181,
+        "to_im": 1.0555,
+        "to_debt": 1.0558
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 88543.52,
+        "debt": 79017.36,
+        "state": "HEALTHY",
+        "closeout": 166965.38
+      }
+    },
+    {
+      "book": "directional-80k",
+      "window": "2024-08-05 down (from 2024-08-04 22:12 UTC)",
+      "delay_min": 15,
+      "loan": 79015.02,
+      "lowest_equity": {
+        "usd": 83422.78,
+        "minute": 181,
+        "to_im": 1.0555,
+        "to_debt": 1.0558
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 88543.52,
+        "debt": 79017.36,
+        "state": "HEALTHY",
+        "closeout": 166965.38
+      }
+    },
+    {
+      "book": "directional-80k",
+      "window": "2024-08-05 down (from 2024-08-04 22:12 UTC)",
+      "delay_min": 60,
+      "loan": 79015.02,
+      "lowest_equity": {
+        "usd": 83422.78,
+        "minute": 181,
+        "to_im": 1.0555,
+        "to_debt": 1.0558
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 88543.52,
+        "debt": 79017.36,
+        "state": "HEALTHY",
+        "closeout": 166965.38
+      }
+    },
+    {
+      "book": "directional-80k",
+      "window": "2024-08-05 up (from 2024-08-05 12:56 UTC)",
+      "delay_min": 2,
+      "loan": 79015.02,
+      "lowest_equity": {
+        "usd": 98433.23,
+        "minute": 33,
+        "to_im": 1.0065,
+        "to_debt": 1.2457
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        },
+        {
+          "state": "WATCH",
+          "first_minute": 6
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 129276.63,
+        "debt": 79017.36,
+        "state": "HEALTHY",
+        "closeout": 207411.56
+      }
+    },
+    {
+      "book": "directional-80k",
+      "window": "2024-08-05 up (from 2024-08-05 12:56 UTC)",
+      "delay_min": 15,
+      "loan": 79015.02,
+      "lowest_equity": {
+        "usd": 98433.23,
+        "minute": 33,
+        "to_im": 1.0065,
+        "to_debt": 1.2457
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        },
+        {
+          "state": "WATCH",
+          "first_minute": 6
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 129276.63,
+        "debt": 79017.36,
+        "state": "HEALTHY",
+        "closeout": 207411.56
+      }
+    },
+    {
+      "book": "directional-80k",
+      "window": "2024-08-05 up (from 2024-08-05 12:56 UTC)",
+      "delay_min": 60,
+      "loan": 79015.02,
+      "lowest_equity": {
+        "usd": 98433.23,
+        "minute": 33,
+        "to_im": 1.0065,
+        "to_debt": 1.2457
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        },
+        {
+          "state": "WATCH",
+          "first_minute": 6
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 129276.63,
+        "debt": 79017.36,
+        "state": "HEALTHY",
+        "closeout": 207411.56
+      }
+    },
+    {
+      "book": "directional-80k",
+      "window": "2025-10-10 down (from 2025-10-10 17:24 UTC)",
+      "delay_min": 2,
+      "loan": 79015.02,
+      "lowest_equity": {
+        "usd": 59755.42,
+        "minute": 237,
+        "to_im": 1.2084,
+        "to_debt": 0.7562
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 1,
+        "refused": 0,
+        "by_kind": {
+          "to_hl": {
+            "run": 1,
+            "refused": 0,
+            "usd": 1693.42
+          }
+        },
+        "list": [
+          {
+            "minute": 237,
+            "plan_minute": 237,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 1693.42,
+            "cost": 0.2
+          }
+        ]
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 61929.42,
+        "debt": 79017.36,
+        "state": "HEALTHY",
+        "closeout": 140429.74
+      }
+    },
+    {
+      "book": "directional-80k",
+      "window": "2025-10-10 down (from 2025-10-10 17:24 UTC)",
+      "delay_min": 15,
+      "loan": 79015.02,
+      "lowest_equity": {
+        "usd": 59755.42,
+        "minute": 237,
+        "to_im": 1.2084,
+        "to_debt": 0.7562
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 1,
+        "refused": 0,
+        "by_kind": {
+          "to_hl": {
+            "run": 1,
+            "refused": 0,
+            "usd": 1693.42
+          }
+        },
+        "list": [
+          {
+            "minute": 237,
+            "plan_minute": 237,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 1693.42,
+            "cost": 0.2
+          }
+        ]
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 61895.75,
+        "debt": 79017.36,
+        "state": "HEALTHY",
+        "closeout": 140395.87
+      }
+    },
+    {
+      "book": "directional-80k",
+      "window": "2025-10-10 down (from 2025-10-10 17:24 UTC)",
+      "delay_min": 60,
+      "loan": 79015.02,
+      "lowest_equity": {
+        "usd": 59755.42,
+        "minute": 237,
+        "to_im": 1.2084,
+        "to_debt": 0.7562
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 1,
+        "refused": 0,
+        "by_kind": {
+          "to_hl": {
+            "run": 1,
+            "refused": 0,
+            "usd": 1693.42
+          }
+        },
+        "list": [
+          {
+            "minute": 237,
+            "plan_minute": 237,
+            "action": "REBALANCE",
+            "k": "to_hl",
+            "what": "USDC",
+            "usd": 1693.42,
+            "cost": 0.2
+          }
+        ]
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 61895.75,
+        "debt": 79017.36,
+        "state": "HEALTHY",
+        "closeout": 140395.87
+      }
+    },
+    {
+      "book": "directional-80k",
+      "window": "2025-10-10 up (from 2025-10-10 21:20 UTC)",
+      "delay_min": 2,
+      "loan": 79015.02,
+      "lowest_equity": {
+        "usd": 98890.46,
+        "minute": 1,
+        "to_im": 1.0053,
+        "to_debt": 1.2515
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        },
+        {
+          "state": "WATCH",
+          "first_minute": 2
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 139234.43,
+        "debt": 79017.36,
+        "state": "HEALTHY",
+        "closeout": 217285.37
+      }
+    },
+    {
+      "book": "directional-80k",
+      "window": "2025-10-10 up (from 2025-10-10 21:20 UTC)",
+      "delay_min": 15,
+      "loan": 79015.02,
+      "lowest_equity": {
+        "usd": 98890.46,
+        "minute": 1,
+        "to_im": 1.0053,
+        "to_debt": 1.2515
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        },
+        {
+          "state": "WATCH",
+          "first_minute": 2
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 139234.43,
+        "debt": 79017.36,
+        "state": "HEALTHY",
+        "closeout": 217285.37
+      }
+    },
+    {
+      "book": "directional-80k",
+      "window": "2025-10-10 up (from 2025-10-10 21:20 UTC)",
+      "delay_min": 60,
+      "loan": 79015.02,
+      "lowest_equity": {
+        "usd": 98890.46,
+        "minute": 1,
+        "to_im": 1.0053,
+        "to_debt": 1.2515
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        },
+        {
+          "state": "WATCH",
+          "first_minute": 2
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 139234.43,
+        "debt": 79017.36,
+        "state": "HEALTHY",
+        "closeout": 217285.37
+      }
+    },
+    {
+      "book": "directional-200k",
+      "window": "2020-03-12 down (from 2020-03-12 22:25 UTC)",
+      "delay_min": 2,
+      "loan": 140619.55,
+      "lowest_equity": {
+        "usd": 98519.97,
+        "minute": 230,
+        "to_im": 1.4749,
+        "to_debt": 0.7006
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 100593.89,
+        "debt": 140623.73,
+        "state": "HEALTHY",
+        "closeout": 240833.92
+      }
+    },
+    {
+      "book": "directional-200k",
+      "window": "2020-03-12 down (from 2020-03-12 22:25 UTC)",
+      "delay_min": 15,
+      "loan": 140619.55,
+      "lowest_equity": {
+        "usd": 98519.97,
+        "minute": 230,
+        "to_im": 1.4749,
+        "to_debt": 0.7006
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 100593.89,
+        "debt": 140623.73,
+        "state": "HEALTHY",
+        "closeout": 240833.92
+      }
+    },
+    {
+      "book": "directional-200k",
+      "window": "2020-03-12 down (from 2020-03-12 22:25 UTC)",
+      "delay_min": 60,
+      "loan": 140619.55,
+      "lowest_equity": {
+        "usd": 98519.97,
+        "minute": 230,
+        "to_im": 1.4749,
+        "to_debt": 0.7006
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 100593.89,
+        "debt": 140623.73,
+        "state": "HEALTHY",
+        "closeout": 240833.92
+      }
+    },
+    {
+      "book": "directional-200k",
+      "window": "2020-03-12 up (from 2020-03-13 02:16 UTC)",
+      "delay_min": 2,
+      "loan": 140619.55,
+      "lowest_equity": {
+        "usd": 160090.46,
+        "minute": 0,
+        "to_im": 1.4507,
+        "to_debt": 1.1385
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 212109.05,
+        "debt": 140623.73,
+        "state": "HEALTHY",
+        "closeout": 351612.09
+      }
+    },
+    {
+      "book": "directional-200k",
+      "window": "2020-03-12 up (from 2020-03-13 02:16 UTC)",
+      "delay_min": 15,
+      "loan": 140619.55,
+      "lowest_equity": {
+        "usd": 160090.46,
+        "minute": 0,
+        "to_im": 1.4507,
+        "to_debt": 1.1385
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 212109.05,
+        "debt": 140623.73,
+        "state": "HEALTHY",
+        "closeout": 351612.09
+      }
+    },
+    {
+      "book": "directional-200k",
+      "window": "2020-03-12 up (from 2020-03-13 02:16 UTC)",
+      "delay_min": 60,
+      "loan": 140619.55,
+      "lowest_equity": {
+        "usd": 160090.46,
+        "minute": 0,
+        "to_im": 1.4507,
+        "to_debt": 1.1385
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 212109.05,
+        "debt": 140623.73,
+        "state": "HEALTHY",
+        "closeout": 351612.09
+      }
+    },
+    {
+      "book": "directional-200k",
+      "window": "2021-05-19 down (from 2021-05-19 09:10 UTC)",
+      "delay_min": 2,
+      "loan": 140619.55,
+      "lowest_equity": {
+        "usd": 99510.37,
+        "minute": 225,
+        "to_im": 1.4174,
+        "to_debt": 0.7076
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 100665.22,
+        "debt": 140623.73,
+        "state": "HEALTHY",
+        "closeout": 240921.25
+      }
+    },
+    {
+      "book": "directional-200k",
+      "window": "2021-05-19 down (from 2021-05-19 09:10 UTC)",
+      "delay_min": 15,
+      "loan": 140619.55,
+      "lowest_equity": {
+        "usd": 99510.37,
+        "minute": 225,
+        "to_im": 1.4174,
+        "to_debt": 0.7076
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 100665.22,
+        "debt": 140623.73,
+        "state": "HEALTHY",
+        "closeout": 240921.25
+      }
+    },
+    {
+      "book": "directional-200k",
+      "window": "2021-05-19 down (from 2021-05-19 09:10 UTC)",
+      "delay_min": 60,
+      "loan": 140619.55,
+      "lowest_equity": {
+        "usd": 99510.37,
+        "minute": 225,
+        "to_im": 1.4174,
+        "to_debt": 0.7076
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 100665.22,
+        "debt": 140623.73,
+        "state": "HEALTHY",
+        "closeout": 240921.25
+      }
+    },
+    {
+      "book": "directional-200k",
+      "window": "2021-05-19 up (from 2021-05-19 13:10 UTC)",
+      "delay_min": 2,
+      "loan": 140619.55,
+      "lowest_equity": {
+        "usd": 158163.18,
+        "minute": 0,
+        "to_im": 1.4334,
+        "to_debt": 1.1248
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 215724.96,
+        "debt": 140623.73,
+        "state": "HEALTHY",
+        "closeout": 355164.95
+      }
+    },
+    {
+      "book": "directional-200k",
+      "window": "2021-05-19 up (from 2021-05-19 13:10 UTC)",
+      "delay_min": 15,
+      "loan": 140619.55,
+      "lowest_equity": {
+        "usd": 158163.18,
+        "minute": 0,
+        "to_im": 1.4334,
+        "to_debt": 1.1248
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 215724.96,
+        "debt": 140623.73,
+        "state": "HEALTHY",
+        "closeout": 355164.95
+      }
+    },
+    {
+      "book": "directional-200k",
+      "window": "2021-05-19 up (from 2021-05-19 13:10 UTC)",
+      "delay_min": 60,
+      "loan": 140619.55,
+      "lowest_equity": {
+        "usd": 158163.18,
+        "minute": 0,
+        "to_im": 1.4334,
+        "to_debt": 1.1248
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 215724.96,
+        "debt": 140623.73,
+        "state": "HEALTHY",
+        "closeout": 355164.95
+      }
+    },
+    {
+      "book": "directional-200k",
+      "window": "2022-11-08 down (from 2022-11-08 16:34 UTC)",
+      "delay_min": 2,
+      "loan": 140619.55,
+      "lowest_equity": {
+        "usd": 103919.92,
+        "minute": 178,
+        "to_im": 1.3508,
+        "to_debt": 0.739
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 125284.8,
+        "debt": 140623.73,
+        "state": "HEALTHY",
+        "closeout": 265388.67
+      }
+    },
+    {
+      "book": "directional-200k",
+      "window": "2022-11-08 down (from 2022-11-08 16:34 UTC)",
+      "delay_min": 15,
+      "loan": 140619.55,
+      "lowest_equity": {
+        "usd": 103919.92,
+        "minute": 178,
+        "to_im": 1.3508,
+        "to_debt": 0.739
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 125284.8,
+        "debt": 140623.73,
+        "state": "HEALTHY",
+        "closeout": 265388.67
+      }
+    },
+    {
+      "book": "directional-200k",
+      "window": "2022-11-08 down (from 2022-11-08 16:34 UTC)",
+      "delay_min": 60,
+      "loan": 140619.55,
+      "lowest_equity": {
+        "usd": 103919.92,
+        "minute": 178,
+        "to_im": 1.3508,
+        "to_debt": 0.739
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 125284.8,
+        "debt": 140623.73,
+        "state": "HEALTHY",
+        "closeout": 265388.67
+      }
+    },
+    {
+      "book": "directional-200k",
+      "window": "2022-11-08 up (from 2022-11-08 19:33 UTC)",
+      "delay_min": 2,
+      "loan": 140619.55,
+      "lowest_equity": {
+        "usd": 161511.89,
+        "minute": 0,
+        "to_im": 1.4649,
+        "to_debt": 1.1486
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 189357.48,
+        "debt": 140623.73,
+        "state": "HEALTHY",
+        "closeout": 329113.73
+      }
+    },
+    {
+      "book": "directional-200k",
+      "window": "2022-11-08 up (from 2022-11-08 19:33 UTC)",
+      "delay_min": 15,
+      "loan": 140619.55,
+      "lowest_equity": {
+        "usd": 161511.89,
+        "minute": 0,
+        "to_im": 1.4649,
+        "to_debt": 1.1486
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 189357.48,
+        "debt": 140623.73,
+        "state": "HEALTHY",
+        "closeout": 329113.73
+      }
+    },
+    {
+      "book": "directional-200k",
+      "window": "2022-11-08 up (from 2022-11-08 19:33 UTC)",
+      "delay_min": 60,
+      "loan": 140619.55,
+      "lowest_equity": {
+        "usd": 161511.89,
+        "minute": 0,
+        "to_im": 1.4649,
+        "to_debt": 1.1486
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 189357.48,
+        "debt": 140623.73,
+        "state": "HEALTHY",
+        "closeout": 329113.73
+      }
+    },
+    {
+      "book": "directional-200k",
+      "window": "2024-08-05 down (from 2024-08-04 22:12 UTC)",
+      "delay_min": 2,
+      "loan": 140619.55,
+      "lowest_equity": {
+        "usd": 141816.86,
+        "minute": 181,
+        "to_im": 1.5467,
+        "to_debt": 1.0085
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 146937.15,
+        "debt": 140623.73,
+        "state": "HEALTHY",
+        "closeout": 286965.38
+      }
+    },
+    {
+      "book": "directional-200k",
+      "window": "2024-08-05 down (from 2024-08-04 22:12 UTC)",
+      "delay_min": 15,
+      "loan": 140619.55,
+      "lowest_equity": {
+        "usd": 141816.86,
+        "minute": 181,
+        "to_im": 1.5467,
+        "to_debt": 1.0085
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 146937.15,
+        "debt": 140623.73,
+        "state": "HEALTHY",
+        "closeout": 286965.38
+      }
+    },
+    {
+      "book": "directional-200k",
+      "window": "2024-08-05 down (from 2024-08-04 22:12 UTC)",
+      "delay_min": 60,
+      "loan": 140619.55,
+      "lowest_equity": {
+        "usd": 141816.86,
+        "minute": 181,
+        "to_im": 1.5467,
+        "to_debt": 1.0085
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 146937.15,
+        "debt": 140623.73,
+        "state": "HEALTHY",
+        "closeout": 286965.38
+      }
+    },
+    {
+      "book": "directional-200k",
+      "window": "2024-08-05 up (from 2024-08-05 12:56 UTC)",
+      "delay_min": 2,
+      "loan": 140619.55,
+      "lowest_equity": {
+        "usd": 156828.44,
+        "minute": 33,
+        "to_im": 1.4643,
+        "to_debt": 1.1153
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 187670.26,
+        "debt": 140623.73,
+        "state": "HEALTHY",
+        "closeout": 327411.56
+      }
+    },
+    {
+      "book": "directional-200k",
+      "window": "2024-08-05 up (from 2024-08-05 12:56 UTC)",
+      "delay_min": 15,
+      "loan": 140619.55,
+      "lowest_equity": {
+        "usd": 156828.44,
+        "minute": 33,
+        "to_im": 1.4643,
+        "to_debt": 1.1153
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 187670.26,
+        "debt": 140623.73,
+        "state": "HEALTHY",
+        "closeout": 327411.56
+      }
+    },
+    {
+      "book": "directional-200k",
+      "window": "2024-08-05 up (from 2024-08-05 12:56 UTC)",
+      "delay_min": 60,
+      "loan": 140619.55,
+      "lowest_equity": {
+        "usd": 156828.44,
+        "minute": 33,
+        "to_im": 1.4643,
+        "to_debt": 1.1153
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 187670.26,
+        "debt": 140623.73,
+        "state": "HEALTHY",
+        "closeout": 327411.56
+      }
+    },
+    {
+      "book": "directional-200k",
+      "window": "2025-10-10 down (from 2025-10-10 17:24 UTC)",
+      "delay_min": 2,
+      "loan": 140619.55,
+      "lowest_equity": {
+        "usd": 118149.07,
+        "minute": 237,
+        "to_im": 1.3617,
+        "to_debt": 0.8402
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 120323.25,
+        "debt": 140623.73,
+        "state": "HEALTHY",
+        "closeout": 260429.94
+      }
+    },
+    {
+      "book": "directional-200k",
+      "window": "2025-10-10 down (from 2025-10-10 17:24 UTC)",
+      "delay_min": 15,
+      "loan": 140619.55,
+      "lowest_equity": {
+        "usd": 118149.07,
+        "minute": 237,
+        "to_im": 1.3617,
+        "to_debt": 0.8402
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 120323.25,
+        "debt": 140623.73,
+        "state": "HEALTHY",
+        "closeout": 260429.94
+      }
+    },
+    {
+      "book": "directional-200k",
+      "window": "2025-10-10 down (from 2025-10-10 17:24 UTC)",
+      "delay_min": 60,
+      "loan": 140619.55,
+      "lowest_equity": {
+        "usd": 118149.07,
+        "minute": 237,
+        "to_im": 1.3617,
+        "to_debt": 0.8402
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 120323.25,
+        "debt": 140623.73,
+        "state": "HEALTHY",
+        "closeout": 260429.94
+      }
+    },
+    {
+      "book": "directional-200k",
+      "window": "2025-10-10 up (from 2025-10-10 21:20 UTC)",
+      "delay_min": 2,
+      "loan": 140619.55,
+      "lowest_equity": {
+        "usd": 157285.91,
+        "minute": 1,
+        "to_im": 1.421,
+        "to_debt": 1.1185
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 197628.07,
+        "debt": 140623.73,
+        "state": "HEALTHY",
+        "closeout": 337285.37
+      }
+    },
+    {
+      "book": "directional-200k",
+      "window": "2025-10-10 up (from 2025-10-10 21:20 UTC)",
+      "delay_min": 15,
+      "loan": 140619.55,
+      "lowest_equity": {
+        "usd": 157285.91,
+        "minute": 1,
+        "to_im": 1.421,
+        "to_debt": 1.1185
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 197628.07,
+        "debt": 140623.73,
+        "state": "HEALTHY",
+        "closeout": 337285.37
+      }
+    },
+    {
+      "book": "directional-200k",
+      "window": "2025-10-10 up (from 2025-10-10 21:20 UTC)",
+      "delay_min": 60,
+      "loan": 140619.55,
+      "lowest_equity": {
+        "usd": 157285.91,
+        "minute": 1,
+        "to_im": 1.421,
+        "to_debt": 1.1185
+      },
+      "states": [
+        {
+          "state": "HEALTHY",
+          "first_minute": 0
+        }
+      ],
+      "liquidations": [],
+      "deleverage_confirmed": [],
+      "steps": {
+        "run": 0,
+        "refused": 0,
+        "by_kind": {},
+        "list": []
+      },
+      "pool_loss": {
+        "end": 0.0,
+        "worst": 0.0,
+        "worst_minute": null
+      },
+      "end": {
+        "equity": 197628.07,
+        "debt": 140623.73,
+        "state": "HEALTHY",
+        "closeout": 337285.37
+      }
+    }
+  ]
+}

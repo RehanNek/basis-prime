@@ -1,0 +1,186 @@
+{
+ "wallet": "0x2031181d63507368232579af4c64a1c3428407ff",
+ "chain_id": 84532,
+ "started_utc": "2026-11-11T16:53:19.837Z",
+ "max_fee_wei": "1000000000",
+ "tip_wei": "1000000",
+ "steps": [
+  {
+   "label": "wrap ETH into WETH",
+   "to": "0x4200000000000000000000000000000000000006",
+   "data": "0xd0e30db0",
+   "nonce": 3,
+   "hash": "0x2ad065d0f7f3ed71f84d36cd100a3c13638ca5ad42d12443ea274db8417f31f5",
+   "gas_used": 44866,
+   "gas_estimate": 45246,
+   "fee_eth": 2.69196e-7,
+   "after": {
+    "eth": 0.03999839647599933,
+    "weth": 0.01,
+    "wbtc": 0.01,
+    "usdc": 1,
+    "collateral_usd": 0,
+    "debt_usd": 0,
+    "room_usd": 0,
+    "liq_bp": 0,
+    "ltv_bp": 0,
+    "health": null
+   }
+  },
+  {
+   "label": "approve WETH",
+   "to": "0x4200000000000000000000000000000000000006",
+   "data": "0x095ea7b30000000000000000000000008bab6d1b75f19e9ed9fce8b9bd338844ff79ae27ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+   "nonce": 4,
+   "hash": "0x0e2cf3dceedd2056511fd28405dc5977e306aa9089be0954238fdef4765fd77d",
+   "gas_used": 46343,
+   "gas_estimate": 46726,
+   "fee_eth": 2.78058e-7,
+   "after": {
+    "eth": 0.03999811841799917,
+    "weth": 0.01,
+    "wbtc": 0.01,
+    "usdc": 1,
+    "collateral_usd": 0,
+    "debt_usd": 0,
+    "room_usd": 0,
+    "liq_bp": 0,
+    "ltv_bp": 0,
+    "health": null
+   }
+  },
+  {
+   "label": "supply WETH",
+   "to": "0x8bAB6d1b75f19e9eD9fCe8b9BD338844fF79aE27",
+   "data": "0x617ba0370000000000000000000000004200000000000000000000000000000000000006000000000000000000000000000000000000000000000000002386f26fc100000000000000000000000000002031181d63507368232579af4c64a1c3428407ff0000000000000000000000000000000000000000000000000000000000000000",
+   "nonce": 5,
+   "hash": "0x957d23c0a3150067cf26d33afc2acce78d47319b279717d00283b34be5183312",
+   "gas_used": 185866,
+   "gas_estimate": 196028,
+   "fee_eth": 0.000001115196,
+   "after": {
+    "eth": 0.03999700322199899,
+    "weth": 0,
+    "wbtc": 0.01,
+    "usdc": 1,
+    "collateral_usd": 20.76633668,
+    "debt_usd": 0,
+    "room_usd": 17.33989112,
+    "liq_bp": 8500,
+    "ltv_bp": 8350,
+    "health": null
+   }
+  },
+  {
+   "label": "borrow USDC",
+   "to": "0x8bAB6d1b75f19e9eD9fCe8b9BD338844fF79aE27",
+   "data": "0xa415bcad000000000000000000000000ba50cd2a20f6da35d788639e581bca8d0b5d4d5f0000000000000000000000000000000000000000000000000000000000989680000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000000000000000000000000002031181d63507368232579af4c64a1c3428407ff",
+   "nonce": 6,
+   "hash": "0xd2125ceb69eb4ab2b9a6d596efa2d925ead3fb55fba448f5af6c025cecfaac5a",
+   "gas_used": 259935,
+   "gas_estimate": 270393,
+   "fee_eth": 0.00000155961,
+   "after": {
+    "eth": 0.0399954436119988,
+    "weth": 0,
+    "wbtc": 0.01,
+    "usdc": 11,
+    "collateral_usd": 20.76633672,
+    "debt_usd": 9.9971473,
+    "room_usd": 7.34274386,
+    "liq_bp": 8500,
+    "ltv_bp": 8350,
+    "health": 1.7656423059806272
+   }
+  },
+  {
+   "label": "approve USDC",
+   "to": "0xba50Cd2A20f6DA35D788639E581bca8d0B5d4D5f",
+   "data": "0x095ea7b30000000000000000000000008bab6d1b75f19e9ed9fce8b9bd338844ff79ae27ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+   "nonce": 7,
+   "hash": "0xf136106a6379fc40d57816a73fa4efad4f72d58404e14c8a3bb5a89eb4b94042",
+   "gas_used": 46584,
+   "gas_estimate": 46967,
+   "fee_eth": 2.79504e-7,
+   "after": {
+    "eth": 0.03999516410799864,
+    "weth": 0,
+    "wbtc": 0.01,
+    "usdc": 11,
+    "collateral_usd": 20.76633675,
+    "debt_usd": 9.9971473,
+    "room_usd": 7.34274388,
+    "liq_bp": 8500,
+    "ltv_bp": 8350,
+    "health": 1.7656423085313546
+   }
+  },
+  {
+   "label": "repay USDC (all)",
+   "to": "0x8bAB6d1b75f19e9eD9fCe8b9BD338844fF79aE27",
+   "data": "0x573ade81000000000000000000000000ba50cd2a20f6da35d788639e581bca8d0b5d4d5fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00000000000000000000000000000000000000000000000000000000000000020000000000000000000000002031181d63507368232579af4c64a1c3428407ff",
+   "nonce": 8,
+   "hash": "0x1614087256fbf3365b3655695020f151db8a89722dfa170ad5e80ca98926debd",
+   "gas_used": 162260,
+   "gas_estimate": 167172,
+   "fee_eth": 9.7356e-7,
+   "after": {
+    "eth": 0.039994190547998465,
+    "weth": 0,
+    "wbtc": 0.01,
+    "usdc": 0.999999,
+    "collateral_usd": 20.76633678,
+    "debt_usd": 0,
+    "room_usd": 17.33989121,
+    "liq_bp": 8500,
+    "ltv_bp": 8350,
+    "health": null
+   }
+  },
+  {
+   "label": "withdraw WETH (all)",
+   "to": "0x8bAB6d1b75f19e9eD9fCe8b9BD338844fF79aE27",
+   "data": "0x69328dec0000000000000000000000004200000000000000000000000000000000000006ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0000000000000000000000002031181d63507368232579af4c64a1c3428407ff",
+   "nonce": 9,
+   "hash": "0x4ebeccea0ef03c05911cb499638eeb66280d4f12abd5c25377c00c7e37e89c61",
+   "gas_used": 173127,
+   "gas_estimate": 183087,
+   "fee_eth": 0.000001038762,
+   "after": {
+    "eth": 0.0399931517859983,
+    "weth": 0.010000000059430428,
+    "wbtc": 0.01,
+    "usdc": 0.999999,
+    "collateral_usd": 0,
+    "debt_usd": 0,
+    "room_usd": 0,
+    "liq_bp": 0,
+    "ltv_bp": 0,
+    "health": null
+   }
+  },
+  {
+   "label": "unwrap WETH",
+   "to": "0x4200000000000000000000000000000000000006",
+   "data": "0x2e1a7d4d000000000000000000000000000000000000000000000000002386f26fc10000",
+   "nonce": 10,
+   "hash": "0xca6d37427541c6c1d74ed049ce1f63d7e58a288240b96290e85a00224318e8f9",
+   "gas_used": 35116,
+   "gas_estimate": 36200,
+   "fee_eth": 2.10696e-7,
+   "after": {
+    "eth": 0.04999294108999813,
+    "weth": 5.9430428e-11,
+    "wbtc": 0.01,
+    "usdc": 0.999999,
+    "collateral_usd": 0,
+    "debt_usd": 0,
+    "room_usd": 0,
+    "liq_bp": 0,
+    "ltv_bp": 0,
+    "health": null
+   }
+  }
+ ],
+ "finished_utc": "2026-11-11T16:53:41.091Z"
+}

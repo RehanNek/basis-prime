@@ -1,0 +1,1970 @@
+{
+ "kappa": 1.081527972667824,
+ "btc_q999_4h": 0.11095413436602466,
+ "coins": {
+  "BTC": {
+   "allowed": true,
+   "tier": 1,
+   "binance_symbol": "BTCUSDT",
+   "history_source": "binance 1h",
+   "history_days": 2862,
+   "hl_max_leverage": 40,
+   "hl_margin_table": 56,
+   "hl_sz_decimals": 5,
+   "unit_mult": 1,
+   "price": 78287.0,
+   "oi_usd": 3108482673.92432,
+   "adv30_usd": 2367855476.134829,
+   "spot24h_usd": 3553122451.3694725,
+   "mcap_usd": 1572638170489,
+   "pyth_id": "e62df6c8b4a85fe1a67db44dc12de5db330f7ac66b72dc658afedf0f4a415b43",
+   "tail4h": {
+    "q99_down": -0.05434992332933484,
+    "q999_down": -0.11095413436602466,
+    "worst_down": -0.34793897525460027,
+    "q99_up": 0.049414518962446925,
+    "q999_up": 0.09655432189816912,
+    "worst_up": 0.3369456554101322
+   },
+   "tail24h": {
+    "q999_down": -0.23863809455618026,
+    "q999_up": 0.20298983712016136,
+    "worst_down": -0.5063853168383121,
+    "worst_up": 0.4414593232523971
+   },
+   "vol_all": 0.6141267822357043,
+   "vol_1y": 0.43046381028165703,
+   "beta_btc": 1.0,
+   "corr_btc": 1.0,
+   "funding": {
+    "mean_1y_apr": 0.05802650809999999,
+    "mean_30d_apr": 0.08935197445000001,
+    "min_7d_apr": -0.2473017975714298,
+    "max_7d_apr": 1.218754850785715,
+    "hours": 29973,
+    "history": "since May 2023"
+   },
+   "premium": {
+    "q99": 0.0006914112799999996,
+    "q999": 0.0008507878279999995,
+    "max": 0.0012181578
+   },
+   "book": {
+    "spread_bp": 0.1276527844263603,
+    "depth_1pct_usd": 3637571.0099799996,
+    "depth_visible_usd": 3637571.0099799996,
+    "visible_range": 0.0002999840434019241
+   },
+   "params": {
+    "S": 0.12,
+    "S_calibrated": 0.12,
+    "S_floor": 0.18,
+    "S_extreme_down": -0.24,
+    "S_extreme_up": 0.24,
+    "basis": 0.003,
+    "vol_ref": 0.6141267822357043,
+    "funding_stress_short_apr": -0.2473017975714298,
+    "funding_stress_long_apr": 1.218754850785715,
+    "client_cap_usd": 77712066.84810801,
+    "book_cap_usd": 233136200.54432404,
+    "price_band": 0.01
+   },
+   "coverage": {
+    "windows": 68618,
+    "down_past_S": 0.0008015389547932029,
+    "up_past_S": 0.0005537905505843948,
+    "down_past_extreme": 0.0001165874843335568,
+    "up_past_extreme": 1.45734355416946e-05
+   }
+  },
+  "ETH": {
+   "allowed": true,
+   "tier": 1,
+   "binance_symbol": "ETHUSDT",
+   "history_source": "binance 1h",
+   "history_days": 2862,
+   "hl_max_leverage": 25,
+   "hl_margin_table": 55,
+   "hl_sz_decimals": 4,
+   "unit_mult": 1,
+   "price": 2315.5,
+   "oi_usd": 2376410305.5967994,
+   "adv30_usd": 1006613472.2141145,
+   "spot24h_usd": 1291909805.361697,
+   "mcap_usd": 282815185607,
+   "pyth_id": "ff61491a931112ddf1bd8147cd1b641375f79f5825126d665480874634fd0ace",
+   "tail4h": {
+    "q99_down": -0.0694251941543253,
+    "q999_down": -0.14772687429969428,
+    "worst_down": -0.36512633582395715,
+    "q99_up": 0.060052868910322764,
+    "q999_up": 0.11963612603355665,
+    "worst_up": 0.4299036369288156
+   },
+   "tail24h": {
+    "q999_down": -0.31167905439585575,
+    "q999_up": 0.2509536640393829,
+    "worst_down": -0.5329386846249933,
+    "worst_up": 0.4541851101608023
+   },
+   "vol_all": 0.7841339884880265,
+   "vol_1y": 0.5835259474507293,
+   "beta_btc": 1.2181268202697437,
+   "corr_btc": 0.8198416410451599,
+   "funding": {
+    "mean_1y_apr": 0.0638110707,
+    "mean_30d_apr": 0.06607396561666667,
+    "min_7d_apr": -0.20604699992856995,
+    "max_7d_apr": 0.7640186309285746,
+    "hours": 29973,
+    "history": "since May 2023"
+   },
+   "premium": {
+    "q99": 0.0007127033599999995,
+    "q999": 0.0009041694639999985,
+    "max": 0.0011675502
+   },
+   "book": {
+    "spread_bp": 0.4313040477880962,
+    "depth_1pct_usd": 11628488.73638,
+    "depth_visible_usd": 11628488.73638,
+    "visible_range": 0.000841042893187649
+   },
+   "params": {
+    "S": 0.18,
+    "S_calibrated": 0.1597707468699028,
+    "S_floor": 0.18,
+    "S_extreme_down": -0.36,
+    "S_extreme_up": 0.36,
+    "basis": 0.003,
+    "vol_ref": 0.7841339884880265,
+    "funding_stress_short_apr": -0.20604699992856995,
+    "funding_stress_long_apr": 0.7640186309285746,
+    "client_cap_usd": 50330673.61070573,
+    "book_cap_usd": 150992020.8321172,
+    "price_band": 0.01
+   },
+   "coverage": {
+    "windows": 68618,
+    "down_past_S": 0.0005100702439593109,
+    "up_past_S": 0.0001020140487918622,
+    "down_past_extreme": 1.45734355416946e-05,
+    "up_past_extreme": 1.45734355416946e-05
+   }
+  },
+  "ZEC": {
+   "allowed": true,
+   "tier": 2,
+   "binance_symbol": "ZECUSDT",
+   "history_source": "binance 1h",
+   "history_days": 2783,
+   "hl_max_leverage": 10,
+   "hl_margin_table": 52,
+   "hl_sz_decimals": 2,
+   "unit_mult": 1,
+   "price": 1279.6,
+   "oi_usd": 645798227.368,
+   "adv30_usd": 334871334.05655557,
+   "spot24h_usd": 314018558.2973048,
+   "mcap_usd": 21762531098,
+   "pyth_id": "be9b59d178f0d6a97ab4c343bff2aa69caa1eaae3e9048a65788c529b125bb24",
+   "tail4h": {
+    "q99_down": -0.0933744523340402,
+    "q999_down": -0.2251052249265932,
+    "worst_down": -0.5357689986537301,
+    "q99_up": 0.09777456900061947,
+    "q999_up": 0.1963031372541114,
+    "worst_up": 0.607236693941896
+   },
+   "tail24h": {
+    "q999_down": -0.44049115032328406,
+    "q999_up": 0.4373927702871778,
+    "worst_down": -0.6155029221777915,
+    "worst_up": 0.9522063471993931
+   },
+   "vol_all": 1.1776735929527178,
+   "vol_1y": 1.2961707845173276,
+   "beta_btc": 1.3701464679790814,
+   "corr_btc": 0.4535363819940978,
+   "funding": {
+    "mean_1y_apr": 0.0430962074,
+    "mean_30d_apr": 0.11389469611666668,
+    "min_7d_apr": -0.6871009295000006,
+    "max_7d_apr": 0.427876949214285,
+    "hours": 8760,
+    "history": "last year"
+   },
+   "premium": {
+    "q99": 0.0016009756759999996,
+    "q999": 0.0038127684846,
+    "max": 0.0065915855
+   },
+   "book": {
+    "spread_bp": 0.7833614037829232,
+    "depth_1pct_usd": 771438.4,
+    "depth_visible_usd": 771438.4,
+    "visible_range": 0.0015275547373780896
+   },
+   "params": {
+    "S": 0.25,
+    "S_calibrated": 0.24345759755179286,
+    "S_floor": 0.18,
+    "S_extreme_down": -0.5,
+    "S_extreme_up": 0.5,
+    "basis": 0.0039,
+    "vol_ref": 1.1776735929527178,
+    "funding_stress_short_apr": -0.6871009295000006,
+    "funding_stress_long_apr": 0.427876949214285,
+    "client_cap_usd": 16144955.684200002,
+    "book_cap_usd": 48434867.052600004,
+    "price_band": 0.02
+   },
+   "coverage": {
+    "windows": 66746,
+    "down_past_S": 0.0007491085608126329,
+    "up_past_S": 0.00034458993797381116,
+    "down_past_extreme": 4.494651364875798e-05,
+    "up_past_extreme": 1.4982171216252659e-05
+   }
+  },
+  "SOL": {
+   "allowed": true,
+   "tier": 2,
+   "binance_symbol": "SOLUSDT",
+   "history_source": "binance 1h",
+   "history_days": 2274,
+   "hl_max_leverage": 20,
+   "hl_margin_table": 54,
+   "hl_sz_decimals": 2,
+   "unit_mult": 1,
+   "price": 92.799,
+   "oi_usd": 531759159.05489993,
+   "adv30_usd": 212040477.802675,
+   "spot24h_usd": 453076119.9974685,
+   "mcap_usd": 54721065594,
+   "pyth_id": "ef0d8b6fda2ceba41da15d4095d1da392a0d2f8ed0c6c7bc0f4cfac8c280b56d",
+   "tail4h": {
+    "q99_down": -0.09283946952294692,
+    "q999_down": -0.1922761422876418,
+    "worst_down": -0.4622237555045965,
+    "q99_up": 0.10144350183755381,
+    "q999_up": 0.22046568801859565,
+    "worst_up": 0.5969070432005379
+   },
+   "tail24h": {
+    "q999_down": -0.41582062445144874,
+    "q999_up": 0.5090722960485153,
+    "worst_down": -0.5438584412007711,
+    "worst_up": 0.6962014015980003
+   },
+   "vol_all": 1.1832925529757319,
+   "vol_1y": 0.6402645225047359,
+   "beta_btc": 1.3469791289640085,
+   "corr_btc": 0.7737818621214908,
+   "funding": {
+    "mean_1y_apr": 0.009122719000000005,
+    "mean_30d_apr": 0.07407811145000001,
+    "min_7d_apr": -0.3549784661428573,
+    "max_7d_apr": 0.1350270936428546,
+    "hours": 8760,
+    "history": "last year"
+   },
+   "premium": {
+    "q99": 0.0008977282529999999,
+    "q999": 0.0013896953801999996,
+    "max": 0.0016076724
+   },
+   "book": {
+    "spread_bp": 0.10748354158168094,
+    "depth_1pct_usd": 185458.05291000003,
+    "depth_visible_usd": 185458.05291000003,
+    "visible_range": 0.00024183796856103168
+   },
+   "params": {
+    "S": 0.24,
+    "S_calibrated": 0.2384398086055687,
+    "S_floor": 0.18,
+    "S_extreme_down": -0.48,
+    "S_extreme_up": 0.48,
+    "basis": 0.003,
+    "vol_ref": 1.1832925529757319,
+    "funding_stress_short_apr": -0.3549784661428573,
+    "funding_stress_long_apr": 0.1350270936428546,
+    "client_cap_usd": 10602023.890133752,
+    "book_cap_usd": 31806071.670401253,
+    "price_band": 0.02
+   },
+   "coverage": {
+    "windows": 54562,
+    "down_past_S": 0.0004215387998973645,
+    "up_past_S": 0.0007147831824346615,
+    "down_past_extreme": 0.0,
+    "up_past_extreme": 3.665554781716213e-05
+   }
+  },
+  "NEAR": {
+   "allowed": true,
+   "tier": 2,
+   "binance_symbol": "NEARUSDT",
+   "history_source": "binance 1h",
+   "history_days": 2209,
+   "hl_max_leverage": 10,
+   "hl_margin_table": 52,
+   "hl_sz_decimals": 1,
+   "unit_mult": 1,
+   "price": 3.9761,
+   "oi_usd": 178518474.98196006,
+   "adv30_usd": 197392573.5493151,
+   "spot24h_usd": 169216234.3552624,
+   "mcap_usd": 5211105101,
+   "pyth_id": "c415de8d2eba7db216527dff4b60e8f3a5311c740dadb233e13e12547e226750",
+   "tail4h": {
+    "q99_down": -0.09404932553893704,
+    "q999_down": -0.1850214103766196,
+    "worst_down": -0.4836775483011325,
+    "q99_up": 0.1011746920312421,
+    "q999_up": 0.18995336816202296,
+    "worst_up": 0.9636801225248879
+   },
+   "tail24h": {
+    "q999_down": -0.4440680959435578,
+    "q999_up": 0.5598885508906273,
+    "worst_down": -0.5127318453316567,
+    "worst_up": 0.9886993130955017
+   },
+   "vol_all": 1.2586132782822974,
+   "vol_1y": 1.0408607812944433,
+   "beta_btc": 1.4939634041840149,
+   "corr_btc": 0.6319624806262581,
+   "funding": {
+    "mean_1y_apr": 0.10912829630000001,
+    "mean_30d_apr": 0.09546971998333334,
+    "min_7d_apr": -0.10162009321426727,
+    "max_7d_apr": 1.7529946719285694,
+    "hours": 26373,
+    "history": "since Nov 2023"
+   },
+   "premium": {
+    "q99": 0.001125949319999999,
+    "q999": 0.001783745539999998,
+    "max": 0.0029269629
+   },
+   "book": {
+    "spread_bp": 2.2542549061356385,
+    "depth_1pct_usd": 48760.2202,
+    "depth_visible_usd": 48760.2202,
+    "visible_range": 0.0006637528334731968
+   },
+   "params": {
+    "S": 0.21,
+    "S_calibrated": 0.20543988116969747,
+    "S_floor": 0.18,
+    "S_extreme_down": -0.42,
+    "S_extreme_up": 0.42,
+    "basis": 0.003,
+    "vol_ref": 1.2586132782822974,
+    "funding_stress_short_apr": -0.10162009321426727,
+    "funding_stress_long_apr": 1.7529946719285694,
+    "client_cap_usd": 4462961.874549001,
+    "book_cap_usd": 13388885.623647004,
+    "price_band": 0.02
+   },
+   "coverage": {
+    "windows": 53005,
+    "down_past_S": 0.0006603150646165456,
+    "up_past_S": 0.000754645788133195,
+    "down_past_extreme": 0.00013206301292330912,
+    "up_past_extreme": 0.00013206301292330912
+   }
+  },
+  "HYPE": {
+   "allowed": true,
+   "tier": 2,
+   "binance_symbol": "HYPEUSDT",
+   "history_source": "hyperliquid 4h",
+   "history_days": 697,
+   "hl_max_leverage": 10,
+   "hl_margin_table": 52,
+   "hl_sz_decimals": 2,
+   "unit_mult": 1,
+   "price": 84.272,
+   "oi_usd": 1848553581.4230394,
+   "adv30_usd": 504501064.43739367,
+   "spot24h_usd": 139918636.89069492,
+   "mcap_usd": 20168060100,
+   "pyth_id": "4279e31cc369bbcc2faf022b382b080e32a8e689ff20fbc530d2a603eb6cd98b",
+   "tail4h": {
+    "q99_down": -0.08118843911449036,
+    "q999_down": -0.12637761063041353,
+    "worst_down": -0.25829173858282406,
+    "q99_up": 0.08770713514877729,
+    "q999_up": 0.1447435198127075,
+    "worst_up": 0.34795484784754716
+   },
+   "tail24h": {
+    "q999_down": -0.26642207735316564,
+    "q999_up": 0.3352151693017331,
+    "worst_down": -0.2892425292237545,
+    "worst_up": 0.5137988754882186
+   },
+   "vol_all": 1.1175823145313206,
+   "vol_1y": 0.9006949979947918,
+   "beta_btc": 1.4678173338777354,
+   "corr_btc": 0.5678678128360177,
+   "funding": {
+    "mean_1y_apr": 0.09863301009999999,
+    "mean_30d_apr": 0.1208894162,
+    "min_7d_apr": -0.020197827714275446,
+    "max_7d_apr": 0.24479583271430205,
+    "hours": 8760,
+    "history": "last year"
+   },
+   "premium": {
+    "q99": 0.0010019251659999994,
+    "q999": 0.0016119471353999997,
+    "max": 0.0022395788
+   },
+   "book": {
+    "spread_bp": 0.47319918136599454,
+    "depth_1pct_usd": 77041.61751,
+    "depth_visible_usd": 77041.61751,
+    "visible_range": 0.0003548993860240657
+   },
+   "params": {
+    "S": 0.3,
+    "S_calibrated": 0.15654416553984254,
+    "S_floor": 0.3,
+    "S_extreme_down": -0.6,
+    "S_extreme_up": 0.6,
+    "basis": 0.003,
+    "vol_ref": 1.1175823145313206,
+    "funding_stress_short_apr": -0.020197827714275446,
+    "funding_stress_long_apr": 0.24479583271430205,
+    "client_cap_usd": 25225053.221869685,
+    "book_cap_usd": 75675159.66560906,
+    "price_band": 0.02
+   },
+   "coverage": {
+    "windows": 4183,
+    "down_past_S": 0.0,
+    "up_past_S": 0.0002390628735357399,
+    "down_past_extreme": 0.0,
+    "up_past_extreme": 0.0
+   }
+  },
+  "XRP": {
+   "allowed": true,
+   "tier": 3,
+   "binance_symbol": "XRPUSDT",
+   "history_source": "binance 1h",
+   "history_days": 2863,
+   "hl_max_leverage": 20,
+   "hl_margin_table": 53,
+   "hl_sz_decimals": 0,
+   "unit_mult": 1,
+   "price": 1.2804,
+   "oi_usd": 212906507.3784,
+   "adv30_usd": 66474346.330466665,
+   "spot24h_usd": 453032488.2033758,
+   "mcap_usd": 81059472701,
+   "pyth_id": "ec5d399846a9209f3fe5881d70aae9268c94339ff9817e8d18ff19fa05eea1c8",
+   "tail4h": {
+    "q99_down": -0.08961444572451577,
+    "q999_down": -0.20747810160449504,
+    "worst_down": -0.5394359991187486,
+    "q99_up": 0.0865300942341396,
+    "q999_up": 0.19289565160887626,
+    "worst_up": 0.9809926082365363
+   },
+   "tail24h": {
+    "q999_down": -0.4140245744890189,
+    "q999_up": 0.5460378798568346,
+    "worst_down": -0.5562356271006546,
+    "worst_up": 1.0025619128949614
+   },
+   "vol_all": 0.9706990645524103,
+   "vol_1y": 0.6309059697876258,
+   "beta_btc": 1.3056303824436029,
+   "corr_btc": 0.6866786837979417,
+   "funding": {
+    "mean_1y_apr": 0.0349564745,
+    "mean_30d_apr": 0.08555716313333335,
+    "min_7d_apr": -0.19355975028571426,
+    "max_7d_apr": 0.1974991431428548,
+    "hours": 8760,
+    "history": "last year"
+   },
+   "premium": {
+    "q99": 0.0008559478679999997,
+    "q999": 0.0012345612336999998,
+    "max": 0.0017653695
+   },
+   "book": {
+    "spread_bp": 0.7794536030241941,
+    "depth_1pct_usd": 2613684.8943,
+    "depth_visible_usd": 2613684.8943,
+    "visible_range": 0.0015199345258974928
+   },
+   "params": {
+    "S": 0.25,
+    "S_calibrated": 0.2243933706012783,
+    "S_floor": 0.25,
+    "S_extreme_down": -0.5,
+    "S_extreme_up": 0.5,
+    "basis": 0.003,
+    "vol_ref": 0.9706990645524103,
+    "funding_stress_short_apr": -0.19355975028571426,
+    "funding_stress_long_apr": 0.1974991431428548,
+    "client_cap_usd": 3323717.3165233335,
+    "book_cap_usd": 9971151.94957,
+    "price_band": 0.03
+   },
+   "coverage": {
+    "windows": 68640,
+    "down_past_S": 0.0005536130536130537,
+    "up_past_S": 0.0005099067599067599,
+    "down_past_extreme": 4.3706293706293706e-05,
+    "up_past_extreme": 8.741258741258741e-05
+   }
+  },
+  "ENA": {
+   "allowed": true,
+   "tier": 3,
+   "binance_symbol": "ENAUSDT",
+   "history_source": "binance 1h",
+   "history_days": 944,
+   "hl_max_leverage": 10,
+   "hl_margin_table": 52,
+   "hl_sz_decimals": 0,
+   "unit_mult": 1,
+   "price": 0.17747,
+   "oi_usd": 81755453.45108,
+   "adv30_usd": 46578724.87774211,
+   "spot24h_usd": 63670108.9650662,
+   "mcap_usd": 2376946417,
+   "pyth_id": "b7910ba7322db020416fcac28b48c01212fd9cc8fbcbaf7d30477ed8605f6bd4",
+   "tail4h": {
+    "q99_down": -0.08945868674517876,
+    "q999_down": -0.16619760752053503,
+    "worst_down": -0.7454933126574917,
+    "q99_up": 0.10957738316669843,
+    "q999_up": 0.18938938146801418,
+    "worst_up": 0.24441608168474782
+   },
+   "tail24h": {
+    "q999_down": -0.7268837673648185,
+    "q999_up": 0.3866413768784163,
+    "worst_down": -0.7664532194948417,
+    "worst_up": 0.5230166503428013
+   },
+   "vol_all": 1.3206645671863095,
+   "vol_1y": 1.0991665955417804,
+   "beta_btc": 1.6640756803721353,
+   "corr_btc": 0.5757305791060982,
+   "funding": {
+    "mean_1y_apr": 0.0525861436,
+    "mean_30d_apr": 0.10215037946666666,
+    "min_7d_apr": -0.40324197814285717,
+    "max_7d_apr": 0.3392839510714272,
+    "hours": 8760,
+    "history": "last year"
+   },
+   "premium": {
+    "q99": 0.0011471535619999999,
+    "q999": 0.0015967335087999997,
+    "max": 0.0028495862
+   },
+   "book": {
+    "spread_bp": 1.124543154343112,
+    "depth_1pct_usd": 82733.54139,
+    "depth_visible_usd": 82733.54139,
+    "visible_range": 0.0014619061006464484
+   },
+   "params": {
+    "S": 0.25,
+    "S_calibrated": 0.20482991378391452,
+    "S_floor": 0.25,
+    "S_extreme_down": -0.5,
+    "S_extreme_up": 0.5,
+    "basis": 0.003,
+    "vol_ref": 1.3206645671863095,
+    "funding_stress_short_apr": -0.40324197814285717,
+    "funding_stress_long_apr": 0.3392839510714272,
+    "client_cap_usd": 2043886.336277,
+    "book_cap_usd": 6131659.008831,
+    "price_band": 0.03
+   },
+   "coverage": {
+    "windows": 22660,
+    "down_past_S": 0.000176522506619594,
+    "up_past_S": 0.0,
+    "down_past_extreme": 0.000176522506619594,
+    "up_past_extreme": 0.0
+   }
+  },
+  "PUMP": {
+   "allowed": true,
+   "tier": 3,
+   "binance_symbol": "PUMPUSDT",
+   "history_source": "binance 1h",
+   "history_days": 417,
+   "hl_max_leverage": 10,
+   "hl_margin_table": 52,
+   "hl_sz_decimals": 0,
+   "unit_mult": 1,
+   "price": 0.004287,
+   "oi_usd": 102209851.096344,
+   "adv30_usd": 93734645.026785,
+   "spot24h_usd": 39403543.2703882,
+   "mcap_usd": 1970615133,
+   "pyth_id": "7a01fca212788bba7c5bf8c9efd576a8a722f070d2c17596ff7bb609b8d5c3b9",
+   "tail4h": {
+    "q99_down": -0.08979140216991971,
+    "q999_down": -0.1590440557323328,
+    "worst_down": -0.9214899713467049,
+    "q99_up": 0.09898834119768006,
+    "q999_up": 0.15058946837513654,
+    "worst_up": 0.17761847869374736
+   },
+   "tail24h": {
+    "q999_down": -0.9250823819098495,
+    "q999_up": 0.3080495185013716,
+    "worst_down": -0.9263308836709088,
+    "worst_up": 0.42879872712808287
+   },
+   "vol_all": 1.2998311318002482,
+   "vol_1y": 1.2252804131586668,
+   "beta_btc": 1.7186246469569828,
+   "corr_btc": 0.5602828102200544,
+   "funding": {
+    "mean_1y_apr": 0.0982928936,
+    "mean_30d_apr": 0.08758441815000001,
+    "min_7d_apr": -0.0433113953571324,
+    "max_7d_apr": 0.38706446378572645,
+    "hours": 8760,
+    "history": "last year"
+   },
+   "premium": {
+    "q99": 0.0010237788559999995,
+    "q999": 0.0016215427000999996,
+    "max": 0.0024475904
+   },
+   "book": {
+    "spread_bp": 2.3231501916601998,
+    "depth_1pct_usd": 786095.1482179998,
+    "depth_visible_usd": 786095.1482179998,
+    "visible_range": 0.004530142873736986
+   },
+   "params": {
+    "S": 0.3,
+    "S_calibrated": 0.1720105951610583,
+    "S_floor": 0.3,
+    "S_extreme_down": -0.6,
+    "S_extreme_up": 0.6,
+    "basis": 0.003,
+    "vol_ref": 1.2998311318002482,
+    "funding_stress_short_apr": -0.0433113953571324,
+    "funding_stress_long_apr": 0.38706446378572645,
+    "client_cap_usd": 2555246.2774086,
+    "book_cap_usd": 7665738.8322258,
+    "price_band": 0.03
+   },
+   "coverage": {
+    "windows": 10008,
+    "down_past_S": 0.0003996802557953637,
+    "up_past_S": 0.0,
+    "down_past_extreme": 0.0003996802557953637,
+    "up_past_extreme": 0.0
+   }
+  },
+  "WLD": {
+   "allowed": true,
+   "tier": 3,
+   "binance_symbol": "WLDUSDT",
+   "history_source": "binance 1h",
+   "history_days": 1197,
+   "hl_max_leverage": 10,
+   "hl_margin_table": 52,
+   "hl_sz_decimals": 1,
+   "unit_mult": 1,
+   "price": 0.3787,
+   "oi_usd": 62654720.504460014,
+   "adv30_usd": 35742780.52041923,
+   "spot24h_usd": 41925667.75308011,
+   "mcap_usd": 1418284699,
+   "pyth_id": "d6835ad1f773de4a378115eb6824bd0c0e42d84d1c84d9750e853fb6b6c7794a",
+   "tail4h": {
+    "q99_down": -0.09538725595365795,
+    "q999_down": -0.21005104979717235,
+    "worst_down": -0.7737789203084833,
+    "q99_up": 0.11294634252998317,
+    "q999_up": 0.2385615935661174,
+    "worst_up": 0.44472361809045213
+   },
+   "tail24h": {
+    "q999_down": -0.39557632527150616,
+    "q999_up": 0.6065181081743724,
+    "worst_down": -0.7947122861586314,
+    "worst_up": 0.8737270875763745
+   },
+   "vol_all": 1.2980443021541022,
+   "vol_1y": 1.1575950561531936,
+   "beta_btc": 1.574563811586933,
+   "corr_btc": 0.5673651842178051,
+   "funding": {
+    "mean_1y_apr": 0.0196981628,
+    "mean_30d_apr": 0.06460749051666667,
+    "min_7d_apr": -0.7405951313571428,
+    "max_7d_apr": 0.3580830674999988,
+    "hours": 8760,
+    "history": "last year"
+   },
+   "premium": {
+    "q99": 0.0014211088139999984,
+    "q999": 0.0021513820593999995,
+    "max": 0.0025254854
+   },
+   "book": {
+    "spread_bp": 1.315772160892475,
+    "depth_1pct_usd": 40440.30277099999,
+    "depth_visible_usd": 40440.30277099999,
+    "visible_range": 0.0007499901317089552
+   },
+   "params": {
+    "S": 0.26,
+    "S_calibrated": 0.25801103664596836,
+    "S_floor": 0.25,
+    "S_extreme_down": -0.52,
+    "S_extreme_up": 0.52,
+    "basis": 0.003,
+    "vol_ref": 1.2980443021541022,
+    "funding_stress_short_apr": -0.7405951313571428,
+    "funding_stress_long_apr": 0.3580830674999988,
+    "client_cap_usd": 1566368.0126115005,
+    "book_cap_usd": 4699104.037834501,
+    "price_band": 0.03
+   },
+   "coverage": {
+    "windows": 28731,
+    "down_past_S": 0.0005568897706310258,
+    "up_past_S": 0.0008353346559465386,
+    "down_past_extreme": 0.00013922244265775644,
+    "up_past_extreme": 0.0
+   }
+  },
+  "kPEPE": {
+   "allowed": true,
+   "tier": 3,
+   "binance_symbol": "PEPEUSDT",
+   "history_source": "binance 1h",
+   "history_days": 1277,
+   "hl_max_leverage": 10,
+   "hl_margin_table": 52,
+   "hl_sz_decimals": 0,
+   "unit_mult": 1000,
+   "price": 0.004892,
+   "oi_usd": 58051614.64036799,
+   "adv30_usd": 30936663.841065288,
+   "spot24h_usd": 95857166.96412894,
+   "mcap_usd": 2052657137,
+   "pyth_id": "d69731a2e74ac1ce884fc3890f7ee324b6deb66147055249568869ed700882e4",
+   "tail4h": {
+    "q99_down": -0.09989384990159449,
+    "q999_down": -0.21486665548065315,
+    "worst_down": -0.6782006920415224,
+    "q99_up": 0.11764705882352944,
+    "q999_up": 0.2621722816716384,
+    "worst_up": 0.5155420773313115
+   },
+   "tail24h": {
+    "q999_down": -0.42127624244327544,
+    "q999_up": 0.6682027649769586,
+    "worst_down": -0.7022411953041623,
+    "worst_up": 1.0416666666666665
+   },
+   "vol_all": 1.3394304170315667,
+   "vol_1y": 0.9273870907419566,
+   "beta_btc": 1.688391868011351,
+   "corr_btc": 0.6670763649740612,
+   "funding": {
+    "mean_1y_apr": 0.059166595499999995,
+    "mean_30d_apr": 0.07762974638333334,
+    "min_7d_apr": -0.4156082511428573,
+    "max_7d_apr": 0.3867626505000107,
+    "hours": 8760,
+    "history": "last year"
+   },
+   "premium": {
+    "q99": 0.001320623442,
+    "q999": 0.0020413186824999995,
+    "max": 0.0033529573
+   },
+   "book": {
+    "spread_bp": 2.0335536349756285,
+    "depth_1pct_usd": 449343.15267200005,
+    "depth_visible_usd": 449343.15267200005,
+    "visible_range": 0.003965429588205449
+   },
+   "params": {
+    "S": 0.29,
+    "S_calibrated": 0.2835466562860248,
+    "S_floor": 0.25,
+    "S_extreme_down": -0.58,
+    "S_extreme_up": 0.58,
+    "basis": 0.003,
+    "vol_ref": 1.3394304170315667,
+    "funding_stress_short_apr": -0.4156082511428573,
+    "funding_stress_long_apr": 0.3867626505000107,
+    "client_cap_usd": 1451290.3660092,
+    "book_cap_usd": 4353871.0980276,
+    "price_band": 0.03
+   },
+   "coverage": {
+    "windows": 30642,
+    "down_past_S": 0.00016317472749820508,
+    "up_past_S": 0.0007179688009921023,
+    "down_past_extreme": 0.00013053978199856407,
+    "up_past_extreme": 0.0
+   }
+  },
+  "UNI": {
+   "allowed": true,
+   "tier": 3,
+   "binance_symbol": "UNIUSDT",
+   "history_source": "binance 1h",
+   "history_days": 2237,
+   "hl_max_leverage": 10,
+   "hl_margin_table": 52,
+   "hl_sz_decimals": 1,
+   "unit_mult": 1,
+   "price": 7.2634,
+   "oi_usd": 75428410.11232,
+   "adv30_usd": 22419686.72622078,
+   "spot24h_usd": 89742335.04735069,
+   "mcap_usd": 4412160294,
+   "pyth_id": "78d185a741d07edb3412b09008b7c5cfb9bbbd7d568bf00ba737b456ba171501",
+   "tail4h": {
+    "q99_down": -0.09020224632497616,
+    "q999_down": -0.18970279500037301,
+    "worst_down": -0.7382541552152859,
+    "q99_up": 0.09304527359490958,
+    "q999_up": 0.1762484908204225,
+    "worst_up": 0.7736590845268183
+   },
+   "tail24h": {
+    "q999_down": -0.3942526841532931,
+    "q999_up": 0.5212448713951037,
+    "worst_down": -0.7634535777646363,
+    "worst_up": 0.8195839818876467
+   },
+   "vol_all": 1.133892940192165,
+   "vol_1y": 0.9651476158298546,
+   "beta_btc": 1.4660558701203912,
+   "corr_btc": 0.6310334261034819,
+   "funding": {
+    "mean_1y_apr": 0.0952419873,
+    "mean_30d_apr": 0.11545666616666668,
+    "min_7d_apr": -0.07317088778571429,
+    "max_7d_apr": 0.3156617872143014,
+    "hours": 8760,
+    "history": "last year"
+   },
+   "premium": {
+    "q99": 0.0009950470399999998,
+    "q999": 0.0016929519245999997,
+    "max": 0.0047152615
+   },
+   "book": {
+    "spread_bp": 2.7408524050976832,
+    "depth_1pct_usd": 19395.393440000003,
+    "depth_visible_usd": 19395.393440000003,
+    "visible_range": 0.0004659449088666445
+   },
+   "params": {
+    "S": 0.25,
+    "S_calibrated": 0.20516887928617325,
+    "S_floor": 0.25,
+    "S_extreme_down": -0.5,
+    "S_extreme_up": 0.5,
+    "basis": 0.003,
+    "vol_ref": 1.133892940192165,
+    "funding_stress_short_apr": -0.07317088778571429,
+    "funding_stress_long_apr": 0.3156617872143014,
+    "client_cap_usd": 1120984.336311039,
+    "book_cap_usd": 3362953.008933117,
+    "price_band": 0.03
+   },
+   "coverage": {
+    "windows": 53677,
+    "down_past_S": 0.0002608193453434432,
+    "up_past_S": 0.0003167092050598953,
+    "down_past_extreme": 7.451981295526948e-05,
+    "up_past_extreme": 7.451981295526948e-05
+   }
+  },
+  "BNB": {
+   "allowed": true,
+   "tier": 3,
+   "binance_symbol": "BNBUSDT",
+   "history_source": "binance 1h",
+   "history_days": 2863,
+   "hl_max_leverage": 10,
+   "hl_margin_table": 51,
+   "hl_sz_decimals": 3,
+   "unit_mult": 1,
+   "price": 700.2,
+   "oi_usd": 48348174.21840001,
+   "adv30_usd": 18949173.40192967,
+   "spot24h_usd": 135712367.74447864,
+   "mcap_usd": 91998644627,
+   "pyth_id": "2f95862b045670cd22bee3114c39763a4a08beeb663b145d283c31d7d1101c4f",
+   "tail4h": {
+    "q99_down": -0.07030951786329503,
+    "q999_down": -0.15900788684665557,
+    "worst_down": -0.4365002958815061,
+    "q99_up": 0.06265613683747238,
+    "q999_up": 0.14393637626898997,
+    "worst_up": 0.3403384078109246
+   },
+   "tail24h": {
+    "q999_down": -0.3202009326903944,
+    "q999_up": 0.38934646684258395,
+    "worst_down": -0.5900849385127408,
+    "worst_up": 0.8224579830066172
+   },
+   "vol_all": 0.8015031933434468,
+   "vol_1y": 0.4421030050883766,
+   "beta_btc": 0.8234895258647292,
+   "corr_btc": 0.7038661096958814,
+   "funding": {
+    "mean_1y_apr": 0.0605004912,
+    "mean_30d_apr": 0.043662504500000004,
+    "min_7d_apr": -0.0639342238571424,
+    "max_7d_apr": 0.26642476807144294,
+    "hours": 8760,
+    "history": "last year"
+   },
+   "premium": {
+    "q99": 0.0008308803799999998,
+    "q999": 0.0014607340087,
+    "max": 0.0021890925
+   },
+   "book": {
+    "spread_bp": 0.9967037582858121,
+    "depth_1pct_usd": 46126.752259999994,
+    "depth_visible_usd": 46126.752259999994,
+    "visible_range": 0.00047699394146483165
+   },
+   "params": {
+    "S": 0.25,
+    "S_calibrated": 0.17197147749945815,
+    "S_floor": 0.25,
+    "S_extreme_down": -0.5,
+    "S_extreme_up": 0.5,
+    "basis": 0.003,
+    "vol_ref": 0.8015031933434468,
+    "funding_stress_short_apr": -0.0639342238571424,
+    "funding_stress_long_apr": 0.26642476807144294,
+    "client_cap_usd": 947458.6700964835,
+    "book_cap_usd": 2842376.0102894506,
+    "price_band": 0.03
+   },
+   "coverage": {
+    "windows": 68640,
+    "down_past_S": 0.00026223776223776224,
+    "up_past_S": 0.00011655011655011655,
+    "down_past_extreme": 0.0,
+    "up_past_extreme": 0.0
+   }
+  },
+  "SUI": {
+   "allowed": true,
+   "tier": 3,
+   "binance_symbol": "SUIUSDT",
+   "history_source": "binance 1h",
+   "history_days": 1279,
+   "hl_max_leverage": 10,
+   "hl_margin_table": 52,
+   "hl_sz_decimals": 1,
+   "unit_mult": 1,
+   "price": 0.90127,
+   "oi_usd": 30371026.742671996,
+   "adv30_usd": 18888142.0056988,
+   "spot24h_usd": 57493045.568058796,
+   "mcap_usd": 3727147833,
+   "pyth_id": "23d7315113f5b1d3ba7a83604c44b94d79f4fd69af77f804fc7f920a6dc65744",
+   "tail4h": {
+    "q99_down": -0.07831370369001832,
+    "q999_down": -0.1789837000446343,
+    "worst_down": -0.8287646087009729,
+    "q99_up": 0.08580599298076134,
+    "q999_up": 0.14334389258585167,
+    "worst_up": 0.24143835616438336
+   },
+   "tail24h": {
+    "q999_down": -0.35107483068137046,
+    "q999_up": 0.34666010573841183,
+    "worst_down": -0.838679925061248,
+    "worst_up": 0.43552615154163
+   },
+   "vol_all": 1.0594151967582806,
+   "vol_1y": 0.8475347542578084,
+   "beta_btc": 1.5847504856230605,
+   "corr_btc": 0.704953568029183,
+   "funding": {
+    "mean_1y_apr": 0.0554810028,
+    "mean_30d_apr": 0.08039575653333333,
+    "min_7d_apr": -0.09300154635714339,
+    "max_7d_apr": 0.28420760978572884,
+    "hours": 8760,
+    "history": "last year"
+   },
+   "premium": {
+    "q99": 0.0008567726539999999,
+    "q999": 0.001333117499,
+    "max": 0.0016881071
+   },
+   "book": {
+    "spread_bp": 1.4315367547057747,
+    "depth_1pct_usd": 12763.260198000002,
+    "depth_visible_usd": 12763.260198000002,
+    "visible_range": 0.0009415107117490829
+   },
+   "params": {
+    "S": 0.25,
+    "S_calibrated": 0.19357587824985925,
+    "S_floor": 0.25,
+    "S_extreme_down": -0.5,
+    "S_extreme_up": 0.5,
+    "basis": 0.003,
+    "vol_ref": 1.0594151967582806,
+    "funding_stress_short_apr": -0.09300154635714339,
+    "funding_stress_long_apr": 0.28420760978572884,
+    "client_cap_usd": 759275.6685668,
+    "book_cap_usd": 2277827.0057004,
+    "price_band": 0.03
+   },
+   "coverage": {
+    "windows": 30696,
+    "down_past_S": 0.0004235079489184259,
+    "up_past_S": 0.0,
+    "down_past_extreme": 0.00013031013812874641,
+    "up_past_extreme": 0.0
+   }
+  },
+  "ONDO": {
+   "allowed": true,
+   "tier": 3,
+   "binance_symbol": "ONDOUSDT",
+   "history_source": "binance 1h",
+   "history_days": 570,
+   "hl_max_leverage": 10,
+   "hl_margin_table": 51,
+   "hl_sz_decimals": 0,
+   "unit_mult": 1,
+   "price": 0.39716,
+   "oi_usd": 19219605.81032,
+   "adv30_usd": 12497487.859814,
+   "spot24h_usd": 18444379.6908857,
+   "mcap_usd": 1935544151,
+   "pyth_id": "d40472610abe56d36d065a0cf889fc8f1dd9f3b7f2a478231a5fc6df07ea5ce3",
+   "tail4h": {
+    "q99_down": -0.06745522760712497,
+    "q999_down": -0.1341977550140734,
+    "worst_down": -0.6955380577427821,
+    "q99_up": 0.07605456429146987,
+    "q999_up": 0.15424183516492454,
+    "worst_up": 0.3483632862644417
+   },
+   "tail24h": {
+    "q999_down": -0.7105929152016938,
+    "q999_up": 0.3411169466639884,
+    "worst_down": -0.7157812674017152,
+    "worst_up": 0.39902467010900744
+   },
+   "vol_all": 0.9365210000697344,
+   "vol_1y": 0.9376602397006618,
+   "beta_btc": 1.585390482471228,
+   "corr_btc": 0.6809367234134225,
+   "funding": {
+    "mean_1y_apr": 0.07529331419999999,
+    "mean_30d_apr": 0.0746793577,
+    "min_7d_apr": -0.05927436792857186,
+    "max_7d_apr": 0.36183699342857556,
+    "hours": 8760,
+    "history": "last year"
+   },
+   "premium": {
+    "q99": 0.0010113343369999998,
+    "q999": 0.0016984713904999995,
+    "max": 0.0030701053
+   },
+   "book": {
+    "spread_bp": 2.2468263577705114,
+    "depth_1pct_usd": 44009.99832999999,
+    "depth_visible_usd": 44009.99832999999,
+    "visible_range": 0.001135895547539012
+   },
+   "params": {
+    "S": 0.3,
+    "S_calibrated": 0.1668168592864855,
+    "S_floor": 0.3,
+    "S_extreme_down": -0.6,
+    "S_extreme_up": 0.6,
+    "basis": 0.003,
+    "vol_ref": 0.9365210000697344,
+    "funding_stress_short_apr": -0.05927436792857186,
+    "funding_stress_long_apr": 0.36183699342857556,
+    "client_cap_usd": 480490.14525800006,
+    "book_cap_usd": 1441470.4357740001,
+    "price_band": 0.03
+   },
+   "coverage": {
+    "windows": 13678,
+    "down_past_S": 0.0003655505190817371,
+    "up_past_S": 7.311010381634741e-05,
+    "down_past_extreme": 0.00029244041526538966,
+    "up_past_extreme": 0.0
+   }
+  },
+  "AAVE": {
+   "allowed": true,
+   "tier": 3,
+   "binance_symbol": "AAVEUSDT",
+   "history_source": "binance 1h",
+   "history_days": 2209,
+   "hl_max_leverage": 10,
+   "hl_margin_table": 52,
+   "hl_sz_decimals": 2,
+   "unit_mult": 1,
+   "price": 130.54,
+   "oi_usd": 57843897.91760001,
+   "adv30_usd": 11330272.175841112,
+   "spot24h_usd": 47379176.42650712,
+   "mcap_usd": 2014098449,
+   "pyth_id": "2b9ab1e972a281585084148ba1389800799bd4be63b957507db1349314e47445",
+   "tail4h": {
+    "q99_down": -0.0909083566832449,
+    "q999_down": -0.18777365983739147,
+    "worst_down": -0.6968738086160884,
+    "q99_up": 0.09499636045943052,
+    "q999_up": 0.16541107551828566,
+    "worst_up": 0.37755102040816335
+   },
+   "tail24h": {
+    "q999_down": -0.38665052599379873,
+    "q999_up": 0.37182316749728217,
+    "worst_down": -0.7147316303099885,
+    "worst_up": 0.5979947982213274
+   },
+   "vol_all": 1.1413828052659498,
+   "vol_1y": 0.8274787458945765,
+   "beta_btc": 1.4597169898264253,
+   "corr_btc": 0.6759839826531389,
+   "funding": {
+    "mean_1y_apr": 0.0890857511,
+    "mean_30d_apr": 0.07066061766666668,
+    "min_7d_apr": -0.008566998428572484,
+    "max_7d_apr": 0.39005198357144655,
+    "hours": 8760,
+    "history": "last year"
+   },
+   "premium": {
+    "q99": 0.000820147303999999,
+    "q999": 0.0015521596786999994,
+    "max": 0.0040407407
+   },
+   "book": {
+    "spread_bp": 0.762456635278175,
+    "depth_1pct_usd": 82987.6288,
+    "depth_visible_usd": 82987.6288,
+    "visible_range": 0.0018680187564332762
+   },
+   "params": {
+    "S": 0.25,
+    "S_calibrated": 0.2030824656443516,
+    "S_floor": 0.25,
+    "S_extreme_down": -0.5,
+    "S_extreme_up": 0.5,
+    "basis": 0.003,
+    "vol_ref": 1.1413828052659498,
+    "funding_stress_short_apr": -0.008566998428572484,
+    "funding_stress_long_apr": 0.39005198357144655,
+    "client_cap_usd": 566513.6087920556,
+    "book_cap_usd": 1699540.826376167,
+    "price_band": 0.03
+   },
+   "coverage": {
+    "windows": 53005,
+    "down_past_S": 0.00033959060465993775,
+    "up_past_S": 0.000150929157626639,
+    "down_past_extreme": 7.54645788133195e-05,
+    "up_past_extreme": 0.0
+   }
+  },
+  "DOGE": {
+   "allowed": true,
+   "tier": 3,
+   "binance_symbol": "DOGEUSDT",
+   "history_source": "binance 1h",
+   "history_days": 2677,
+   "hl_max_leverage": 10,
+   "hl_margin_table": 52,
+   "hl_sz_decimals": 0,
+   "unit_mult": 1,
+   "price": 0.074718,
+   "oi_usd": 75454148.78391601,
+   "adv30_usd": 11027691.444860157,
+   "spot24h_usd": 66920058.5313497,
+   "mcap_usd": 11691035569,
+   "pyth_id": "dcef50dd0a4cd2dcc17e45df1676dcb336a11a61c69df7a0299b0150c672d25c",
+   "tail4h": {
+    "q99_down": -0.09796101919204606,
+    "q999_down": -0.24189115281067156,
+    "worst_down": -0.5956242284935938,
+    "q99_up": 0.111568065450475,
+    "q999_up": 0.36978247024011823,
+    "worst_up": 1.3699691057598713
+   },
+   "tail24h": {
+    "q999_down": -0.4656488726305247,
+    "q999_up": 1.186470912306277,
+    "worst_down": -0.6601733695809913,
+    "worst_up": 9.609257019163431
+   },
+   "vol_all": 1.2031333983614534,
+   "vol_1y": 0.6684283293400163,
+   "beta_btc": 1.4813166925405923,
+   "corr_btc": 0.7416614986195104,
+   "funding": {
+    "mean_1y_apr": 0.06333379049999999,
+    "mean_30d_apr": 0.08551904861666668,
+    "min_7d_apr": -0.14033808871428563,
+    "max_7d_apr": 0.24888591321430334,
+    "hours": 8760,
+    "history": "last year"
+   },
+   "premium": {
+    "q99": 0.0007741540749999995,
+    "q999": 0.0014229940858999995,
+    "max": 0.0035360657
+   },
+   "book": {
+    "spread_bp": 0.1327254507689449,
+    "depth_1pct_usd": 84864.35743899998,
+    "depth_visible_usd": 84864.35743899998,
+    "visible_range": 0.00045790280515256576
+   },
+   "params": {
+    "S": 0.4,
+    "S_calibrated": 0.399930085366895,
+    "S_floor": 0.25,
+    "S_extreme_down": -0.8,
+    "S_extreme_up": 0.8,
+    "basis": 0.003,
+    "vol_ref": 1.2031333983614534,
+    "funding_stress_short_apr": -0.14033808871428563,
+    "funding_stress_long_apr": 0.24888591321430334,
+    "client_cap_usd": 551384.5722430078,
+    "book_cap_usd": 1654153.7167290235,
+    "price_band": 0.03
+   },
+   "coverage": {
+    "windows": 64204,
+    "down_past_S": 0.00017132888916578408,
+    "up_past_S": 0.0008254937387078687,
+    "down_past_extreme": 0.0,
+    "up_past_extreme": 0.0002024795962868357
+   }
+  },
+  "ARB": {
+   "allowed": true,
+   "tier": 3,
+   "binance_symbol": "ARBUSDT",
+   "history_source": "binance 1h",
+   "history_days": 1320,
+   "hl_max_leverage": 10,
+   "hl_margin_table": 51,
+   "hl_sz_decimals": 1,
+   "unit_mult": 1,
+   "price": 0.16073,
+   "oi_usd": 14990433.14151,
+   "adv30_usd": 10309396.9280824,
+   "spot24h_usd": 14294556.769296864,
+   "mcap_usd": 1107633488,
+   "pyth_id": "3fa4252848f9f0a1480be62745a4629d9eb1322aebab8a791e344b3b9c1adcf5",
+   "tail4h": {
+    "q99_down": -0.08066789945134026,
+    "q999_down": -0.1660961411258692,
+    "worst_down": -0.7373560340510766,
+    "q99_up": 0.07782131846638224,
+    "q999_up": 0.14981827105241652,
+    "worst_up": 0.28861330326944756
+   },
+   "tail24h": {
+    "q999_down": -0.3908241690940574,
+    "q999_up": 0.39499029887547993,
+    "worst_down": -0.7549065420560748,
+    "worst_up": 0.5728527607361964
+   },
+   "vol_all": 0.9848662788353132,
+   "vol_1y": 0.9724139620413652,
+   "beta_btc": 1.5142488093458826,
+   "corr_btc": 0.6450598567535013,
+   "funding": {
+    "mean_1y_apr": 0.03445883290000001,
+    "mean_30d_apr": 0.05257045116666667,
+    "min_7d_apr": -0.13151134064285763,
+    "max_7d_apr": 0.21113225292857016,
+    "hours": 8760,
+    "history": "last year"
+   },
+   "premium": {
+    "q99": 0.0008540534029999999,
+    "q999": 0.0012987915522999999,
+    "max": 0.0016879433
+   },
+   "book": {
+    "spread_bp": 3.701418877236551,
+    "depth_1pct_usd": 62099.17670799999,
+    "depth_visible_usd": 62099.17670799999,
+    "visible_range": 0.002467612584824197
+   },
+   "params": {
+    "S": 0.25,
+    "S_calibrated": 0.1796376227798101,
+    "S_floor": 0.25,
+    "S_extreme_down": -0.5,
+    "S_extreme_up": 0.5,
+    "basis": 0.003,
+    "vol_ref": 0.9848662788353132,
+    "funding_stress_short_apr": -0.13151134064285763,
+    "funding_stress_long_apr": 0.21113225292857016,
+    "client_cap_usd": 374760.82853775006,
+    "book_cap_usd": 1124282.4856132502,
+    "price_band": 0.03
+   },
+   "coverage": {
+    "windows": 31676,
+    "down_past_S": 0.0002525571410531633,
+    "up_past_S": 0.00015784821315822706,
+    "down_past_extreme": 0.00012627857052658164,
+    "up_past_extreme": 0.0
+   }
+  },
+  "LINK": {
+   "allowed": true,
+   "tier": 3,
+   "binance_symbol": "LINKUSDT",
+   "history_source": "binance 1h",
+   "history_days": 2847,
+   "hl_max_leverage": 10,
+   "hl_margin_table": 52,
+   "hl_sz_decimals": 1,
+   "unit_mult": 1,
+   "price": 11.103,
+   "oi_usd": 56840933.58359999,
+   "adv30_usd": 9101307.48799,
+   "spot24h_usd": 53977641.98942011,
+   "mcap_usd": 8515456181,
+   "pyth_id": "8ac0c70fff57e9aefdf5edf44b51d62c2d433653cbb2cf5cc06bb115af04d221",
+   "tail4h": {
+    "q99_down": -0.08936084031333918,
+    "q999_down": -0.19576741208354606,
+    "worst_down": -0.9999684989762168,
+    "q99_up": 0.08888761253728912,
+    "q999_up": 0.17730949899860088,
+    "worst_up": 0.7500222084036601
+   },
+   "tail24h": {
+    "q999_down": -0.4576478699104931,
+    "q999_up": 0.4317894759057493,
+    "worst_down": -0.9999745592388124,
+    "worst_up": 0.9398453291150366
+   },
+   "vol_all": 1.1079023452031278,
+   "vol_1y": 0.6805664039345551,
+   "beta_btc": 1.4567448295960428,
+   "corr_btc": 0.7359953292187195,
+   "funding": {
+    "mean_1y_apr": 0.0964147419,
+    "mean_30d_apr": 0.08165793505,
+    "min_7d_apr": 0.025543862785714026,
+    "max_7d_apr": 0.3407084991428694,
+    "hours": 8760,
+    "history": "last year"
+   },
+   "premium": {
+    "q99": 0.0008177626239999998,
+    "q999": 0.0014942881358,
+    "max": 0.0029125194
+   },
+   "book": {
+    "spread_bp": 1.77100858939225,
+    "depth_1pct_usd": 188815.771,
+    "depth_visible_usd": 188815.771,
+    "visible_range": 0.0019481094483309036
+   },
+   "params": {
+    "S": 0.25,
+    "S_calibrated": 0.21172793230514403,
+    "S_floor": 0.25,
+    "S_extreme_down": -0.5,
+    "S_extreme_up": 0.5,
+    "basis": 0.003,
+    "vol_ref": 1.1079023452031278,
+    "funding_stress_short_apr": 0.0,
+    "funding_stress_long_apr": 0.3407084991428694,
+    "client_cap_usd": 455065.37439949997,
+    "book_cap_usd": 1365196.1231985,
+    "price_band": 0.03
+   },
+   "coverage": {
+    "windows": 68270,
+    "down_past_S": 0.0004980225574923099,
+    "up_past_S": 0.0002636590010253406,
+    "down_past_extreme": 0.0001171817782334847,
+    "up_past_extreme": 5.859088911674235e-05
+   }
+  },
+  "AVAX": {
+   "allowed": true,
+   "tier": 3,
+   "binance_symbol": "AVAXUSDT",
+   "history_source": "binance 1h",
+   "history_days": 2232,
+   "hl_max_leverage": 10,
+   "hl_margin_table": 52,
+   "hl_sz_decimals": 2,
+   "unit_mult": 1,
+   "price": 8.6456,
+   "oi_usd": 16689524.684256002,
+   "adv30_usd": 7268961.436689233,
+   "spot24h_usd": 26413112.92825848,
+   "mcap_usd": 3838985831,
+   "pyth_id": "93da3352f9f1d105fdfe4971cfa80e9dd777bfc5d0f683ebb6e1294b92137bb7",
+   "tail4h": {
+    "q99_down": -0.09156394551411465,
+    "q999_down": -0.18798344944083442,
+    "worst_down": -0.6810183451890678,
+    "q99_up": 0.09855368347258096,
+    "q999_up": 0.19815268522713805,
+    "worst_up": 0.3966702112463696
+   },
+   "tail24h": {
+    "q999_down": -0.4339525333126476,
+    "q999_up": 0.4821602856301865,
+    "worst_down": -0.7014716187806587,
+    "worst_up": 1.101154205641334
+   },
+   "vol_all": 1.1788829757393515,
+   "vol_1y": 0.7118251034998992,
+   "beta_btc": 1.3988602173872489,
+   "corr_btc": 0.715976131844788,
+   "funding": {
+    "mean_1y_apr": 0.0385622389,
+    "mean_30d_apr": 0.038121040433333336,
+    "min_7d_apr": -0.15871435264285738,
+    "max_7d_apr": 0.1867171839285866,
+    "hours": 8760,
+    "history": "last year"
+   },
+   "premium": {
+    "q99": 0.0008727640379999999,
+    "q999": 0.0012584422894999997,
+    "max": 0.0022555823
+   },
+   "book": {
+    "spread_bp": 0.22724690376040663,
+    "depth_1pct_usd": 32490.053904999997,
+    "depth_visible_usd": 32490.053904999997,
+    "visible_range": 0.0011362345188046241
+   },
+   "params": {
+    "S": 0.25,
+    "S_calibrated": 0.21430767193239209,
+    "S_floor": 0.25,
+    "S_extreme_down": -0.5,
+    "S_extreme_up": 0.5,
+    "basis": 0.003,
+    "vol_ref": 1.1788829757393515,
+    "funding_stress_short_apr": -0.15871435264285738,
+    "funding_stress_long_apr": 0.1867171839285866,
+    "client_cap_usd": 363448.0718344617,
+    "book_cap_usd": 1090344.215503385,
+    "price_band": 0.03
+   },
+   "coverage": {
+    "windows": 53554,
+    "down_past_S": 0.00042947305523396946,
+    "up_past_S": 0.00042947305523396946,
+    "down_past_extreme": 7.469096612764686e-05,
+    "up_past_extreme": 0.0
+   }
+  },
+  "ADA": {
+   "allowed": true,
+   "tier": 3,
+   "binance_symbol": "ADAUSDT",
+   "history_source": "binance 1h",
+   "history_days": 2863,
+   "hl_max_leverage": 10,
+   "hl_margin_table": 52,
+   "hl_sz_decimals": 0,
+   "unit_mult": 1,
+   "price": 0.18908,
+   "oi_usd": 26287973.9168,
+   "adv30_usd": 6852621.283280111,
+   "spot24h_usd": 23663106.56682618,
+   "mcap_usd": 7103258890,
+   "pyth_id": "2a01deaec9e51a579277b34b122399984d0bbf57e2458a7e42fecd2829867a0d",
+   "tail4h": {
+    "q99_down": -0.08243788904320926,
+    "q999_down": -0.18433846565814188,
+    "worst_down": -0.6482909277820612,
+    "q99_up": 0.08093903288295165,
+    "q999_up": 0.15384380817634455,
+    "worst_up": 0.7739345274861027
+   },
+   "tail24h": {
+    "q999_down": -0.4125566333132406,
+    "q999_up": 0.3546023356163259,
+    "worst_down": -0.666910064500426,
+    "worst_up": 0.8139902100110534
+   },
+   "vol_all": 1.003107335485444,
+   "vol_1y": 0.7562889474001327,
+   "beta_btc": 1.5316695875497792,
+   "corr_btc": 0.7110618468493253,
+   "funding": {
+    "mean_1y_apr": -0.019713431700000002,
+    "mean_30d_apr": -0.03368510783333333,
+    "min_7d_apr": -0.2932232297142852,
+    "max_7d_apr": 0.18005391599999804,
+    "hours": 8760,
+    "history": "last year"
+   },
+   "premium": {
+    "q99": 0.0009890193199999999,
+    "q999": 0.0012805601496999998,
+    "max": 0.0020469521
+   },
+   "book": {
+    "spread_bp": 0.5179871021216752,
+    "depth_1pct_usd": 175652.47250000003,
+    "depth_visible_usd": 175652.47250000003,
+    "visible_range": 0.0015280619512575422
+   },
+   "params": {
+    "S": 0.25,
+    "S_calibrated": 0.19936720704794747,
+    "S_floor": 0.25,
+    "S_extreme_down": -0.5,
+    "S_extreme_up": 0.5,
+    "basis": 0.003,
+    "vol_ref": 1.003107335485444,
+    "funding_stress_short_apr": -0.2932232297142852,
+    "funding_stress_long_apr": 0.18005391599999804,
+    "client_cap_usd": 342631.06416400557,
+    "book_cap_usd": 1027893.1924920167,
+    "price_band": 0.03
+   },
+   "coverage": {
+    "windows": 68640,
+    "down_past_S": 0.00026223776223776224,
+    "up_past_S": 0.0001456876456876457,
+    "down_past_extreme": 5.8275058275058275e-05,
+    "up_past_extreme": 4.3706293706293706e-05
+   }
+  },
+  "TRX": {
+   "allowed": true,
+   "tier": 3,
+   "binance_symbol": "TRXUSDT",
+   "history_source": "binance 1h",
+   "history_days": 2863,
+   "hl_max_leverage": 10,
+   "hl_margin_table": 51,
+   "hl_sz_decimals": 0,
+   "unit_mult": 1,
+   "price": 0.31872,
+   "oi_usd": 14228191.78752,
+   "adv30_usd": 4803488.431831111,
+   "spot24h_usd": 52989131.52137305,
+   "mcap_usd": 30291505317,
+   "pyth_id": "67aed5a24fdad045475e7195c98a98aea119c763f272d4523f5bac93a4f33c2b",
+   "tail4h": {
+    "q99_down": -0.07305494686934351,
+    "q999_down": -0.15675149094574753,
+    "worst_down": -0.39437984496124034,
+    "q99_up": 0.07078762011395115,
+    "q999_up": 0.15138840139058027,
+    "worst_up": 0.47039581288845267
+   },
+   "tail24h": {
+    "q999_down": -0.3078480038480038,
+    "q999_up": 0.39488337774131227,
+    "worst_down": -0.5196629213483146,
+    "worst_up": 1.034857401539158
+   },
+   "vol_all": 0.797884375013113,
+   "vol_1y": 0.2372826853682764,
+   "beta_btc": 0.38196793845611915,
+   "corr_btc": 0.36663475530231304,
+   "funding": {
+    "mean_1y_apr": -0.055054293299999994,
+    "mean_30d_apr": -0.15740310370000002,
+    "min_7d_apr": -0.6801444362142858,
+    "max_7d_apr": 0.21960563928571966,
+    "hours": 8760,
+    "history": "last year"
+   },
+   "premium": {
+    "q99": 0.0017889934509999986,
+    "q999": 0.003403688909199998,
+    "max": 0.0055781472
+   },
+   "book": {
+    "spread_bp": 0.3134059390411185,
+    "depth_1pct_usd": 21304.19453,
+    "depth_visible_usd": 21304.19453,
+    "visible_range": 0.0012379534592179553
+   },
+   "params": {
+    "S": 0.25,
+    "S_calibrated": 0.16953112221521308,
+    "S_floor": 0.25,
+    "S_extreme_down": -0.5,
+    "S_extreme_up": 0.5,
+    "basis": 0.0035,
+    "vol_ref": 0.797884375013113,
+    "funding_stress_short_apr": -0.6801444362142858,
+    "funding_stress_long_apr": 0.21960563928571966,
+    "client_cap_usd": 240174.42159155558,
+    "book_cap_usd": 720523.2647746667,
+    "price_band": 0.03
+   },
+   "coverage": {
+    "windows": 68640,
+    "down_past_S": 0.0001893939393939394,
+    "up_past_S": 0.00021853146853146853,
+    "down_past_extreme": 0.0,
+    "up_past_extreme": 0.0
+   }
+  },
+  "LTC": {
+   "allowed": true,
+   "tier": 3,
+   "binance_symbol": "LTCUSDT",
+   "history_source": "binance 1h",
+   "history_days": 2863,
+   "hl_max_leverage": 10,
+   "hl_margin_table": 52,
+   "hl_sz_decimals": 2,
+   "unit_mult": 1,
+   "price": 54.5955,
+   "oi_usd": 19987069.69026,
+   "adv30_usd": 4796068.619984,
+   "spot24h_usd": 20053373.36993909,
+   "mcap_usd": 4244200632,
+   "pyth_id": "6e3f3fa8253588df9326580180233eb791e03b443a3ba7a1d892e73874e19a54",
+   "tail4h": {
+    "q99_down": -0.0785205464053802,
+    "q999_down": -0.17003179306745986,
+    "worst_down": -0.586490939044481,
+    "q99_up": 0.07280908714135864,
+    "q999_up": 0.132784324083963,
+    "worst_up": 0.3872832369942196
+   },
+   "tail24h": {
+    "q999_down": -0.3704965920155793,
+    "q999_up": 0.32107404624352875,
+    "worst_down": -0.606289214221691,
+    "worst_up": 0.5816164817749605
+   },
+   "vol_all": 0.9156927515603851,
+   "vol_1y": 0.6095315189038537,
+   "beta_btc": 1.1590405050300885,
+   "corr_btc": 0.6460575271832698,
+   "funding": {
+    "mean_1y_apr": 0.06752354019999998,
+    "mean_30d_apr": 0.07800798006666666,
+    "min_7d_apr": -0.07668201050000095,
+    "max_7d_apr": 0.2524483132143039,
+    "hours": 8760,
+    "history": "last year"
+   },
+   "premium": {
+    "q99": 0.0008155857859999992,
+    "q999": 0.0013999578925999994,
+    "max": 0.001993308
+   },
+   "book": {
+    "spread_bp": 4.81674085042254,
+    "depth_1pct_usd": 42896.415709999994,
+    "depth_visible_usd": 42896.415709999994,
+    "visible_range": 0.0017750582022852956
+   },
+   "params": {
+    "S": 0.25,
+    "S_calibrated": 0.18389414044532482,
+    "S_floor": 0.25,
+    "S_extreme_down": -0.5,
+    "S_extreme_up": 0.5,
+    "basis": 0.003,
+    "vol_ref": 0.9156927515603851,
+    "funding_stress_short_apr": -0.07668201050000095,
+    "funding_stress_long_apr": 0.2524483132143039,
+    "client_cap_usd": 239803.4309992,
+    "book_cap_usd": 719410.2929976,
+    "price_band": 0.03
+   },
+   "coverage": {
+    "windows": 68640,
+    "down_past_S": 0.00027680652680652683,
+    "up_past_S": 8.741258741258741e-05,
+    "down_past_extreme": 5.8275058275058275e-05,
+    "up_past_extreme": 0.0
+   }
+  },
+  "TAO": {
+   "allowed": false,
+   "tier": 3,
+   "binance_symbol": "TAOUSDT",
+   "history_source": "binance 1h",
+   "history_days": 935,
+   "hl_max_leverage": 5,
+   "hl_margin_table": 5,
+   "hl_sz_decimals": 3,
+   "unit_mult": 1,
+   "price": 227.88,
+   "oi_usd": 30698147.316239998,
+   "adv30_usd": 10220577.168715555,
+   "spot24h_usd": 14033701.2558985,
+   "mcap_usd": 2662969879,
+   "pyth_id": "410f41de235f2db824e562ea7ab2d3d3d4ff048316c61d629c0b93f58584e1af",
+   "tail4h": {
+    "q99_down": -0.07989974737017319,
+    "q999_down": -0.1815379812451636,
+    "worst_down": -0.6273622571200426,
+    "q99_up": 0.08630462992161131,
+    "q999_up": 0.15915994425434182,
+    "worst_up": 0.2525857376156777
+   },
+   "tail24h": {
+    "q999_down": -0.5901427554107936,
+    "q999_up": 0.35765002156971826,
+    "worst_down": -0.6443992887985777,
+    "worst_up": 0.49198167239404356
+   },
+   "vol_all": 1.1145989527447413,
+   "vol_1y": 0.9407720925624191,
+   "beta_btc": 1.5173293778590733,
+   "corr_btc": 0.6275228222334484,
+   "funding": {
+    "mean_1y_apr": 0.069244693,
+    "mean_30d_apr": 0.10529227391666668,
+    "min_7d_apr": -0.21897446042857296,
+    "max_7d_apr": 0.3799284426428652,
+    "hours": 8760,
+    "history": "last year"
+   },
+   "premium": {
+    "q99": 0.00127387427,
+    "q999": 0.0028579273507999972,
+    "max": 0.0143945127
+   },
+   "book": {
+    "spread_bp": 1.7057569296383994,
+    "depth_1pct_usd": 47222.73663,
+    "depth_visible_usd": 47222.73663,
+    "visible_range": 0.0014498933901918587
+   },
+   "params": {
+    "S": 0.25,
+    "S_calibrated": 0.19633840481829123,
+    "S_floor": 0.25,
+    "S_extreme_down": -0.5,
+    "S_extreme_up": 0.5,
+    "basis": 0.003,
+    "vol_ref": 1.1145989527447413,
+    "funding_stress_short_apr": -0.21897446042857296,
+    "funding_stress_long_apr": 0.3799284426428652,
+    "client_cap_usd": 511028.8584357778,
+    "book_cap_usd": 1533086.5753073334,
+    "price_band": 0.03
+   },
+   "coverage": {
+    "windows": 22440,
+    "down_past_S": 0.0005793226381461676,
+    "up_past_S": 4.45632798573975e-05,
+    "down_past_extreme": 0.00017825311942959,
+    "up_past_extreme": 0.0
+   }
+  },
+  "GRAM": {
+   "allowed": false,
+   "tier": 3,
+   "binance_symbol": "GRAMUSDT",
+   "history_source": "hyperliquid 4h",
+   "history_days": 123,
+   "hl_max_leverage": 5,
+   "hl_margin_table": 5,
+   "hl_sz_decimals": 0,
+   "unit_mult": 1,
+   "price": 1.1718,
+   "oi_usd": 22330941.040799998,
+   "adv30_usd": 3551359.583393333,
+   "spot24h_usd": 14005744.685107,
+   "mcap_usd": 3340251400,
+   "pyth_id": "e41cd8a90528974c7b97b506abb694e2cc5750b119f796a7001890c1a93a572d",
+   "tail4h": {
+    "q99_down": -0.05063565102508039,
+    "q999_down": -0.1021632129592616,
+    "worst_down": -0.11468874578350197,
+    "q99_up": 0.0496772776888259,
+    "q999_up": 0.08610517669571456,
+    "worst_up": 0.10156950672645726
+   },
+   "tail24h": {
+    "q999_down": -0.12816211617400405,
+    "q999_up": 0.1292455893493716,
+    "worst_down": -0.13116219667943807,
+    "worst_up": 0.1340068340514038
+   },
+   "vol_all": 0.5691989528993842,
+   "vol_1y": 0.5691989528993842,
+   "beta_btc": 0.8482956333679635,
+   "corr_btc": 0.5001524949262907,
+   "funding": {
+    "mean_1y_apr": 0.13863256762861895,
+    "mean_30d_apr": -0.0028301917499999932,
+    "min_7d_apr": -0.14551653664284864,
+    "max_7d_apr": 0.5336105455000051,
+    "hours": 3005,
+    "history": "last year"
+   },
+   "premium": {
+    "q99": 0.001657713388,
+    "q999": 0.0031914873840000637,
+    "max": 0.0039516158
+   },
+   "book": {
+    "spread_bp": 5.884578201840383,
+    "depth_1pct_usd": 50164.4932,
+    "depth_visible_usd": 50164.4932,
+    "visible_range": 0.0027321255937120537
+   },
+   "params": {
+    "S": 0.3,
+    "S_calibrated": 0.11049237259306137,
+    "S_floor": 0.3,
+    "S_extreme_down": -0.6,
+    "S_extreme_up": 0.6,
+    "basis": 0.0032,
+    "vol_ref": 0.5691989528993842,
+    "funding_stress_short_apr": -0.14551653664284864,
+    "funding_stress_long_apr": 0.5336105455000051,
+    "client_cap_usd": 177567.97916966665,
+    "book_cap_usd": 532703.937509,
+    "price_band": 0.03
+   },
+   "coverage": {
+    "windows": 739,
+    "down_past_S": 0.0,
+    "up_past_S": 0.0,
+    "down_past_extreme": 0.0,
+    "up_past_extreme": 0.0
+   }
+  }
+ },
+ "margin_tables": {
+  "50": {
+   "description": "",
+   "marginTiers": [
+    {
+     "lowerBound": "0.0",
+     "maxLeverage": 50
+    }
+   ]
+  },
+  "51": {
+   "description": "tiered 10x",
+   "marginTiers": [
+    {
+     "lowerBound": "0.0",
+     "maxLeverage": 10
+    },
+    {
+     "lowerBound": "3000000.0",
+     "maxLeverage": 5
+    }
+   ]
+  },
+  "52": {
+   "description": "tiered 10x (2)",
+   "marginTiers": [
+    {
+     "lowerBound": "0.0",
+     "maxLeverage": 10
+    },
+    {
+     "lowerBound": "20000000.0",
+     "maxLeverage": 5
+    }
+   ]
+  },
+  "53": {
+   "description": "tiered 20x",
+   "marginTiers": [
+    {
+     "lowerBound": "0.0",
+     "maxLeverage": 20
+    },
+    {
+     "lowerBound": "40000000.0",
+     "maxLeverage": 10
+    }
+   ]
+  },
+  "54": {
+   "description": "tiered 20x (2)",
+   "marginTiers": [
+    {
+     "lowerBound": "0.0",
+     "maxLeverage": 20
+    },
+    {
+     "lowerBound": "70000000.0",
+     "maxLeverage": 10
+    }
+   ]
+  },
+  "55": {
+   "description": "tiered 25x",
+   "marginTiers": [
+    {
+     "lowerBound": "0.0",
+     "maxLeverage": 25
+    },
+    {
+     "lowerBound": "100000000.0",
+     "maxLeverage": 15
+    }
+   ]
+  },
+  "56": {
+   "description": "tiered 40x",
+   "marginTiers": [
+    {
+     "lowerBound": "0.0",
+     "maxLeverage": 40
+    },
+    {
+     "lowerBound": "150000000.0",
+     "maxLeverage": 20
+    }
+   ]
+  }
+ }
+}

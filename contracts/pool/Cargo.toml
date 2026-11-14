@@ -1,0 +1,19 @@
+[package]
+name = "pb-pool"
+description = "Pool: the broker-funded USDC pool, with its own limits that hold even if the engine is wrong (PLAN.md 5.1, RISK_ENGINE.md 12.2)"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+near-sdk = { workspace = true }
+# The workspace's own shared types, for `LenderReport` (INTERFACES.md 24). No new outside crate.
+pb-types = { path = "../types" }
+
+[dev-dependencies]
+near-sdk = { workspace = true, features = ["unit-testing"] }

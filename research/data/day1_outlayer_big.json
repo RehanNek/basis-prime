@@ -1,0 +1,335 @@
+{
+ "meta": {
+  "check": "big",
+  "date_utc": "2026-11-06T23:10:22+00:00",
+  "api": "https://testnet-api.outlayer.ai",
+  "project": "pbf-keeper.testnet/pb-probe",
+  "version_key": "3f89e6441848ad7d323e37888d3fa560d636577d95ace635b7f984f3fa4de466",
+  "compute_limit_micro_usd": 10000
+ },
+ "summary": [
+  {
+   "size": 256,
+   "http": 200,
+   "status": "completed",
+   "compact_len": 256,
+   "exact_size": true,
+   "pad_len": 160,
+   "pad_intact": true,
+   "fields": [
+    "bytes",
+    "mode",
+    "ok",
+    "pad",
+    "verdict"
+   ]
+  },
+  {
+   "size": 900,
+   "http": 200,
+   "status": "completed",
+   "compact_len": 900,
+   "exact_size": true,
+   "pad_len": 571,
+   "pad_intact": true,
+   "fields": [
+    "bytes",
+    "mode",
+    "ok",
+    "pad",
+    "verdict"
+   ]
+  },
+  {
+   "size": 1024,
+   "http": 200,
+   "status": "completed",
+   "compact_len": 1024,
+   "exact_size": true,
+   "pad_len": 694,
+   "pad_intact": true,
+   "fields": [
+    "bytes",
+    "mode",
+    "ok",
+    "pad",
+    "verdict"
+   ]
+  },
+  {
+   "size": 2048,
+   "http": 200,
+   "status": "completed",
+   "compact_len": 2048,
+   "exact_size": true,
+   "pad_len": 1718,
+   "pad_intact": true,
+   "fields": [
+    "bytes",
+    "mode",
+    "ok",
+    "pad",
+    "verdict"
+   ]
+  },
+  {
+   "size": 4096,
+   "http": 200,
+   "status": "completed",
+   "compact_len": 4096,
+   "exact_size": true,
+   "pad_len": 3766,
+   "pad_intact": true,
+   "fields": [
+    "bytes",
+    "mode",
+    "ok",
+    "pad",
+    "verdict"
+   ]
+  }
+ ],
+ "runs": [
+  {
+   "input": {
+    "mode": "big",
+    "bytes": 256
+   },
+   "sent_ms": 1794006612592,
+   "http": 200,
+   "wall_ms": 1871,
+   "call_id": "43b41dc2-b8eb-4d3b-92f0-1245027e7c7f",
+   "status": "completed",
+   "output": {
+    "bytes": 256,
+    "mode": "big",
+    "ok": true,
+    "pad": "0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdef",
+    "verdict": {
+     "loan_usd": "5000.00",
+     "state": "HEALTHY"
+    }
+   },
+   "compute_cost": "1000",
+   "instructions": 136404,
+   "time_ms": 740,
+   "attestation_url": "/attestations/by-call/43b41dc2-b8eb-4d3b-92f0-1245027e7c7f",
+   "check": {
+    "size": 256,
+    "http": 200,
+    "status": "completed",
+    "compact_len": 256,
+    "exact_size": true,
+    "pad_len": 160,
+    "pad_intact": true,
+    "fields": [
+     "bytes",
+     "mode",
+     "ok",
+     "pad",
+     "verdict"
+    ]
+   }
+  },
+  {
+   "input": {
+    "mode": "big",
+    "bytes": 900
+   },
+   "sent_ms": 1794006614465,
+   "http": 200,
+   "wall_ms": 1885,
+   "call_id": "320debbe-b788-4037-a541-3ac9c55191d8",
+   "status": "completed",
+   "output": {
+    "bytes": 900,
+    "mode": "big",
+    "ok": true,
+    "pad": "0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstu",
+    "verdict": {
+     "account": "probe-client.pbf-keeper.testnet",
+     "block_height": null,
+     "equity_usd": "9500.00",
+     "extreme_day_loss_usd": "180.00",
+     "hl_margin_ratio": "0.31",
+     "im_usd": "3100.00",
+     "issued_ms": 1794006616274,
+     "loan_usd": "5000.00",
+     "mm_usd": "1550.00",
+     "state": "HEALTHY",
+     "tier_cap_usd": "6000.00"
+    }
+   },
+   "compute_cost": "1000",
+   "instructions": 182232,
+   "time_ms": 753,
+   "attestation_url": "/attestations/by-call/320debbe-b788-4037-a541-3ac9c55191d8",
+   "check": {
+    "size": 900,
+    "http": 200,
+    "status": "completed",
+    "compact_len": 900,
+    "exact_size": true,
+    "pad_len": 571,
+    "pad_intact": true,
+    "fields": [
+     "bytes",
+     "mode",
+     "ok",
+     "pad",
+     "verdict"
+    ]
+   }
+  },
+  {
+   "input": {
+    "mode": "big",
+    "bytes": 1024
+   },
+   "sent_ms": 1794006616350,
+   "http": 200,
+   "wall_ms": 1892,
+   "call_id": "8bc39611-4b9a-4e3d-86c6-cef5f05f9c41",
+   "status": "completed",
+   "output": {
+    "bytes": 1024,
+    "mode": "big",
+    "ok": true,
+    "pad": "0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789",
+    "verdict": {
+     "account": "probe-client.pbf-keeper.testnet",
+     "block_height": null,
+     "equity_usd": "9500.00",
+     "extreme_day_loss_usd": "180.00",
+     "hl_margin_ratio": "0.31",
+     "im_usd": "3100.00",
+     "issued_ms": 1794006618127,
+     "loan_usd": "5000.00",
+     "mm_usd": "1550.00",
+     "state": "HEALTHY",
+     "tier_cap_usd": "6000.00"
+    }
+   },
+   "compute_cost": "1000",
+   "instructions": 190470,
+   "time_ms": 754,
+   "attestation_url": "/attestations/by-call/8bc39611-4b9a-4e3d-86c6-cef5f05f9c41",
+   "check": {
+    "size": 1024,
+    "http": 200,
+    "status": "completed",
+    "compact_len": 1024,
+    "exact_size": true,
+    "pad_len": 694,
+    "pad_intact": true,
+    "fields": [
+     "bytes",
+     "mode",
+     "ok",
+     "pad",
+     "verdict"
+    ]
+   }
+  },
+  {
+   "input": {
+    "mode": "big",
+    "bytes": 2048
+   },
+   "sent_ms": 1794006618244,
+   "http": 200,
+   "wall_ms": 2347,
+   "call_id": "bd5cab71-d2e0-4780-b2cc-477061355768",
+   "status": "completed",
+   "output": {
+    "bytes": 2048,
+    "mode": "big",
+    "ok": true,
+    "pad": "0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnop",
+    "verdict": {
+     "account": "probe-client.pbf-keeper.testnet",
+     "block_height": null,
+     "equity_usd": "9500.00",
+     "extreme_day_loss_usd": "180.00",
+     "hl_margin_ratio": "0.31",
+     "im_usd": "3100.00",
+     "issued_ms": 1794006620539,
+     "loan_usd": "5000.00",
+     "mm_usd": "1550.00",
+     "state": "HEALTHY",
+     "tier_cap_usd": "6000.00"
+    }
+   },
+   "compute_cost": "1000",
+   "instructions": 276200,
+   "time_ms": 739,
+   "attestation_url": "/attestations/by-call/bd5cab71-d2e0-4780-b2cc-477061355768",
+   "check": {
+    "size": 2048,
+    "http": 200,
+    "status": "completed",
+    "compact_len": 2048,
+    "exact_size": true,
+    "pad_len": 1718,
+    "pad_intact": true,
+    "fields": [
+     "bytes",
+     "mode",
+     "ok",
+     "pad",
+     "verdict"
+    ]
+   }
+  },
+  {
+   "input": {
+    "mode": "big",
+    "bytes": 4096
+   },
+   "sent_ms": 1794006620593,
+   "http": 200,
+   "wall_ms": 2220,
+   "call_id": "5bb518e5-35ac-4e56-8856-e341c6e67e49",
+   "status": "completed",
+   "output": {
+    "bytes": 4096,
+    "mode": "big",
+    "ok": true,
+    "pad": "0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijkl",
+    "verdict": {
+     "account": "probe-client.pbf-keeper.testnet",
+     "block_height": null,
+     "equity_usd": "9500.00",
+     "extreme_day_loss_usd": "180.00",
+     "hl_margin_ratio": "0.31",
+     "im_usd": "3100.00",
+     "issued_ms": 1794006622714,
+     "loan_usd": "5000.00",
+     "mm_usd": "1550.00",
+     "state": "HEALTHY",
+     "tier_cap_usd": "6000.00"
+    }
+   },
+   "compute_cost": "1000",
+   "instructions": 441357,
+   "time_ms": 750,
+   "attestation_url": "/attestations/by-call/5bb518e5-35ac-4e56-8856-e341c6e67e49",
+   "check": {
+    "size": 4096,
+    "http": 200,
+    "status": "completed",
+    "compact_len": 4096,
+    "exact_size": true,
+    "pad_len": 3766,
+    "pad_intact": true,
+    "fields": [
+     "bytes",
+     "mode",
+     "ok",
+     "pad",
+     "verdict"
+    ]
+   }
+  }
+ ]
+}

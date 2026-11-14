@@ -1,0 +1,407 @@
+{
+ "what": "Phase 2 gate, web half: the first loan clicked through in the web app with the user's own Meteor wallet on NEAR testnet",
+ "network": "testnet",
+ "web_app": "web/ at http://localhost:3000, with the backend services/api at http://localhost:8788 (.claude/launch.json)",
+ "wallet": {
+  "account": "quiethare6001.testnet",
+  "kind": "Meteor Wallet (testnet)"
+ },
+ "client_account": "quiethare6001.pbf.testnet",
+ "factory": "pbf.testnet",
+ "pool": "pool.pbf.testnet",
+ "pb_risk_version": "78de117a8997ef34c9c9f76b04b8185c427f09348891b294752838655a658971",
+ "steps": [
+  {
+   "step": "Fund the wallet: 9.9 test NEAR from pbf-demo.testnet (a near-cli-rs faucet account)",
+   "time_utc": "2026-11-07 22:13:19",
+   "block": 276689885,
+   "signer": "pbf-demo.testnet",
+   "receiver": "quiethare6001.testnet",
+   "method": "Transfer",
+   "args": null,
+   "deposit_yocto": "9900000000000000000000000",
+   "tx": "6t2MiAX6dSQSiEzee7kE9wYQaNdCVMN93dKytNRsx3uw",
+   "ok": true,
+   "logs": []
+  },
+  {
+   "step": "Create the client account (4 NEAR)",
+   "time_utc": "2026-11-07 22:13:55",
+   "block": 276689944,
+   "signer": "quiethare6001.testnet",
+   "receiver": "pbf.testnet",
+   "method": "create_account",
+   "args": {
+    "name": "quiethare6001",
+    "owner": "quiethare6001.testnet"
+   },
+   "deposit_yocto": "4000000000000000000000000",
+   "tx": "3LMi4WzmafowGnV5ex6PFWBRwq27Lz6FRwnuEmimhxnN",
+   "ok": true,
+   "logs": [
+    "EVENT_JSON:{\"standard\":\"pb-pool\",\"version\":\"1.0.0\",\"event\":\"register\",\"data\":{\"account_id\":\"quiethare6001.pbf.testnet\"}}",
+    "created quiethare6001.pbf.testnet"
+   ]
+  },
+  {
+   "step": "Get test tokens: mint 10,000 mUSDC to the wallet",
+   "time_utc": "2026-11-07 22:22:36",
+   "block": 276690793,
+   "signer": "quiethare6001.testnet",
+   "receiver": "musdc.pbf-ops.testnet",
+   "method": "mint",
+   "args": {
+    "account_id": "quiethare6001.testnet",
+    "amount": "10000000000"
+   },
+   "deposit_yocto": "1250000000000000000000",
+   "tx": "7hJNJGsg6sfEFEYaWaawWburZVui9f4bZvfh5Q9YbBgn",
+   "ok": true,
+   "logs": [
+    "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_mint\",\"data\":[{\"owner_id\":\"quiethare6001.testnet\",\"amount\":\"10000000000\",\"memo\":\"faucet\"}]}"
+   ]
+  },
+  {
+   "step": "Get test tokens: mint 0.25 mNBTC to the wallet",
+   "time_utc": "2026-11-07 22:22:47",
+   "block": 276690812,
+   "signer": "quiethare6001.testnet",
+   "receiver": "mnbtc.pbf-ops.testnet",
+   "method": "mint",
+   "args": {
+    "account_id": "quiethare6001.testnet",
+    "amount": "25000000"
+   },
+   "deposit_yocto": "1250000000000000000000",
+   "tx": "761ZyyNt6Hs9QJFTYq2zrEMpbyHfrsQgPxKy6GEChHfD",
+   "ok": true,
+   "logs": [
+    "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_mint\",\"data\":[{\"owner_id\":\"quiethare6001.testnet\",\"amount\":\"25000000\",\"memo\":\"faucet\"}]}"
+   ]
+  },
+  {
+   "step": "Ask for a plain check (the account was still empty)",
+   "time_utc": "2026-11-07 22:23:43",
+   "block": 276690903,
+   "signer": "quiethare6001.testnet",
+   "receiver": "quiethare6001.pbf.testnet",
+   "method": "request_check",
+   "args": {
+    "intent": {
+     "check": {}
+    }
+   },
+   "deposit_yocto": "10000000000000000000000",
+   "tx": "GwfCRPJYzaxtY2dwvfd3e59Y4mRezeDQ9Eq2umS62BCG",
+   "ok": true,
+   "logs": [
+    "Resolved project: pbf-keeper.testnet/pb-risk, version: \"78de117a8997ef34c9c9f76b04b8185c427f09348891b294752838655a658971\", source: WasmUrl { url: \"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/78de117a8997ef34c9c9f76b04b8185c427f09348891b294752838655a658971.wasm\", hash: \"78de117a8997ef34c9c9f76b04b8185c427f09348891b294752838655a658971\", build_target: Some(\"wasm32-wasip2\") }, uuid: p000000000000011a",
+    "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_requested\",\"data\":[{\"request_data\":\"{\\\"request_id\\\":12854,\\\"sender_id\\\":\\\"quiethare6001.testnet\\\",\\\"predecessor_id\\\":\\\"quiethare6001.pbf.testnet\\\",\\\"code_source\\\":{\\\"WasmUrl\\\":{\\\"url\\\":\\\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/78de117a8997ef34c9c9f76b04b8185c427f09348891b294752838655a658971.wasm\\\",\\\"hash\\\":\\\"78de117a8997ef34c9c9f76b04b8185c427f09348891b294752838655a658971\\\",\\\"build_target\\\":\\\"wasm32-wasip2\\\"}},\\\"resource_limits\\\":{\\\"max_instructions\\\":2000000000,\\\"max_memory_mb\\\":256,\\\"max_execution_seconds\\\":20},\\\"input_data\\\":\\\"{\\\\\\\"mode\\\\\\\":\\\\\\\"check\\\\\\\",\\\\\\\"account\\\\\\\":\\\\\\\"quiethare6001.pbf.testnet\\\\\\\",\\\\\\\"intent\\\\\\\":{\\\\\\\"check\\\\\\\":{}},\\\\\\\"network\\\\\\\":\\\\\\\"testnet\\\\\\\",\\\\\\\"snapshot\\\\\\\":false}\\\",\\\"input_data_in_state\\\":false,\\\"secrets_ref\\\":null,\\\"response_format\\\":\\\"Json\\\",\\\"payment\\\":\\\"10000000000000000000000\\\",\\\"attached_usd\\\":\\\"0\\\",\\\"timestamp\\\":1794090224743193667,\\\"compile_only\\\":false,\\\"force_rebuild\\\":false,\\\"store_on_fastfs\\\":false,\\\"use_bound_identity\\\":false,\\\"project_uuid\\\":\\\"p000000000000011a\\\",\\\"project_id\\\":\\\"pbf-keeper.testnet/pb-risk\\\"}\",\"data_id\":[236,67,76,101,154,76,237,113,152,113,44,170,210,59,15,174,43,131,182,10,187,25,157,208,231,20,253,123,177,54,39,242],\"timestamp\":1794090224743193667}]}",
+    "[[yNEAR charged: \"1185904400000000000000\"]]",
+    "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_completed\",\"data\":[{\"sender_id\":\"quiethare6001.testnet\",\"code_source\":{\"WasmUrl\":{\"url\":\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/78de117a8997ef34c9c9f76b04b8185c427f09348891b294752838655a658971.wasm\",\"hash\":\"78de117a8997ef34c9c9f76b04b8185c427f09348891b294752838655a658971\",\"build_target\":\"wasm32-wasip2\"}},\"resources_used\":{\"instructions\":44435484,\"time_ms\":1859,\"compile_time_ms\":null},\"success\":true,\"error_message\":null,\"payment_charged\":\"1185904400000000000000\",\"payment_refunded\":\"8814095600000000000000\",\"compilation_note\":\"Cached WASM from 2026-11-07T11:51:04.096501+00:00\",\"timestamp\":1794090231436826236}]}",
+    "Execution completed successfully. Output: Json(660 bytes), Resources: { instructions: 44435484, time_ms: 1859 }, Cost: 1185904400000000000000 yoctoNEAR, Refund: 8814095600000000000000 yoctoNEAR, Cached WASM from 2026-11-07T11:51:04.096501+00:00",
+    "verdict accepted: nonce 0"
+   ]
+  },
+  {
+   "step": "Deposit 10,000 mUSDC into the account",
+   "time_utc": "2026-11-07 22:26:54",
+   "block": 276691217,
+   "signer": "quiethare6001.testnet",
+   "receiver": "musdc.pbf-ops.testnet",
+   "method": "ft_transfer_call",
+   "args": {
+    "receiver_id": "quiethare6001.pbf.testnet",
+    "amount": "10000000000",
+    "msg": ""
+   },
+   "deposit_yocto": "1",
+   "tx": "12NLo2tVUaURGsejG7mLv7wgntc4rVSHu8nowaknCbZL",
+   "ok": true,
+   "logs": [
+    "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"quiethare6001.testnet\",\"new_owner_id\":\"quiethare6001.pbf.testnet\",\"amount\":\"10000000000\"}]}",
+    "deposit of 10000000000 musdc.pbf-ops.testnet from quiethare6001.testnet"
+   ]
+  },
+  {
+   "step": "Deposit 0.25 mNBTC into the account",
+   "time_utc": "2026-11-07 22:27:44",
+   "block": 276691304,
+   "signer": "quiethare6001.testnet",
+   "receiver": "mnbtc.pbf-ops.testnet",
+   "method": "ft_transfer_call",
+   "args": {
+    "receiver_id": "quiethare6001.pbf.testnet",
+    "amount": "25000000",
+    "msg": ""
+   },
+   "deposit_yocto": "1",
+   "tx": "8VEDnf8FwGeJRYagXEVt3vfuk3XHDs2mg5Nku1fcPP5o",
+   "ok": true,
+   "logs": [
+    "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"quiethare6001.testnet\",\"new_owner_id\":\"quiethare6001.pbf.testnet\",\"amount\":\"25000000\"}]}",
+    "deposit of 25000000 mnbtc.pbf-ops.testnet from quiethare6001.testnet"
+   ]
+  },
+  {
+   "step": "Ask for a borrow check for 1,000 USDC",
+   "time_utc": "2026-11-07 22:30:40",
+   "block": 276691598,
+   "signer": "quiethare6001.testnet",
+   "receiver": "quiethare6001.pbf.testnet",
+   "method": "request_check",
+   "args": {
+    "intent": {
+     "borrow": {
+      "amount": "1000000000"
+     }
+    }
+   },
+   "deposit_yocto": "10000000000000000000000",
+   "tx": "3mHkFWN2rjXvHzJr21WsRZrPSZuwYSfzbVkER1ZuAfKQ",
+   "ok": true,
+   "logs": [
+    "Resolved project: pbf-keeper.testnet/pb-risk, version: \"78de117a8997ef34c9c9f76b04b8185c427f09348891b294752838655a658971\", source: WasmUrl { url: \"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/78de117a8997ef34c9c9f76b04b8185c427f09348891b294752838655a658971.wasm\", hash: \"78de117a8997ef34c9c9f76b04b8185c427f09348891b294752838655a658971\", build_target: Some(\"wasm32-wasip2\") }, uuid: p000000000000011a",
+    "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_requested\",\"data\":[{\"request_data\":\"{\\\"request_id\\\":12859,\\\"sender_id\\\":\\\"quiethare6001.testnet\\\",\\\"predecessor_id\\\":\\\"quiethare6001.pbf.testnet\\\",\\\"code_source\\\":{\\\"WasmUrl\\\":{\\\"url\\\":\\\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/78de117a8997ef34c9c9f76b04b8185c427f09348891b294752838655a658971.wasm\\\",\\\"hash\\\":\\\"78de117a8997ef34c9c9f76b04b8185c427f09348891b294752838655a658971\\\",\\\"build_target\\\":\\\"wasm32-wasip2\\\"}},\\\"resource_limits\\\":{\\\"max_instructions\\\":2000000000,\\\"max_memory_mb\\\":256,\\\"max_execution_seconds\\\":20},\\\"input_data\\\":\\\"{\\\\\\\"mode\\\\\\\":\\\\\\\"check\\\\\\\",\\\\\\\"account\\\\\\\":\\\\\\\"quiethare6001.pbf.testnet\\\\\\\",\\\\\\\"intent\\\\\\\":{\\\\\\\"borrow\\\\\\\":{\\\\\\\"amount\\\\\\\":\\\\\\\"1000000000\\\\\\\"}},\\\\\\\"network\\\\\\\":\\\\\\\"testnet\\\\\\\",\\\\\\\"snapshot\\\\\\\":false}\\\",\\\"input_data_in_state\\\":false,\\\"secrets_ref\\\":null,\\\"response_format\\\":\\\"Json\\\",\\\"payment\\\":\\\"10000000000000000000000\\\",\\\"attached_usd\\\":\\\"0\\\",\\\"timestamp\\\":1794090641617047475,\\\"compile_only\\\":false,\\\"force_rebuild\\\":false,\\\"store_on_fastfs\\\":false,\\\"use_bound_identity\\\":false,\\\"project_uuid\\\":\\\"p000000000000011a\\\",\\\"project_id\\\":\\\"pbf-keeper.testnet/pb-risk\\\"}\",\"data_id\":[220,246,238,70,0,171,51,67,148,239,209,86,237,188,47,230,140,192,180,21,224,59,31,165,177,67,206,236,171,176,176,234],\"timestamp\":1794090641617047475}]}",
+    "Retrieving large output from storage for request_id: 12859",
+    "[[yNEAR charged: \"1520311700000000000000\"]]",
+    "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_completed\",\"data\":[{\"sender_id\":\"quiethare6001.testnet\",\"code_source\":{\"WasmUrl\":{\"url\":\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/78de117a8997ef34c9c9f76b04b8185c427f09348891b294752838655a658971.wasm\",\"hash\":\"78de117a8997ef34c9c9f76b04b8185c427f09348891b294752838655a658971\",\"build_target\":\"wasm32-wasip2\"}},\"resources_used\":{\"instructions\":117710074,\"time_ms\":5203,\"compile_time_ms\":null},\"success\":true,\"error_message\":null,\"payment_charged\":\"1520311700000000000000\",\"payment_refunded\":\"8479688300000000000000\",\"compilation_note\":\"Cached WASM from 2026-11-07T11:51:04.096501+00:00\",\"timestamp\":1794090651575883740}]}",
+    "Execution completed successfully. Output: Json(907 bytes), Resources: { instructions: 117710074, time_ms: 5203 }, Cost: 1520311700000000000000 yoctoNEAR, Refund: 8479688300000000000000 yoctoNEAR, Cached WASM from 2026-11-07T11:51:04.096501+00:00",
+    "verdict accepted: nonce 0"
+   ]
+  },
+  {
+   "step": "Borrow 1,000 USDC",
+   "time_utc": "2026-11-07 22:31:14",
+   "block": 276691650,
+   "signer": "quiethare6001.testnet",
+   "receiver": "quiethare6001.pbf.testnet",
+   "method": "borrow",
+   "args": {
+    "amount": "1000000000"
+   },
+   "deposit_yocto": "1",
+   "tx": "EVUyiVYPkhkxM2nMsLSMC9GzFRWkmmWCpJhr8NGHDiH1",
+   "ok": true,
+   "logs": [
+    "EVENT_JSON:{\"standard\":\"pb-pool\",\"version\":\"1.0.0\",\"event\":\"borrow\",\"data\":{\"account_id\":\"quiethare6001.pbf.testnet\",\"amount\":\"1000000000\",\"tier\":\"WATCH\",\"debt\":\"1000000001\"}}",
+    "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"pool.pbf.testnet\",\"new_owner_id\":\"quiethare6001.pbf.testnet\",\"amount\":\"1000000000\"}]}",
+    "loan of 1000000000 from the pool"
+   ]
+  },
+  {
+   "step": "Repay with All: sends 1,002.000146 USDC, the pool returns what is above the debt",
+   "time_utc": "2026-11-07 22:32:57",
+   "block": 276691818,
+   "signer": "quiethare6001.testnet",
+   "receiver": "quiethare6001.pbf.testnet",
+   "method": "repay",
+   "args": {
+    "amount": "1002000146"
+   },
+   "deposit_yocto": "1",
+   "tx": "BFSBXMSjU1umAXnYEGA5v1jdjHytLdMXzLN4YZtNi9bF",
+   "ok": true,
+   "logs": [
+    "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"quiethare6001.pbf.testnet\",\"new_owner_id\":\"pool.pbf.testnet\",\"amount\":\"1002000146\"}]}",
+    "EVENT_JSON:{\"standard\":\"pb-pool\",\"version\":\"1.0.0\",\"event\":\"repay\",\"data\":{\"account_id\":\"quiethare6001.pbf.testnet\",\"amount\":\"1000000166\"}}",
+    "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"pool.pbf.testnet\",\"new_owner_id\":\"quiethare6001.pbf.testnet\",\"amount\":\"1999980\",\"memo\":\"refund\"}]}",
+    "repaid 1000000166"
+   ]
+  },
+  {
+   "step": "Withdraw 9,999 mUSDC to the wallet, with no verdict",
+   "time_utc": "2026-11-07 22:33:48",
+   "block": 276691902,
+   "signer": "quiethare6001.testnet",
+   "receiver": "quiethare6001.pbf.testnet",
+   "method": "withdraw",
+   "args": {
+    "token": "musdc.pbf-ops.testnet",
+    "amount": "9999000000",
+    "receiver": "quiethare6001.testnet"
+   },
+   "deposit_yocto": "1",
+   "tx": "6wxCTZ1KuKDu4oCZUupqeJi5WSgi8wwXn8DitMExV1Kt",
+   "ok": true,
+   "logs": [
+    "The account is already registered, refunding the deposit",
+    "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"quiethare6001.pbf.testnet\",\"new_owner_id\":\"quiethare6001.testnet\",\"amount\":\"9999000000\"}]}"
+   ]
+  },
+  {
+   "step": "Withdraw 0.25 mNBTC to the wallet, with no verdict",
+   "time_utc": "2026-11-07 22:34:10",
+   "block": 276691938,
+   "signer": "quiethare6001.testnet",
+   "receiver": "quiethare6001.pbf.testnet",
+   "method": "withdraw",
+   "args": {
+    "token": "mnbtc.pbf-ops.testnet",
+    "amount": "25000000",
+    "receiver": "quiethare6001.testnet"
+   },
+   "deposit_yocto": "1",
+   "tx": "B2FeusY95RHAcqgReAMLU6Mq5sduv8y2Gmxv7wmvvNdV",
+   "ok": true,
+   "logs": [
+    "The account is already registered, refunding the deposit",
+    "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"quiethare6001.pbf.testnet\",\"new_owner_id\":\"quiethare6001.testnet\",\"amount\":\"25000000\"}]}"
+   ]
+  }
+ ],
+ "verdicts": {
+  "plain_check_empty_account": {
+   "note": "Read from the account at 22:24 UTC, before the deposits; the borrow check replaced it. C0: no credit below $1,000 of equity.",
+   "intent": {
+    "check": {}
+   },
+   "received_block": 276690917,
+   "verdict": {
+    "acct": "quiethare6001.pbf.testnet",
+    "action": "NONE",
+    "allow": {
+     "borrow": 0,
+     "withdraw": 0
+    },
+    "bands": {},
+    "blk": 276690908,
+    "coins": {
+     "reduce_only": [],
+     "stale": [],
+     "uncertain": []
+    },
+    "credit": {
+     "binding": "C0",
+     "line": 0
+    },
+    "eq": 0,
+    "eq_allow": 0,
+    "exp_bp": 0,
+    "hr7_bp": 10000,
+    "hr_bp": 10000,
+    "im": 0,
+    "in": "24324056753f276ea274d1f0459ad52eeba6232f658bbe83bbca5828cf90ce75",
+    "mm": 0,
+    "model": "B-0.2",
+    "nonce": 0,
+    "ok": true,
+    "params": "3d362b434adaad0e0c909605bd792232acf964b9143a95ccb2541a0f65c4c263",
+    "plan": [],
+    "pool": {
+     "hl_eq": 0,
+     "hold": {},
+     "shares_bp": {}
+    },
+    "rate_bp": 200,
+    "score": 650,
+    "since": 0,
+    "state": "HEALTHY",
+    "tier": "STANDARD",
+    "top": [],
+    "topup": 0,
+    "v": 1,
+    "venues": {
+     "hl_margin_ratio_bp": 0
+    },
+    "volf_bp": 10000
+   }
+  },
+  "borrow_check": {
+   "intent": {
+    "borrow": {
+     "amount": "1000000000"
+    }
+   },
+   "received_block": 276691616,
+   "verdict": {
+    "acct": "quiethare6001.pbf.testnet",
+    "action": "NONE",
+    "allow": {
+     "borrow": 14465787291,
+     "withdraw": 10000000000
+    },
+    "bands": {},
+    "blk": 276691602,
+    "coins": {
+     "reduce_only": [],
+     "stale": [],
+     "uncertain": []
+    },
+    "credit": {
+     "binding": "C4",
+     "line": 14465787291
+    },
+    "eq": 28939611250,
+    "eq_allow": 28931574583,
+    "exp_bp": 6545,
+    "hr7_bp": 0,
+    "hr_bp": 0,
+    "im": 8753856264,
+    "in": "d337d21457e6b2b0925cb9e999d39a2de9df5b5699477062e03cc9bf0a3d04d3",
+    "mm": 7003085012,
+    "model": "B-0.2",
+    "nonce": 0,
+    "ok": true,
+    "params": "3d362b434adaad0e0c909605bd792232acf964b9143a95ccb2541a0f65c4c263",
+    "plan": [],
+    "pool": {
+     "hl_eq": 0,
+     "hold": {
+      "nBTC": 18939611250
+     },
+     "shares_bp": {
+      "nBTC": 6546
+     }
+    },
+    "rate_bp": 500,
+    "score": 550,
+    "since": 0,
+    "state": "HEALTHY",
+    "tier": "WATCH",
+    "top": [
+     "replay 2020-03-12 down (from 2020-03-12 22:25 UTC)",
+     "replay 2021-05-19 down (from 2021-05-19 09:10 UTC)",
+     "replay 2022-11-08 down (from 2022-11-08 16:34 UTC)"
+    ],
+    "topup": 0,
+    "v": 1,
+    "venues": {
+     "hl_margin_ratio_bp": 0
+    },
+    "volf_bp": 10000
+   }
+  }
+ },
+ "borrowed_blocks_after_the_verdict_landed": 34,
+ "freshness_limit_blocks": 120,
+ "repay_sent_usdc": "1002.000146",
+ "interest_paid_usdc": "0.000166",
+ "final_state": {
+  "loan": {
+   "principal": "0",
+   "open": false
+  },
+  "pool_debt_of_usdc": "0.000000",
+  "counter": 3,
+  "counter_note": "0 at the start; the borrow used the verdict (1), and each withdrawal bumps it too (3)",
+  "blocked": false,
+  "balances": {
+   "quiethare6001.pbf.testnet": {
+    "mUSDC": "0.999834",
+    "mNBTC": "0.00000000"
+   },
+   "quiethare6001.testnet": {
+    "mUSDC": "9999.000000",
+    "mNBTC": "0.25000000"
+   }
+  },
+  "dust_note": "0.999834 mUSDC stays in the account: the user withdrew a round 9,999"
+ },
+ "gate": {
+  "a new account deposits test nBTC and USDC, asks for a check, borrows, repays and withdraws (web app)": "pass: every transaction above succeeded, with no failed receipts",
+  "with no loan, a withdrawal goes through without a verdict": "pass: both withdrawals",
+  "the attested verdict matches risk-core run locally on the same inputs": "pass in the scripted run (research/data/phase2_first_loan.json, attestation section)",
+  "an old verdict, a verdict used twice, and a verdict from another program are refused": "pass in the scripted run on testnet (old, reused, outside caller) and in contracts/ sandbox tests (another program's params or model)"
+ }
+}

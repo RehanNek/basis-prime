@@ -1,0 +1,32 @@
+{
+  "name": "@pb/oneclick-shim",
+  "version": "0.0.1",
+  "private": true,
+  "description": "1Click shim for testnet: real dry quotes, simulated settlement, and fault injection for the drill (PLAN.md 5.4)",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p .",
+    "start": "node --env-file-if-exists=../../.env dist/index.js",
+    "test": "tsc -p . && node --test dist/*.test.js",
+    "live:near": "tsc -p . && node --env-file-if-exists=../../.env dist/live-near.js",
+    "live:hl": "tsc -p . && node --env-file-if-exists=../../.env dist/live-hl.js",
+    "float:to-perps": "tsc -p . && node --env-file-if-exists=../../.env dist/float-to-perps.js",
+    "float:order": "tsc -p . && node dist/float-order.js",
+    "float:cancel": "tsc -p . && node dist/float-cancel.js",
+    "float:close": "tsc -p . && node dist/float-close.js"
+  },
+  "engines": {
+    "node": ">=22.22.2"
+  },
+  "dependencies": {
+    "@nktkas/hyperliquid": "0.33.3",
+    "@noble/curves": "2.2.0",
+    "@noble/hashes": "2.2.0",
+    "@pb/oneclick": "workspace:*",
+    "near-api-js": "7.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "typescript": "7.0.2"
+  }
+}

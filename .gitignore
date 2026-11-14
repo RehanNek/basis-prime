@@ -1,0 +1,36 @@
+# Keys live only in .env (HACKATHON.md: never commit secrets)
+.env
+.env.*
+!.env.example
+
+# Build output. Kept: the testnet snapshots the contracts' upgrade tests read (contracts/target/live*,
+# public chain data saved by contracts/tests/fetch_live.py), so those tests run from a fresh clone.
+**/target/*
+!contracts/target/live*/
+node_modules/
+dist/
+.next/
+out/
+
+# Python
+__pycache__/
+*.pyc
+
+# Local tools and OS files
+.near-credentials/
+neardev/
+.DS_Store
+
+# Runtime logs (the keeper writes these; the records worth keeping are in research/data/)
+services/keeper/logs/
+# The backend's service token, written at start and removed at stop (INTERFACES.md 48.3)
+services/api/logs/
+
+# The stand-in's run state: its swaps, written as it runs (research/audit.md, K1)
+services/oneclick-shim/state/
+
+# Type-check cache
+*.tsbuildinfo
+
+# Local agent tooling: the launch file and the NEAR agent skills (third-party files, not ours to republish)
+.claude/

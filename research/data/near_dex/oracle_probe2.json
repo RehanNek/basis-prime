@@ -1,0 +1,303 @@
+{
+ "get_price {\"price_identifier\": \"e62df6c8b4a85fe1a67db44dc12de5db330f7ac66b72dc658afedf0f4a415b43\"}": {
+  "price": "7600233862826",
+  "conf": "9004637174",
+  "expo": -8,
+  "publish_time": 1793906496
+ },
+ "get_price {\"price_identifier\": \"ff61491a931112ddf1bd8147cd1b641375f79f5825126d665480874634fd0ace\"}": {
+  "price": "224977744301",
+  "conf": "266255699",
+  "expo": -8,
+  "publish_time": 1793906496
+ },
+ "get_raw_prices {\"token_id\": \"nbtc.bridge.near\", \"price_source_id\": \"pyth_pro\"}": {
+  "price": "7600233862826",
+  "expo": -8,
+  "publish_time": 1793906510
+ },
+ "get_raw_prices {\"token_id\": \"nbtc.bridge.near\", \"price_source_id\": \"binance\"}": {
+  "price": "7593600000000",
+  "expo": -8,
+  "publish_time": 1793902669
+ },
+ "get_raw_prices {\"token_id\": \"nbtc.bridge.near\", \"price_source_id\": \"coingecko\"}": {
+  "price": "8055974764848",
+  "expo": -8,
+  "publish_time": 1793868138
+ },
+ "get_raw_prices {\"token_id\": \"nbtc.bridge.near\", \"price_source_id\": \"atlas\"}": {
+  "price": "7599160103832",
+  "expo": -8,
+  "publish_time": 1793906510
+ },
+ "get_raw_prices {\"token_id\": \"nbtc.bridge.near\", \"price_source_id\": \"outlayer\"}": {
+  "price": "7609238500000",
+  "expo": -8,
+  "publish_time": 1793906496
+ },
+ "get_raw_prices {\"token_id\": \"nbtc.bridge.near\", \"price_source_id\": \"smartrouter\"}": null,
+ "get_raw_prices {\"token_id\": \"nbtc.bridge.near\", \"price_source_id\": \"rhea_price_api\"}": null,
+ "get_raw_prices {\"token_id\": \"nbtc.bridge.near\", \"price_source_id\": \"chainlink\"}": null,
+ "get_raw_prices {\"token_id\": \"nbtc.bridge.near\", \"price_source_id\": \"pancake\"}": null,
+ "get_raw_prices {\"token_id\": \"eth.bridge.near\", \"price_source_id\": \"pyth_pro\"}": {
+  "price": "224977744301",
+  "expo": -8,
+  "publish_time": 1793906510
+ },
+ "get_raw_prices {\"token_id\": \"eth.bridge.near\", \"price_source_id\": \"outlayer\"}": {
+  "price": "225244000000",
+  "expo": -8,
+  "publish_time": 1793906496
+ },
+ "get_pyth_core_price_feed_token_ids_paged {\"from_index\": 0, \"limit\": 100}": {
+  "e0f39655e4708ec38f36f704c1d01238b4d63cdfb6ce18243d3c3684b5e9c2ed": "qtc.omft.near",
+  "e62df6c8b4a85fe1a67db44dc12de5db330f7ac66b72dc658afedf0f4a415b43": "nbtc.bridge.near",
+  "c9d8b075a5c69303365ae23633d4e085199bf5c520a3b90fed1322a0342ffc33": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+  "ef0d8b6fda2ceba41da15d4095d1da392a0d2f8ed0c6c7bc0f4cfac8c280b56d": "22.contract.portalbridge.near",
+  "b0948a5e5313200c632b51bb5ca32f6de0d36e9950a942d19751e833f70dabfd": "6b175474e89094c44da98b954eedeac495271d0f.factory.bridge.near",
+  "2f7c4f738d498585065a4b87b637069ec99474597da7f0ca349ba8ac3ba9cac5": "aaaaaa20d9e0e2461697782ef11675f668207961.factory.bridge.near",
+  "eaa020c61cc479712813461ce153894a96a6c00b21ed0cfc2798d1f9a9e9c94a": "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
+  "7c53208632935ba5122c3cf65a0f4b3e72ba4955b49ad6ba0acf3d9ba405aef3": "853d955acef822db058eb8505911ed77f175b99e.factory.bridge.near",
+  "ded2a0d2624278a32c56725397cc98b24ddb83d8c4d2ce108b1fc44b1d8de22b": "token.rhealab.near",
+  "c415de8d2eba7db216527dff4b60e8f3a5311c740dadb233e13e12547e226750": "wrap.near",
+  "ff61491a931112ddf1bd8147cd1b641375f79f5825126d665480874634fd0ace": "eth.bridge.near",
+  "be9b59d178f0d6a97ab4c343bff2aa69caa1eaae3e9048a65788c529b125bb24": "zec.omft.near",
+  "2b89b9dc8fdf9f34709a5b106b472f0f39bb6ca9ce04b0fd7f2e971688e2e53b": "usdt.tether-token.near"
+ },
+ "all_token_configs": {
+  "853d955acef822db058eb8505911ed77f175b99e.factory.bridge.near": {
+   "token_id": "853d955acef822db058eb8505911ed77f175b99e.factory.bridge.near",
+   "price_expo": -8,
+   "max_deviation_bps": 200,
+   "price_sources": {
+    "outlayer": "853d955acef822db058eb8505911ed77f175b99e.factory.bridge.near",
+    "coingecko": "rainbow-bridged-frax-near-protocol",
+    "smartrouter": "853d955acef822db058eb8505911ed77f175b99e.factory.bridge.near&usdt.tether-token.near",
+    "atlas": "1028"
+   },
+   "required_price_sources": null,
+   "valid_price_range": {
+    "min_price": "90000000",
+    "max_price": "110000000"
+   }
+  },
+  "wrap.near": {
+   "token_id": "wrap.near",
+   "price_expo": -8,
+   "max_deviation_bps": 100,
+   "price_sources": {
+    "binance": "NEARUSDT",
+    "coingecko": "near",
+    "atlas": "1012",
+    "outlayer": "wrap.near",
+    "pyth_pro": "4:27"
+   },
+   "required_price_sources": [
+    "pyth_pro"
+   ],
+   "valid_price_range": {
+    "min_price": "30000000",
+    "max_price": "1000000000"
+   }
+  },
+  "usdt.tether-token.near": {
+   "token_id": "usdt.tether-token.near",
+   "price_expo": -8,
+   "max_deviation_bps": 50,
+   "price_sources": {
+    "outlayer": "usdt.tether-token.near",
+    "coingecko": "tether",
+    "atlas": "1014",
+    "pyth_pro": "4:8"
+   },
+   "required_price_sources": [
+    "pyth_pro"
+   ],
+   "valid_price_range": {
+    "min_price": "90000000",
+    "max_price": "110000000"
+   }
+  },
+  "nbtc.bridge.near": {
+   "token_id": "nbtc.bridge.near",
+   "price_expo": -8,
+   "max_deviation_bps": 100,
+   "price_sources": {
+    "pyth_pro": "4:1",
+    "outlayer": "nbtc.bridge.near",
+    "coingecko": "bitcoin",
+    "atlas": "1016",
+    "binance": "BTCUSDT"
+   },
+   "required_price_sources": [
+    "pyth_pro"
+   ],
+   "valid_price_range": {
+    "min_price": "1000000000000",
+    "max_price": "20000000000000"
+   }
+  },
+  "eth.bridge.near": {
+   "token_id": "eth.bridge.near",
+   "price_expo": -8,
+   "max_deviation_bps": 100,
+   "price_sources": {
+    "binance": "ETHUSDT",
+    "atlas": "1017",
+    "outlayer": "eth.bridge.near",
+    "pyth_pro": "4:2",
+    "coingecko": "ethereum"
+   },
+   "required_price_sources": [
+    "pyth_pro"
+   ],
+   "valid_price_range": {
+    "min_price": "50000000000",
+    "max_price": "600000000000"
+   }
+  },
+  "22.contract.portalbridge.near": {
+   "token_id": "22.contract.portalbridge.near",
+   "price_expo": -8,
+   "max_deviation_bps": 100,
+   "price_sources": {
+    "pyth_pro": "4:6",
+    "binance": "SOLUSDT",
+    "coingecko": "solana",
+    "outlayer": "22.contract.portalbridge.near",
+    "atlas": "1019"
+   },
+   "required_price_sources": [
+    "pyth_pro"
+   ],
+   "valid_price_range": null
+  },
+  "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1": {
+   "token_id": "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
+   "price_expo": -8,
+   "max_deviation_bps": 50,
+   "price_sources": {
+    "coingecko": "usd-coin",
+    "outlayer": "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
+    "binance": "USDCUSDT",
+    "pyth_pro": "4:7",
+    "atlas": "1013"
+   },
+   "required_price_sources": [
+    "pyth_pro"
+   ],
+   "valid_price_range": {
+    "min_price": "90000000",
+    "max_price": "110000000"
+   }
+  },
+  "6b175474e89094c44da98b954eedeac495271d0f.factory.bridge.near": {
+   "token_id": "6b175474e89094c44da98b954eedeac495271d0f.factory.bridge.near",
+   "price_expo": -8,
+   "max_deviation_bps": 100,
+   "price_sources": {
+    "atlas": "1015",
+    "outlayer": "6b175474e89094c44da98b954eedeac495271d0f.factory.bridge.near",
+    "pyth_pro": "4:202",
+    "coingecko": "dai"
+   },
+   "required_price_sources": [
+    "pyth_pro"
+   ],
+   "valid_price_range": {
+    "min_price": "90000000",
+    "max_price": "110000000"
+   }
+  },
+  "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near": {
+   "token_id": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near",
+   "price_expo": -8,
+   "max_deviation_bps": 100,
+   "price_sources": {
+    "binance": "WBTCUSDT",
+    "coingecko": "wrapped-bitcoin",
+    "pyth_pro": "4:103",
+    "atlas": "1021",
+    "outlayer": "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near"
+   },
+   "required_price_sources": [
+    "pyth_pro"
+   ],
+   "valid_price_range": {
+    "min_price": "1000000000000",
+    "max_price": "20000000000000"
+   }
+  },
+  "aaaaaa20d9e0e2461697782ef11675f668207961.factory.bridge.near": {
+   "token_id": "aaaaaa20d9e0e2461697782ef11675f668207961.factory.bridge.near",
+   "price_expo": -8,
+   "max_deviation_bps": 200,
+   "price_sources": {
+    "outlayer": "aaaaaa20d9e0e2461697782ef11675f668207961.factory.bridge.near",
+    "atlas": "1020",
+    "coingecko": "aurora-near",
+    "smartrouter": "aaaaaa20d9e0e2461697782ef11675f668207961.factory.bridge.near&usdt.tether-token.near"
+   },
+   "required_price_sources": null,
+   "valid_price_range": null
+  },
+  "zec.omft.near": {
+   "token_id": "zec.omft.near",
+   "price_expo": -8,
+   "max_deviation_bps": 100,
+   "price_sources": {
+    "pyth_pro": "4:66",
+    "binance": "ZECUSDT",
+    "outlayer": "zec.omft.near",
+    "atlas": "1018",
+    "coingecko": "zcash",
+    "smartrouter": "zec.omft.near&usdt.tether-token.near"
+   },
+   "required_price_sources": [
+    "pyth_pro"
+   ],
+   "valid_price_range": {
+    "min_price": "5000000000",
+    "max_price": "250000000000"
+   }
+  },
+  "token.rhealab.near": {
+   "token_id": "token.rhealab.near",
+   "price_expo": -8,
+   "max_deviation_bps": 300,
+   "price_sources": {
+    "smartrouter": "token.rhealab.near&usdt.tether-token.near",
+    "pancake": "0x05f4a518fe9271cb45d4a1d708ece2ac04bc6a6c&0x172fcD41E0913e95784454622d1c3724f546f849",
+    "coingecko": "rhea-2",
+    "outlayer": "token.rhealab.near",
+    "atlas": "1022"
+   },
+   "required_price_sources": [
+    "smartrouter",
+    "pancake"
+   ],
+   "valid_price_range": {
+    "min_price": "200000",
+    "max_price": "50000000"
+   }
+  },
+  "qtc.omft.near": {
+   "token_id": "qtc.omft.near",
+   "price_expo": -8,
+   "max_deviation_bps": 200,
+   "price_sources": {
+    "coingecko": "quantus",
+    "smartrouter": "v2:qtc.omft.near&usdt.tether-token.near"
+   },
+   "required_price_sources": [
+    "smartrouter",
+    "coingecko"
+   ],
+   "valid_price_range": {
+    "min_price": null,
+    "max_price": "50000000000"
+   }
+  }
+ }
+}

@@ -1,0 +1,743 @@
+{
+ "list_pool_twap_info_view": {
+  "4179": {
+   "last_update_sec": 1793905181,
+   "cumulative_token_amounts": [
+    "28302455154865",
+    "25106891199079",
+    "21504837452853",
+    "14806492484758"
+   ],
+   "records": [
+    {
+     "time_sec": 1793862401,
+     "cumulative_token_amounts": [
+      "28286759400047",
+      "25103655508721",
+      "21482219103253",
+      "14802963099858"
+     ]
+    },
+    {
+     "time_sec": 1793863127,
+     "cumulative_token_amounts": [
+      "28287087436571",
+      "25103698653917",
+      "21482554994413",
+      "14803021028124"
+     ]
+    },
+    {
+     "time_sec": 1793863855,
+     "cumulative_token_amounts": [
+      "28287415212747",
+      "25103743080845",
+      "21482891810893",
+      "14803079115972"
+     ]
+    },
+    {
+     "time_sec": 1793864579,
+     "cumulative_token_amounts": [
+      "28287741187955",
+      "25103786922640",
+      "21483227117762",
+      "14803136884656"
+     ]
+    },
+    {
+     "time_sec": 1793865306,
+     "cumulative_token_amounts": [
+      "28288068513889",
+      "25103830938939",
+      "21483563821269",
+      "14803194892713"
+     ]
+    },
+    {
+     "time_sec": 1793866031,
+     "cumulative_token_amounts": [
+      "28288394661619",
+      "25103875107741",
+      "21483899598494",
+      "14803252745984"
+     ]
+    },
+    {
+     "time_sec": 1793866752,
+     "cumulative_token_amounts": [
+      "28288718795821",
+      "25103919243756",
+      "21484233523155",
+      "14803310283226"
+     ]
+    },
+    {
+     "time_sec": 1793867476,
+     "cumulative_token_amounts": [
+      "28289044308494",
+      "25103963597820",
+      "21484568837239",
+      "14803367995588"
+     ]
+    },
+    {
+     "time_sec": 1793868201,
+     "cumulative_token_amounts": [
+      "28289370355170",
+      "25104008386915",
+      "21484904294694",
+      "14803425649362"
+     ]
+    },
+    {
+     "time_sec": 1793868923,
+     "cumulative_token_amounts": [
+      "28289695050122",
+      "25104053083769",
+      "21485238270956",
+      "14803483067134"
+     ]
+    },
+    {
+     "time_sec": 1793869649,
+     "cumulative_token_amounts": [
+      "28290021535020",
+      "25104098037078",
+      "21485574097502",
+      "14803540803010"
+     ]
+    },
+    {
+     "time_sec": 1793870375,
+     "cumulative_token_amounts": [
+      "28290347957688",
+      "25104143052118",
+      "21485909924048",
+      "14803598538886"
+     ]
+    },
+    {
+     "time_sec": 1793871100,
+     "cumulative_token_amounts": [
+      "28290673718615",
+      "25104188005743",
+      "21486245288023",
+      "14803656406940"
+     ]
+    },
+    {
+     "time_sec": 1793871827,
+     "cumulative_token_amounts": [
+      "28291000346629",
+      "25104233083378",
+      "21486581577140",
+      "14803714465887"
+     ]
+    },
+    {
+     "time_sec": 1793872550,
+     "cumulative_token_amounts": [
+      "28291325177515",
+      "25104277912993",
+      "21486916015973",
+      "14803772205390"
+     ]
+    },
+    {
+     "time_sec": 1793873276,
+     "cumulative_token_amounts": [
+      "28291651356247",
+      "25104322928623",
+      "21487251842519",
+      "14803830184476"
+     ]
+    },
+    {
+     "time_sec": 1793873999,
+     "cumulative_token_amounts": [
+      "28291976187133",
+      "25104368089534",
+      "21487585949512",
+      "14803887923979"
+     ]
+    },
+    {
+     "time_sec": 1793874723,
+     "cumulative_token_amounts": [
+      "28292301467301",
+      "25104414139698",
+      "21487919691074",
+      "14803945743343"
+     ]
+    },
+    {
+     "time_sec": 1793875452,
+     "cumulative_token_amounts": [
+      "28292628993879",
+      "25104460695096",
+      "21488255550122",
+      "14804003962012"
+     ]
+    },
+    {
+     "time_sec": 1793876179,
+     "cumulative_token_amounts": [
+      "28292955478776",
+      "25104507122770",
+      "21488590559025",
+      "14804062092797"
+     ]
+    },
+    {
+     "time_sec": 1793876900,
+     "cumulative_token_amounts": [
+      "28293278532301",
+      "25104553102778",
+      "21488923206092",
+      "14804120142154"
+     ]
+    },
+    {
+     "time_sec": 1793877629,
+     "cumulative_token_amounts": [
+      "28293605252602",
+      "25104599160869",
+      "21489259924034",
+      "14804178805513"
+     ]
+    },
+    {
+     "time_sec": 1793878353,
+     "cumulative_token_amounts": [
+      "28293929776902",
+      "25104644871287",
+      "21489594346874",
+      "14804237039063"
+     ]
+    },
+    {
+     "time_sec": 1793879076,
+     "cumulative_token_amounts": [
+      "28294253913708",
+      "25104690468728",
+      "21489928307804",
+      "14804295181277"
+     ]
+    },
+    {
+     "time_sec": 1793879797,
+     "cumulative_token_amounts": [
+      "28294577153870",
+      "25104735940035",
+      "21490261344914",
+      "14804353162655"
+     ]
+    },
+    {
+     "time_sec": 1793880523,
+     "cumulative_token_amounts": [
+      "28294902635642",
+      "25104781444850",
+      "21490596964789",
+      "14804411555197"
+     ]
+    },
+    {
+     "time_sec": 1793881251,
+     "cumulative_token_amounts": [
+      "28295229014058",
+      "25104825385638",
+      "21490934956021",
+      "14804470353573"
+     ]
+    },
+    {
+     "time_sec": 1793881975,
+     "cumulative_token_amounts": [
+      "28295553567533",
+      "25104869037429",
+      "21491271137798",
+      "14804528860534"
+     ]
+    },
+    {
+     "time_sec": 1793882701,
+     "cumulative_token_amounts": [
+      "28295872918839",
+      "25104913171016",
+      "21491611630457",
+      "14804589883788"
+     ]
+    },
+    {
+     "time_sec": 1793883423,
+     "cumulative_token_amounts": [
+      "28296187130720",
+      "25104956407093",
+      "21491953034095",
+      "14804651818863"
+     ]
+    },
+    {
+     "time_sec": 1793884148,
+     "cumulative_token_amounts": [
+      "28296499008506",
+      "25105000742685",
+      "21492297549462",
+      "14804715036415"
+     ]
+    },
+    {
+     "time_sec": 1793884874,
+     "cumulative_token_amounts": [
+      "28296806544752",
+      "25105049447121",
+      "21492642963755",
+      "14804778377973"
+     ]
+    },
+    {
+     "time_sec": 1793885595,
+     "cumulative_token_amounts": [
+      "28297110128545",
+      "25105097505919",
+      "21492988140816",
+      "14804841287386"
+     ]
+    },
+    {
+     "time_sec": 1793886317,
+     "cumulative_token_amounts": [
+      "28297413620523",
+      "25105143859041",
+      "21493336084890",
+      "14804904284052"
+     ]
+    },
+    {
+     "time_sec": 1793887038,
+     "cumulative_token_amounts": [
+      "28297716692152",
+      "25105190147962",
+      "21493683547047",
+      "14804967193465"
+     ]
+    },
+    {
+     "time_sec": 1793887765,
+     "cumulative_token_amounts": [
+      "28298022285875",
+      "25105236822089",
+      "21494033900706",
+      "14805030626396"
+     ]
+    },
+    {
+     "time_sec": 1793888487,
+     "cumulative_token_amounts": [
+      "28298325774266",
+      "25105283178587",
+      "21494381844780",
+      "14805093623062"
+     ]
+    },
+    {
+     "time_sec": 1793889209,
+     "cumulative_token_amounts": [
+      "28298627102306",
+      "25105331693501",
+      "21494729788142",
+      "14805156619728"
+     ]
+    },
+    {
+     "time_sec": 1793889935,
+     "cumulative_token_amounts": [
+      "28298922745948",
+      "25105382102345",
+      "21495084655919",
+      "14805220697551"
+     ]
+    },
+    {
+     "time_sec": 1793890661,
+     "cumulative_token_amounts": [
+      "28299202213835",
+      "25105437054853",
+      "21495449173908",
+      "14805286757337"
+     ]
+    },
+    {
+     "time_sec": 1793891383,
+     "cumulative_token_amounts": [
+      "28299465304983",
+      "25105494131883",
+      "21495827420999",
+      "14805349134055"
+     ]
+    },
+    {
+     "time_sec": 1793892105,
+     "cumulative_token_amounts": [
+      "28299681001408",
+      "25105565953625",
+      "21496237520082",
+      "14805412317028"
+     ]
+    },
+    {
+     "time_sec": 1793892830,
+     "cumulative_token_amounts": [
+      "28299875240117",
+      "25105634815250",
+      "21496675369390",
+      "14805475342442"
+     ]
+    },
+    {
+     "time_sec": 1793893552,
+     "cumulative_token_amounts": [
+      "28300058486405",
+      "25105704003397",
+      "21497120711815",
+      "14805538386038"
+     ]
+    },
+    {
+     "time_sec": 1793894274,
+     "cumulative_token_amounts": [
+      "28300218235040",
+      "25105779410401",
+      "21497582096743",
+      "14805602672585"
+     ]
+    },
+    {
+     "time_sec": 1793895001,
+     "cumulative_token_amounts": [
+      "28300354693026",
+      "25105863256710",
+      "21498064585135",
+      "14805665985534"
+     ]
+    },
+    {
+     "time_sec": 1793895722,
+     "cumulative_token_amounts": [
+      "28300494796157",
+      "25105947194659",
+      "21498539844986",
+      "14805726469366"
+     ]
+    },
+    {
+     "time_sec": 1793896446,
+     "cumulative_token_amounts": [
+      "28300642095615",
+      "25106025677918",
+      "21499016975389",
+      "14805786506758"
+     ]
+    },
+    {
+     "time_sec": 1793897171,
+     "cumulative_token_amounts": [
+      "28300792993745",
+      "25106103197588",
+      "21499494717862",
+      "14805844352559"
+     ]
+    },
+    {
+     "time_sec": 1793897892,
+     "cumulative_token_amounts": [
+      "28300942932292",
+      "25106179840452",
+      "21499969943119",
+      "14805902336523"
+     ]
+    },
+    {
+     "time_sec": 1793898616,
+     "cumulative_token_amounts": [
+      "28301093379492",
+      "25106254125318",
+      "21500448845936",
+      "14805961654909"
+     ]
+    },
+    {
+     "time_sec": 1793899340,
+     "cumulative_token_amounts": [
+      "28301243713199",
+      "25106327409455",
+      "21500928371950",
+      "14806021465478"
+     ]
+    },
+    {
+     "time_sec": 1793900072,
+     "cumulative_token_amounts": [
+      "28301395794251",
+      "25106402292281",
+      "21501412346344",
+      "14806081913306"
+     ]
+    },
+    {
+     "time_sec": 1793900797,
+     "cumulative_token_amounts": [
+      "28301546420976",
+      "25106476680181",
+      "21501891471294",
+      "14806141783081"
+     ]
+    },
+    {
+     "time_sec": 1793901522,
+     "cumulative_token_amounts": [
+      "28301696514709",
+      "25106549383980",
+      "21502372542324",
+      "14806201925351"
+     ]
+    },
+    {
+     "time_sec": 1793902247,
+     "cumulative_token_amounts": [
+      "28301845632706",
+      "25106617160181",
+      "21502859122762",
+      "14806262465306"
+     ]
+    },
+    {
+     "time_sec": 1793902968,
+     "cumulative_token_amounts": [
+      "28301993151839",
+      "25106682788319",
+      "21503347442689",
+      "14806320802038"
+     ]
+    },
+    {
+     "time_sec": 1793903696,
+     "cumulative_token_amounts": [
+      "28302145052201",
+      "25106750186870",
+      "21503838869726",
+      "14806377258438"
+     ]
+    },
+    {
+     "time_sec": 1793904422,
+     "cumulative_token_amounts": [
+      "28302296639233",
+      "25106818977273",
+      "21504327265197",
+      "14806433559738"
+     ]
+    },
+    {
+     "time_sec": 1793905142,
+     "cumulative_token_amounts": [
+      "28302447009793",
+      "25106887549353",
+      "21504811237677",
+      "14806489395738"
+     ]
+    }
+   ]
+  }
+ },
+ "list_degen_tokens": {
+  "eth.bridge.near": {
+   "degen_type": "PythOracle",
+   "degen_price": "2247000911530000000000000000",
+   "last_update_ts": "1793905781902591970",
+   "is_price_valid": true,
+   "price_identifier": "ff61491a931112ddf1bd8147cd1b641375f79f5825126d665480874634fd0ace",
+   "decimals": null
+  },
+  "usdt.tether-token.near": {
+   "degen_type": "PythOracle",
+   "degen_price": "998495050000000000000000",
+   "last_update_ts": "1793905781902591970",
+   "is_price_valid": true,
+   "price_identifier": "2b89b9dc8fdf9f34709a5b106b472f0f39bb6ca9ce04b0fd7f2e971688e2e53b",
+   "decimals": null
+  },
+  "token.rhealab.near": {
+   "degen_type": "PythOracle",
+   "degen_price": "48308030000000000000000",
+   "last_update_ts": "1793905781902591970",
+   "is_price_valid": true,
+   "price_identifier": "ded2a0d2624278a32c56725397cc98b24ddb83d8c4d2ce108b1fc44b1d8de22b",
+   "decimals": null
+  },
+  "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1": {
+   "degen_type": "PythOracle",
+   "degen_price": "999724160000000000000000",
+   "last_update_ts": "1793905781902591970",
+   "is_price_valid": true,
+   "price_identifier": "eaa020c61cc479712813461ce153894a96a6c00b21ed0cfc2798d1f9a9e9c94a",
+   "decimals": null
+  },
+  "22.contract.portalbridge.near": {
+   "degen_type": "PythOracle",
+   "degen_price": "89383211650000000000000000",
+   "last_update_ts": "1793905781902591970",
+   "is_price_valid": true,
+   "price_identifier": "ef0d8b6fda2ceba41da15d4095d1da392a0d2f8ed0c6c7bc0f4cfac8c280b56d",
+   "decimals": null
+  },
+  "dac17f958d2ee523a2206206994597c13d831ec7.factory.bridge.near": {
+   "degen_type": "PythOracle",
+   "degen_price": "998495050000000000000000",
+   "last_update_ts": "1793905781902591970",
+   "is_price_valid": true,
+   "price_identifier": "2b89b9dc8fdf9f34709a5b106b472f0f39bb6ca9ce04b0fd7f2e971688e2e53b",
+   "decimals": null
+  },
+  "wrap.near": {
+   "degen_type": "PythOracle",
+   "degen_price": "3676957340000000000000000",
+   "last_update_ts": "1793905781902591970",
+   "is_price_valid": true,
+   "price_identifier": "c415de8d2eba7db216527dff4b60e8f3a5311c740dadb233e13e12547e226750",
+   "decimals": null
+  },
+  "2260fac5e5542a773aa44fbcfedf7c193bc2c599.factory.bridge.near": {
+   "degen_type": "PythOracle",
+   "degen_price": "75740851418100000000000000000",
+   "last_update_ts": "1793905781902591970",
+   "is_price_valid": true,
+   "price_identifier": "c9d8b075a5c69303365ae23633d4e085199bf5c520a3b90fed1322a0342ffc33",
+   "decimals": null
+  },
+  "zec.omft.near": {
+   "degen_type": "PythOracle",
+   "degen_price": "1226862500000000000000000000",
+   "last_update_ts": "1793905781902591970",
+   "is_price_valid": true,
+   "price_identifier": "be9b59d178f0d6a97ab4c343bff2aa69caa1eaae3e9048a65788c529b125bb24",
+   "decimals": null
+  },
+  "a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.factory.bridge.near": {
+   "degen_type": "PythOracle",
+   "degen_price": "999724160000000000000000",
+   "last_update_ts": "1793905781902591970",
+   "is_price_valid": true,
+   "price_identifier": "eaa020c61cc479712813461ce153894a96a6c00b21ed0cfc2798d1f9a9e9c94a",
+   "decimals": null
+  },
+  "aurora": {
+   "degen_type": "PythOracle",
+   "degen_price": "2247000911530000000000000000",
+   "last_update_ts": "1793905781902591970",
+   "is_price_valid": true,
+   "price_identifier": "ff61491a931112ddf1bd8147cd1b641375f79f5825126d665480874634fd0ace",
+   "decimals": null
+  },
+  "nbtc.bridge.near": {
+   "degen_type": "PythOracle",
+   "degen_price": "75950000000000000000000000000",
+   "last_update_ts": "1793905781902591970",
+   "is_price_valid": true,
+   "price_identifier": "e62df6c8b4a85fe1a67db44dc12de5db330f7ac66b72dc658afedf0f4a415b43",
+   "decimals": null
+  }
+ },
+ "list_degen_oracle_configs": {
+  "PriceOracleConfig": {
+   "PriceOracle": {
+    "oracle_id": "priceoracle.near",
+    "expire_ts": "120000000000",
+    "maximum_recency_duration_sec": 90,
+    "maximum_staleness_duration_sec": 90
+   }
+  },
+  "PythOracleConfig": {
+   "PythOracle": {
+    "oracle_id": "aggregate-oracle.near",
+    "expire_ts": "120000000000",
+    "pyth_price_valid_duration_sec": 60
+   }
+  }
+ },
+ "list_rated_tokens": {
+  "nearx.stader-labs.near": {
+   "rate_type": "NEARX",
+   "rate_price": "1020676751756282563214791",
+   "last_update_ts": "1793518708779062438",
+   "is_valid": false,
+   "extra_info": null
+  },
+  "cnear.assetize.near": {
+   "rate_type": "LINEAR",
+   "rate_price": "1000960000000000000000000",
+   "last_update_ts": "1793882812919237671",
+   "is_valid": true,
+   "extra_info": null
+  },
+  "v1.guild-covenant.near": {
+   "rate_type": "LINEAR",
+   "rate_price": "7349129361886197798869",
+   "last_update_ts": "1793866132031999679",
+   "is_valid": true,
+   "extra_info": null
+  },
+  "meta-pool.near": {
+   "rate_type": "STNEAR",
+   "rate_price": "1513823940407053918565128",
+   "last_update_ts": "1793895214943646176",
+   "is_valid": true,
+   "extra_info": null
+  },
+  "linear-protocol.near": {
+   "rate_type": "LINEAR",
+   "rate_price": "1429795954405876262974647",
+   "last_update_ts": "1793902845642134364",
+   "is_valid": true,
+   "extra_info": null
+  },
+  "a663b02cf0a4b149d2ad41910cb81e23e1c41c32.factory.bridge.near": {
+   "rate_type": "SFRAX",
+   "rate_price": "1119479218828242363545317",
+   "last_update_ts": "1742298720838373968",
+   "is_valid": false,
+   "extra_info": "{\"PriceOracle\":{\"oracle_id\":\"priceoracle.near\",\"base_contract_id\":\"853d955acef822db058eb8505911ed77f175b99e.factory.bridge.near\",\"maximum_recency_duration_sec\":90,\"maximum_staleness_duration_sec\":30}}"
+  },
+  "staker1.msig1.trufin.near": {
+   "rate_type": "LINEAR",
+   "rate_price": "1146862169500012215332958",
+   "last_update_ts": "1793892914893891300",
+   "is_valid": true,
+   "extra_info": null
+  },
+  "v2-nearx.stader-labs.near": {
+   "rate_type": "NEARX",
+   "rate_price": "1836624380879012817590929",
+   "last_update_ts": "1793866121932978226",
+   "is_valid": true,
+   "extra_info": null
+  },
+  "near20.margaritafinance.near": {
+   "rate_type": "LINEAR",
+   "rate_price": "651670000000000000000000",
+   "last_update_ts": "1793882012596915001",
+   "is_valid": true,
+   "extra_info": null
+  },
+  "lst.rhealab.near": {
+   "rate_type": "LINEAR",
+   "rate_price": "1068155604541957597049334",
+   "last_update_ts": "1793895287654999352",
+   "is_valid": true,
+   "extra_info": null
+  }
+ },
+ "get_frozenlist_tokens": []
+}

@@ -1,0 +1,81 @@
+{
+ "block": 223821294,
+ "contract": "contract.main.burrow.near",
+ "assets": {
+  "USDC": {
+   "supplied": 12599601.57347832,
+   "borrowed": 10899148.924291693,
+   "available": 1901128.0319026634,
+   "borrow_apr": 0.15908745586227946,
+   "supply_apr": 0.10321266093124896,
+   "volatility_ratio": 9500,
+   "reserve_ratio": 2500,
+   "target_utilization": 8000,
+   "target_utilization_rate": "1000000000001847694955734069",
+   "max_utilization_rate": "1000000000012857214234867166",
+   "supplied_limit": 60000000.0,
+   "borrowed_limit": 25000000.0
+  },
+  "nBTC": {
+   "supplied": 5.091733708548722,
+   "borrowed": 1.6636743890211796,
+   "available": 3.429694483089374,
+   "borrow_apr": 0.020120483310877357,
+   "supply_apr": 0.004930628941204342,
+   "volatility_ratio": 8000,
+   "reserve_ratio": 2500,
+   "target_utilization": 8000,
+   "target_utilization_rate": "1000000000001547125956667610",
+   "max_utilization_rate": "1000000000039724853136740579",
+   "supplied_limit": 20.0,
+   "borrowed_limit": 4.0
+  },
+  "USDT": {
+   "supplied": 12140215.26339679,
+   "borrowed": 10263552.547548886,
+   "available": 2076984.7382901404,
+   "borrow_apr": 0.11995592664156199,
+   "supply_apr": 0.07605964534588774,
+   "volatility_ratio": 9500,
+   "reserve_ratio": 2500,
+   "target_utilization": 8000,
+   "target_utilization_rate": "1000000000001847694955734069",
+   "max_utilization_rate": "1000000000012857214234867166",
+   "supplied_limit": 60000000.0,
+   "borrowed_limit": 22000000.0
+  }
+ },
+ "pyth": {
+  "USDC": {
+   "decimals": 6,
+   "fraction_digits": 4,
+   "price_identifier": "eaa020c61cc479712813461ce153894a96a6c00b21ed0cfc2798d1f9a9e9c94a",
+   "extra_call": null,
+   "default_price": null
+  },
+  "nBTC": {
+   "decimals": 8,
+   "fraction_digits": 2,
+   "price_identifier": "e62df6c8b4a85fe1a67db44dc12de5db330f7ac66b72dc658afedf0f4a415b43",
+   "extra_call": null,
+   "default_price": null
+  },
+  "USDT": {
+   "decimals": 6,
+   "fraction_digits": 4,
+   "price_identifier": "2b89b9dc8fdf9f34709a5b106b472f0f39bb6ca9ce04b0fd7f2e971688e2e53b",
+   "extra_call": null,
+   "default_price": null
+  }
+ },
+ "config": {
+  "contract_mode": "Running",
+  "pyth_oracle_account_id": "aggregate-oracle.near",
+  "pyth_price_valid_duration_sec": 60,
+  "force_closing_enabled": true
+ },
+ "btc": {
+  "oracle_px": 74887.0,
+  "funding_hourly": 1.25e-05
+ }
+}

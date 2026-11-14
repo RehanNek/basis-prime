@@ -1,0 +1,2471 @@
+{
+ "version": 1,
+ "account": "fund-move-11132247.pbf.testnet",
+ "owner": "pbf-keeper.testnet",
+ "lender": "aave",
+ "moves": true,
+ "api_url": "http://localhost:8788",
+ "shim_url": "http://localhost:8787",
+ "keeper_log": "services/keeper/logs/keeper.jsonl",
+ "permission": {
+  "lenders": [
+   "aave"
+  ],
+  "min_hf_bp": 15000,
+  "max_rate_bp": 2500,
+  "moves": "any"
+ },
+ "started_utc": "2026-11-13T22:47:36.676Z",
+ "plan": {
+  "size": "small",
+  "btc_px": 66711,
+  "deposit_usdc_micro": "0",
+  "deposit_nbtc_units": "2000000",
+  "to_hl_micro": "430000000",
+  "short_sz": "0.015",
+  "burst": {
+   "count": 40,
+   "sz": "0.00016"
+  },
+  "caps": {
+   "to_hl_micro": "500000000",
+   "short_usd": 2000,
+   "borrow_micro": "2000000000",
+   "float_order_usd": 2000,
+   "nbtc_usd": 2000
+  }
+ },
+ "context": {
+  "gateway": {
+   "project_id": "pbf-keeper.testnet/pb-gateway",
+   "version_key": "68a50dfa8518271b96ed0484257609694dd50b4bad9b577c199d609e2e705480",
+   "secrets_ref": null
+  },
+  "risk_version": "d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc",
+  "hl_address": "0x8df270d1d21b9e7862fc5665a84e0e1f1a626ce6",
+  "float": {
+   "gas_wallet": "0x2031181d63507368232579af4c64a1c3428407ff",
+   "eth_before": "37984769455823215",
+   "eth_after": "35983352237928753",
+   "used_wei": "2001417217894462",
+   "used_eth": 0.002001417217894462,
+   "left_at_the_address": {
+    "eth_wei": "1994064672445194",
+    "tokens": [
+     {
+      "symbol": "USDC",
+      "amount": "996160"
+     }
+    ]
+   }
+  },
+  "moves": {
+   "btc_out": {
+    "transfer_id": "move:0",
+    "deposit_address": "0953bb6b1cb87b9c35aa35eb5719f4b6fea0187394afbf435bfeb3aa35d21779",
+    "deposit_memo": null,
+    "sends": {
+     "token": "mnbtc.pbf-ops.testnet",
+     "amount": "55223"
+    },
+    "delivers": {
+     "token": "0x4200000000000000000000000000000000000006",
+     "symbol": "WETH",
+     "chain": "Base Sepolia",
+     "amount": "19502143000000000"
+    },
+    "note": "Aave's test market has room for 0 more WBTC (its supply cap), less than the 0.00055108 this would bring: the bitcoin arrives as wrapped test ETH of the same dollar value",
+    "exp_ms": 1794610688415
+   },
+   "loan_home": {
+    "transfer_id": "move:1",
+    "deposit_address": "0x2031181d63507368232579af4c64a1c3428407ff",
+    "deposit_memo": "30dc3488-9ee1-4faa-89bc-470c1a17b37b",
+    "sends": {
+     "token": "0xba50cd2a20f6da35d788639e581bca8d0b5d4d5f",
+     "amount": "20822672"
+    },
+    "delivers": {
+     "token": "musdc.pbf-ops.testnet",
+     "symbol": "USDC",
+     "chain": "NEAR",
+     "amount": "20818465"
+    },
+    "note": null,
+    "exp_ms": 1794611744266
+   },
+   "usdc_out": {
+    "transfer_id": "move:2",
+    "deposit_address": "f086f3b19dcbccffdf2b5643b8ba751854523fc8fe65a2aae2f12e7e683179b2",
+    "deposit_memo": null,
+    "sends": {
+     "token": "musdc.pbf-ops.testnet",
+     "amount": "21822676"
+    },
+    "delivers": {
+     "token": "0xba50cd2a20f6da35d788639e581bca8d0b5d4d5f",
+     "symbol": "USDC",
+     "chain": "Base Sepolia",
+     "amount": "21818851"
+    },
+    "note": null,
+    "exp_ms": 1794614688414
+   },
+   "btc_home:WETH": {
+    "transfer_id": "move:3",
+    "deposit_address": "0x2031181d63507368232579af4c64a1c3428407ff",
+    "deposit_memo": "802a4794-702f-48de-b0aa-f575a35560d4",
+    "sends": {
+     "token": "0x4200000000000000000000000000000000000006",
+     "amount": "19502185834107687"
+    },
+    "delivers": {
+     "token": "mnbtc.pbf-ops.testnet",
+     "symbol": "nBTC",
+     "chain": "NEAR",
+     "amount": "54993"
+    },
+    "note": null,
+    "exp_ms": 1794614972649
+   }
+  },
+  "collateral": {
+   "symbol": "WETH",
+   "token": "0x4200000000000000000000000000000000000006",
+   "decimals": 18,
+   "amount": "19502143000000000",
+   "how": "move",
+   "why": "Aave's test market has room for 0 more WBTC (its supply cap), less than the 0.00055108 this would bring: the bitcoin arrives as wrapped test ETH of the same dollar value",
+   "gas_wallet": "0x2031181d63507368232579af4c64a1c3428407ff",
+   "address": "0x8df270d1d21b9e7862fc5665a84e0e1f1a626ce6"
+  },
+  "checks_that_failed": [
+   {
+    "at": "2026-11-13T22:50:49.216Z",
+    "check": "request_check (arrived)",
+    "why": "the account refused the verdict: OutLayer returned no verdict: the run failed or timed out"
+   },
+   {
+    "at": "2026-11-13T23:11:51.434Z",
+    "check": "request_check (usdc_out)",
+    "why": "the account refused the verdict: OutLayer returned no verdict: the run failed or timed out"
+   },
+   {
+    "at": "2026-11-13T23:14:54.161Z",
+    "check": "request_check (usdc_out)",
+    "why": "the account refused the verdict: OutLayer returned no verdict: the run failed or timed out"
+   },
+   {
+    "at": "2026-11-13T23:17:53.671Z",
+    "check": "request_check (usdc_out)",
+    "why": "the account refused the verdict: OutLayer returned no verdict: the run failed or timed out"
+   }
+  ],
+  "funding": {
+   "pid": "f277574382",
+   "amount": "120206536",
+   "from_aave": "20822672",
+   "from_pool": "99383864",
+   "pool_part": true,
+   "stored_at_ms": 1794610621263,
+   "expires_at_ms": 1794612421263
+  },
+  "loans": {
+   "aave_debt_micro": 20822675,
+   "aave_posted_units": "19502148436276248",
+   "pool_debt_micro": "99383866",
+   "pool_part": true
+  },
+  "loan_home": {
+   "usdc_before": "99383864",
+   "usdc_after": "120202329"
+  },
+  "btc_home": {
+   "nbtc_before": "1944777",
+   "nbtc_after": "1999770"
+  }
+ },
+ "steps": [
+  {
+   "id": "create",
+   "label": "create fund-move-11132247.pbf.testnet, owned by pbf-keeper.testnet, with the funding permission in the same signature",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T22:47:36.677Z",
+   "seconds": 7.5,
+   "txs": [
+    {
+     "label": "create_account",
+     "hash": "DzRSFpSRQ7bXAWV2vEwwpdDjxTDx5nafs7Eu1SR7WCED",
+     "ok": true,
+     "gas_tgas": 96.89,
+     "receipts": [
+      {
+       "executor": "pbf.testnet",
+       "gas_tgas": 32.345756760926
+      },
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 44.243155441633
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf.testnet",
+       "gas_tgas": 5.10755254109
+      },
+      {
+       "executor": "pool.pbf.testnet",
+       "gas_tgas": 2.364217448581
+      },
+      {
+       "executor": "pbf.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 1.563308154859
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "mnbtc.pbf-ops.testnet",
+       "gas_tgas": 1.531388154859
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "meth.pbf-ops.testnet",
+       "gas_tgas": 1.524257273368
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "mwnear.pbf-ops.testnet",
+       "gas_tgas": 1.517805938112
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "musdt.pbf-ops.testnet",
+       "gas_tgas": 1.522170371606
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf.testnet",
+       "gas_tgas": 2.174561722017
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": true,
+     "seconds": 6.9,
+     "logs": [
+      "EVENT_JSON:{\"standard\":\"pb-pool\",\"version\":\"1.0.0\",\"event\":\"register\",\"data\":{\"account_id\":\"fund-move-11132247.pbf.testnet\"}}",
+      "created fund-move-11132247.pbf.testnet"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "gateway": {
+     "project_id": "pbf-keeper.testnet/pb-gateway",
+     "version_key": "68a50dfa8518271b96ed0484257609694dd50b4bad9b577c199d609e2e705480",
+     "secrets_ref": null
+    },
+    "risk_version": "d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc",
+    "counter": 0,
+    "created": true,
+    "permission": {
+     "lenders": [
+      "aave"
+     ],
+     "min_hf_bp": 15000,
+     "max_rate_bp": 2500,
+     "moves": "any"
+    }
+   },
+   "code": null
+  },
+  {
+   "id": "deposit",
+   "label": "mint and deposit the test nBTC",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T22:47:44.162Z",
+   "seconds": 10.2,
+   "txs": [
+    {
+     "label": "mint test nBTC",
+     "hash": "9x1cckkvqoy7dB5U9zzT3PR3hWoyQreNm4VqJ8QUZ9G1",
+     "ok": true,
+     "gas_tgas": 2.84,
+     "receipts": [
+      {
+       "executor": "mnbtc.pbf-ops.testnet",
+       "gas_tgas": 1.856787261959
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": "",
+     "seconds": 4.6,
+     "logs": [
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_mint\",\"data\":[{\"owner_id\":\"pbf-keeper.testnet\",\"amount\":\"2000000\",\"memo\":\"faucet\"}]}"
+     ]
+    },
+    {
+     "label": "deposit test nBTC",
+     "hash": "13U5oRz6aqZMDRqnedphNMNABvQXUKFMWCr9s22wxBKJ",
+     "ok": true,
+     "gas_tgas": 6.8,
+     "receipts": [
+      {
+       "executor": "mnbtc.pbf-ops.testnet",
+       "gas_tgas": 2.566347725876
+      },
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 1.934410325716
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "mnbtc.pbf-ops.testnet",
+       "gas_tgas": 1.318307813507
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": "2000000",
+     "seconds": 5.3,
+     "logs": [
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"pbf-keeper.testnet\",\"new_owner_id\":\"fund-move-11132247.pbf.testnet\",\"amount\":\"2000000\"}]}",
+      "deposit of 2000000 mnbtc.pbf-ops.testnet from pbf-keeper.testnet"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "mnbtc": "2000000",
+    "held_before": "0",
+    "added": "2000000"
+   },
+   "code": null
+  },
+  {
+   "id": "hl_init",
+   "label": "hl_init: the Hyperliquid address through Chain Signatures",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T22:47:54.355Z",
+   "seconds": 5.6,
+   "txs": [
+    {
+     "label": "hl_init",
+     "hash": "F6jEbMTH8J9g8xTPzsgKe8SMaMYqK1FWbW34cXZm5xfS",
+     "ok": true,
+     "gas_tgas": 11.2,
+     "receipts": [
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 2.635003116401
+      },
+      {
+       "executor": "v1.signer-prod.testnet",
+       "gas_tgas": 5.531153044159
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 2.05807859775
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": "0x8df270d1d21b9e7862fc5665a84e0e1f1a626ce6",
+     "seconds": 5.5,
+     "logs": [
+      "Hyperliquid address 0x8df270d1d21b9e7862fc5665a84e0e1f1a626ce6"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "address": "0x8df270d1d21b9e7862fc5665a84e0e1f1a626ce6",
+    "returned": "0x8df270d1d21b9e7862fc5665a84e0e1f1a626ce6",
+    "derived_public_key_gas_tgas": 5.531153044159,
+    "mpc_receipts": [
+     {
+      "executor": "v1.signer-prod.testnet",
+      "gas_tgas": 5.531153044159
+     }
+    ],
+    "tx_gas_tgas": 11.2
+   },
+   "code": null
+  },
+  {
+   "id": "keeper",
+   "label": "the keeper is running, is a stage 3 keeper, and watches the account",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T22:47:59.988Z",
+   "seconds": 0,
+   "txs": [],
+   "gateway": [],
+   "detail": {
+    "ok": true,
+    "why": "the keeper ticked 6 s ago and watches fund-move-11132247.pbf.testnet",
+    "last_tick_at": "2026-11-13T22:47:54.325Z",
+    "alive_window_s": 240
+   },
+   "code": null
+  },
+  {
+   "id": "gas",
+   "label": "test ETH for gas reaches the account's address on Aave's chain; the float's own test ETH is noted",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T22:48:00.030Z",
+   "seconds": 3.5,
+   "txs": [],
+   "gateway": [],
+   "detail": {
+    "address": "0x8df270d1d21b9e7862fc5665a84e0e1f1a626ce6",
+    "eth_wei": "2000000000000000",
+    "helper": {
+     "account": "fund-move-11132247.pbf.testnet",
+     "address": "0x8df270d1d21b9e7862fc5665a84e0e1f1a626ce6",
+     "eth": {
+      "balance": "2000000000000000",
+      "sent": "2000000000000000",
+      "hash": "0x7581146910d3ef713c735a83634dd113d953288a745e139c46eeee192f76d6d3",
+      "mined": true,
+      "ok": true
+     },
+     "mint": null,
+     "wrap": null,
+     "gas_wallet": "0x2031181d63507368232579af4c64a1c3428407ff"
+    },
+    "float_before": {
+     "gas_wallet": "0x2031181d63507368232579af4c64a1c3428407ff",
+     "eth_before": "37984769455823215"
+    }
+   },
+   "code": null
+  },
+  {
+   "id": "btc_out",
+   "label": "the account's nBTC moves to its address on Aave's chain through the stand-in",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T22:48:03.545Z",
+   "seconds": 42.6,
+   "txs": [
+    {
+     "label": "withdraw (btc_out)",
+     "hash": "3JqcVBq2adpAccbk9MPvr4VmET9pQEqF7EuawzHhscES",
+     "ok": true,
+     "gas_tgas": 9.08,
+     "receipts": [
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 3.002638808872
+      },
+      {
+       "executor": "mnbtc.pbf-ops.testnet",
+       "gas_tgas": 3.153013816066
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 1.941100119425
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": true,
+     "seconds": 5.4,
+     "logs": [
+      "transfer move:0 under way: 55223 mnbtc.pbf-ops.testnet to 0953bb6b1cb87b9c35aa35eb5719f4b6fea0187394afbf435bfeb3aa35d21779",
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"fund-move-11132247.pbf.testnet\",\"new_owner_id\":\"0953bb6b1cb87b9c35aa35eb5719f4b6fea0187394afbf435bfeb3aa35d21779\",\"amount\":\"55223\"}]}"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "collateral": {
+     "symbol": "WETH",
+     "token": "0x4200000000000000000000000000000000000006",
+     "decimals": 18,
+     "amount": "19502143000000000",
+     "how": "move",
+     "why": "Aave's test market has room for 0 more WBTC (its supply cap), less than the 0.00055108 this would bring: the bitcoin arrives as wrapped test ETH of the same dollar value",
+     "gas_wallet": "0x2031181d63507368232579af4c64a1c3428407ff",
+     "address": "0x8df270d1d21b9e7862fc5665a84e0e1f1a626ce6"
+    },
+    "move": {
+     "probe": {
+      "sends": "20000",
+      "delivers": {
+       "token": "0x4200000000000000000000000000000000000006",
+       "symbol": "WETH",
+       "chain": "Base Sepolia",
+       "amount": "7062219000000000"
+      },
+      "note": "Aave's test market has room for 0 more WBTC (its supply cap), less than the 0.00019956 this would bring: the bitcoin arrives as wrapped test ETH of the same dollar value"
+     },
+     "sized": "as the probe would arrive: WETH",
+     "transfer_id": "move:0",
+     "deposit_address": "0953bb6b1cb87b9c35aa35eb5719f4b6fea0187394afbf435bfeb3aa35d21779",
+     "deposit_memo": null,
+     "sends": {
+      "token": "mnbtc.pbf-ops.testnet",
+      "amount": "55223"
+     },
+     "delivers": {
+      "token": "0x4200000000000000000000000000000000000006",
+      "symbol": "WETH",
+      "chain": "Base Sepolia",
+      "amount": "19502143000000000"
+     },
+     "note": "Aave's test market has room for 0 more WBTC (its supply cap), less than the 0.00055108 this would bring: the bitcoin arrives as wrapped test ETH of the same dollar value",
+     "exp_ms": 1794610688415,
+     "needed_check": null,
+     "verdict": null,
+     "stand_in": {
+      "statuses": [
+       "PROCESSING",
+       "SUCCESS"
+      ],
+      "delivery": [
+       "0x6a488edc642cfc1d2cf9f0f0f9038f7513810e714ec71859310aa70c73cc0977"
+      ]
+     }
+    },
+    "at_the_address": [
+     {
+      "token": "0xba50cd2a20f6da35d788639e581bca8d0b5d4d5f",
+      "symbol": "USDC",
+      "decimals": 6,
+      "amount": "0"
+     },
+     {
+      "token": "0x54114591963cf60ef3aa63befd6ec263d98145a4",
+      "symbol": "WBTC",
+      "decimals": 8,
+      "amount": "0"
+     },
+     {
+      "token": "0x4200000000000000000000000000000000000006",
+      "symbol": "WETH",
+      "decimals": 18,
+      "amount": "19502143000000000"
+     }
+    ]
+   },
+   "code": null
+  },
+  {
+   "id": "arrived",
+   "label": "a check: its verdict sees the money at the address and settles the move",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T22:48:46.145Z",
+   "seconds": 291.8,
+   "txs": [
+    {
+     "label": "request_check (arrived)",
+     "hash": "4KeWgVhDMPUiZeUui8eSuPAFNu1iodp798DXwXzQzcTz",
+     "ok": true,
+     "gas_tgas": 13.21,
+     "receipts": [
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 2.749758155876
+      },
+      {
+       "executor": "outlayer.testnet",
+       "gas_tgas": 4.193379260013
+      },
+      {
+       "executor": "outlayer.testnet",
+       "gas_tgas": 2.631294321273
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 1.984334520361
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": {
+      "accepted": false,
+      "reason": "OutLayer returned no verdict: the run failed or timed out"
+     },
+     "seconds": 122.8,
+     "logs": [
+      "Resolved project: pbf-keeper.testnet/pb-risk, version: \"d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc\", source: WasmUrl { url: \"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc.wasm\", hash: \"d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc\", build_target: Some(\"wasm32-wasip2\") }, uuid: p000000000000011a",
+      "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_requested\",\"data\":[{\"request_data\":\"{\\\"request_id\\\":41257,\\\"sender_id\\\":\\\"pbf-keeper.testnet\\\",\\\"predecessor_id\\\":\\\"fund-move-11132247.pbf.testnet\\\",\\\"code_source\\\":{\\\"WasmUrl\\\":{\\\"url\\\":\\\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc.wasm\\\",\\\"hash\\\":\\\"d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc\\\",\\\"build_target\\\":\\\"wasm32-wasip2\\\"}},\\\"resource_limits\\\":{\\\"max_instructions\\\":2000000000,\\\"max_memory_mb\\\":256,\\\"max_execution_seconds\\\":20},\\\"input_data\\\":\\\"{\\\\\\\"mode\\\\\\\":\\\\\\\"check\\\\\\\",\\\\\\\"account\\\\\\\":\\\\\\\"fund-move-11132247.pbf.testnet\\\\\\\",\\\\\\\"intent\\\\\\\":{\\\\\\\"check\\\\\\\":{}},\\\\\\\"network\\\\\\\":\\\\\\\"testnet\\\\\\\",\\\\\\\"snapshot\\\\\\\":false}\\\",\\\"input_data_in_state\\\":false,\\\"secrets_ref\\\":null,\\\"response_format\\\":\\\"Json\\\",\\\"payment\\\":\\\"10000000000000000000000\\\",\\\"attached_usd\\\":\\\"0\\\",\\\"timestamp\\\":1794610128599751565,\\\"compile_only\\\":false,\\\"force_rebuild\\\":false,\\\"store_on_fastfs\\\":false,\\\"use_bound_identity\\\":false,\\\"project_uuid\\\":\\\"p000000000000011a\\\",\\\"project_id\\\":\\\"pbf-keeper.testnet/pb-risk\\\"}\",\"data_id\":[206,180,223,131,176,222,191,230,106,147,131,136,12,30,163,115,74,74,136,96,176,214,26,20,34,121,23,117,95,216,72,47],\"timestamp\":1794610128599751565}]}",
+      "[[yNEAR charged: \"1000000000000000000000\"]]",
+      "Execution promise failed: Failed. Refunded 9000000000000000000000 yoctoNEAR",
+      "verdict refused: OutLayer returned no verdict: the run failed or timed out"
+     ]
+    },
+    {
+     "label": "request_check (arrived, try 2)",
+     "hash": "Hqx2t81KZQ4N96zJ5MiFQba2kddL5oDD2HPN3v1xfgf1",
+     "ok": true,
+     "gas_tgas": 14.25,
+     "receipts": [
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 2.899030657732
+      },
+      {
+       "executor": "outlayer.testnet",
+       "gas_tgas": 4.192659254307
+      },
+      {
+       "executor": "outlayer.testnet",
+       "gas_tgas": 3.195857013089
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 2.315730326997
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": {
+      "accepted": true,
+      "reason": null
+     },
+     "seconds": 108.1,
+     "logs": [
+      "Resolved project: pbf-keeper.testnet/pb-risk, version: \"d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc\", source: WasmUrl { url: \"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc.wasm\", hash: \"d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc\", build_target: Some(\"wasm32-wasip2\") }, uuid: p000000000000011a",
+      "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_requested\",\"data\":[{\"request_data\":\"{\\\"request_id\\\":41269,\\\"sender_id\\\":\\\"pbf-keeper.testnet\\\",\\\"predecessor_id\\\":\\\"fund-move-11132247.pbf.testnet\\\",\\\"code_source\\\":{\\\"WasmUrl\\\":{\\\"url\\\":\\\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc.wasm\\\",\\\"hash\\\":\\\"d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc\\\",\\\"build_target\\\":\\\"wasm32-wasip2\\\"}},\\\"resource_limits\\\":{\\\"max_instructions\\\":2000000000,\\\"max_memory_mb\\\":256,\\\"max_execution_seconds\\\":20},\\\"input_data\\\":\\\"{\\\\\\\"mode\\\\\\\":\\\\\\\"check\\\\\\\",\\\\\\\"account\\\\\\\":\\\\\\\"fund-move-11132247.pbf.testnet\\\\\\\",\\\\\\\"intent\\\\\\\":{\\\\\\\"check\\\\\\\":{}},\\\\\\\"network\\\\\\\":\\\\\\\"testnet\\\\\\\",\\\\\\\"snapshot\\\\\\\":false}\\\",\\\"input_data_in_state\\\":false,\\\"secrets_ref\\\":null,\\\"response_format\\\":\\\"Json\\\",\\\"payment\\\":\\\"10000000000000000000000\\\",\\\"attached_usd\\\":\\\"0\\\",\\\"timestamp\\\":1794610311948722001,\\\"compile_only\\\":false,\\\"force_rebuild\\\":false,\\\"store_on_fastfs\\\":false,\\\"use_bound_identity\\\":false,\\\"project_uuid\\\":\\\"p000000000000011a\\\",\\\"project_id\\\":\\\"pbf-keeper.testnet/pb-risk\\\"}\",\"data_id\":[168,183,241,22,67,186,39,32,137,63,103,53,125,96,84,156,71,53,95,45,97,242,136,121,174,243,73,209,150,140,159,252],\"timestamp\":1794610311948722001}]}",
+      "Retrieving large output from storage for request_id: 41269",
+      "[[yNEAR charged: \"2075021300000000000000\"]]",
+      "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_completed\",\"data\":[{\"sender_id\":\"pbf-keeper.testnet\",\"code_source\":{\"WasmUrl\":{\"url\":\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc.wasm\",\"hash\":\"d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc\",\"build_target\":\"wasm32-wasip2\"}},\"resources_used\":{\"instructions\":213923637,\"time_ms\":10750,\"compile_time_ms\":null},\"success\":true,\"error_message\":null,\"payment_charged\":\"2075021300000000000000\",\"payment_refunded\":\"7924978700000000000000\",\"compilation_note\":\"Cached WASM from 2026-11-13T21:55:19.434541+00:00\",\"timestamp\":1794610414606302623}]}",
+      "Execution completed successfully. Output: Json(1022 bytes), Resources: { instructions: 213923637, time_ms: 10750 }, Cost: 2075021300000000000000 yoctoNEAR, Refund: 7924978700000000000000 yoctoNEAR, Cached WASM from 2026-11-13T21:55:19.434541+00:00",
+      "verdict accepted: nonce 2"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "settled": [
+     "move:0"
+    ],
+    "checks": 2,
+    "verdicts": [
+     {
+      "ok": true,
+      "state": "HEALTHY",
+      "action": "NONE",
+      "tier": "WATCH",
+      "score": 550,
+      "rate_bp": 500,
+      "allow": {
+       "borrow": 683344441,
+       "withdraw": 0
+      },
+      "credit": {
+       "binding": "C4",
+       "line": 683344441
+      },
+      "eq": 1368442138,
+      "eq_allow": 1366688883,
+      "im": 630883182,
+      "mm": 504706546,
+      "nonce": 2,
+      "blk": 277574026,
+      "arrived": []
+     }
+    ],
+    "checks_that_failed": [
+     "the account refused the verdict: OutLayer returned no verdict: the run failed or timed out"
+    ]
+   },
+   "code": null
+  },
+  {
+   "id": "fund",
+   "label": "a preview, a check for the fund intent, then the client's one fund(amount)",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T22:53:38.105Z",
+   "seconds": 205.9,
+   "txs": [
+    {
+     "label": "request_check (fund)",
+     "hash": "A3oBhnXUrRMuqzZa2vG9nWtgDCaJBpoW82YD7hoHXYEb",
+     "ok": true,
+     "gas_tgas": 14.4,
+     "receipts": [
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 2.910712697932
+      },
+      {
+       "executor": "outlayer.testnet",
+       "gas_tgas": 4.213718917811
+      },
+      {
+       "executor": "outlayer.testnet",
+       "gas_tgas": 3.225538961859
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 2.404192464208
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": {
+      "accepted": true,
+      "reason": null
+     },
+     "seconds": 93.2,
+     "logs": [
+      "Resolved project: pbf-keeper.testnet/pb-risk, version: \"d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc\", source: WasmUrl { url: \"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc.wasm\", hash: \"d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc\", build_target: Some(\"wasm32-wasip2\") }, uuid: p000000000000011a",
+      "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_requested\",\"data\":[{\"request_data\":\"{\\\"request_id\\\":41281,\\\"sender_id\\\":\\\"pbf-keeper.testnet\\\",\\\"predecessor_id\\\":\\\"fund-move-11132247.pbf.testnet\\\",\\\"code_source\\\":{\\\"WasmUrl\\\":{\\\"url\\\":\\\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc.wasm\\\",\\\"hash\\\":\\\"d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc\\\",\\\"build_target\\\":\\\"wasm32-wasip2\\\"}},\\\"resource_limits\\\":{\\\"max_instructions\\\":2000000000,\\\"max_memory_mb\\\":256,\\\"max_execution_seconds\\\":20},\\\"input_data\\\":\\\"{\\\\\\\"mode\\\\\\\":\\\\\\\"check\\\\\\\",\\\\\\\"account\\\\\\\":\\\\\\\"fund-move-11132247.pbf.testnet\\\\\\\",\\\\\\\"intent\\\\\\\":{\\\\\\\"fund\\\\\\\":{\\\\\\\"amount\\\\\\\":\\\\\\\"120206536\\\\\\\"}},\\\\\\\"network\\\\\\\":\\\\\\\"testnet\\\\\\\",\\\\\\\"snapshot\\\\\\\":false}\\\",\\\"input_data_in_state\\\":false,\\\"secrets_ref\\\":null,\\\"response_format\\\":\\\"Json\\\",\\\"payment\\\":\\\"10000000000000000000000\\\",\\\"attached_usd\\\":\\\"0\\\",\\\"timestamp\\\":1794610528254142869,\\\"compile_only\\\":false,\\\"force_rebuild\\\":false,\\\"store_on_fastfs\\\":false,\\\"use_bound_identity\\\":false,\\\"project_uuid\\\":\\\"p000000000000011a\\\",\\\"project_id\\\":\\\"pbf-keeper.testnet/pb-risk\\\"}\",\"data_id\":[191,156,17,169,246,0,249,35,163,237,173,91,117,7,116,132,118,230,132,42,223,127,204,95,245,89,185,255,31,247,104,52],\"timestamp\":1794610528254142869}]}",
+      "Retrieving large output from storage for request_id: 41281",
+      "[[yNEAR charged: \"1933515800000000000000\"]]",
+      "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_completed\",\"data\":[{\"sender_id\":\"pbf-keeper.testnet\",\"code_source\":{\"WasmUrl\":{\"url\":\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc.wasm\",\"hash\":\"d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc\",\"build_target\":\"wasm32-wasip2\"}},\"resources_used\":{\"instructions\":158594659,\"time_ms\":9335,\"compile_time_ms\":null},\"success\":true,\"error_message\":null,\"payment_charged\":\"1933515800000000000000\",\"payment_refunded\":\"8066484200000000000000\",\"compilation_note\":\"Cached WASM from 2026-11-13T21:55:19.434541+00:00\",\"timestamp\":1794610616424961947}]}",
+      "Execution completed successfully. Output: Json(1326 bytes), Resources: { instructions: 158594659, time_ms: 9335 }, Cost: 1933515800000000000000 yoctoNEAR, Refund: 8066484200000000000000 yoctoNEAR, Cached WASM from 2026-11-13T21:55:19.434541+00:00",
+      "verdict accepted: nonce 2"
+     ]
+    },
+    {
+     "label": "fund",
+     "hash": "7sNErtCCjojj1k6MYEDGaWWQLAPq5PQSvqPgerqShWBN",
+     "ok": true,
+     "gas_tgas": 3.04,
+     "receipts": [
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 2.507104149561
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": {
+      "pid": "f277574382",
+      "amount": "120206536",
+      "stored_at": "1794610621263393996",
+      "expires_at": "1794612421263393996",
+      "steps": [
+       {
+        "amt": "19502143000000000",
+        "k": "l_supply",
+        "l": "aave",
+        "tok": "0x4200000000000000000000000000000000000006",
+        "done": false
+       },
+       {
+        "amt": 20822672,
+        "k": "l_borrow",
+        "l": "aave",
+        "done": false
+       },
+       {
+        "amt": 99383864,
+        "k": "p_borrow",
+        "done": false
+       }
+      ]
+     },
+     "seconds": 4,
+     "logs": [
+      "EVENT_JSON:{\"standard\":\"pb-pool\",\"version\":\"1.0.0\",\"event\":\"funding_stored\",\"data\":{\"pid\":\"f277574382\",\"amount\":\"120206536\",\"steps\":[\"l_supply\",\"l_borrow\",\"p_borrow\"]}}"
+     ]
+    }
+   ],
+   "gateway": [
+    {
+     "label": "preview (fund)",
+     "http_status": 200,
+     "ok": true,
+     "call_id": "eedb093a-fe8b-4954-8220-57733eea58bc",
+     "attestation_url": "https://testnet-api.outlayer.ai/attestations/by-call/eedb093a-fe8b-4954-8220-57733eea58bc",
+     "reason": null,
+     "seconds": 108.3
+    }
+   ],
+   "detail": {
+    "amount": "120206536",
+    "from_aave": "20822672",
+    "from_pool": "99383864",
+    "pool_part": true,
+    "preview": {
+     "asked": "2000000000",
+     "total": 683373984,
+     "sources": [
+      {
+       "source": "aave",
+       "amount": 20822672,
+       "rate_bp": 74
+      },
+      {
+       "source": "pool",
+       "amount": 662551312,
+       "rate_bp": 500
+      }
+     ],
+     "steps": [
+      {
+       "amt": "19502143000000000",
+       "k": "l_supply",
+       "l": "aave",
+       "tok": "0x4200000000000000000000000000000000000006"
+      },
+      {
+       "amt": 20822672,
+       "k": "l_borrow",
+       "l": "aave"
+      },
+      {
+       "amt": 662551312,
+       "k": "p_borrow"
+      }
+     ],
+     "blended_bp": 487
+    },
+    "verdict": {
+     "ok": true,
+     "state": "HEALTHY",
+     "action": "NONE",
+     "tier": "WATCH",
+     "score": 550,
+     "rate_bp": 500,
+     "allow": {
+      "borrow": 683370107,
+      "fund": 120206536,
+      "withdraw": 0
+     },
+     "credit": {
+      "binding": "C4",
+      "line": 683370107
+     },
+     "eq": 1369045117,
+     "eq_allow": 1366740214,
+     "im": 631161481,
+     "mm": 504929185,
+     "nonce": 2,
+     "blk": 277574382,
+     "fund": [
+      {
+       "amt": "19502143000000000",
+       "k": "l_supply",
+       "l": "aave",
+       "tok": "0x4200000000000000000000000000000000000006"
+      },
+      {
+       "amt": 20822672,
+       "k": "l_borrow",
+       "l": "aave"
+      },
+      {
+       "amt": 99383864,
+       "k": "p_borrow"
+      }
+     ],
+     "ext": [
+      {
+       "c": 0,
+       "d": 0,
+       "hf_bp": 0,
+       "l": "aave",
+       "liq_bp": 8300,
+       "r_bp": 74,
+       "room": 0,
+       "s_bp": 9
+      }
+     ],
+     "evm": {
+      "nonce": 0
+     }
+    },
+    "funding": {
+     "pid": "f277574382",
+     "expires_at_ms": 1794612421263,
+     "steps": [
+      {
+       "i": 0,
+       "k": "l_supply",
+       "text": "post 19502143000000000 units of 0x4200000000000000000000000000000000000006 at Aave as collateral"
+      },
+      {
+       "i": 1,
+       "k": "l_borrow",
+       "text": "borrow $20.82 of USDC from Aave, or the room a fresh verdict gives if that is less"
+      },
+      {
+       "i": 2,
+       "k": "p_borrow",
+       "text": "borrow $99.38 from our pool, or what a fresh verdict allows if that is less"
+      }
+     ]
+    }
+   },
+   "code": null
+  },
+  {
+   "id": "funded",
+   "label": "the keeper runs the funding plan: the account ends with an Aave loan, and a pool loan if the plan had one",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T22:57:03.999Z",
+   "seconds": 495.5,
+   "txs": [],
+   "gateway": [],
+   "detail": {
+    "pool_part": true,
+    "ext": {
+     "l": "aave",
+     "c": 37432033,
+     "d": 20822675,
+     "hf_bp": 15280,
+     "r_bp": 74,
+     "s_bp": 9,
+     "room": 388810,
+     "liq_bp": 8500
+    },
+    "aave_books": {
+     "posted": [
+      {
+       "token": "0x4200000000000000000000000000000000000006",
+       "symbol": "WETH",
+       "decimals": 18,
+       "amount": "19502148436276248"
+      }
+     ],
+     "at_the_address": [
+      {
+       "token": "0xba50cd2a20f6da35d788639e581bca8d0b5d4d5f",
+       "symbol": "USDC",
+       "decimals": 6,
+       "amount": "20822672"
+      },
+      {
+       "token": "0x54114591963cf60ef3aa63befd6ec263d98145a4",
+       "symbol": "WBTC",
+       "decimals": 8,
+       "amount": "0"
+      },
+      {
+       "token": "0x4200000000000000000000000000000000000006",
+       "symbol": "WETH",
+       "decimals": 18,
+       "amount": "0"
+      }
+     ]
+    },
+    "pool_debt_micro": "99383866",
+    "transactions": [
+     {
+      "nonce": 0,
+      "kind": "approve",
+      "hash": "0x3cbc0cb3a6393e4eb5cc757aa5493bf187d7a7474ee5d0fb2af498bf81cda2cb",
+      "status": "mined"
+     },
+     {
+      "nonce": 1,
+      "kind": "supply",
+      "hash": "0x0d39ad2ceecdd3c0c953d862b1ec23da627881f731fcdcce910238404cb4e460",
+      "status": "mined"
+     },
+     {
+      "nonce": 2,
+      "kind": "borrow",
+      "hash": "0x4b95414c28c566e952cee39b88df5f25aec2223c0737150e60829f28ebfa324e",
+      "status": "mined"
+     }
+    ],
+    "keeper_steps": [
+     {
+      "at": "2026-11-13T22:57:33.645Z",
+      "i": 0,
+      "k": "l_supply",
+      "ok": true,
+      "tx": "Hg6BYcfP7xRSdrmQEV3uxzdC5FhkCm4ZkCHgUabvjqSL"
+     },
+     {
+      "at": "2026-11-13T22:59:18.082Z",
+      "i": 1,
+      "k": "l_borrow",
+      "ok": true,
+      "tx": "G9L5uxfC1RyUJKDa2WeUaJEiCZNS3r33Tur3qHqyL8cA"
+     },
+     {
+      "at": "2026-11-13T23:05:17.531Z",
+      "i": 2,
+      "k": "p_borrow",
+      "ok": true,
+      "tx": "7ui9oSCFD7B6BQuA3dNT6woCHM7MoYoPrX6T5RLbD9RW"
+     }
+    ],
+    "keeper_checks": [
+     {
+      "at": "2026-11-13T22:58:35.526Z",
+      "tx": null,
+      "why": "the account's transaction 1 on Aave's chain (a supply at Aave) has been mined: a fresh check"
+     },
+     {
+      "at": "2026-11-13T22:59:46.196Z",
+      "tx": "2KKRVFwvNaKZ3SGAVuLTJdKeSkXTqV9KLBJZH6TsqKU5",
+      "why": "the account's transaction 2 on Aave's chain (a borrow at Aave) has been mined: a fresh check"
+     },
+     {
+      "at": "2026-11-13T23:00:16.810Z",
+      "tx": "6CvzbU3mU8Z9GWBMpDjdntes4bYB14W7PuBLhuMFxgMz",
+      "why": "step 2 (p_borrow) of funding plan f277574382 needs a fresh check first: the last one was made before the account's latest change"
+     },
+     {
+      "at": "2026-11-13T23:05:00.883Z",
+      "tx": "BHbaiK75AWvdkc5G9PCP5q4HBHLEhZY6vqWi8ttzHXpQ",
+      "why": "step 2 (p_borrow) of funding plan f277574382 needs a fresh check first: the last one is 473 blocks old"
+     }
+    ],
+    "keeper_sends": [
+     {
+      "at": "2026-11-13T22:57:18.303Z",
+      "msg": "evm_approve for 0x4200000000000000000000000000000000000006: the account signed the transaction"
+     },
+     {
+      "at": "2026-11-13T22:57:19.577Z",
+      "msg": "signed transaction 0 (approve) sent: the backend answered sent; the chain has used that nonce already"
+     },
+     {
+      "at": "2026-11-13T22:57:35.150Z",
+      "msg": "signed transaction 1 (supply) sent: the backend answered sent; the chain has used that nonce already"
+     },
+     {
+      "at": "2026-11-13T22:59:19.476Z",
+      "msg": "signed transaction 2 (borrow) sent: the backend answered sent; the chain has used that nonce already"
+     }
+    ],
+    "keeper_notes": [
+     "step 1 (l_borrow) of funding plan f277574382 needs a fresh check first, and waits for the one the keeper asked for 15 s ago: the last one was read before the account's transaction 1 on Aave's chain (a supply at Aave) was mined"
+    ]
+   },
+   "code": null
+  },
+  {
+   "id": "loan_home",
+   "label": "the borrowed USDC comes home: from the address on Aave's chain to the account on NEAR",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T23:05:19.465Z",
+   "seconds": 261.7,
+   "txs": [
+    {
+     "label": "request_check (loan_home)",
+     "hash": "VeT78nAEnyzbVmt9Q6MzJX2aZCXUH2Vvg7R7SizqQix",
+     "ok": true,
+     "gas_tgas": 14.7,
+     "receipts": [
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 3.076729987006
+      },
+      {
+       "executor": "outlayer.testnet",
+       "gas_tgas": 4.257241728645
+      },
+      {
+       "executor": "outlayer.testnet",
+       "gas_tgas": 3.201137854733
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 2.512599612571
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": {
+      "accepted": true,
+      "reason": null
+     },
+     "seconds": 22,
+     "logs": [
+      "Resolved project: pbf-keeper.testnet/pb-risk, version: \"d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc\", source: WasmUrl { url: \"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc.wasm\", hash: \"d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc\", build_target: Some(\"wasm32-wasip2\") }, uuid: p000000000000011a",
+      "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_requested\",\"data\":[{\"request_data\":\"{\\\"request_id\\\":41339,\\\"sender_id\\\":\\\"pbf-keeper.testnet\\\",\\\"predecessor_id\\\":\\\"fund-move-11132247.pbf.testnet\\\",\\\"code_source\\\":{\\\"WasmUrl\\\":{\\\"url\\\":\\\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc.wasm\\\",\\\"hash\\\":\\\"d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc\\\",\\\"build_target\\\":\\\"wasm32-wasip2\\\"}},\\\"resource_limits\\\":{\\\"max_instructions\\\":2000000000,\\\"max_memory_mb\\\":256,\\\"max_execution_seconds\\\":20},\\\"input_data\\\":\\\"{\\\\\\\"mode\\\\\\\":\\\\\\\"check\\\\\\\",\\\\\\\"account\\\\\\\":\\\\\\\"fund-move-11132247.pbf.testnet\\\\\\\",\\\\\\\"intent\\\\\\\":{\\\\\\\"evm_withdraw\\\\\\\":{\\\\\\\"token\\\\\\\":\\\\\\\"0xba50cd2a20f6da35d788639e581bca8d0b5d4d5f\\\\\\\",\\\\\\\"amount\\\\\\\":\\\\\\\"20822672\\\\\\\"}},\\\\\\\"network\\\\\\\":\\\\\\\"testnet\\\\\\\",\\\\\\\"snapshot\\\\\\\":false}\\\",\\\"input_data_in_state\\\":false,\\\"secrets_ref\\\":null,\\\"response_format\\\":\\\"Json\\\",\\\"payment\\\":\\\"10000000000000000000000\\\",\\\"attached_usd\\\":\\\"0\\\",\\\"timestamp\\\":1794611123610599120,\\\"compile_only\\\":false,\\\"force_rebuild\\\":false,\\\"store_on_fastfs\\\":false,\\\"use_bound_identity\\\":false,\\\"project_uuid\\\":\\\"p000000000000011a\\\",\\\"project_id\\\":\\\"pbf-keeper.testnet/pb-risk\\\"}\",\"data_id\":[170,76,53,179,77,164,167,70,32,6,199,249,34,87,161,86,50,31,103,129,12,215,20,91,16,158,73,5,43,68,115,39],\"timestamp\":1794611123610599120}]}",
+      "Retrieving large output from storage for request_id: 41339",
+      "[[yNEAR charged: \"1941876000000000000000\"]]",
+      "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_completed\",\"data\":[{\"sender_id\":\"pbf-keeper.testnet\",\"code_source\":{\"WasmUrl\":{\"url\":\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc.wasm\",\"hash\":\"d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc\",\"build_target\":\"wasm32-wasip2\"}},\"resources_used\":{\"instructions\":760698765,\"time_ms\":9418,\"compile_time_ms\":null},\"success\":true,\"error_message\":null,\"payment_charged\":\"1941876000000000000000\",\"payment_refunded\":\"8058124000000000000000\",\"compilation_note\":\"Cached WASM from 2026-11-13T21:55:19.434541+00:00\",\"timestamp\":1794611140979983271}]}",
+      "Execution completed successfully. Output: Json(1052 bytes), Resources: { instructions: 760698765, time_ms: 9418 }, Cost: 1941876000000000000000 yoctoNEAR, Refund: 8058124000000000000000 yoctoNEAR, Cached WASM from 2026-11-13T21:55:19.434541+00:00",
+      "verdict accepted: nonce 9"
+     ]
+    },
+    {
+     "label": "evm_withdraw (loan_home)",
+     "hash": "GZgX3URtxCHyaQJRLrCLa7rYiJto1J9ebFkTscf1Egv4",
+     "ok": true,
+     "gas_tgas": 16,
+     "receipts": [
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 3.339277483419
+      },
+      {
+       "executor": "v1.signer-prod.testnet",
+       "gas_tgas": 4.626332847932
+      },
+      {
+       "executor": "v1.signer-prod.testnet",
+       "gas_tgas": 3.820803687464
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 3.006112274706
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": {
+      "nonce": 4,
+      "kind": "transfer",
+      "token": "0xba50cd2a20f6da35d788639e581bca8d0b5d4d5f",
+      "amount": "20822672",
+      "to": "0xba50cd2a20f6da35d788639e581bca8d0b5d4d5f",
+      "raw": "0x02f8b283014a3404830f4240841dcd6500830186a094ba50cd2a20f6da35d788639e581bca8d0b5d4d5f80b844a9059cbb0000000000000000000000002031181d63507368232579af4c64a1c3428407ff00000000000000000000000000000000000000000000000000000000013dba90c001a08f97d718557c7d5410719703b63daaca682b13248419ee3615a9d865118ad408a0715aa6325401f529ca401db603f57e0e1bb0d0d3090a3780b20b943a39218542",
+      "hash": "0x169d18321c5fd205d2efad4d548402817ede225227b9c031bc79e64b918c7b44",
+      "step": null,
+      "signed_at": "1794611152040127339"
+     },
+     "seconds": 8.7,
+     "logs": [
+      "transfer of 20822672 at aave under way: Ethereum transaction 4",
+      "transfer move:1 under way: 20822672 USDC to 0x2031181d63507368232579af4c64a1c3428407ff",
+      "sign: predecessor=AccountId(\"fund-move-11132247.pbf.testnet\"), request=SignRequestArgs { path: \"hyperliquid-1\", payload: Ecdsa(BoundedVec { inner: [171, 186, 5, 123, 181, 225, 80, 65, 72, 46, 12, 124, 36, 197, 95, 113, 236, 250, 75, 155, 5, 57, 102, 143, 215, 42, 183, 231, 197, 253, 71, 11], witness: NonEmpty(()) }), domain_id: DomainId(0) }",
+      "EVENT_JSON:{\"standard\":\"pb-pool\",\"version\":\"1.0.0\",\"event\":\"evm_signed\",\"data\":{\"nonce\":4,\"kind\":\"transfer\",\"hash\":\"0x169d18321c5fd205d2efad4d548402817ede225227b9c031bc79e64b918c7b44\"}}"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "sent_from_the_address": "20822672",
+    "arrived_micro": "20818465",
+    "musdc": "120202329",
+    "move": {
+     "transfer_id": "move:1",
+     "deposit_address": "0x2031181d63507368232579af4c64a1c3428407ff",
+     "deposit_memo": "30dc3488-9ee1-4faa-89bc-470c1a17b37b",
+     "sends": {
+      "token": "0xba50cd2a20f6da35d788639e581bca8d0b5d4d5f",
+      "amount": "20822672"
+     },
+     "delivers": {
+      "token": "musdc.pbf-ops.testnet",
+      "symbol": "USDC",
+      "chain": "NEAR",
+      "amount": "20818465"
+     },
+     "note": null,
+     "exp_ms": 1794611744266,
+     "needed_check": {
+      "evm_withdraw": {
+       "token": "0xba50cd2a20f6da35d788639e581bca8d0b5d4d5f",
+       "amount": "20822672"
+      }
+     },
+     "verdict": {
+      "ok": true,
+      "state": "HEALTHY",
+      "action": "NONE",
+      "tier": "WATCH",
+      "score": 550,
+      "rate_bp": 500,
+      "allow": {
+       "borrow": 620191874,
+       "withdraw": 20822672
+      },
+      "credit": {
+       "binding": "C4",
+       "line": 740398418
+      },
+      "eq": 1360590292,
+      "eq_allow": 1360590292,
+      "im": 627406879,
+      "mm": 501925504,
+      "nonce": 9,
+      "blk": 277575278
+     },
+     "transfer": {
+      "nonce": 4,
+      "hash": "0x169d18321c5fd205d2efad4d548402817ede225227b9c031bc79e64b918c7b44",
+      "submit": {
+       "account": "fund-move-11132247.pbf.testnet",
+       "nonce": 4,
+       "kind": "transfer",
+       "hash": "0x169d18321c5fd205d2efad4d548402817ede225227b9c031bc79e64b918c7b44",
+       "status": "sent"
+      },
+      "status": "mined"
+     },
+     "stand_in": {
+      "statuses": [
+       "PENDING_DEPOSIT",
+       "PROCESSING",
+       "SUCCESS"
+      ],
+      "delivery": [
+       "Faw73SFuBy5iT4AHRp1L3nfnnHWk7MEaigNRfFNcSpQD"
+      ]
+     }
+    }
+   },
+   "code": null
+  },
+  {
+   "id": "usdc_out",
+   "label": "USDC goes back to the address on Aave's chain, to repay Aave with",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T23:52:51.907Z",
+   "seconds": 154,
+   "txs": [
+    {
+     "label": "request_check (usdc_out)",
+     "hash": "3ftuKfuLBza4PFSnyoibf5utM3crFWRdnR6npQhocyVC",
+     "ok": true,
+     "gas_tgas": 14.77,
+     "receipts": [
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 3.135451473842
+      },
+      {
+       "executor": "outlayer.testnet",
+       "gas_tgas": 4.241401715189
+      },
+      {
+       "executor": "outlayer.testnet",
+       "gas_tgas": 3.201966533088
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 2.542054548378
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": {
+      "accepted": true,
+      "reason": null
+     },
+     "seconds": 114.3,
+     "logs": [
+      "Resolved project: pbf-keeper.testnet/pb-risk, version: \"d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc\", source: WasmUrl { url: \"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc.wasm\", hash: \"d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc\", build_target: Some(\"wasm32-wasip2\") }, uuid: p000000000000011a",
+      "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_requested\",\"data\":[{\"request_data\":\"{\\\"request_id\\\":41473,\\\"sender_id\\\":\\\"pbf-keeper.testnet\\\",\\\"predecessor_id\\\":\\\"fund-move-11132247.pbf.testnet\\\",\\\"code_source\\\":{\\\"WasmUrl\\\":{\\\"url\\\":\\\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc.wasm\\\",\\\"hash\\\":\\\"d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc\\\",\\\"build_target\\\":\\\"wasm32-wasip2\\\"}},\\\"resource_limits\\\":{\\\"max_instructions\\\":2000000000,\\\"max_memory_mb\\\":256,\\\"max_execution_seconds\\\":20},\\\"input_data\\\":\\\"{\\\\\\\"mode\\\\\\\":\\\\\\\"check\\\\\\\",\\\\\\\"account\\\\\\\":\\\\\\\"fund-move-11132247.pbf.testnet\\\\\\\",\\\\\\\"intent\\\\\\\":{\\\\\\\"withdraw\\\\\\\":{\\\\\\\"token\\\\\\\":\\\\\\\"musdc.pbf-ops.testnet\\\\\\\",\\\\\\\"amount\\\\\\\":\\\\\\\"21822676\\\\\\\"}},\\\\\\\"network\\\\\\\":\\\\\\\"testnet\\\\\\\",\\\\\\\"snapshot\\\\\\\":false}\\\",\\\"input_data_in_state\\\":false,\\\"secrets_ref\\\":null,\\\"response_format\\\":\\\"Json\\\",\\\"payment\\\":\\\"10000000000000000000000\\\",\\\"attached_usd\\\":\\\"0\\\",\\\"timestamp\\\":1794613975946661038,\\\"compile_only\\\":false,\\\"force_rebuild\\\":false,\\\"store_on_fastfs\\\":false,\\\"use_bound_identity\\\":false,\\\"project_uuid\\\":\\\"p000000000000011a\\\",\\\"project_id\\\":\\\"pbf-keeper.testnet/pb-risk\\\"}\",\"data_id\":[177,69,147,106,202,152,240,83,75,111,235,251,181,100,160,155,95,212,96,63,95,236,160,238,42,104,236,49,6,103,91,215],\"timestamp\":1794613975946661038}]}",
+      "Retrieving large output from storage for request_id: 41473",
+      "[[yNEAR charged: \"1951776100000000000000\"]]",
+      "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_completed\",\"data\":[{\"sender_id\":\"pbf-keeper.testnet\",\"code_source\":{\"WasmUrl\":{\"url\":\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc.wasm\",\"hash\":\"d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc\",\"build_target\":\"wasm32-wasip2\"}},\"resources_used\":{\"instructions\":761596435,\"time_ms\":9517,\"compile_time_ms\":null},\"success\":true,\"error_message\":null,\"payment_charged\":\"1951776100000000000000\",\"payment_refunded\":\"8048223900000000000000\",\"compilation_note\":\"Cached WASM from 2026-11-13T21:55:19.434541+00:00\",\"timestamp\":1794614085095674897}]}",
+      "Execution completed successfully. Output: Json(1053 bytes), Resources: { instructions: 761596435, time_ms: 9517 }, Cost: 1951776100000000000000 yoctoNEAR, Refund: 8048223900000000000000 yoctoNEAR, Cached WASM from 2026-11-13T21:55:19.434541+00:00",
+      "verdict accepted: nonce 11"
+     ]
+    },
+    {
+     "label": "withdraw (usdc_out)",
+     "hash": "9z3v6ZJj2FrM1a8uZxN6vyzLmjkbW2ByFvHVqgFf1qEG",
+     "ok": true,
+     "gas_tgas": 9.9,
+     "receipts": [
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 3.388247760389
+      },
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 3.206807756191
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 2.323328905903
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": true,
+     "seconds": 5.2,
+     "logs": [
+      "transfer move:2 under way: 21822676 musdc.pbf-ops.testnet to f086f3b19dcbccffdf2b5643b8ba751854523fc8fe65a2aae2f12e7e683179b2",
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"fund-move-11132247.pbf.testnet\",\"new_owner_id\":\"f086f3b19dcbccffdf2b5643b8ba751854523fc8fe65a2aae2f12e7e683179b2\",\"amount\":\"21822676\"}]}"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "owed_micro": "20822676",
+    "added_by_the_client_micro": "0",
+    "at_the_address": "21818851",
+    "move": {
+     "transfer_id": "move:2",
+     "deposit_address": "f086f3b19dcbccffdf2b5643b8ba751854523fc8fe65a2aae2f12e7e683179b2",
+     "deposit_memo": null,
+     "sends": {
+      "token": "musdc.pbf-ops.testnet",
+      "amount": "21822676"
+     },
+     "delivers": {
+      "token": "0xba50cd2a20f6da35d788639e581bca8d0b5d4d5f",
+      "symbol": "USDC",
+      "chain": "Base Sepolia",
+      "amount": "21818851"
+     },
+     "note": null,
+     "exp_ms": 1794614688414,
+     "needed_check": {
+      "withdraw": {
+       "token": "musdc.pbf-ops.testnet",
+       "amount": "21822676"
+      }
+     },
+     "verdict": {
+      "ok": true,
+      "state": "HEALTHY",
+      "action": "NONE",
+      "tier": "WATCH",
+      "score": 550,
+      "rate_bp": 500,
+      "allow": {
+       "borrow": 621109969,
+       "withdraw": 21822676
+      },
+      "credit": {
+       "binding": "C4",
+       "line": 741316991
+      },
+      "eq": 1365233290,
+      "eq_allow": 1362426960,
+      "im": 629549263,
+      "mm": 503639410,
+      "nonce": 11,
+      "blk": 277580310
+     },
+     "stand_in": {
+      "statuses": [
+       "PROCESSING",
+       "SUCCESS"
+      ],
+      "delivery": [
+       "0xd6dceb016ec8e1e919f40e9f0fcbc13b4c12e07fbebeb72ede31fd7d0f760509"
+      ]
+     }
+    }
+   },
+   "code": null
+  },
+  {
+   "id": "usdc_arrived",
+   "label": "a check: its verdict sees the money at the address and settles the move",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T23:55:25.924Z",
+   "seconds": 101,
+   "txs": [
+    {
+     "label": "request_check (usdc_arrived)",
+     "hash": "67HErz5323fGuZr548LbbKCa3PKnUttKkt1fjFb4EEV9",
+     "ok": true,
+     "gas_tgas": 14.79,
+     "receipts": [
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 3.132011625034
+      },
+      {
+       "executor": "outlayer.testnet",
+       "gas_tgas": 4.193104412406
+      },
+      {
+       "executor": "outlayer.testnet",
+       "gas_tgas": 3.201168126061
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 2.615836035858
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": {
+      "accepted": true,
+      "reason": null
+     },
+     "seconds": 100,
+     "logs": [
+      "Resolved project: pbf-keeper.testnet/pb-risk, version: \"d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc\", source: WasmUrl { url: \"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc.wasm\", hash: \"d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc\", build_target: Some(\"wasm32-wasip2\") }, uuid: p000000000000011a",
+      "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_requested\",\"data\":[{\"request_data\":\"{\\\"request_id\\\":41482,\\\"sender_id\\\":\\\"pbf-keeper.testnet\\\",\\\"predecessor_id\\\":\\\"fund-move-11132247.pbf.testnet\\\",\\\"code_source\\\":{\\\"WasmUrl\\\":{\\\"url\\\":\\\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc.wasm\\\",\\\"hash\\\":\\\"d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc\\\",\\\"build_target\\\":\\\"wasm32-wasip2\\\"}},\\\"resource_limits\\\":{\\\"max_instructions\\\":2000000000,\\\"max_memory_mb\\\":256,\\\"max_execution_seconds\\\":20},\\\"input_data\\\":\\\"{\\\\\\\"mode\\\\\\\":\\\\\\\"check\\\\\\\",\\\\\\\"account\\\\\\\":\\\\\\\"fund-move-11132247.pbf.testnet\\\\\\\",\\\\\\\"intent\\\\\\\":{\\\\\\\"check\\\\\\\":{}},\\\\\\\"network\\\\\\\":\\\\\\\"testnet\\\\\\\",\\\\\\\"snapshot\\\\\\\":false}\\\",\\\"input_data_in_state\\\":false,\\\"secrets_ref\\\":null,\\\"response_format\\\":\\\"Json\\\",\\\"payment\\\":\\\"10000000000000000000000\\\",\\\"attached_usd\\\":\\\"0\\\",\\\"timestamp\\\":1794614128790428738,\\\"compile_only\\\":false,\\\"force_rebuild\\\":false,\\\"store_on_fastfs\\\":false,\\\"use_bound_identity\\\":false,\\\"project_uuid\\\":\\\"p000000000000011a\\\",\\\"project_id\\\":\\\"pbf-keeper.testnet/pb-risk\\\"}\",\"data_id\":[124,73,173,36,111,8,31,118,236,225,43,179,70,9,143,227,113,99,46,213,113,250,71,100,96,219,196,246,210,109,100,243],\"timestamp\":1794614128790428738}]}",
+      "Retrieving large output from storage for request_id: 41482",
+      "[[yNEAR charged: \"2068480200000000000000\"]]",
+      "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_completed\",\"data\":[{\"sender_id\":\"pbf-keeper.testnet\",\"code_source\":{\"WasmUrl\":{\"url\":\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc.wasm\",\"hash\":\"d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc\",\"build_target\":\"wasm32-wasip2\"}},\"resources_used\":{\"instructions\":802219161,\"time_ms\":10684,\"compile_time_ms\":null},\"success\":true,\"error_message\":null,\"payment_charged\":\"2068480200000000000000\",\"payment_refunded\":\"7931519800000000000000\",\"compilation_note\":\"Cached WASM from 2026-11-13T21:55:19.434541+00:00\",\"timestamp\":1794614222993776297}]}",
+      "Execution completed successfully. Output: Json(1074 bytes), Resources: { instructions: 802219161, time_ms: 10684 }, Cost: 2068480200000000000000 yoctoNEAR, Refund: 7931519800000000000000 yoctoNEAR, Cached WASM from 2026-11-13T21:55:19.434541+00:00",
+      "verdict accepted: nonce 13",
+      "EVENT_JSON:{\"standard\":\"pb-pool\",\"version\":\"1.0.0\",\"event\":\"transfer_done\",\"data\":{\"id\":\"move:2\",\"how\":\"verdict\"}}"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "settled": [
+     "move:2"
+    ],
+    "checks": 1,
+    "verdicts": [
+     {
+      "ok": true,
+      "state": "HEALTHY",
+      "action": "NONE",
+      "tier": "WATCH",
+      "score": 550,
+      "rate_bp": 500,
+      "allow": {
+       "borrow": 621026933,
+       "withdraw": 98379653
+      },
+      "credit": {
+       "binding": "C4",
+       "line": 741233977
+      },
+      "eq": 1365843023,
+      "eq_allow": 1362260910,
+      "im": 629832455,
+      "mm": 503865964,
+      "nonce": 13,
+      "blk": 277580542,
+      "arrived": [
+       "move:2"
+      ]
+     }
+    ],
+    "checks_that_failed": []
+   },
+   "code": null
+  },
+  {
+   "id": "repay_aave",
+   "label": "the client repays Aave in full, from the USDC at the account's address",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T23:57:06.939Z",
+   "seconds": 71.8,
+   "txs": [
+    {
+     "label": "lender_repay (aave)",
+     "hash": "QJFWtcaAX3tbjddWnFkwAYYXypmjJdqYt53DEv1kh1Y",
+     "ok": true,
+     "gas_tgas": 22.28,
+     "receipts": [
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 3.94353976787
+      },
+      {
+       "executor": "pool.pbf.testnet",
+       "gas_tgas": 2.783030693131
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 2.367365403634
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "v1.signer-prod.testnet",
+       "gas_tgas": 4.627631345312
+      },
+      {
+       "executor": "v1.signer-prod.testnet",
+       "gas_tgas": 3.820721411864
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 3.089794399842
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": {
+      "nonce": 5,
+      "kind": "repay",
+      "token": "0xba50cd2a20f6da35d788639e581bca8d0b5d4d5f",
+      "amount": "20844513",
+      "to": "0x8bab6d1b75f19e9ed9fce8b9bd338844ff79ae27",
+      "raw": "0x02f8f283014a3405830f4240841dcd6500830493e0948bab6d1b75f19e9ed9fce8b9bd338844ff79ae2780b884573ade81000000000000000000000000ba50cd2a20f6da35d788639e581bca8d0b5d4d5fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00000000000000000000000000000000000000000000000000000000000000020000000000000000000000008df270d1d21b9e7862fc5665a84e0e1f1a626ce6c080a00ec02ff94696c580bedf965ae3aec4391b5b33e5c3ee9116ff576b0c88575050a00fd9cbf371291ea4c92634249f8ee78699b8ef4c719b63325e26aac1ff345fbf",
+      "hash": "0x02e664ecc78ec14b282903155b813d749522a00498129e85fd6b5025bfee7224",
+      "step": null,
+      "signed_at": "1794614234770164759"
+     },
+     "seconds": 9.2,
+     "logs": [
+      "EVENT_JSON:{\"standard\":\"pb-pool\",\"version\":\"1.0.0\",\"event\":\"settle\",\"data\":{\"account_id\":\"fund-move-11132247.pbf.testnet\",\"pricing\":\"pass_through\",\"from\":\"default\",\"period_ns\":\"3479408732164\",\"fee\":\"0\",\"subsidy\":\"0\",\"cut\":\"0\",\"credit\":\"0\",\"debt\":\"99384356\",\"parts\":[{\"source\":\"aave\",\"debt\":\"20822691\",\"counted_bp\":74,\"client_bp\":74,\"fee\":\"0\",\"subsidy\":\"0\"},{\"source\":\"pool\",\"debt\":\"89082969\",\"counted_bp\":500,\"client_bp\":500,\"fee\":\"0\",\"subsidy\":\"0\"}]}}",
+      "the pool settled: a fee of 0 and a subsidy of 0",
+      "sign: predecessor=AccountId(\"fund-move-11132247.pbf.testnet\"), request=SignRequestArgs { path: \"hyperliquid-1\", payload: Ecdsa(BoundedVec { inner: [240, 163, 68, 200, 131, 29, 176, 93, 25, 69, 213, 188, 18, 63, 192, 85, 35, 114, 104, 148, 38, 56, 230, 36, 123, 237, 232, 220, 237, 208, 116, 161], witness: NonEmpty(()) }), domain_id: DomainId(0) }",
+      "EVENT_JSON:{\"standard\":\"pb-pool\",\"version\":\"1.0.0\",\"event\":\"evm_signed\",\"data\":{\"nonce\":5,\"kind\":\"repay\",\"hash\":\"0x02e664ecc78ec14b282903155b813d749522a00498129e85fd6b5025bfee7224\"}}"
+     ]
+    },
+    {
+     "label": "request_check (after the Aave repayment)",
+     "hash": "5MKZpmXyPwPzYCkEKmqGmQG7KfFud9nBaBTz5BAmxr5x",
+     "ok": true,
+     "gas_tgas": 14.75,
+     "receipts": [
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 3.143113711324
+      },
+      {
+       "executor": "outlayer.testnet",
+       "gas_tgas": 4.192695455571
+      },
+      {
+       "executor": "outlayer.testnet",
+       "gas_tgas": 3.197718777499
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 2.5647102708
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": {
+      "accepted": true,
+      "reason": null
+     },
+     "seconds": 59,
+     "logs": [
+      "Resolved project: pbf-keeper.testnet/pb-risk, version: \"d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc\", source: WasmUrl { url: \"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc.wasm\", hash: \"d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc\", build_target: Some(\"wasm32-wasip2\") }, uuid: p000000000000011a",
+      "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_requested\",\"data\":[{\"request_data\":\"{\\\"request_id\\\":41489,\\\"sender_id\\\":\\\"pbf-keeper.testnet\\\",\\\"predecessor_id\\\":\\\"fund-move-11132247.pbf.testnet\\\",\\\"code_source\\\":{\\\"WasmUrl\\\":{\\\"url\\\":\\\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc.wasm\\\",\\\"hash\\\":\\\"d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc\\\",\\\"build_target\\\":\\\"wasm32-wasip2\\\"}},\\\"resource_limits\\\":{\\\"max_instructions\\\":2000000000,\\\"max_memory_mb\\\":256,\\\"max_execution_seconds\\\":20},\\\"input_data\\\":\\\"{\\\\\\\"mode\\\\\\\":\\\\\\\"check\\\\\\\",\\\\\\\"account\\\\\\\":\\\\\\\"fund-move-11132247.pbf.testnet\\\\\\\",\\\\\\\"intent\\\\\\\":{\\\\\\\"check\\\\\\\":{}},\\\\\\\"network\\\\\\\":\\\\\\\"testnet\\\\\\\",\\\\\\\"snapshot\\\\\\\":false}\\\",\\\"input_data_in_state\\\":false,\\\"secrets_ref\\\":null,\\\"response_format\\\":\\\"Json\\\",\\\"payment\\\":\\\"10000000000000000000000\\\",\\\"attached_usd\\\":\\\"0\\\",\\\"timestamp\\\":1794614241458592113,\\\"compile_only\\\":false,\\\"force_rebuild\\\":false,\\\"store_on_fastfs\\\":false,\\\"use_bound_identity\\\":false,\\\"project_uuid\\\":\\\"p000000000000011a\\\",\\\"project_id\\\":\\\"pbf-keeper.testnet/pb-risk\\\"}\",\"data_id\":[128,191,89,235,173,254,44,53,234,78,41,178,146,89,166,101,221,110,53,254,45,35,131,219,145,4,88,3,123,190,224,225],\"timestamp\":1794614241458592113}]}",
+      "Retrieving large output from storage for request_id: 41489",
+      "[[yNEAR charged: \"1893474600000000000000\"]]",
+      "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_completed\",\"data\":[{\"sender_id\":\"pbf-keeper.testnet\",\"code_source\":{\"WasmUrl\":{\"url\":\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc.wasm\",\"hash\":\"d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc\",\"build_target\":\"wasm32-wasip2\"}},\"resources_used\":{\"instructions\":746065747,\"time_ms\":8934,\"compile_time_ms\":null},\"success\":true,\"error_message\":null,\"payment_charged\":\"1893474600000000000000\",\"payment_refunded\":\"8106525400000000000000\",\"compilation_note\":\"Cached WASM from 2026-11-13T21:55:19.434541+00:00\",\"timestamp\":1794614295423402520}]}",
+      "Execution completed successfully. Output: Json(1044 bytes), Resources: { instructions: 746065747, time_ms: 8934 }, Cost: 1893474600000000000000 yoctoNEAR, Refund: 8106525400000000000000 yoctoNEAR, Cached WASM from 2026-11-13T21:55:19.434541+00:00",
+      "verdict accepted: nonce 13"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "owed_micro": 20822691,
+    "sent_micro": "20844513",
+    "faucet": null,
+    "approval": "the keeper's, already mined",
+    "repayment": {
+     "nonce": 5,
+     "hash": "0x02e664ecc78ec14b282903155b813d749522a00498129e85fd6b5025bfee7224",
+     "submit": {
+      "account": "fund-move-11132247.pbf.testnet",
+      "nonce": 5,
+      "kind": "repay",
+      "hash": "0x02e664ecc78ec14b282903155b813d749522a00498129e85fd6b5025bfee7224",
+      "status": "sent"
+     },
+     "status": "mined"
+    },
+    "owed_after_micro": 0,
+    "verdict": {
+     "ok": true,
+     "state": "HEALTHY",
+     "action": "NONE",
+     "tier": "WATCH",
+     "score": 550,
+     "rate_bp": 500,
+     "allow": {
+      "borrow": 631410012,
+      "withdraw": 98379653
+     },
+     "credit": {
+      "binding": "C4",
+      "line": 730794377
+     },
+     "eq": 1365879964,
+     "eq_allow": 1362204389,
+     "im": 629824550,
+     "mm": 503859640,
+     "nonce": 13,
+     "blk": 277580665
+    }
+   },
+   "code": null
+  },
+  {
+   "id": "repay",
+   "label": "put the loan back and repay it all",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T23:58:18.775Z",
+   "seconds": 12.2,
+   "txs": [
+    {
+     "label": "deposit the loan back",
+     "hash": "6bQCb5iNR8FTwGFhUTAhqsizL1x1QnUCUwwPvDAFeJtZ",
+     "ok": true,
+     "gas_tgas": 7.28,
+     "receipts": [
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 2.614227725876
+      },
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 2.34929729848
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 1.334267813507
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": "2104098",
+     "seconds": 5.2,
+     "logs": [
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"pbf-keeper.testnet\",\"new_owner_id\":\"fund-move-11132247.pbf.testnet\",\"amount\":\"2104098\"}]}",
+      "deposit of 2104098 musdc.pbf-ops.testnet from pbf-keeper.testnet"
+     ]
+    },
+    {
+     "label": "repay",
+     "hash": "HJmzYa8SdBP6UQVKExPGhtEAnHS1rsMhvLVZDGiHAv9b",
+     "ok": true,
+     "gas_tgas": 13.83,
+     "receipts": [
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 3.086438061662
+      },
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 2.614752688652
+      },
+      {
+       "executor": "pool.pbf.testnet",
+       "gas_tgas": 2.477386691443
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 1.870366493652
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 2.355600315078
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": "99384368",
+     "seconds": 6.1,
+     "logs": [
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"fund-move-11132247.pbf.testnet\",\"new_owner_id\":\"pool.pbf.testnet\",\"amount\":\"100483751\"}]}",
+      "EVENT_JSON:{\"standard\":\"pb-pool\",\"version\":\"1.0.0\",\"event\":\"repay\",\"data\":{\"account_id\":\"fund-move-11132247.pbf.testnet\",\"amount\":\"99384368\"}}",
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"pool.pbf.testnet\",\"new_owner_id\":\"fund-move-11132247.pbf.testnet\",\"amount\":\"1099383\",\"memo\":\"refund\"}]}",
+      "repaid 99384368"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "repaid": "100483751",
+    "put_back": "2104098",
+    "minted": "0",
+    "debt_before": "99384367",
+    "debt_after": "0",
+    "loan": {
+     "principal": "0",
+     "open": false
+    }
+   },
+   "code": null
+  },
+  {
+   "id": "aave_withdraw",
+   "label": "the client takes the collateral back from Aave",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T23:58:30.978Z",
+   "seconds": 59.4,
+   "txs": [
+    {
+     "label": "lender_withdraw (aave, WETH)",
+     "hash": "HB1fxubVMbvL57PxT1HdvoimVEaA4UTAhuCBpTHFGFQy",
+     "ok": true,
+     "gas_tgas": 16.04,
+     "receipts": [
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 3.302185509987
+      },
+      {
+       "executor": "v1.signer-prod.testnet",
+       "gas_tgas": 4.624173606467
+      },
+      {
+       "executor": "v1.signer-prod.testnet",
+       "gas_tgas": 3.82078394132
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 3.091226736807
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": {
+      "nonce": 6,
+      "kind": "withdraw",
+      "token": "0x4200000000000000000000000000000000000006",
+      "amount": "19502185834107687",
+      "to": "0x8bab6d1b75f19e9ed9fce8b9bd338844ff79ae27",
+      "raw": "0x02f8d283014a3406830f4240841dcd6500830493e0948bab6d1b75f19e9ed9fce8b9bd338844ff79ae2780b86469328dec0000000000000000000000004200000000000000000000000000000000000006000000000000000000000000000000000000000000000000004549227afc53270000000000000000000000008df270d1d21b9e7862fc5665a84e0e1f1a626ce6c001a0853513682ac532ebbf3e897252073d19f5ed14a97e32e8cb9fca1b6de6e85576a02173035612c40dad55fa6e3a3f35c948bb7edc8b63a01834a67ccfc92f336f70",
+      "hash": "0x4864f45615d04e169d0397cb0e04acca677415b20c25fe22bbd2659fd6a04775",
+      "step": null,
+      "signed_at": "1794614318907504618"
+     },
+     "seconds": 8.8,
+     "logs": [
+      "withdrawal of 19502185834107687 at aave under way: Ethereum transaction 6",
+      "sign: predecessor=AccountId(\"fund-move-11132247.pbf.testnet\"), request=SignRequestArgs { path: \"hyperliquid-1\", payload: Ecdsa(BoundedVec { inner: [45, 209, 54, 184, 49, 78, 168, 235, 162, 9, 0, 31, 68, 103, 4, 7, 234, 119, 14, 7, 60, 184, 151, 173, 118, 88, 45, 51, 163, 120, 21, 24], witness: NonEmpty(()) }), domain_id: DomainId(0) }",
+      "EVENT_JSON:{\"standard\":\"pb-pool\",\"version\":\"1.0.0\",\"event\":\"evm_signed\",\"data\":{\"nonce\":6,\"kind\":\"withdraw\",\"hash\":\"0x4864f45615d04e169d0397cb0e04acca677415b20c25fe22bbd2659fd6a04775\"}}"
+     ]
+    },
+    {
+     "label": "request_check (after the withdrawal from Aave)",
+     "hash": "DmKWHdyvWBpnk9J87HZ15Fri5yEohodA4SBf7ruz2b33",
+     "ok": true,
+     "gas_tgas": 14.86,
+     "receipts": [
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 3.185983295776
+      },
+      {
+       "executor": "outlayer.testnet",
+       "gas_tgas": 4.19097072348
+      },
+      {
+       "executor": "outlayer.testnet",
+       "gas_tgas": 3.196111929707
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 2.63437184118
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": {
+      "accepted": true,
+      "reason": null
+     },
+     "seconds": 46.6,
+     "logs": [
+      "Resolved project: pbf-keeper.testnet/pb-risk, version: \"d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc\", source: WasmUrl { url: \"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc.wasm\", hash: \"d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc\", build_target: Some(\"wasm32-wasip2\") }, uuid: p000000000000011a",
+      "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_requested\",\"data\":[{\"request_data\":\"{\\\"request_id\\\":41495,\\\"sender_id\\\":\\\"pbf-keeper.testnet\\\",\\\"predecessor_id\\\":\\\"fund-move-11132247.pbf.testnet\\\",\\\"code_source\\\":{\\\"WasmUrl\\\":{\\\"url\\\":\\\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc.wasm\\\",\\\"hash\\\":\\\"d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc\\\",\\\"build_target\\\":\\\"wasm32-wasip2\\\"}},\\\"resource_limits\\\":{\\\"max_instructions\\\":2000000000,\\\"max_memory_mb\\\":256,\\\"max_execution_seconds\\\":20},\\\"input_data\\\":\\\"{\\\\\\\"mode\\\\\\\":\\\\\\\"check\\\\\\\",\\\\\\\"account\\\\\\\":\\\\\\\"fund-move-11132247.pbf.testnet\\\\\\\",\\\\\\\"intent\\\\\\\":{\\\\\\\"check\\\\\\\":{}},\\\\\\\"network\\\\\\\":\\\\\\\"testnet\\\\\\\",\\\\\\\"snapshot\\\\\\\":false}\\\",\\\"input_data_in_state\\\":false,\\\"secrets_ref\\\":null,\\\"response_format\\\":\\\"Json\\\",\\\"payment\\\":\\\"10000000000000000000000\\\",\\\"attached_usd\\\":\\\"0\\\",\\\"timestamp\\\":1794614324663558066,\\\"compile_only\\\":false,\\\"force_rebuild\\\":false,\\\"store_on_fastfs\\\":false,\\\"use_bound_identity\\\":false,\\\"project_uuid\\\":\\\"p000000000000011a\\\",\\\"project_id\\\":\\\"pbf-keeper.testnet/pb-risk\\\"}\",\"data_id\":[17,232,13,199,182,2,149,86,204,219,210,18,229,16,133,56,15,136,38,97,125,138,71,193,94,140,38,88,118,85,9,78],\"timestamp\":1794614324663558066}]}",
+      "Retrieving large output from storage for request_id: 41495",
+      "[[yNEAR charged: \"1925617400000000000000\"]]",
+      "EVENT_JSON:{\"standard\":\"near-outlayer\",\"version\":\"1.0.0\",\"event\":\"execution_completed\",\"data\":[{\"sender_id\":\"pbf-keeper.testnet\",\"code_source\":{\"WasmUrl\":{\"url\":\"https://test.fastfs.io/pbf-keeper.testnet/outlayer.testnet/d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc.wasm\",\"hash\":\"d7dd9cc4f35dd323c456b2c3090b3e97f3d1c8a7abdb3ec6afe25f0c5f5bdadc\",\"build_target\":\"wasm32-wasip2\"}},\"resources_used\":{\"instructions\":174258608,\"time_ms\":9256,\"compile_time_ms\":null},\"success\":true,\"error_message\":null,\"payment_charged\":\"1925617400000000000000\",\"payment_refunded\":\"8074382600000000000000\",\"compilation_note\":\"Cached WASM from 2026-11-13T21:55:19.434541+00:00\",\"timestamp\":1794614366464334985}]}",
+      "Execution completed successfully. Output: Json(1028 bytes), Resources: { instructions: 174258608, time_ms: 9256 }, Cost: 1925617400000000000000 yoctoNEAR, Refund: 8074382600000000000000 yoctoNEAR, Cached WASM from 2026-11-13T21:55:19.434541+00:00",
+      "verdict accepted: nonce 14",
+      "Aave's chain has used the signed transaction's nonce: the counter moves on"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "taken": [
+     {
+      "token": "0x4200000000000000000000000000000000000006",
+      "symbol": "WETH",
+      "amount": "19502185834107687",
+      "nonce": 6,
+      "hash": "0x4864f45615d04e169d0397cb0e04acca677415b20c25fe22bbd2659fd6a04775",
+      "submit": {
+       "account": "fund-move-11132247.pbf.testnet",
+       "nonce": 6,
+       "kind": "withdraw",
+       "hash": "0x4864f45615d04e169d0397cb0e04acca677415b20c25fe22bbd2659fd6a04775",
+       "status": "mined",
+       "block": 58462265,
+       "reverted": false
+      },
+      "status": "mined"
+     }
+    ],
+    "still_posted": [
+     {
+      "token": "0x4200000000000000000000000000000000000006",
+      "symbol": "WETH",
+      "decimals": 18,
+      "amount": "117161128"
+     }
+    ],
+    "at_the_address": [
+     {
+      "token": "0xba50cd2a20f6da35d788639e581bca8d0b5d4d5f",
+      "symbol": "USDC",
+      "decimals": 6,
+      "amount": "996160"
+     },
+     {
+      "token": "0x54114591963cf60ef3aa63befd6ec263d98145a4",
+      "symbol": "WBTC",
+      "decimals": 8,
+      "amount": "0"
+     },
+     {
+      "token": "0x4200000000000000000000000000000000000006",
+      "symbol": "WETH",
+      "decimals": 18,
+      "amount": "19502185834107687"
+     }
+    ],
+    "verdict": {
+     "ok": true,
+     "state": "HEALTHY",
+     "action": "NONE",
+     "tier": "WATCH",
+     "score": 550,
+     "rate_bp": 500,
+     "allow": {
+      "borrow": 682130180,
+      "withdraw": 1099383
+     },
+     "credit": {
+      "binding": "C4",
+      "line": 682130180
+     },
+     "eq": 1368436220,
+     "eq_allow": 1364260361,
+     "im": 629914114,
+     "mm": 503931291,
+     "nonce": 14,
+     "blk": 277580782
+    }
+   },
+   "code": null
+  },
+  {
+   "id": "btc_home",
+   "label": "the collateral comes home: from the address on Aave's chain to the account on NEAR, as nBTC",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-13T23:59:30.431Z",
+   "seconds": 59.1,
+   "txs": [
+    {
+     "label": "evm_withdraw (btc_home:WETH)",
+     "hash": "A1iduZ4rJmjCfqP7bckeAe3awwDyjPt6BvNX2vgpoTGC",
+     "ok": true,
+     "gas_tgas": 16.23,
+     "receipts": [
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 3.473193365577
+      },
+      {
+       "executor": "v1.signer-prod.testnet",
+       "gas_tgas": 4.626691616651
+      },
+      {
+       "executor": "v1.signer-prod.testnet",
+       "gas_tgas": 3.820810269512
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 3.100556050941
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": {
+      "nonce": 7,
+      "kind": "transfer",
+      "token": "0x4200000000000000000000000000000000000006",
+      "amount": "19502185834107687",
+      "to": "0x4200000000000000000000000000000000000006",
+      "raw": "0x02f8b283014a3407830f4240841dcd6500830186a094420000000000000000000000000000000000000680b844a9059cbb0000000000000000000000002031181d63507368232579af4c64a1c3428407ff000000000000000000000000000000000000000000000000004549227afc5327c001a0f8e305d5eb0046daac4293667d5c103d797288a61563157936f6e1bb2786c7eea010aa53a86559948b0ca94b9f58cd050a7ebf55603e319d61da66aa057988881e",
+      "hash": "0x261ce7ef74f7f55a67312a6cbab6541eeb164a7488f4d3205763286e7d5b69d5",
+      "step": null,
+      "signed_at": "1794614379906776845"
+     },
+     "seconds": 7.8,
+     "logs": [
+      "transfer of 19502185834107687 at aave under way: Ethereum transaction 7",
+      "transfer move:3 under way: 19502185834107687 0x4200000000000000000000000000000000000006 to 0x2031181d63507368232579af4c64a1c3428407ff",
+      "sign: predecessor=AccountId(\"fund-move-11132247.pbf.testnet\"), request=SignRequestArgs { path: \"hyperliquid-1\", payload: Ecdsa(BoundedVec { inner: [160, 62, 147, 41, 47, 94, 240, 121, 92, 24, 22, 21, 140, 148, 109, 244, 174, 227, 19, 240, 213, 216, 58, 162, 15, 120, 186, 8, 146, 145, 22, 73], witness: NonEmpty(()) }), domain_id: DomainId(0) }",
+      "EVENT_JSON:{\"standard\":\"pb-pool\",\"version\":\"1.0.0\",\"event\":\"evm_signed\",\"data\":{\"nonce\":7,\"kind\":\"transfer\",\"hash\":\"0x261ce7ef74f7f55a67312a6cbab6541eeb164a7488f4d3205763286e7d5b69d5\"}}"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "sent_from_the_address": [
+     {
+      "symbol": "WETH",
+      "amount": "19502185834107687"
+     }
+    ],
+    "arrived_units": "54993",
+    "mnbtc": "1999770",
+    "moves": [
+     {
+      "transfer_id": "move:3",
+      "deposit_address": "0x2031181d63507368232579af4c64a1c3428407ff",
+      "deposit_memo": "802a4794-702f-48de-b0aa-f575a35560d4",
+      "sends": {
+       "token": "0x4200000000000000000000000000000000000006",
+       "amount": "19502185834107687"
+      },
+      "delivers": {
+       "token": "mnbtc.pbf-ops.testnet",
+       "symbol": "nBTC",
+       "chain": "NEAR",
+       "amount": "54993"
+      },
+      "note": null,
+      "exp_ms": 1794614972649,
+      "needed_check": null,
+      "verdict": null,
+      "transfer": {
+       "nonce": 7,
+       "hash": "0x261ce7ef74f7f55a67312a6cbab6541eeb164a7488f4d3205763286e7d5b69d5",
+       "submit": {
+        "account": "fund-move-11132247.pbf.testnet",
+        "nonce": 7,
+        "kind": "transfer",
+        "hash": "0x261ce7ef74f7f55a67312a6cbab6541eeb164a7488f4d3205763286e7d5b69d5",
+        "status": "sent"
+       },
+       "status": "mined"
+      },
+      "stand_in": {
+       "statuses": [
+        "PENDING_DEPOSIT",
+        "PROCESSING",
+        "SUCCESS"
+       ],
+       "delivery": [
+        "F25pPjTY6urAVFu2fJh3ortZzwNLm9gFD7wF8VBy6G9U"
+       ]
+      }
+     }
+    ]
+   },
+   "code": null
+  },
+  {
+   "id": "withdraw",
+   "label": "withdraw both tokens to the keeper, with no verdict",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-14T00:00:29.580Z",
+   "seconds": 10.9,
+   "txs": [
+    {
+     "label": "withdraw musdc.pbf-ops.testnet",
+     "hash": "GQ7knB2kdockGrcJngxovRzcmxFW6wycYoP5avDa4tuL",
+     "ok": true,
+     "gas_tgas": 10.57,
+     "receipts": [
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 3.365910203083
+      },
+      {
+       "executor": "musdc.pbf-ops.testnet",
+       "gas_tgas": 3.379625334514
+      },
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 2.392015845069
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": true,
+     "seconds": 5.3,
+     "logs": [
+      "The account is already registered, refunding the deposit",
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"fund-move-11132247.pbf.testnet\",\"new_owner_id\":\"pbf-keeper.testnet\",\"amount\":\"1099383\"}]}"
+     ]
+    },
+    {
+     "label": "withdraw mnbtc.pbf-ops.testnet",
+     "hash": "HELreC81sTxdfXNU6m5aAXi8BDvZoijQrmpcc7sK5Ky5",
+     "ok": true,
+     "gas_tgas": 10.52,
+     "receipts": [
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 3.365998237975
+      },
+      {
+       "executor": "mnbtc.pbf-ops.testnet",
+       "gas_tgas": 3.331745334514
+      },
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "fund-move-11132247.pbf.testnet",
+       "gas_tgas": 2.392015845069
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      },
+      {
+       "executor": "pbf-keeper.testnet",
+       "gas_tgas": 0.2231825625
+      }
+     ],
+     "result": true,
+     "seconds": 5.2,
+     "logs": [
+      "The account is already registered, refunding the deposit",
+      "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"fund-move-11132247.pbf.testnet\",\"new_owner_id\":\"pbf-keeper.testnet\",\"amount\":\"1999770\"}]}"
+     ]
+    }
+   ],
+   "gateway": [],
+   "detail": {
+    "withdrawn": {
+     "musdc.pbf-ops.testnet": "1099383",
+     "mnbtc.pbf-ops.testnet": "1999770"
+    },
+    "left": [
+     "0",
+     "0"
+    ]
+   },
+   "code": null
+  },
+  {
+   "id": "float",
+   "label": "nothing is sent: what the float holds after the run, and how much test ETH the run used",
+   "ok": true,
+   "expect_fail": false,
+   "pass": true,
+   "started_utc": "2026-11-14T00:00:40.496Z",
+   "seconds": 1.2,
+   "txs": [],
+   "gateway": [],
+   "detail": {
+    "gas_wallet": "0x2031181d63507368232579af4c64a1c3428407ff",
+    "eth_before": "37984769455823215",
+    "eth_after": "35983352237928753",
+    "used_wei": "2001417217894462",
+    "used_eth": 0.002001417217894462,
+    "left_at_the_address": {
+     "eth_wei": "1994064672445194",
+     "tokens": [
+      {
+       "symbol": "USDC",
+       "amount": "996160"
+      }
+     ]
+    }
+   },
+   "code": null
+  }
+ ],
+ "pass_point": true,
+ "pass": true,
+ "finished_utc": "2026-11-14T00:00:41.663Z"
+}

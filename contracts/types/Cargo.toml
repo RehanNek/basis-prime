@@ -1,0 +1,17 @@
+[package]
+name = "pb-types"
+description = "Types the factory and the account contract share: the config each account is created with (INTERFACES.md 3)"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[lib]
+crate-type = ["rlib"]
+
+[dependencies]
+near-sdk = { workspace = true }
+
+[dev-dependencies]
+near-sdk = { workspace = true, features = ["unit-testing"] }

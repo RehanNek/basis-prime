@@ -1,0 +1,30 @@
+{
+  "name": "@pb/keeper",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Keeper: watches every client account with a loan, asks for checks on band crossings, margin calls and hourly, confirms DELEVERAGE with a second check, runs stored plans, and logs every action as JSON lines (PLAN.md 5.7; INTERFACES.md 17). Also the testnet drill tools and gate scripts",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p .",
+    "start": "tsc -p . && node --env-file-if-exists=../../.env dist/index.js",
+    "test": "tsc -p . && node --test dist/*.test.js",
+    "hedge:demo": "tsc -p . && node dist/hedge-demo.js",
+    "drill": "tsc -p . && node dist/drill.js",
+    "drill:demo": "tsc -p . && node dist/drill-demo.js",
+    "faults": "tsc -p . && node dist/fault-run.js",
+    "funding:demo": "tsc -p . && node dist/funding-gate.js",
+    "pause:demo": "tsc -p . && node dist/pause-demo.js"
+  },
+  "engines": {
+    "node": ">=22.22.2"
+  },
+  "dependencies": {
+    "@nktkas/hyperliquid": "0.33.3",
+    "@pb/oneclick": "workspace:*",
+    "near-api-js": "7.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "typescript": "7.0.2"
+  }
+}

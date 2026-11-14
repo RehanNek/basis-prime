@@ -1,0 +1,449 @@
+{
+ "account": "demo1.pbf.testnet",
+ "owner": "pbf-keeper.testnet",
+ "started_utc": "2026-11-07 12:00:01",
+ "steps": [
+  {
+   "step": "create account",
+   "args": {
+    "name": "demo1",
+    "owner": "pbf-keeper.testnet"
+   },
+   "ok": true,
+   "expect_fail": false,
+   "tx": "2Xu5cni8ZkQ9zGXmHS97THLPN1MeMZb8C8br2TNTJ78X",
+   "seconds": 7.0,
+   "detail": "The \"create_account\" call to <pbf.testnet> on behalf of <pbf-keeper.testnet> succeeded."
+  },
+  {
+   "step": "mint musdc to the owner",
+   "args": {
+    "account_id": "pbf-keeper.testnet",
+    "amount": "20000000000"
+   },
+   "ok": true,
+   "expect_fail": false,
+   "tx": "5TLRG7GbTxQzyNsQJi9m6sBN5ikpxBMFGAW45PE8MC7s",
+   "seconds": 4.8,
+   "detail": ""
+  },
+  {
+   "step": "deposit musdc",
+   "args": {
+    "receiver_id": "demo1.pbf.testnet",
+    "amount": "20000000000",
+    "msg": ""
+   },
+   "ok": true,
+   "expect_fail": false,
+   "tx": "6SG3TmSkEbqgnbMfFngxjJXUBMCHSAwsxLQEMfEvCPVp",
+   "seconds": 5.4,
+   "detail": "The \"ft_transfer_call\" call to <musdc.pbf-ops.testnet> on behalf of <pbf-keeper.testnet> succeeded."
+  },
+  {
+   "step": "mint mnbtc to the owner",
+   "args": {
+    "account_id": "pbf-keeper.testnet",
+    "amount": "25000000"
+   },
+   "ok": true,
+   "expect_fail": false,
+   "tx": "6WAV32qzu3oVVnwboxmiHBwrTGBGC6eCZXZTw4bpruJu",
+   "seconds": 4.3,
+   "detail": ""
+  },
+  {
+   "step": "deposit mnbtc",
+   "args": {
+    "receiver_id": "demo1.pbf.testnet",
+    "amount": "25000000",
+    "msg": ""
+   },
+   "ok": true,
+   "expect_fail": false,
+   "tx": "5SVxdPCMQFr9hNMkxzif68XScycpqMH5tQThuwStcQFf",
+   "seconds": 5.8,
+   "detail": "The \"ft_transfer_call\" call to <mnbtc.pbf-ops.testnet> on behalf of <pbf-keeper.testnet> succeeded."
+  },
+  {
+   "step": "request_check (check)",
+   "args": {
+    "intent": {
+     "check": {}
+    }
+   },
+   "ok": true,
+   "expect_fail": false,
+   "tx": "AVGm11TFKgCdzsZEBPD3Uk3J7rgMfSJNFZZ66jVv8mJJ",
+   "seconds": 15.6,
+   "detail": "The \"request_check\" call to <demo1.pbf.testnet> on behalf of <pbf-keeper.testnet> succeeded."
+  },
+  {
+   "step": "request_check (borrow)",
+   "args": {
+    "intent": {
+     "borrow": {
+      "amount": "5000000000"
+     }
+    }
+   },
+   "ok": true,
+   "expect_fail": false,
+   "tx": "EgqUtgP7nXwo8zwwS86BC5tHt7ZfNhytwtEbBE661uU7",
+   "seconds": 16.1,
+   "detail": "The \"request_check\" call to <demo1.pbf.testnet> on behalf of <pbf-keeper.testnet> succeeded."
+  },
+  {
+   "step": "borrow",
+   "args": {
+    "amount": "5000000000"
+   },
+   "ok": true,
+   "expect_fail": false,
+   "tx": "Gvx2VUTGoz1dxe8dMJNMcMkUiB6EgVSmXQ73VZ2H7Vm7",
+   "seconds": 7.8,
+   "detail": "The \"borrow\" call to <demo1.pbf.testnet> on behalf of <pbf-keeper.testnet> succeeded."
+  },
+  {
+   "step": "borrow again with the used verdict",
+   "args": {
+    "amount": "1000000"
+   },
+   "ok": false,
+   "expect_fail": true,
+   "tx": null,
+   "seconds": 4.3,
+   "detail": [
+    "Error: ",
+    "Error: An error occurred during a `FunctionCall` action.",
+    "ExecutionError(\"Smart contract panicked: the verdict was already used: ask for a new check\")"
+   ]
+  },
+  {
+   "step": "request_check (borrow, to let it go stale)",
+   "args": {
+    "intent": {
+     "borrow": {
+      "amount": "1000000"
+     }
+    }
+   },
+   "ok": true,
+   "expect_fail": false,
+   "tx": "CTe7LUAuqH2z7iGpm8xWw5g2yEiV2qhCVuF8pYtVnLBC",
+   "seconds": 14.6,
+   "detail": "The \"request_check\" call to <demo1.pbf.testnet> on behalf of <pbf-keeper.testnet> succeeded."
+  },
+  {
+   "step": "borrow with a stale verdict",
+   "args": {
+    "amount": "1000000"
+   },
+   "ok": false,
+   "expect_fail": true,
+   "tx": null,
+   "seconds": 4.4,
+   "detail": [
+    "Error: ",
+    "Error: An error occurred during a `FunctionCall` action.",
+    "ExecutionError(\"Smart contract panicked: the verdict is 137 blocks old, above the 120-block limit\")"
+   ]
+  },
+  {
+   "step": "repay",
+   "args": {
+    "amount": "5001000803"
+   },
+   "ok": true,
+   "expect_fail": false,
+   "tx": "ENKNyVZLENfohDpozPHAeMbsbdTZmxBwdYjdebmCM25t",
+   "seconds": 6.0,
+   "detail": "The \"repay\" call to <demo1.pbf.testnet> on behalf of <pbf-keeper.testnet> succeeded."
+  },
+  {
+   "step": "withdraw all mnbtc with no loan, no verdict",
+   "args": {
+    "token": "mnbtc.pbf-ops.testnet",
+    "amount": "25000000",
+    "receiver": "pbf-keeper.testnet"
+   },
+   "ok": true,
+   "expect_fail": false,
+   "tx": "FZPBXBck4J2H5fpKZZKtJ8pt8aVSqnBaJBPo5SmvKrHD",
+   "seconds": 4.9,
+   "detail": ""
+  },
+  {
+   "step": "withdraw all musdc with no loan, no verdict",
+   "args": {
+    "token": "musdc.pbf-ops.testnet",
+    "amount": "19999999168",
+    "receiver": "pbf-keeper.testnet"
+   },
+   "ok": true,
+   "expect_fail": false,
+   "tx": "5ihCxppZSY3oi32EaNfT1aXNAX1cuAtQYVWrz4jnGZFE",
+   "seconds": 4.6,
+   "detail": ""
+  }
+ ],
+ "created_state": {
+  "owner": "pbf-keeper.testnet",
+  "counter": 0
+ },
+ "balances_after_deposit": {
+  "musdc.pbf-ops.testnet": "20000000000",
+  "mnbtc.pbf-ops.testnet": "25000000"
+ },
+ "preview_replay": {
+  "call_id": "d2930d04-5b33-4040-aa41-32895310df1d",
+  "status": "completed",
+  "time_ms": 5474,
+  "instructions": 120777260,
+  "compute_cost": "1125",
+  "attestation_url": "/attestations/by-call/d2930d04-5b33-4040-aa41-32895310df1d",
+  "replay_exit": 0,
+  "replay_says": [
+   "{\"ok\":true,\"v\":1,\"model\":\"B-0.2\",\"params\":\"3d362b434adaad0e0c909605bd792232acf964b9143a95ccb2541a0f65c4c263\",\"acct\":\"demo1.pbf.testnet\",\"blk\":276628090,\"nonce\":0,\"eq\":38997701250,\"eq_allow\":38997701250,\"mm\":7024589738,\"im\":8780737172,\"state\":\"HEALTHY\",\"action\":\"NONE\",\"since\":0,\"score\":550,\"tier\":\"WATCH\",\"rate_bp\":500,\"allow\":{\"withdraw\":20000000000,\"borrow\":19498850625},\"credit\":{\"line\":19498850625,\"binding\":\"C4\"},\"volf_bp\":10000,\"top\":[\"replay 2020-03-12 down (from 2020-03-12 22:25 UTC)\",\"replay 2021-05-19 down (from 2021-05-19 09:10 UTC)\",\"replay 2022-11-08 down (from 2022-11-08 16:34 UTC)\"],\"topup\":0,\"venues\":{\"hl_margin_ratio_bp\":0},\"pool\":{\"shares_bp\":{\"nBTC\":4871},\"hold\":{\"nBTC\":18997701250},\"hl_eq\":0},\"hr_bp\":0,\"hr7_bp\":0,\"exp_bp\":4871,\"bands\":{},\"coins\":{\"uncertain\":[],\"stale\":[],\"reduce_only\":[]},\"plan\":[],\"in\":\"f52b24fa231b01e76ae88a59c927ab4719ad815d7dee58dc8bb83dd257bb45bd\"}",
+   "the output_hash its OutLayer attestation should show: a2b074b4524ce36680631bd7c010caab38aecefd2b83191b5b8fa59be415c74a",
+   "the same values as the verdict in research/data/phase2_preview_snapshot.json, whose keys are in another order (OutLayer's HTTPS API sorts them)"
+  ]
+ },
+ "check_verdict": {
+  "ok": true,
+  "state": "HEALTHY",
+  "action": "NONE",
+  "tier": "WATCH",
+  "score": 550,
+  "rate_bp": 500,
+  "allow": {
+   "borrow": 19498879104,
+   "withdraw": 20000000000
+  },
+  "credit": {
+   "binding": "C4",
+   "line": 19498879104
+  },
+  "eq": 38998438750,
+  "eq_allow": 38997758208,
+  "mm": 7024862759,
+  "im": 8781078448,
+  "nonce": 0,
+  "blk": 276628113,
+  "top": [
+   "replay 2020-03-12 down (from 2020-03-12 22:25 UTC)",
+   "replay 2021-05-19 down (from 2021-05-19 09:10 UTC)",
+   "replay 2022-11-08 down (from 2022-11-08 16:34 UTC)"
+  ],
+  "reason": null
+ },
+ "borrow_verdict": {
+  "ok": true,
+  "state": "HEALTHY",
+  "action": "NONE",
+  "tier": "WATCH",
+  "score": 550,
+  "rate_bp": 500,
+  "allow": {
+   "borrow": 19498985208,
+   "withdraw": 20000000000
+  },
+  "credit": {
+   "binding": "C4",
+   "line": 19498985208
+  },
+  "eq": 38998450000,
+  "eq_allow": 38997970416,
+  "mm": 7024866923,
+  "im": 8781083654,
+  "nonce": 0,
+  "blk": 276628141,
+  "top": [
+   "replay 2020-03-12 down (from 2020-03-12 22:25 UTC)",
+   "replay 2021-05-19 down (from 2021-05-19 09:10 UTC)",
+   "replay 2022-11-08 down (from 2022-11-08 16:34 UTC)"
+  ],
+  "reason": null
+ },
+ "after_borrow": {
+  "debt": 5000000067,
+  "musdc": "25000000000"
+ },
+ "after_repay": {
+  "debt": "0",
+  "loan": {
+   "principal": "0",
+   "open": false
+  }
+ },
+ "final": {
+  "balances": {
+   "musdc.pbf-ops.testnet": "0",
+   "mnbtc.pbf-ops.testnet": "0"
+  },
+  "state": {
+   "owner": "pbf-keeper.testnet",
+   "counter": 3,
+   "blocked": false,
+   "loan": {
+    "principal": "0",
+    "open": false
+   },
+   "verdict": {
+    "intent": {
+     "borrow": {
+      "amount": "1000000"
+     }
+    },
+    "received_block": 276628214,
+    "verdict": {
+     "acct": "demo1.pbf.testnet",
+     "action": "NONE",
+     "allow": {
+      "borrow": 16998891767,
+      "withdraw": 25000000000
+     },
+     "bands": {},
+     "blk": 276628199,
+     "coins": {
+      "reduce_only": [],
+      "stale": [],
+      "uncertain": []
+     },
+     "credit": {
+      "binding": "C4",
+      "line": 21998891916
+     },
+     "eq": 38998562351,
+     "eq_allow": 38997783684,
+     "exp_bp": 4872,
+     "hr7_bp": 0,
+     "hr_bp": 0,
+     "im": 8787133359,
+     "in": "d534a2c81989453fe7b893750eeb5a5f0251ec3ef41b5a996945f260b6a5d1d5",
+     "mm": 7029706687,
+     "model": "B-0.2",
+     "nonce": 1,
+     "ok": true,
+     "params": "3d362b434adaad0e0c909605bd792232acf964b9143a95ccb2541a0f65c4c263",
+     "plan": [],
+     "pool": {
+      "hl_eq": 0,
+      "hold": {
+       "nBTC": 18998562500
+      },
+      "shares_bp": {
+       "nBTC": 4318
+      }
+     },
+     "rate_bp": 500,
+     "score": 550,
+     "since": 0,
+     "state": "HEALTHY",
+     "tier": "WATCH",
+     "top": [
+      "replay 2020-03-12 down (from 2020-03-12 22:25 UTC)",
+      "replay 2021-05-19 down (from 2021-05-19 09:10 UTC)",
+      "replay 2022-11-08 down (from 2022-11-08 16:34 UTC)"
+     ],
+     "topup": 0,
+     "v": 1,
+     "venues": {
+      "hl_margin_ratio_bp": 0
+     },
+     "volf_bp": 10000
+    }
+   },
+   "margin_call": {
+    "since": "0",
+    "below": false,
+    "intervals": []
+   },
+   "deleverage": {
+    "first_at": "0",
+    "confirmed_plan": null
+   },
+   "hourly": [
+    {
+     "hour": 498348,
+     "hr_bp_min": 0,
+     "exp_bp_max": 4872
+    }
+   ],
+   "pending": [],
+   "hl": {
+    "path": "hyperliquid-1",
+    "address": null
+   }
+  },
+  "pool": {
+   "cash": "10000000000832",
+   "loans": "0",
+   "capital": "10000000000832",
+   "utilisation_bp": 0,
+   "rate_bp": {
+    "preferred": 100,
+    "standard": 200,
+    "watch": 500
+   },
+   "interest_earned": "832",
+   "written_off": "0",
+   "funded": "10000000000000",
+   "defunded": "0",
+   "paused": false,
+   "lent_24h": "-832",
+   "daily_budget": "1000000000083",
+   "daily_budget_bp": 1000,
+   "pending_budget": null,
+   "wrappers": {
+    "ETH": {
+     "amount": "0",
+     "cap": "1500000000124"
+    },
+    "USDT": {
+     "amount": "0",
+     "cap": "3000000000249"
+    },
+    "nBTC": {
+     "amount": "0",
+     "cap": "3000000000249"
+    }
+   },
+   "hyperliquid": {
+    "amount": "0",
+    "cap": "5000000000416"
+   },
+   "book": {
+    "ETH": {
+     "amount": "0",
+     "cap": "12000000000000"
+    },
+    "USDT": {
+     "amount": "0",
+     "cap": "24000000000000"
+    },
+    "nBTC": {
+     "amount": "0",
+     "cap": "12000000000000"
+    },
+    "wNEAR": {
+     "amount": "0",
+     "cap": "6000000000000"
+    }
+   }
+  }
+ },
+ "finished_utc": "2026-11-07 12:03:17",
+ "attestation": {
+  "url": "https://testnet-api.outlayer.ai/attestations/by-call/d2930d04-5b33-4040-aa41-32895310df1d",
+  "wasm_hash": "78de117a8997ef34c9c9f76b04b8185c427f09348891b294752838655a658971",
+  "output_hash": "a2b074b4524ce36680631bd7c010caab38aecefd2b83191b5b8fa59be415c74a",
+  "matches_local_replay": true,
+  "tdx_quote": true
+ },
+ "outside_verdict": {
+  "call": "demo1.pbf.testnet.on_verdict from pbf-keeper.testnet",
+  "refused": true,
+  "reason": "Smart contract panicked: Method on_verdict is private"
+ }
+}

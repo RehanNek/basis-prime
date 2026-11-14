@@ -1,0 +1,23 @@
+{
+ "account_id": "meth.pbf-ops.testnet",
+ "block_height": 277565608,
+ "code_sha256": "f17e208da721c9d1740288997f3d9f057152d5ac212d32d376d80def1f57a714",
+ "values": [
+  {
+   "key": "ABQAAABzaGltLnBiZi1vcHMudGVzdG5ldA==",
+   "value": "fKOVeE7F2xobAAAAAAAAAA=="
+  },
+  {
+   "key": "AB4AAABmdW5kLXJoZWEtMTExMzE5NDYucGJmLnRlc3RuZXQ=",
+   "value": "AAAAAAAAAAAAAAAAAAAAAA=="
+  },
+  {
+   "key": "AEAAAAA3MjNhYTAxZjFlYmI3OWFlZDlhODRiOTEzMDRhNmY1YWQwZGViMTIxNmNjMTk5ZDg2MjViYzc3MTYxYWQ4ZjQw",
+   "value": "hFy6dpQRCQAAAAAAAAAAAA=="
+  },
+  {
+   "key": "U1RBVEU=",
+   "value": "AQAAAAAAAFDv4tbkGhsAAAAAAAAAfQAAAAAAAAAIAAAAZnQtMS4wLjAIAAAATW9jayBFVEgDAAAARVRIAAAAEg=="
+  }
+ ]
+}

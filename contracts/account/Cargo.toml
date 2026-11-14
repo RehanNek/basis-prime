@@ -1,0 +1,19 @@
+[package]
+name = "pb-account"
+description = "Account: one per client; holds its NEAR-side assets, owns its Hyperliquid account through Chain Signatures, and accepts only fresh verdicts (PLAN.md 5.1)"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+near-sdk = { workspace = true }
+pb-types = { path = "../types" }
+
+[dev-dependencies]
+# `unstable` only turns on `env::ecrecover`, which the unit tests use to check real MPC signatures. No new crate.
+near-sdk = { workspace = true, features = ["unit-testing", "unstable"] }

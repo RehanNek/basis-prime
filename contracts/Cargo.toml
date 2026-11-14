@@ -1,0 +1,36 @@
+# NEAR contracts (PLAN.md 5.1). Built with cargo-near 0.22.0; near-sdk pinned to 5.29.1 for mainnet
+# before protocol 88 (research/near.md 1).
+[workspace]
+resolver = "3"   # picks dependency versions that support our rust-version
+members = [
+    "types",
+    "factory",
+    "account",
+    "pool",
+    "testnet/token",
+    "testnet/drill",
+    "testnet/probe",
+    "testnet/mpc-mock",
+    "testnet/outlayer-mock",
+    "testnet/borrower",
+    "tests",
+]
+
+[workspace.package]
+version = "0.0.1"
+edition = "2021"
+rust-version = "1.93"
+license = "MIT"
+publish = false
+
+[workspace.dependencies]
+near-sdk = "=5.29.1"
+near-contract-standards = "=5.29.1"
+
+[profile.release]
+codegen-units = 1
+opt-level = "z"
+lto = true
+debug = false
+panic = "abort"
+overflow-checks = true

@@ -1,0 +1,308 @@
+{
+ "meta": {
+  "check": "calls",
+  "date_utc": "2026-11-06T23:05:50+00:00",
+  "api": "https://testnet-api.outlayer.ai",
+  "project": "pbf-keeper.testnet/pb-probe",
+  "version_key": "c6ea51a6db131c84a2360535a7be458ab5334a5980758384330b22110080238b",
+  "compute_limit_micro_usd": 20000
+ },
+ "summary": [
+  {
+   "n": 10,
+   "status": "completed",
+   "made": 10,
+   "succeeded": 10,
+   "first_error": null,
+   "first_error_at": null,
+   "ms_total": 236,
+   "time_ms": 967,
+   "instructions": 465461,
+   "compute_cost_usd": 0.001,
+   "error": null
+  },
+  {
+   "n": 30,
+   "status": "completed",
+   "made": 30,
+   "succeeded": 30,
+   "first_error": null,
+   "first_error_at": null,
+   "ms_total": 706,
+   "time_ms": 1474,
+   "instructions": 1286277,
+   "compute_cost_usd": 0.001002,
+   "error": null
+  },
+  {
+   "n": 60,
+   "status": "completed",
+   "made": 60,
+   "succeeded": 60,
+   "first_error": null,
+   "first_error_at": null,
+   "ms_total": 1462,
+   "time_ms": 2222,
+   "instructions": 2521437,
+   "compute_cost_usd": 0.001004,
+   "error": null
+  },
+  {
+   "n": 100,
+   "status": "completed",
+   "made": 100,
+   "succeeded": 100,
+   "first_error": null,
+   "first_error_at": null,
+   "ms_total": 2509,
+   "time_ms": 3527,
+   "instructions": 4164460,
+   "compute_cost_usd": 0.001007,
+   "error": null
+  },
+  {
+   "n": 150,
+   "status": "completed",
+   "made": 150,
+   "succeeded": 150,
+   "first_error": null,
+   "first_error_at": null,
+   "ms_total": 3868,
+   "time_ms": 4874,
+   "instructions": 6266707,
+   "compute_cost_usd": 0.00101,
+   "error": null
+  },
+  {
+   "n": 200,
+   "status": "completed",
+   "made": 200,
+   "succeeded": 200,
+   "first_error": null,
+   "first_error_at": null,
+   "ms_total": 5254,
+   "time_ms": 5991,
+   "instructions": 8322145,
+   "compute_cost_usd": 0.001013,
+   "error": null
+  }
+ ],
+ "runs": [
+  {
+   "input": {
+    "mode": "calls",
+    "n": 10
+   },
+   "sent_ms": 1794006312082,
+   "http": 200,
+   "wall_ms": 875,
+   "call_id": "08607314-ec65-4759-8826-14f6c0810905",
+   "status": "completed",
+   "attestation_url": "/attestations/by-call/08607314-ec65-4759-8826-14f6c0810905",
+   "poll_url": "/calls/08607314-ec65-4759-8826-14f6c0810905",
+   "output": {
+    "first_error": null,
+    "first_error_at": null,
+    "http_errors": 0,
+    "made": 10,
+    "mode": "calls",
+    "ms_max": 27,
+    "ms_min": 21,
+    "ms_total": 236,
+    "n": 10,
+    "ok": true,
+    "statuses": {
+     "200": 10
+    },
+    "stopped_early": false,
+    "succeeded": 10,
+    "transport_errors": 0,
+    "url": "https://www.cloudflare.com/cdn-cgi/trace"
+   },
+   "compute_cost": "1000",
+   "instructions": 465461,
+   "time_ms": 967,
+   "settled_after_s": 2.9
+  },
+  {
+   "input": {
+    "mode": "calls",
+    "n": 30
+   },
+   "sent_ms": 1794006315825,
+   "http": 200,
+   "wall_ms": 526,
+   "call_id": "67431b66-6f23-4fc8-99a5-e615cc3b410a",
+   "status": "completed",
+   "attestation_url": "/attestations/by-call/67431b66-6f23-4fc8-99a5-e615cc3b410a",
+   "poll_url": "/calls/67431b66-6f23-4fc8-99a5-e615cc3b410a",
+   "output": {
+    "first_error": null,
+    "first_error_at": null,
+    "http_errors": 0,
+    "made": 30,
+    "mode": "calls",
+    "ms_max": 28,
+    "ms_min": 20,
+    "ms_total": 706,
+    "n": 30,
+    "ok": true,
+    "statuses": {
+     "200": 30
+    },
+    "stopped_early": false,
+    "succeeded": 30,
+    "transport_errors": 0,
+    "url": "https://www.cloudflare.com/cdn-cgi/trace"
+   },
+   "compute_cost": "1002",
+   "instructions": 1286277,
+   "time_ms": 1474,
+   "settled_after_s": 2.9
+  },
+  {
+   "input": {
+    "mode": "calls",
+    "n": 60
+   },
+   "sent_ms": 1794006319232,
+   "http": 200,
+   "wall_ms": 499,
+   "call_id": "b2129ee1-6944-4135-a51b-a3908558e4af",
+   "status": "completed",
+   "attestation_url": "/attestations/by-call/b2129ee1-6944-4135-a51b-a3908558e4af",
+   "poll_url": "/calls/b2129ee1-6944-4135-a51b-a3908558e4af",
+   "output": {
+    "first_error": null,
+    "first_error_at": null,
+    "http_errors": 0,
+    "made": 60,
+    "mode": "calls",
+    "ms_max": 40,
+    "ms_min": 20,
+    "ms_total": 1462,
+    "n": 60,
+    "ok": true,
+    "statuses": {
+     "200": 60
+    },
+    "stopped_early": false,
+    "succeeded": 60,
+    "transport_errors": 0,
+    "url": "https://www.cloudflare.com/cdn-cgi/trace"
+   },
+   "compute_cost": "1004",
+   "instructions": 2521437,
+   "time_ms": 2222,
+   "settled_after_s": 5.5
+  },
+  {
+   "input": {
+    "mode": "calls",
+    "n": 100
+   },
+   "sent_ms": 1794006325245,
+   "http": 200,
+   "wall_ms": 951,
+   "call_id": "616415fd-0484-4a9f-bbdc-2856115aed30",
+   "status": "completed",
+   "attestation_url": "/attestations/by-call/616415fd-0484-4a9f-bbdc-2856115aed30",
+   "poll_url": "/calls/616415fd-0484-4a9f-bbdc-2856115aed30",
+   "output": {
+    "first_error": null,
+    "first_error_at": null,
+    "http_errors": 0,
+    "made": 100,
+    "mode": "calls",
+    "ms_max": 36,
+    "ms_min": 18,
+    "ms_total": 2509,
+    "n": 100,
+    "ok": true,
+    "statuses": {
+     "200": 100
+    },
+    "stopped_early": false,
+    "succeeded": 100,
+    "transport_errors": 0,
+    "url": "https://www.cloudflare.com/cdn-cgi/trace"
+   },
+   "compute_cost": "1007",
+   "instructions": 4164460,
+   "time_ms": 3527,
+   "settled_after_s": 5.8
+  },
+  {
+   "input": {
+    "mode": "calls",
+    "n": 150
+   },
+   "sent_ms": 1794006332007,
+   "http": 200,
+   "wall_ms": 857,
+   "call_id": "53b5cc02-5085-426d-9735-235c96bda8e0",
+   "status": "completed",
+   "attestation_url": "/attestations/by-call/53b5cc02-5085-426d-9735-235c96bda8e0",
+   "poll_url": "/calls/53b5cc02-5085-426d-9735-235c96bda8e0",
+   "output": {
+    "first_error": null,
+    "first_error_at": null,
+    "http_errors": 0,
+    "made": 150,
+    "mode": "calls",
+    "ms_max": 36,
+    "ms_min": 21,
+    "ms_total": 3868,
+    "n": 150,
+    "ok": true,
+    "statuses": {
+     "200": 150
+    },
+    "stopped_early": false,
+    "succeeded": 150,
+    "transport_errors": 0,
+    "url": "https://www.cloudflare.com/cdn-cgi/trace"
+   },
+   "compute_cost": "1010",
+   "instructions": 6266707,
+   "time_ms": 4874,
+   "settled_after_s": 7.9
+  },
+  {
+   "input": {
+    "mode": "calls",
+    "n": 200
+   },
+   "sent_ms": 1794006340818,
+   "http": 200,
+   "wall_ms": 888,
+   "call_id": "2bc5f72e-cdf3-4a3d-8139-208dcb7c20fe",
+   "status": "completed",
+   "attestation_url": "/attestations/by-call/2bc5f72e-cdf3-4a3d-8139-208dcb7c20fe",
+   "poll_url": "/calls/2bc5f72e-cdf3-4a3d-8139-208dcb7c20fe",
+   "output": {
+    "first_error": null,
+    "first_error_at": null,
+    "http_errors": 0,
+    "made": 200,
+    "mode": "calls",
+    "ms_max": 174,
+    "ms_min": 21,
+    "ms_total": 5254,
+    "n": 200,
+    "ok": true,
+    "statuses": {
+     "200": 200
+    },
+    "stopped_early": false,
+    "succeeded": 200,
+    "transport_errors": 0,
+    "url": "https://www.cloudflare.com/cdn-cgi/trace"
+   },
+   "compute_cost": "1013",
+   "instructions": 8322145,
+   "time_ms": 5991,
+   "settled_after_s": 8.4
+  }
+ ]
+}

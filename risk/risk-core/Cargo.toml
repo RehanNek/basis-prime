@@ -1,0 +1,14 @@
+[package]
+name = "risk-core"
+description = "The risk and credit engine as a pure library: no I/O, no clock (RISK_ENGINE.md)"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+serde = { version = "=1.0.229", features = ["derive"] }
+# float_roundtrip: parse every number exactly as Python's json does (correctly rounded), so the compiled-in
+# parameters and the golden cases have the reference's exact bits.
+serde_json = { version = "=1.0.154", features = ["float_roundtrip"] }

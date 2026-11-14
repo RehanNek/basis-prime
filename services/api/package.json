@@ -1,0 +1,24 @@
+{
+  "name": "@pb/api",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Backend for the web app (INTERFACES.md 7 and 11): chain views over RPC, pb-risk previews and pb-gateway orders over OutLayer's HTTPS API, Hyperliquid testnet reads, posting the account's MPC-signed actions, and 1Click quotes. Holds the OutLayer payment key and the 1Click key server-side, and signs nothing",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p .",
+    "start": "tsc -p . && node --env-file-if-exists=../../.env dist/index.js",
+    "test": "tsc -p . && node --test dist/*.test.js"
+  },
+  "engines": {
+    "node": ">=22.22.2"
+  },
+  "dependencies": {
+    "@noble/curves": "2.2.0",
+    "@noble/hashes": "2.2.0",
+    "@pb/oneclick": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "typescript": "7.0.2"
+  }
+}

@@ -1,0 +1,24 @@
+[package]
+name = "pb-risk"
+description = "pb-risk: the OutLayer program that reads every input itself and returns the signed verdict (PLAN.md 5.6, RISK_ENGINE.md Appendix A)"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+# The library is pure (inputs in, verdict out), so `backtest verdict` replays a run natively, to the byte.
+# The reads, and the WASI HTTP transport the binary uses, live in pb-read, which pb-gateway shares.
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = "pb-risk"
+path = "src/main.rs"
+
+[dependencies]
+risk-core = { path = "../risk-core" }
+pb-read = { path = "../pb-read" }
+serde = { version = "=1.0.229", features = ["derive"] }
+# float_roundtrip: a number parsed back from the inputs file has the bits it was read with.
+serde_json = { version = "=1.0.154", features = ["float_roundtrip"] }

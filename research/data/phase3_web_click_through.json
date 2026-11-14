@@ -1,0 +1,204 @@
+{
+ "what": "Phase 3 gate, web half: the hedge clicked through in the web app with the user's own Meteor wallet on NEAR and Hyperliquid testnet, at the testnet demo size chosen on 8 Nov",
+ "wallet": "quiethare6001.testnet (Meteor Wallet)",
+ "client_account": "quiethare-hedge.pbf.testnet",
+ "hl_address": "0x8c01b1a86db01769c246d3739da0bb74ae3217fb",
+ "agent": {
+  "address": "0x82d0bb9ceedb74facaff30971e2b2baa741bb564",
+  "as_hyperliquid_lists_it": {
+   "name": "pb",
+   "validUntil": 1809689982563
+  }
+ },
+ "programs": {
+  "factory": "8f066c27\u2026",
+  "account_code": "f90746a0\u2026",
+  "pb_gateway": "fcae6052c4cde41d4dcb50460f4788df848e648839ce392fb6f15dc1581223d5",
+  "pb_risk": "d741714416b7a75c9228bda21d6b70fb92850344130235943179369763396b7e"
+ },
+ "near_transactions": [
+  {
+   "step": "Create quiethare-hedge.pbf.testnet (4 NEAR)",
+   "time_utc": "2026-11-08 11:33:46",
+   "receiver": "pbf.testnet",
+   "method": "create_account",
+   "tx": "55PfmnQfhxBa91NTGY48fkTnjxu4nAKBo459oEeCGqRs",
+   "ok": true
+  },
+  {
+   "step": "Deposit 440 mUSDC",
+   "time_utc": "2026-11-08 11:34:33",
+   "receiver": "musdc.pbf-ops.testnet",
+   "method": "ft_transfer_call",
+   "tx": "8U4udtcT3HEnBZ7VBozyab1vj9vowsNAirVhE5tUmnnR",
+   "ok": true
+  },
+  {
+   "step": "Deposit 0.015 mNBTC",
+   "time_utc": "2026-11-08 11:35:00",
+   "receiver": "mnbtc.pbf-ops.testnet",
+   "method": "ft_transfer_call",
+   "tx": "4wn1ddp2Kc4dZxFkkHkUh2YzjMAjUn9VwCbxJ2yWV4aN",
+   "ok": true
+  },
+  {
+   "step": "Set up: derive the Hyperliquid address through Chain Signatures",
+   "time_utc": "2026-11-08 11:35:42",
+   "receiver": "quiethare-hedge.pbf.testnet",
+   "method": "hl_init",
+   "tx": "52yanX191qu4fBSMz7K6mgkVafp5Hebs22aNazwcEuM4",
+   "ok": true
+  },
+  {
+   "step": "To Hyperliquid: withdraw 430 mUSDC to the stand-in's deposit address",
+   "time_utc": "2026-11-08 11:37:45",
+   "receiver": "quiethare-hedge.pbf.testnet",
+   "method": "withdraw",
+   "tx": "68StvqBiki1jwXWfSXNtUyv5m9EiqLGuL2Z6pC1pAwtq",
+   "ok": true
+  },
+  {
+   "step": "Get the gateway's agent (on-chain pb-gateway run)",
+   "time_utc": "2026-11-08 11:39:02",
+   "receiver": "quiethare-hedge.pbf.testnet",
+   "method": "request_agent",
+   "tx": "GWC3KRyEdnKY7DDMWeN5KBH6BweegMi9rA2dNaqYWwE",
+   "ok": true
+  },
+  {
+   "step": "Approve the agent: MPC-signed ApproveAgent, posted by the backend",
+   "time_utc": "2026-11-08 11:39:41",
+   "receiver": "quiethare-hedge.pbf.testnet",
+   "method": "hl_approve_agent",
+   "tx": "CVuzMU37qnnr9C1LNzLTuvqYZrP9QaKLe9LYT1sD3vmo",
+   "ok": true
+  },
+  {
+   "step": "Borrow check for 1,090 USDC (0.01 NEAR)",
+   "time_utc": "2026-11-08 11:44:45",
+   "receiver": "quiethare-hedge.pbf.testnet",
+   "method": "request_check",
+   "tx": "71w6pH8a7vC5qRCYQk6iiBRCjHu7dMuBmLdjWioXfvfJ",
+   "ok": true
+  },
+  {
+   "step": "Borrow 1,090 USDC",
+   "time_utc": "2026-11-08 11:45:11",
+   "receiver": "quiethare-hedge.pbf.testnet",
+   "method": "borrow",
+   "tx": "ADxjnDYjMrVDefMgpPTdYdGbuojgXvbvszaEn6DboesS",
+   "ok": true
+  },
+  {
+   "step": "Withdraw check for 1,090 mUSDC, to take the loan out",
+   "time_utc": "2026-11-08 11:47:06",
+   "receiver": "quiethare-hedge.pbf.testnet",
+   "method": "request_check",
+   "tx": "72ne6RECVfUp7YJnVr4MNsvPKh4c4uytAYjongdZtrnC",
+   "ok": true
+  },
+  {
+   "step": "Take the loan out: withdraw 1,090 mUSDC to the wallet",
+   "time_utc": "2026-11-08 11:47:39",
+   "receiver": "quiethare-hedge.pbf.testnet",
+   "method": "withdraw",
+   "tx": "GabMLMXHjNgUBXaKKLy7SqabADiHV2FxmkDynoKUpqPU",
+   "ok": true
+  },
+  {
+   "step": "Deposit the 1,090 mUSDC loan back, to repay",
+   "time_utc": "2026-11-08 11:55:09",
+   "receiver": "musdc.pbf-ops.testnet",
+   "method": "ft_transfer_call",
+   "tx": "5huzj8PxL4mDUH2NFGCvpFYdJuWyUaRAYWu1DbeoxfW9",
+   "ok": true
+  },
+  {
+   "step": "Repay all",
+   "time_utc": "2026-11-08 11:56:06",
+   "receiver": "quiethare-hedge.pbf.testnet",
+   "method": "repay",
+   "tx": "395jfxRh5uWBymz629USXV4Ehzn7m3Lwzt9cqn5cWTtJ",
+   "ok": true
+  },
+  {
+   "step": "Home from Hyperliquid: MPC-signed sendAsset of 427 USDC to the stand-in",
+   "time_utc": "2026-11-08 11:58:18",
+   "receiver": "quiethare-hedge.pbf.testnet",
+   "method": "hl_withdraw",
+   "tx": "4cCv6j9jZyhd4agdNzKxCPnJxj6GnA2ankK9sqLznFqr",
+   "ok": true
+  },
+  {
+   "step": "Withdraw the mUSDC home, no check needed",
+   "time_utc": "2026-11-08 11:59:44",
+   "receiver": "quiethare-hedge.pbf.testnet",
+   "method": "withdraw",
+   "tx": "AQnfrpDZCVEZd6SsFHDSSQCo9kdmgu7Q6tcdXyYsX1Mz",
+   "ok": true
+  },
+  {
+   "step": "Withdraw the 0.015 mNBTC, no check needed",
+   "time_utc": "2026-11-08 12:00:22",
+   "receiver": "quiethare-hedge.pbf.testnet",
+   "method": "withdraw",
+   "tx": "6NYz61DBfXZRvPncHtM4QqYuMwv6v9oiBmEwmupNiWXB",
+   "ok": true
+  }
+ ],
+ "orders_signed_in_the_wallet": [
+  {
+   "time_utc": "2026-11-08 11:44:05",
+   "order": "sell 0.015 BTC, Ioc",
+   "result": "filled at 75,874 (Hyperliquid fill: Open Short, fee $0.51)"
+  },
+  {
+   "time_utc": "2026-11-08 11:48:31",
+   "order": "buy 0.015 BTC, Ioc, reduce-only at 76,368 (close the short, with the loan out)",
+   "result": "refused by P8 inside OutLayer's enclave: equity $480 below the initial requirement $526 (attestation linked in the app)"
+  },
+  {
+   "time_utc": "2026-11-08 11:57:14",
+   "order": "buy 0.015 BTC, Ioc, reduce-only (close the short, after repaying)",
+   "result": "filled at 75,864 (Close Short, closed PnL +$0.15, fee $0.51)"
+  }
+ ],
+ "hyperliquid_ledger": [
+  {
+   "time_utc": "2026-11-08 11:38:19",
+   "what": "the stand-in delivered 429.631773 USDC (usdSend from the float); Hyperliquid kept 1 USDC to open the address"
+  },
+  {
+   "time_utc": "2026-11-08 11:58:26",
+   "what": "sendAsset of 427.0 USDC to the stand-in's float, signed by Chain Signatures"
+  }
+ ],
+ "loan": {
+  "borrowed_usdc": 1090,
+  "borrowed_utc": "11:45:11",
+  "repaid_utc": "11:56:06",
+  "rate": "2% a year, Standard tier, score 700"
+ },
+ "final_state": {
+  "checked_utc": "2026-11-08 12:01",
+  "loan": {
+   "principal": "0",
+   "open": false
+  },
+  "pool_debt": 0,
+  "account_musdc_dust": 0.73666,
+  "account_mnbtc": 0,
+  "hl_usdc_dust": 0.757542,
+  "hl_positions": [],
+  "hl_open_orders": 0,
+  "send_open_until": "2026-11-10 12:58 UTC (no borrowing until then, by design)",
+  "wallet": {
+   "musdc": 9995.0,
+   "mnbtc": 0.25
+  }
+ },
+ "notes": [
+  "During part 3, the backend's NEAR RPC (FastNEAR's free tier) answered HTTP 429 to about one read in five; the backend now retries 429/503 after a pause and shares repeated reads (services/api/src/rpc.ts), and the deposit went through on the next try."
+ ],
+ "all_near_transactions_ok": true
+}

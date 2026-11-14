@@ -1,0 +1,106 @@
+{
+ "head": 223209587,
+ "head_utc": "2026-11-05T19:29:41Z",
+ "tests": [
+  {
+   "rpc": "fastnear",
+   "blocks_back": 1550,
+   "height": 223208037,
+   "ok": true,
+   "block_utc": "2026-11-05T19:14:47Z",
+   "degens_nbtc": "76038000000000000000000000000",
+   "amount_nbtc": "7702084",
+   "err": null
+  },
+  {
+   "rpc": "drpc",
+   "blocks_back": 1550,
+   "height": 223208037,
+   "ok": true,
+   "block_utc": "2026-11-05T19:14:47Z",
+   "degens_nbtc": "76038000000000000000000000000",
+   "amount_nbtc": "7702084",
+   "err": null
+  },
+  {
+   "rpc": "fastnear",
+   "blocks_back": 6200,
+   "height": 223203387,
+   "ok": true,
+   "block_utc": "2026-11-05T18:29:38Z",
+   "degens_nbtc": "76068210038500000000000000000",
+   "amount_nbtc": "7702084",
+   "err": null
+  },
+  {
+   "rpc": "drpc",
+   "blocks_back": 6200,
+   "height": 223203387,
+   "ok": true,
+   "block_utc": "2026-11-05T18:29:38Z",
+   "degens_nbtc": "76068210038500000000000000000",
+   "amount_nbtc": "7702084",
+   "err": null
+  },
+  {
+   "rpc": "fastnear",
+   "blocks_back": 12400,
+   "height": 223197187,
+   "ok": true,
+   "block_utc": "2026-11-05T17:30:08Z",
+   "degens_nbtc": "75827300146100000000000000000",
+   "amount_nbtc": "7690055",
+   "err": null
+  },
+  {
+   "rpc": "drpc",
+   "blocks_back": 12400,
+   "height": 223197187,
+   "ok": true,
+   "block_utc": "2026-11-05T17:30:08Z",
+   "degens_nbtc": "75827300146100000000000000000",
+   "amount_nbtc": "7690055",
+   "err": null
+  },
+  {
+   "rpc": "fastnear",
+   "blocks_back": 43200,
+   "height": 223166387,
+   "ok": true,
+   "block_utc": "2026-11-05T12:32:31Z",
+   "degens_nbtc": "79930377581740000000000000000",
+   "amount_nbtc": "8052371",
+   "err": null
+  },
+  {
+   "rpc": "drpc",
+   "blocks_back": 43200,
+   "height": 223166387,
+   "ok": true,
+   "block_utc": "2026-11-05T12:32:31Z",
+   "degens_nbtc": "79930377581740000000000000000",
+   "amount_nbtc": "8052371",
+   "err": null
+  },
+  {
+   "rpc": "fastnear",
+   "blocks_back": 90000,
+   "height": 223119587,
+   "ok": true,
+   "block_utc": "2026-11-05T05:04:20Z",
+   "degens_nbtc": "80445178986000000000000000000",
+   "amount_nbtc": "8064042",
+   "err": null
+  },
+  {
+   "rpc": "drpc",
+   "blocks_back": 90000,
+   "height": 223119587,
+   "ok": true,
+   "block_utc": "2026-11-05T05:04:20Z",
+   "degens_nbtc": "80445178986000000000000000000",
+   "amount_nbtc": "8064042",
+   "err": null
+  }
+ ]
+}

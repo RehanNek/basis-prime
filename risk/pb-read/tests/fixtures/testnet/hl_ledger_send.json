@@ -1,0 +1,36 @@
+{
+  "what": "Hyperliquid testnet's userNonFundingLedgerUpdates for 0x303d6eccb884202707872ae95bf36049cd5099aa (npme2jlqx2.pbf.testnet), read on 13 Nov 2026 and again on 14 Nov with startTime 1794570000000: the stand-in's delivery, then the account's own sendAsset home. The account's record of that signature: hl.signed[1] = {kind: sendAsset, nonce: 1794584202071} (research/send_pause_plan.md).",
+  "address": "0x303d6eccb884202707872ae95bf36049cd5099aa",
+  "nonce": 1794584202071,
+  "ledger": [
+    {
+      "time": 1794578062399,
+      "hash": "0x044f3f5c3b7d125005c8042e0c9d6e0101005741d6703122a817eaaefa70ec3a",
+      "delta": {
+        "type": "internalTransfer",
+        "usdc": "429.597844",
+        "user": "0xfc9d786b69b900ec51dfe8ebbf19ed47be59009d",
+        "destination": "0x303d6eccb884202707872ae95bf36049cd5099aa",
+        "fee": "1.0"
+      }
+    },
+    {
+      "time": 1794584215350,
+      "hash": "0x830259a7a2a23e5b847c042e0e2650010200718d3da55d2d26cb04fa61a61846",
+      "delta": {
+        "type": "send",
+        "user": "0x303d6eccb884202707872ae95bf36049cd5099aa",
+        "destination": "0xfc9d786b69b900ec51dfe8ebbf19ed47be59009d",
+        "sourceDex": "",
+        "destinationDex": "",
+        "token": "USDC",
+        "amount": "442.0",
+        "usdcValue": "442.0",
+        "fee": "0.0",
+        "nativeTokenFee": "0.0",
+        "nonce": 1794584202071,
+        "feeToken": ""
+      }
+    }
+  ]
+}

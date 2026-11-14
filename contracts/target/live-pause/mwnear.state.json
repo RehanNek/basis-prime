@@ -1,0 +1,19 @@
+{
+ "account_id": "mwnear.pbf-ops.testnet",
+ "block_height": 277565610,
+ "code_sha256": "f17e208da721c9d1740288997f3d9f057152d5ac212d32d376d80def1f57a714",
+ "values": [
+  {
+   "key": "ABQAAABzaGltLnBiZi1vcHMudGVzdG5ldA==",
+   "value": "AAAAkHo7nRE0J8snAwAAAA=="
+  },
+  {
+   "key": "AB4AAABmdW5kLXJoZWEtMTExMzE5NDYucGJmLnRlc3RuZXQ=",
+   "value": "AAAAAAAAAAAAAAAAAAAAAA=="
+  },
+  {
+   "key": "U1RBVEU=",
+   "value": "AQAAAAAAAACQejudETQnyycDAAAAfQAAAAAAAAAIAAAAZnQtMS4wLjAKAAAATW9jayB3TkVBUgUAAAB3TkVBUgAAABg="
+  }
+ ]
+}

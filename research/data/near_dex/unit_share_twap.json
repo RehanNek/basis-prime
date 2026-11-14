@@ -1,0 +1,16 @@
+{
+ "4179": [
+  "357570",
+  "76801",
+  "536832",
+  "82542"
+ ],
+ "5949": {
+  "__error__": "wasm execution failed with error: HostError(GuestPanic { panic_msg: \"panicked at 'unit_share_cumulative_infos is not find', ref-exchange/src/unit_lpt_cumulative_infos.rs:241:14\" })",
+  "block_height": 223209532
+ },
+ "6354": {
+  "__error__": "wasm execution failed with error: HostError(GuestPanic { panic_msg: \"panicked at 'unit_share_cumulative_infos is not find', ref-exchange/src/unit_lpt_cumulative_infos.rs:241:14\" })",
+  "block_height": 223209533
+ }
+}

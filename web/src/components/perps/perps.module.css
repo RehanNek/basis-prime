@@ -1,0 +1,498 @@
+/*
+ * The Perps page's own layout (INTERFACES.md 49.1): a perps exchange's arrangement in the app's look. Every colour is
+ * one of globals.css's --pb- variables, so light and dark follow the rest of the app.
+ *   wide:   the market's figures on top; chart, book and form side by side; the tables under the chart and book.
+ *   middle: the chart across; book and form side by side; the tables below.
+ *   phone:  stacked, with the form straight after a short chart.
+ */
+
+.grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    'bar'
+    'chart'
+    'form'
+    'book'
+    'tables';
+}
+
+@media (min-width: 760px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas:
+      'bar bar'
+      'chart chart'
+      'book form'
+      'tables tables';
+  }
+}
+
+@media (min-width: 1180px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr) 270px 320px;
+    grid-template-areas:
+      'bar bar bar'
+      'chart book form'
+      'tables tables form';
+  }
+}
+
+.panel {
+  background: var(--pb-surface);
+  border: 1px solid var(--pb-line);
+  border-radius: 0.5rem;
+  min-width: 0;
+}
+
+.panelHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.75rem;
+  padding: 0.45rem 0.75rem;
+  border-bottom: 1px solid var(--pb-line);
+  min-height: 42px;
+}
+
+.panelBody {
+  padding: 0.75rem;
+}
+
+.calm {
+  color: var(--pb-muted);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.num {
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: 'lnum', 'tnum';
+}
+
+.good {
+  color: var(--pb-good);
+}
+
+.bad {
+  color: var(--pb-bad);
+}
+
+/* Small tabs inside a panel: the book and trades, limit and market, the three tables. */
+.tabs {
+  display: flex;
+  gap: 1rem;
+}
+
+.tab {
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  padding: 0.2rem 0;
+  color: var(--pb-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.tab:hover {
+  color: var(--pb-ink);
+}
+
+.tabOn {
+  color: var(--pb-ink);
+  border-bottom-color: var(--pb-primary-ink);
+}
+
+/* ---------- the market's figures ---------- */
+
+.bar {
+  grid-area: bar;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1.5rem;
+  padding: 0.6rem 0.9rem;
+}
+
+.bar .coinPick {
+  font-family: var(--pb-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  width: auto;
+  flex: 0 1 12rem;
+  min-width: 8.5rem;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem 1rem;
+  flex: 1 1 100%;
+  margin: 0;
+}
+
+@media (min-width: 760px) {
+  .stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.75rem;
+    flex: 1 1 auto;
+  }
+}
+
+.stat {
+  min-width: 0;
+}
+
+.stat dt {
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--pb-muted);
+  white-space: nowrap;
+}
+
+.stat dd {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.stat .mark {
+  font-family: var(--pb-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* On a phone the form sits under the chart: "Trade" in the top bar jumps to it. */
+.phoneOnly {
+  margin-left: auto;
+}
+
+.wideOnly {
+  display: none;
+}
+
+@media (min-width: 760px) {
+  .bar .phoneOnly {
+    display: none;
+  }
+
+  .wideOnly {
+    display: inline;
+  }
+}
+
+/* ---------- the chart ---------- */
+
+.chart {
+  grid-area: chart;
+  display: flex;
+  flex-direction: column;
+}
+
+.readout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.75rem;
+  font-size: 0.75rem;
+  color: var(--pb-muted);
+  margin-left: auto;
+}
+
+.readout b {
+  font-weight: 500;
+  color: var(--pb-ink);
+}
+
+.chartBox {
+  position: relative;
+  flex: 1 1 auto;
+  height: 250px;
+  min-height: 250px;
+  /* The crosshair follows a finger sideways; the page still scrolls up and down. */
+  touch-action: pan-y;
+}
+
+@media (min-width: 760px) {
+  .chartBox {
+    height: 380px;
+    min-height: 380px;
+  }
+}
+
+@media (min-width: 1180px) {
+  .chartBox {
+    height: 440px;
+    min-height: 440px;
+  }
+}
+
+.chartBox svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: crosshair;
+}
+
+.chartNote {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
+  color: var(--pb-muted);
+  font-size: 0.875rem;
+}
+
+.chartCaption {
+  position: absolute;
+  left: 0.75rem;
+  top: 0.4rem;
+  font-size: 0.75rem;
+  color: var(--pb-muted);
+  background: var(--pb-surface);
+  padding: 0 0.3rem;
+  border-radius: 0.25rem;
+  pointer-events: none;
+}
+
+.gridLine {
+  stroke: var(--pb-line);
+  stroke-width: 1;
+  shape-rendering: crispEdges;
+}
+
+.axisText {
+  fill: var(--pb-muted);
+  font-size: 10.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.up {
+  fill: var(--pb-good);
+  stroke: var(--pb-good);
+}
+
+.down {
+  fill: var(--pb-bad);
+  stroke: var(--pb-bad);
+}
+
+.vol {
+  opacity: 0.4;
+  stroke: none;
+}
+
+.lastLine {
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+  fill: none;
+}
+
+.cross {
+  stroke: var(--pb-muted);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+  shape-rendering: crispEdges;
+}
+
+.tag {
+  fill: var(--pb-ink);
+}
+
+.tagText {
+  fill: var(--pb-surface);
+  font-size: 10.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.lastText {
+  fill: #ffffff;
+  font-size: 10.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- the order book and the trades ---------- */
+
+.book {
+  grid-area: book;
+  display: flex;
+  flex-direction: column;
+}
+
+.bookHead,
+.bookRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 0 0.75rem;
+  font-size: 0.78rem;
+  text-align: right;
+}
+
+.bookHead {
+  color: var(--pb-muted);
+  padding-top: 0.4rem;
+  padding-bottom: 0.2rem;
+  font-size: 0.72rem;
+}
+
+.bookHead > span:first-child,
+.bookRow > span:first-of-type {
+  text-align: left;
+}
+
+.bookRow {
+  position: relative;
+  width: 100%;
+  border: 0;
+  background: none;
+  color: var(--pb-ink);
+  line-height: 1.55;
+  cursor: pointer;
+}
+
+.bookRow:hover,
+.bookRow:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 1px var(--pb-line-strong);
+}
+
+.bookRow > span {
+  position: relative;
+}
+
+.depth {
+  position: absolute;
+  top: 1px;
+  bottom: 1px;
+  right: 0;
+}
+
+.askDepth {
+  background: var(--pb-bad-soft);
+}
+
+.bidDepth {
+  background: var(--pb-good-soft);
+}
+
+.spread {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.3rem 0.75rem;
+  margin: 0.15rem 0;
+  border-top: 1px solid var(--pb-line);
+  border-bottom: 1px solid var(--pb-line);
+  background: var(--pb-surface-2);
+  font-size: 0.78rem;
+  color: var(--pb-muted);
+}
+
+.spread b {
+  color: var(--pb-ink);
+  font-weight: 500;
+}
+
+.tradeRow {
+  cursor: pointer;
+}
+
+/* ---------- the order form ---------- */
+
+.form {
+  grid-area: form;
+  align-self: start;
+  min-width: 0;
+  scroll-margin-top: 0.75rem;
+}
+
+.sides {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem;
+}
+
+.fieldLabel {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.78rem;
+  color: var(--pb-muted);
+  margin-bottom: 0.2rem;
+}
+
+.linkBtn {
+  border: 0;
+  background: none;
+  padding: 0;
+  color: var(--pb-link);
+  font-size: 0.78rem;
+}
+
+.linkBtn:hover {
+  text-decoration: underline;
+}
+
+.summary {
+  margin: 0;
+  font-size: 0.8125rem;
+}
+
+.summary > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.12rem 0;
+}
+
+.summary dt {
+  font-weight: 400;
+  color: var(--pb-muted);
+}
+
+.summary dd {
+  margin: 0;
+  text-align: right;
+}
+
+.status {
+  border: 1px solid var(--pb-line);
+  border-radius: 0.375rem;
+  background: var(--pb-surface-2);
+  padding: 0.55rem 0.7rem;
+  font-size: 0.8125rem;
+}
+
+.status p {
+  margin: 0;
+}
+
+/* ---------- positions, open orders, fills ---------- */
+
+.tables {
+  grid-area: tables;
+  min-width: 0;
+}
+
+.tables table {
+  font-size: 0.8125rem;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.tables th {
+  font-weight: 400;
+  color: var(--pb-muted);
+  font-size: 0.75rem;
+}

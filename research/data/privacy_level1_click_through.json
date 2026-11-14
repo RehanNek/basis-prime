@@ -1,0 +1,77 @@
+{
+  "what": "The user's click-through with a real wallet, on the final code with privacy level 1 on (INTERFACES.md 48.12)",
+  "date_utc": "2026-11-13",
+  "wallet": "quiethare6001.testnet (Meteor, testnet)",
+  "account": "npme2jlqx2.pbf.testnet",
+  "account_code": "79827e65a44d0edb1c640ea4401c3fcdf53e22aed10e7339b7e40a98f6470ea4",
+  "seen_by_the_user": [
+    "the Confirm this wallet card, and its one signature (three times in all: the backend was restarted twice during the run)",
+    "New account filled in a random name: npme2jlqx2",
+    "Set up the demo for me: the account opened, 0.015 test nBTC and 440 test USDC in, the Hyperliquid address, 430 USDC moved, the agent named and approved, a 0.015 BTC short, 0.02 WETH of test collateral for Aave",
+    "Where it comes from for $500: Aave $21.75 at 0.74%, our pool $478.24 at 2.00%, 1.95% in all",
+    "Borrow $500.00: the check, 'It would lend $500.00', and the loan signed"
+  ],
+  "read_on_chain_by_the_main_session": {
+    "owner": "quiethare6001.testnet",
+    "permission": {
+      "lenders": [
+        "aave",
+        "rhea"
+      ],
+      "min_hf_bp": 15000,
+      "max_rate_bp": 2500,
+      "moves": "any"
+    },
+    "hedge": "short 0.015 BTC at 69293.8 on Hyperliquid testnet, account value 427.14",
+    "funding_plan": "f277520281: l_supply done 14:09:58, l_borrow done 14:11:40, p_borrow done by 14:13:21 UTC",
+    "pool_debt_micro": "478280463",
+    "aave": {
+      "collateral_usd": 39.26,
+      "debt_usd": 21.71,
+      "health_factor": 1.54
+    },
+    "account_holds": {
+      "musdc": "488280450",
+      "mnbtc": "1500000"
+    },
+    "state": "HEALTHY",
+    "can_borrow_more_micro": 911764582
+  },
+  "found_and_fixed_during_it": [
+    "FastNEAR's free testnet RPC answered 429 for this machine (wallet, backend and keeper shared it): the backend now reads through dRPC's free endpoint (docs.near.org/api/rpc/providers), set for the api in .claude/launch.json; the app's wallet connection lists FastNEAR then dRPC",
+    "the setup card's 'Preview the result (free)' sent a fund intent to /api/preview, which answered 'Unknown intent fund': the app now reads a fund preview from /api/funding-plan",
+    "a wallet that already had accounts got its old one: the picker has a 'New account' button that fills in a random name",
+    "the free preview answered 'Unknown intent evm_withdraw' too: the app no longer offers the link for evm_withdraw and lender_withdraw, and the backend's /api/preview now takes fund, lender_withdraw and evm_withdraw (in the code and tested; live at its next restart)",
+    "the page said 'signed but wasn't sent' (Aave's chain) and 'has no signed entry' (Hyperliquid) a few seconds before the keeper sent each: the page asked the backend before the backend's NEAR node showed the entry. The page now asks again for up to 25 s on a 404 (use-evm-send.ts, use-sign-and-post.ts)"
+  ],
+  "not_tried": [],
+  "the_way_out_by_hand": {
+    "when_utc": "2026-11-13 14:44 to 15:41",
+    "another_wallets_name": "the user typed another wallet's account name and saw 'This name belongs to another wallet'",
+    "loan_home": "Bring the loan home: four tries got no verdict from OutLayer (14:44, 14:57, 15:09) or lost the wallet window (14:52, where the verdict did land); the fifth, at 15:18, passed. $21.715162 arrived on NEAR by 15:19:32",
+    "repay_pool": "$478.28 repaid at 15:22; the loan closed",
+    "usdc_out": "$21.80 sent to the address on Base Sepolia (move:2), arrived as $21.795175",
+    "repay_aave": "repaid in full by 15:28; $0.0756 left at the address",
+    "take_back": "0.02 WETH taken back from Aave and brought home as 56,013 units of nBTC by 15:32:40",
+    "close_short": "the 0.015 BTC short closed through the gateway by 15:36",
+    "hl_home": "$442 sent home from Hyperliquid, $441.710760 arrived by 15:37:57",
+    "withdraw": "$451 of USDC and 0.0155 nBTC withdrawn to the wallet by 15:41"
+  },
+  "end_state_read_by_the_main_session": {
+    "at_utc": "15:42",
+    "pool_debt": "0",
+    "loan_open": false,
+    "account_holds": {
+      "musdc": "624658",
+      "mnbtc": "6013"
+    },
+    "hyperliquid": "no position, 0.73 USDC",
+    "aave": "collateral $0.0001, debt 0",
+    "still_listed": "none: the user dropped move:2 with 'Drop this move' (forget_transfer, transaction DNCfKhzppG3YvmMptfcRM1YvE34MJ1g5yqXFSG9AX7wi, 17:41:24 UTC)"
+  },
+  "lessons": [
+    "OutLayer's testnet flipped between 20 s and 170 s answers all afternoon; a check on chain gets about 2 minutes, so about half the checks came back empty",
+    "a to_evm move of USDC is counted as arrived only while the USDC sits at the address (80% of what was sent). The main session told the user to skip 'Check now' and repay Aave at once; the USDC was spent before a check saw it, so move:2 stays listed until its deadline and is then dropped with forget_transfer ('Drop this move'). The page's own advice was right",
+    "the Take collateral back panel has no All button, and shows the lender's debt from the last verdict, which was stale after the repayment"
+  ]
+}
