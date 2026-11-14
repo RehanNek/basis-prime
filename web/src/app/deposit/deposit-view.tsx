@@ -164,7 +164,7 @@ function FromWallet({ client, wallet, ready, reloadWallet }: { client: ClientAcc
     <section className="card mb-3">
       <div className="card-header fw-semibold">2. Deposit from your wallet</div>
       <div className="card-body small">
-        <p>The token sends it to the account with ft_transfer_call, and the account books it as collateral.</p>
+        <p>This moves tokens from your wallet into your account. Once they are there, they count as collateral.</p>
         <div className="d-flex flex-wrap align-items-center gap-2">
           <select className="form-select form-select-sm" style={{ maxWidth: 120 }} value={tokenId} onChange={(e) => setTokenId(e.target.value)} aria-label="Token">
             {Tokens.map((t) => (
