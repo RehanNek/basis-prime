@@ -12,7 +12,7 @@ Basis Prime is an onchain prime brokerage. You get portfolio margin on the asset
 - **Minimal trust.** The risk engine and the order gateway run in OutLayer's secure enclave. Each account accepts answers only from the exact program it pins, so nobody can alter a risk check, not even us.
 - **Deep liquidity from day one.** We don't have to raise a lending pool before the first client arrives. A loan draws on Aave's and Rhea's liquidity as well as our own pool. The client asks for one amount; the engine splits it between the lenders and the pool, and the account does every step.
 
-**The whole product is hosted: https://13-192-48-169.sslip.io** The app, the backend, the keeper and the 1Click stand-in all run there on testnet, and we keep it up through judging. Step 8 says what to try.
+**The whole product is hosted: https://13-192-48-169.sslip.io** The app, the backend, the keeper and the 1Click stand-in all run there on testnet, and we keep it up through judging. "Try it now" starts there: what to click, and what you will see.
 
 Entry for NEAR HACKATHON, Unstoppable DeFi track (`defi`). Built between 3 and 14 November 2026. Our team's other entry is [NEAR Investment Thesis](https://github.com/RehanNek/near-investment-thesis) (track `thesis`); the two are independent of each other.
 
@@ -75,6 +75,40 @@ The engine's rules and formulas are in [RISK_ENGINE.md](RISK_ENGINE.md); lending
 | Mainnet | read only | The credit check reads Hyperliquid, 1Click and Rhea on mainnet. Nothing is signed or paid there |
 
 ## Try it now
+
+Every step says what to do and what you will see. Start in a browser with the hosted app. Steps 1 to 9 after it run on your own machine.
+
+### In a browser: the hosted app
+
+Open https://13-192-48-169.sslip.io. It is the whole product on testnet: the app with our backend, keeper and 1Click stand-in behind it, on a server of ours, kept up through judging. Nothing to install, and no key.
+
+**With no wallet**
+
+| | Do | See |
+|---|---|---|
+| H1 | Open the site. | The tabs in the order a client goes: Home, Deposit & withdraw, Spot, Perps, Borrow, Basis trade, More. Home shows today's BTC, ETH and NEAR prices under "Markets". |
+| H2 | More, then Book. | The broker's pool, read live from `pool.pbf.testnet`: its capital (about $10,000,000 of test USDC), loans out, the rate for each tier, the pool's own limits (such as "A new account's first week $25,000.00"), and the last stress test of the whole book with a link to OutLayer's attestation of that run. |
+| H3 | More, then Risk, then click `fund-rhea-11131011.pbf.testnet`. | What the risk engine last answered for one of our demo accounts: "Healthy", a credit line of $1,035.02 set by "the Standard tier's cap: 70% of the collateral", equity of $1,478.73, and the biggest risks it found (the market of 12 March 2020 replayed, nBTC losing 20% against BTC, Hyperliquid auto-deleveraging the short). |
+| H4 | More, then Activity, then the same account. | One loan from start to end, each line with a link to its transaction: the account created, USDC and bitcoin deposited, 430 USDC sent to Hyperliquid through 1Click, the funding plan's three steps (bitcoin posted at Rhea, a loan from Rhea, a loan from the pool), $502.44 repaid to the pool, the USDC brought home from Hyperliquid, the withdrawal. |
+| H5 | Spot. | The swap form with live prices from NEAR Intents, such as "1 BTC = 65,809.22 USDC". The button reads "Sign in to swap". |
+| H6 | Perps. | Hyperliquid testnet's BTC-USD market: mark and oracle price, order book, funding. The coin list is the engine's allow-list of 23, with 7 marked "not on testnet". |
+| H7 | More, then Credit check, then "Or use the worked example", then Check. | The risk engine runs in OutLayer's enclave on live mainnet data, and answers with our credit line for a $100,000 hedged bitcoin book next to what Rhea would lend against the bitcoin alone (on 9 Nov: $94,172 against $63,089). About 10 seconds when OutLayer's testnet is answering. When it is slow, a banner on every page says so and the line under the button counts the wait; with no answer in about 4.5 minutes the page says "OutLayer did not answer", and Check can be pressed again. Step 6 below checks the 9 Nov run against its attestation without OutLayer. |
+
+**With a NEAR testnet wallet** holding about 7 test NEAR (we used Meteor)
+
+| | Do | See |
+|---|---|---|
+| W1 | Click Sign in, top right, and sign the one free message. | Home shows "Open your account". |
+| W2 | Follow "Open your account" (6 NEAR). | An account contract of your own, with a random name like `k7x2m9qa4t.pbf.testnet`. Home then shows your portfolio: on NEAR, on Hyperliquid, at lenders, less what you owe. |
+| W3 | Deposit & withdraw: "1. Get test tokens", then "2. Deposit from your wallet". | Test USDC and test bitcoin, minted free on testnet, now in your account. Home counts them. |
+| W4 | Spot: swap some USDC for BTC. | The swap goes through the 1Click stand-in at NEAR Intents' real price, and the BTC shows under "In your account". |
+| W5 | Perps: press "Set up trading" (four steps; your wallet opens once for each). Then place a Market order, Sell / Short. | Your account gets its own Hyperliquid address through Chain Signatures and USDC moves there as margin. The order passes the engine's checks in the enclave, and the short shows under your positions. |
+| W6 | Borrow: read "Most you can borrow now", enter an amount, press Borrow. | The engine checks the whole book and splits the loan between a lender and our pool. The USDC arrives in your account, and the page shows what you owe and to whom. |
+| W7 | Basis trade: fill in "Open a basis trade" and start it. | W3, W5 and W6 as one run: the coin and its margin go in, the short opens, the loan is drawn. |
+
+W1 to W6 were done with a new wallet on the hosted site on 14 Nov, up to a $1,000 loan from Rhea. W5 to W7 each wait on a risk check in OutLayer's enclave: seconds on a good hour, minutes when its testnet is slow. A wait that runs out moves nothing and can be started again. The demo's test money is shared between visitors (see "Known limits").
+
+### On your own machine
 
 Steps 1 to 7 need no key, no wallet and no account. Tools: Python 3.10 or later (standard library only), Rust (`rust-toolchain.toml` pins 1.93.0; if rustup doesn't install it on its own, run `rustup toolchain install` in `risk/`), Node 24.22.2 (`.nvmrc`) with pnpm.
 
@@ -156,13 +190,7 @@ Steps 1 to 7 need no key, no wallet and no account. Tools: Python 3.10 or later 
    ```
    Its `wasm_hash` is `9149e09b785f4fdea40b01110120a2eca49e907ad11b70d7e144abdd423e0d45`, the engine the account pins. All 29 steps of that run, with every transaction, are in `research/data/phase6_funding_rhea_eth.pass-2026-11-14.json`.
 
-8. **Use the app.**
-
-   **Hosted:** open https://13-192-48-169.sslip.io. It is the app with our backend, keeper and stand-in behind it, on a small server of ours, meant to stay up through judging.
-   - **With no wallet:** Book shows the pool's money, read live from `pool.pbf.testnet`. Credit check, "Or use the worked example", then Check, runs the risk engine in OutLayer's enclave on live mainnet data and shows our credit line next to Rhea's (about 10 seconds when OutLayer's testnet is answering; see "Known limits"). Spot and Perps show the markets.
-   - **With a NEAR testnet wallet** holding about 7 test NEAR: sign in and open an account (6 NEAR). Basis trade then puts a test coin and its margin in the account (minted, on testnet), shorts the same amount on Hyperliquid testnet and borrows against both. Borrow shows the loan, the lenders, and the way back; Deposit & withdraw mints and moves test tokens by hand. On 14 Nov a new wallet did the same by hand on the hosted site: deposits, swaps on Spot, shorts on Hyperliquid and a $1,000 loan from Rhea.
-
-   **Your own copy.** After step 3's `pnpm install`, in two terminals:
+8. **Run the app yourself.** The hosted app is above; this is a copy without our keys. After step 3's `pnpm install`, in two terminals:
    ```bash
    SHIM_URL=http://localhost:8787 pnpm --filter @pb/api start
    ```

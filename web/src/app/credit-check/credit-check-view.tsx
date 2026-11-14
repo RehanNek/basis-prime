@@ -7,7 +7,9 @@ import { useState, type ReactNode } from 'react';
 import { ApiProblem } from '@/components/notices';
 import { api, ApiError, CREDIT_EXAMPLE_PATH, creditCheck, type CreditAnswer, type CreditExample, type CreditFunding, type SpotToken } from '@/lib/api';
 import { checkSteps, creditRequest, creditView, exampleRows, exampleWords, MAX_SPOT_ROWS, SPOT_TOKENS, type CreditView, type SpotRow } from '@/lib/credit';
+import { useNow } from '@/hooks/use-now';
 import { fundingView } from '@/lib/funding';
+import { stillWaitingWords } from '@/lib/outlayer';
 
 export function CreditCheckView() {
   return (
@@ -27,6 +29,9 @@ function CreditCheck() {
   const [example, setExample] = useState<CreditExample | null>(null);
   const [rows, setRows] = useState<SpotRow[]>([]);
   const [busy, setBusy] = useState<string | null>(null);
+  // When the check was sent: past a minute the line under the button names OutLayer and says how long it has waited.
+  const [since, setSince] = useState<number | null>(null);
+  const now = useNow();
   const [error, setError] = useState<ApiError | undefined>(undefined);
   const [answer, setAnswer] = useState<CreditAnswer | null>(null);
 
@@ -51,6 +56,7 @@ function CreditCheck() {
   const run = async () => {
     if (!request) return;
     setBusy('The risk engine is reading Hyperliquid mainnet, the prices, a 1Click quote and Rhea, inside a sealed computer (OutLayer): about 10 seconds…');
+    setSince(now);
     setError(undefined);
     try {
       setAnswer(await creditCheck(request));
@@ -58,6 +64,7 @@ function CreditCheck() {
       setError(failure instanceof ApiError ? failure : new ApiError(0, 'error', String(failure)));
     } finally {
       setBusy(null);
+      setSince(null);
     }
   };
 
@@ -67,7 +74,7 @@ function CreditCheck() {
         <div className="card-body">
           {example ? (
             <div className="mb-3">
-              <div className="small text-body-secondary">The worked example (PLAN.md 6.9)</div>
+              <div className="small text-body-secondary">The worked example</div>
               <p className="mb-1">{exampleWords(example)}</p>
               <button
                 className="btn btn-sm btn-link px-0"
@@ -140,7 +147,7 @@ function CreditCheck() {
               Each new check is a paid run in a sealed computer (OutLayer), so a few a minute at most. The same check within a minute answers from the first run.
             </span>
           </div>
-          {busy && <p className="small mt-2 mb-0">{busy}</p>}
+          {busy && <p className="small mt-2 mb-0">{(since !== null ? stillWaitingWords((now - since) / 1000) : null) ?? busy}</p>}
         </div>
       </section>
       <ApiProblem error={error} />

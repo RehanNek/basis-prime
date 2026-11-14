@@ -12,7 +12,7 @@ export function Placeholder({ href }: { href: string }) {
       <h1 className="h3">{page.title}</h1>
       <p className="lead">{page.summary}</p>
       <div className="alert alert-secondary small">
-        Placeholder: this page is built in {page.phase} (PLAN.md 11). It shows no real data yet.
+        Placeholder: this page is built in {page.phase}. It shows no real data yet.
       </div>
       {page.wallet ? (
         signedAccountId ? (
