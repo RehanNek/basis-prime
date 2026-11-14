@@ -7441,3 +7441,8 @@ funding plan through the service sign-in). After 75 seconds the route said `slow
 site showed the banner on the Borrow page: "OutLayer's testnet is answering slowly right now. A risk check has been
 waiting 1 min 24 s; it normally takes 5 to 20 seconds. …". Not seen by me: the waiting lines and the no-answer words
 inside a signed-in check, which need a wallet.
+
+**The words for what OutLayer is (17:58 UTC).** The user, of "the outside service": "can we say something better?",
+and picked: "OutLayer runs this app's risk checks in a secure enclave on NEAR, so nobody can alter the result, not
+even us." It is in the banner, the waiting line, the no-answer words and the Perps order's waiting line
+(`web/src/lib/outlayer.ts`, `order-life.ts`). Not written: that OutLayer is NEAR's own; who operates it wasn't checked.

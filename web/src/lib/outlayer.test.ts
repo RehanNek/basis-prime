@@ -54,12 +54,18 @@ test('a waiting line names OutLayer once the wait passes a minute, and a wait th
   assert.equal(stillWaitingWords(60), null);
   assert.equal(
     stillWaitingWords(100),
-    'Still waiting for OutLayer: 1 min 40 s. OutLayer is the outside service that runs the risk check, and its testnet is slow right now. Nothing has been signed yet, and you don’t need to do anything.',
+    'Still waiting for OutLayer: 1 min 40 s. OutLayer runs the risk check in a secure enclave on NEAR, and its testnet is slow right now. Nothing has been signed yet, and you don’t need to do anything.',
   );
   assert.match(NO_ANSWER_WORDS, /^OutLayer didn’t answer in time, so nothing was signed or moved\./);
   assert.match(NO_ANSWER_WORDS, /not your wallet or this app/);
   assert.match(NO_ANSWER_WORDS, /Try again/);
   assert.match(PREVIEW_SKIPPED_WORDS, /OutLayer is slow right now/);
-  // Plain words: no contract or protocol terms.
-  for (const words of [NO_ANSWER_WORDS, OUTLAYER_IS, stillWaitingWords(100)!, PREVIEW_SKIPPED_WORDS]) assert.doesNotMatch(words, /verdict|yield|TEE|enclave|callback|nonce/i);
+  // What OutLayer is, in the user's pick of 14 Nov: "secure enclave on NEAR", not "the outside service".
+  assert.equal(OUTLAYER_IS, 'OutLayer runs this app’s risk checks in a secure enclave on NEAR, so nobody can alter the result, not even us.');
+  for (const words of [NO_ANSWER_WORDS, OUTLAYER_IS, stillWaitingWords(100)!]) {
+    assert.match(words, /secure enclave on NEAR/);
+    assert.doesNotMatch(words, /outside service/);
+  }
+  // Still no contract or protocol terms.
+  for (const words of [NO_ANSWER_WORDS, OUTLAYER_IS, stillWaitingWords(100)!, PREVIEW_SKIPPED_WORDS]) assert.doesNotMatch(words, /verdict|yield|TEE\b|callback|nonce/i);
 });

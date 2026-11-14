@@ -37,7 +37,7 @@ test('an order that waits longer than 30 seconds gets one calm line, not an erro
   assert.equal(CALM_AFTER_MS, 30_000);
   assert.equal(orderWaitWords(0), null);
   assert.equal(orderWaitWords(30_000), null);
-  assert.equal(orderWaitWords(30_001), 'The order is waiting its turn at OutLayer, the outside service that runs the risk checks. Its testnet can take a few minutes.');
+  assert.equal(orderWaitWords(30_001), 'The order is waiting its turn at OutLayer, which runs the risk checks in a secure enclave on NEAR. Its testnet can take a few minutes.');
   assert.equal(orderWaitWords(229_000), ORDER_WAIT_WORDS);
   // It is still calm, and since 14 Nov it names who is being waited on (INTERFACES.md 51.15).
   assert.doesNotMatch(ORDER_WAIT_WORDS, /fail|error|expired|verdict/i);

@@ -38,12 +38,15 @@ export function duration(seconds: number): string {
   return rest === 0 ? `${Math.floor(s / 60)} min` : `${Math.floor(s / 60)} min ${rest} s`;
 }
 
-/** What OutLayer is, in one sentence, for a reader who has never heard of it. */
-export const OUTLAYER_IS = 'OutLayer is the outside service that runs this app’s risk checks in a sealed computer.';
+/**
+ * What OutLayer is, in one sentence, for a reader who has never heard of it. The user picked these words (14 Nov) over
+ * "the outside service": it says what OutLayer gives the client, so a slow wait reads as the cost of a safeguard.
+ */
+export const OUTLAYER_IS = 'OutLayer runs this app’s risk checks in a secure enclave on NEAR, so nobody can alter the result, not even us.';
 
 /** Said when a wait runs out with no answer. Nothing was signed for the action, so nothing moved. */
 export const NO_ANSWER_WORDS =
-  'OutLayer didn’t answer in time, so nothing was signed or moved. OutLayer is the outside service that runs the risk check, and its testnet is slow in spells: this is not your wallet or this app. Try again; it often answers on the next try.';
+  'OutLayer didn’t answer in time, so nothing was signed or moved. OutLayer runs the risk check in a secure enclave on NEAR, and its testnet is slow in spells: this is not your wallet or this app. Try again; it often answers on the next try.';
 
 /** Is OutLayer slow or silent now? Then the app asks it for nothing it can do without (previews, the borrow figure). */
 export function isBusy(health: OutlayerHealth | null | undefined): boolean {
@@ -56,7 +59,7 @@ export function isBusy(health: OutlayerHealth | null | undefined): boolean {
  */
 export function stillWaitingWords(waitedS: number): string | null {
   if (!(waitedS > NAME_AFTER_S)) return null;
-  return `Still waiting for OutLayer: ${duration(waitedS)}. OutLayer is the outside service that runs the risk check, and its testnet is slow right now. Nothing has been signed yet, and you don’t need to do anything.`;
+  return `Still waiting for OutLayer: ${duration(waitedS)}. OutLayer runs the risk check in a secure enclave on NEAR, and its testnet is slow right now. Nothing has been signed yet, and you don’t need to do anything.`;
 }
 
 export interface Banner {

@@ -11,8 +11,8 @@ export const CALM_AFTER_MS = 30_000;
 
 /** The one calm line while an order waits longer than usual. */
 // INTERFACES.md 51.15: it names OutLayer (the user, 14 Nov: "so they know its not our fault, its outlayer").
-export const ORDER_WAIT_WORDS = 'The order is waiting its turn at OutLayer, the outside service that runs the risk checks. Its testnet can take a few minutes.';
-const ORDER_WAIT_WORDS_MAINNET = 'The order is waiting its turn at OutLayer, the outside service that runs the risk checks. It can take a minute or two.';
+export const ORDER_WAIT_WORDS = 'The order is waiting its turn at OutLayer, which runs the risk checks in a secure enclave on NEAR. Its testnet can take a few minutes.';
+const ORDER_WAIT_WORDS_MAINNET = 'The order is waiting its turn at OutLayer, which runs the risk checks in a secure enclave on NEAR. It can take a minute or two.';
 
 /** The calm line, once the order has waited more than 30 seconds; before that, null: the page keeps its own words. */
 export function orderWaitWords(waitedMs: number, network: 'testnet' | 'mainnet' = 'testnet'): string | null {
