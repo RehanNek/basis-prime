@@ -7269,3 +7269,11 @@ which names contract methods, lets the steps be pressed out of order, and has th
 - **Checked:** `trade-setup.test.ts` (5 tests; web 451 in all), and the panel on the sample page
   (`/perps/sample?state=setup`, development only): the steps, the amount's refusal over $500, and a failed step's
   box. **Not checked with a wallet by me:** the run itself; the user's own account is the first.
+
+### 51.10 Perps: Market is the first tab and the default (the main session, 14 Nov, 16:23 UTC)
+
+The user, after their first order from the new wallet went to the risk checks: "lets keep market first and limit
+second with the default option being market." `EMPTY_FORM.kind` is `market` and the tabs read Market, Limit
+(`web/src/components/perps/order-form.tsx`, `ORDER_KINDS`). A price clicked in the order book still switches the
+form to Limit with that price. Checked on the sample page: the order is Market, Limit; Market is selected; no price
+field shows.

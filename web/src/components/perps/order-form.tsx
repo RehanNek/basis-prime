@@ -1,5 +1,5 @@
 'use client';
-// The Perps page's order form (INTERFACES.md 49.1): Buy/Long or Sell/Short, Limit or Market, a size in the coin or in
+// The Perps page's order form (INTERFACES.md 49.1): Buy/Long or Sell/Short, Market or Limit, a size in the coin or in
 // USDC, reduce-only, what the order is worth, and one button. lib/perps.ts builds the order (a market order is an
 // immediate-or-cancel limit inside the gateway's band, priced as the trade page's "Close…" prices it) and rounds it
 // to Hyperliquid's rules; the button has the wallet sign it once and posts it (use-gateway-action.ts).
@@ -25,7 +25,12 @@ export interface FormState {
   tif: Tif;
 }
 
-export const EMPTY_FORM: FormState = { isBuy: true, kind: 'limit', size: '', sizeIn: 'coin', price: '', reduceOnly: false, tif: 'Gtc' };
+/**
+ * The form opens on a market order, and Market is the first tab (the user, 14 Nov: "lets keep market first and limit
+ * second with the default option being market"). `tif` is the limit order's; a market order is always now-or-never.
+ */
+export const EMPTY_FORM: FormState = { isBuy: true, kind: 'market', size: '', sizeIn: 'coin', price: '', reduceOnly: false, tif: 'Gtc' };
+export const ORDER_KINDS = ['market', 'limit'] as const;
 
 interface Props {
   coin: string;
@@ -79,7 +84,7 @@ export function OrderForm({ coin, facts, form, onForm, spread, blocked, action, 
     <section className={s.panel} aria-label="Place an order">
       <div className={s.panelHead}>
         <div className={s.tabs} role="tablist" aria-label="Order type">
-          {(['limit', 'market'] as const).map((kind) => (
+          {ORDER_KINDS.map((kind) => (
             <button key={kind} type="button" role="tab" aria-selected={form.kind === kind} className={`${s.tab} ${form.kind === kind ? s.tabOn : ''}`} onClick={() => onForm({ kind })}>
               {kind === 'limit' ? 'Limit' : 'Market'}
             </button>
