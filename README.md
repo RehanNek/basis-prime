@@ -20,7 +20,7 @@ Entry for NEAR HACKATHON, Unstoppable DeFi track (`defi`). Built between 3 and 1
 
 - **One loan against a hedged book, part from a lender and part from our pool.** The risk engine splits it. On 14 Nov, on live testnet, a book of about $1,000 of test bitcoin with a short of the same size borrowed $509.09 from our Rhea copy and $488.02 from our pool. The same book in test ETH borrowed $478.78 from Rhea and $518.21 from our pool.
 - **Four scripted end-to-end runs passed on live testnet on 14 Nov** ("gates"), each on a new account, every transaction recorded: through Rhea with bitcoin, through Rhea with ETH, through Aave with bitcoin, and through Aave with the client's own ETH. They are listed under "What ran on live testnet".
-- **The whole life of a loan was done by hand from the web app with a real wallet on 13 Nov:** open the account, hedge, borrow, bring the lender's money home across chains, repay, take the collateral back, close the hedge, withdraw (`research/data/privacy_level1_click_through.json`). The pages were rebuilt after that; see "Known limits".
+- **The whole life of a loan was done by hand from the web app with a real wallet on 13 Nov:** open the account, hedge, borrow, bring the lender's money home across chains, repay, take the collateral back, close the hedge, withdraw (`research/data/privacy_level1_click_through.json`). The pages were rebuilt after that, and on 14 Nov a new wallet used them on the hosted site: deposits, swaps on Spot, shorts on Hyperliquid and a $1,000 loan from Rhea.
 - **The credit check runs on live mainnet data** inside OutLayer's enclave. On 9 Nov the worked example got a $94,172 line from us, against $63,089 from Rhea at a safe health factor. A local replay matches the enclave's attested output (step 6).
 - **The backtest replays five crash days with money arriving 2, 15 or 60 minutes late.** In all 90 cases the pool lost nothing (step 5).
 - **The depeg drill ran on testnet with nobody touching anything after the shock** (8 Nov, `research/data/phase4_drill_small.json`). We pushed the test price of bridged bitcoin down against BTC; the keeper watched the account go to watch, margin call and deleverage, and ran the attested plan through the gateway.
@@ -47,7 +47,7 @@ Our engine stress-tests the whole book against the venues' own rules and real cr
 6. **Keeper** (`services/keeper`): asks for checks, runs funding and unwind plans step by step, and tops a lender up when its cushion thins. It uses only public methods, so anyone can run one.
 7. **Web app** (`web/`): the tabs read left to right in the order a new client goes: Home, Deposit & withdraw, Spot, Perps, Borrow, Basis trade (put a coin and its margin in the account, short the same amount on Hyperliquid, borrow against both, in one run); under More: Activity, Risk, Account details, Credit check, Book, Drill.
 
-The full design is in [PLAN.md](PLAN.md); the engine's rules and formulas in [RISK_ENGINE.md](RISK_ENGINE.md); lending through outside lenders in [FUNDING.md](FUNDING.md); every interface, with what was run and when, in [INTERFACES.md](INTERFACES.md).
+The engine's rules and formulas are in [RISK_ENGINE.md](RISK_ENGINE.md); lending through outside lenders in [FUNDING.md](FUNDING.md); every interface, with what was run and when, in [INTERFACES.md](INTERFACES.md). Those files and the code's comments cite "PLAN.md" by section number: that was our working plan from before the build, and it is not in this repository.
 
 ### What NEAR does here, and what sits on other chains
 
@@ -227,7 +227,7 @@ Every contract we deploy went through the `near-contract-audit` checklist and a 
 - **A new account gets a random name,** like `k7x2m9qa4t.pbf.testnet`, not one made from the wallet's name.
 - **`ACCOUNT_PRIVACY=off`** puts all of it back, for a demo where every page should be open.
 
-**What level 1 doesn't do.** The chain stays readable. The factory still lists each account with its owner's wallet. Hyperliquid positions stay public. A client who wants no link at all opens the account from a new wallet funded through a confidential swap: the steps are in `research/privacy_fresh_wallet.md` (mainnet only; written down, not built). Further levels are planned in PLAN.md 14 and not built.
+**What level 1 doesn't do.** The chain stays readable. The factory still lists each account with its owner's wallet. Hyperliquid positions stay public. A client who wants no link at all opens the account from a new wallet funded through a confidential swap: the steps are in `research/privacy_fresh_wallet.md` (mainnet only; written down, not built). Further levels are planned and not built.
 
 ## Known limits
 
@@ -243,7 +243,6 @@ Every contract we deploy went through the `near-contract-audit` checklist and a 
 
 **The product**
 - **Client accounts never take new code.** An account keeps the code and settings it was made with, so each fix reaches the accounts made after it. Accounts made since 14 Nov, 10:16 UTC have everything in this README.
-- **The rebuilt pages have not been walked end to end with a real wallet.** The app was rebuilt on 13 and 14 Nov (the tabs, Spot, Perps, Basis trade). Since then the contracts, the keeper and the backend were proven by the scripted runs above, and the pages by their own tests (468) and in a browser without a wallet. The by-hand run with a wallet was on 13 Nov, before the rebuild.
 - **After money comes home from Hyperliquid, new borrowing waits for one check.** Hyperliquid accepts a signed transfer for 2 days, so an old one could take collateral out from under a loan. The account lists each transfer it signed; once a check sees it in Hyperliquid's own history, the pause lifts. Without that it lasts 2 days and 1 hour. Repaying is never blocked. This rule is newer than the security review.
 - **NEAR can't be posted with a lender.** Our contract takes Rhea collateral with at most 18 decimals (wNEAR has 24), and Aave's market has no NEAR. NEAR still counts in the whole-book loan from our pool.
 - **Deposit and withdraw take USDC and bitcoin.** ETH, NEAR and USDT get in and out of an account through a swap on Spot.
