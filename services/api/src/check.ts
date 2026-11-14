@@ -47,6 +47,8 @@ export function keeperCheckOver(url: string, token: string, waitMs: number, fetc
 }
 
 const KEEPER_OFF = "The keeper isn't running, so it can't ask for this check: ask for it from your wallet";
+/** A call to the keeper that fails only after this long was taken and is being worked on: a refused connection fails in milliseconds. */
+export const KEEPER_AT_WORK_MS = 30_000;
 
 /**
  * POST /api/check. Only the account's owner, by a wallet's token: not our own service, and not the operator's or
@@ -88,11 +90,16 @@ export async function postCheck(deps: Deps, asker: Who, body: unknown): Promise<
     throw new HttpError(429, "too_many_checks", `At most ${CHECKS_PER_MINUTE} checks a minute for an account; try again shortly`);
   }
   let answer: { status: number; body: unknown };
+  const asked = deps.now();
   try {
     answer = await keeper(account, intent);
   } catch (error) {
     // Cut off while the keeper was still at it: the check may yet land, so the page waits and watches the account.
-    if (error instanceof Error && (error.name === "TimeoutError" || error.name === "AbortError")) {
+    // A keeper that isn't there refuses the connection at once. One that took the request and was cut off after
+    // minutes is at work: Node drops a request with no answer after 300 seconds, with a plain "fetch failed"
+    // (INTERFACES.md 51.15: on 14 Nov that sent a client to a wallet-paid check for the same slow OutLayer).
+    const cutOff = error instanceof Error && (error.name === "TimeoutError" || error.name === "AbortError");
+    if (cutOff || deps.now() - asked >= KEEPER_AT_WORK_MS) {
       throw new HttpError(504, "check_slow", "The check is taking longer than usual. Its result may still arrive");
     }
     throw new HttpError(503, "keeper_off", KEEPER_OFF);

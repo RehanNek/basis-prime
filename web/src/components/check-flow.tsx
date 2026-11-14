@@ -13,6 +13,7 @@ import { useNow } from '@/hooks/use-now';
 import type { AccountAnswer } from '@/lib/api';
 import { BROKER_CHECK_WORDS, USE_WALLET_LABEL, WALLET_CHECK_WORDS } from '@/lib/broker-check';
 import type { Intent, StoredVerdict } from '@/lib/types';
+import { stillWaitingWords } from '@/lib/outlayer';
 import { formatUsd } from '@/lib/units';
 import { freshness, fundLends, lesserAmount, SECONDS_PER_BLOCK } from '@/lib/verdict';
 
@@ -143,7 +144,9 @@ function CalmProgress(props: { state: FlowState; now: number; actLabel?: string;
   const verdict = 'verdict' in state && typeof state.verdict === 'object' ? state.verdict : null;
   const allows = !verdict ? null : 'borrow' in verdict.intent ? `It allows borrowing up to ${formatUsd(verdict.verdict.allow.borrow)}.` : 'fund' in verdict.intent ? `It would lend ${formatUsd(fundLends(verdict))}.` : null;
   const checkFailed = p === 'failed' && state.step !== 'act';
-  const slow = p === 'broker' && now - state.since > 60_000;
+  // INTERFACES.md 51.15: past a minute the line names OutLayer and says how long the wait has been.
+  const waitedS = state.phase === 'broker' ? (now - state.since) / 1000 : 0;
+  const slow = p === 'broker' && waitedS > 60;
 
   return (
     <div className="mt-3" aria-live="polite">
@@ -152,7 +155,7 @@ function CalmProgress(props: { state: FlowState; now: number; actLabel?: string;
           mark={p === 'broker' ? 'busy' : checkFailed ? 'failed' : 'done'}
           n={1}
           what={p === 'broker' ? BROKER_CHECK_WORDS : checkFailed ? 'The risk engine’s check didn’t go through' : 'The risk engine checked your account'}
-          how={slow ? 'Still checking. A slow answer is asked for again by itself: you don’t need to do anything.' : p !== 'broker' && !checkFailed ? (allows ?? undefined) : undefined}
+          how={slow ? `${stillWaitingWords(waitedS) ?? 'Still checking.'} A slow answer is asked for again by itself.` : p !== 'broker' && !checkFailed ? (allows ?? undefined) : undefined}
         />
         {actLabel && (
           <FlowLine

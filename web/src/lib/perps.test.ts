@@ -563,11 +563,11 @@ test("every other answer comes back in lib/gateway.ts's words", () => {
 
 test('the progress line is honest about the wait: usually 20 to 60 seconds, and past 30 the one calm line, never an error', () => {
   assert.match(progressWords('signing', 0), /Waiting for your wallet to sign/);
-  assert.equal(progressWords('checking', 14.9), "The broker's risk checks are running in a sealed computer: 14 s. This usually takes 20 to 60 seconds.");
+  assert.equal(progressWords('checking', 14.9), "The broker's risk checks are running in a sealed computer (OutLayer): 14 s. This usually takes 20 to 60 seconds.");
   assert.match(progressWords('checking', 30), /30 s\. This usually takes 20 to 60 seconds/);
   // INTERFACES.md 50.4: an order may wait up to its whole life, 230 s on testnet's new gateway.
-  assert.equal(progressWords('checking', 75), "The order is waiting its turn at the risk engine. It can take a few minutes on testnet. 75 s so far. You don't need to do anything.");
-  assert.match(progressWords('checking', 229), /^The order is waiting its turn at the risk engine\./);
+  assert.equal(progressWords('checking', 75), "The order is waiting its turn at OutLayer, the outside service that runs the risk checks. Its testnet can take a few minutes. 75 s so far. You don't need to do anything.");
+  assert.match(progressWords('checking', 229), /^The order is waiting its turn at OutLayer/);
   assert.doesNotMatch(progressWords('checking', 229), /fail|error|expired/i);
   assert.match(progressWords('checking', -3), /: 0 s\./);
 });

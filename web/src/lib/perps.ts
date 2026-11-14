@@ -763,5 +763,5 @@ export function progressWords(phase: Waiting, seconds: number, network: 'testnet
   const s = Math.max(0, Math.floor(seconds));
   const calm = orderWaitWords(s * 1000, network);
   if (calm) return `${calm} ${s} s so far. You don't need to do anything.`;
-  return `The broker's risk checks are running in a sealed computer: ${s} s. This usually takes 20 to 60 seconds.`;
+  return `The broker's risk checks are running in a sealed computer (OutLayer): ${s} s. This usually takes 20 to 60 seconds.`;
 }

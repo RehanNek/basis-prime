@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import type { PropsWithChildren } from 'react';
 
 import { Brand, Navigation, Tabs } from '@/components/navigation';
+import { OutlayerBanner } from '@/components/outlayer-banner';
 import { ThemeSync } from '@/components/theme-toggle';
 import { SessionProvider } from '@/providers/session-provider';
 
@@ -43,6 +44,8 @@ export function Providers({ children }: PropsWithChildren) {
       <NearProvider>
         <SessionProvider>
           <Navigation />
+          {/* INTERFACES.md 51.15: on every page, while OutLayer's testnet is slow or silent. */}
+          <OutlayerBanner />
           {children}
         </SessionProvider>
       </NearProvider>

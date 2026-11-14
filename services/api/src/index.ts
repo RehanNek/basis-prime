@@ -37,6 +37,7 @@ import { OutLayerClient } from "./outlayer.js";
 import { PRICING_CACHE_MS } from "./pricing.js";
 import { RHEA_CACHE_MS } from "./rhea.js";
 import { NearRpc } from "./rpc.js";
+import { OutLayerWatch, watched } from "./outlayer-health.js";
 import { createApiServer } from "./server.js";
 import { newServiceToken, removeServiceToken, Sessions, writeServiceToken } from "./session.js";
 import { Shared } from "./shared.js";
@@ -46,8 +47,10 @@ const log = (line: string) => console.log(`${new Date().toISOString().slice(11, 
 
 const config = apiConfig(process.env);
 const oneClick = oneClickFromEnv(process.env);
+// INTERFACES.md 51.15: every run is timed, so the app can say when OutLayer's testnet is slow or silent.
+const outlayerWatch = new OutLayerWatch();
 const outlayer = config.outlayerPaymentKey
-  ? new OutLayerClient({ apiUrl: config.outlayerApiUrl, paymentKey: config.outlayerPaymentKey, waitMs: config.outlayerWaitMs })
+  ? watched(new OutLayerClient({ apiUrl: config.outlayerApiUrl, paymentKey: config.outlayerPaymentKey, waitMs: config.outlayerWaitMs }), outlayerWatch)
   : undefined;
 const hlMainnet = new HlHttp({ apiUrl: config.hlMainnetApiUrl });
 const evm = new EvmRpc({ url: config.evmRpcUrl });
@@ -101,6 +104,7 @@ const server = createApiServer(
     config,
     chain: new NearRpc({ url: config.nearRpcUrl }),
     outlayer,
+    outlayerHealth: () => outlayerWatch.health(),
     oneClick,
     previews: new RateLimiter(PREVIEWS_PER_MINUTE, 60_000),
     hl: new HlHttp({ apiUrl: config.hlApiUrl }),

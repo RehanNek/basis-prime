@@ -5,6 +5,7 @@ import type { ReactNode } from 'react';
 import { txUrl } from '@/config';
 import type { FlowState } from '@/hooks/use-check-then-act';
 import { useNow } from '@/hooks/use-now';
+import { stillWaitingWords } from '@/lib/outlayer';
 import { formatUsd } from '@/lib/units';
 import { freshness, fundLends, SECONDS_PER_BLOCK } from '@/lib/verdict';
 
@@ -94,7 +95,7 @@ export function FlowProgress({ state, actLabel, actDone, onConfirm, onReset, all
           what="The risk engine reviews the whole book"
           how={
             p === 'verdict'
-              ? `Usually 5 to 20 seconds, at most about two minutes · ${Math.round((now - state.since) / 1000)} s`
+              ? (stillWaitingWords((now - state.since) / 1000) ?? `Usually 5 to 20 seconds · ${Math.round((now - state.since) / 1000)} s`)
               : verdictMark === 'done'
                 ? (allows ?? 'Done.')
                 : undefined

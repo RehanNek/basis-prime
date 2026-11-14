@@ -32,6 +32,7 @@
 //   GET  /api/book-stress           the keeper's latest daily book stress test
 //
 // Phase 6, stage 1 (INTERFACES.md 28; lenders.ts), read only:
+//   GET  /api/outlayer              how OutLayer has answered this backend's own runs lately (INTERFACES.md 51.15)
 //   GET  /api/lenders               each lender's terms now: Aave and Rhea on mainnet, Aave's test market, our Rhea copy
 //   GET  /api/lender/:account       the account's permission, funding plan and lender positions
 //   POST /api/funding-plan          {account, amount}: pb-risk's preview of the `fund` intent, as sources and steps
@@ -75,6 +76,7 @@ import { getHl, getMarkets, postCancel, postHlSubmit, postOrder, postSetLeverage
 import { HlError } from "./hl.js";
 import { EvmError } from "./evm.js";
 import { getEvmGas, postEvmGas, postEvmSubmit } from "./evm-handlers.js";
+import { noHealth } from "./outlayer-health.js";
 import { OutLayerError } from "./outlayer.js";
 import { getCandles, getPerp } from "./perps.js";
 import { getPortfolio } from "./portfolio.js";
@@ -120,6 +122,8 @@ async function route(deps: Deps, request: IncomingMessage): Promise<unknown> {
   };
 
   if (method === "GET" && pathname === "/api/config") return getConfig(deps);
+  // INTERFACES.md 51.15: how OutLayer is answering, from this backend's own runs. No account, so anyone may ask.
+  if (method === "GET" && pathname === "/api/outlayer") return deps.outlayerHealth?.() ?? noHealth(deps.now());
   if (method === "GET" && pathname === "/api/pool") return getPool(deps);
   if (method === "POST" && pathname === "/api/session") return postSession(deps, await readJson(request));
   // INTERFACES.md 49.4: the keeper asks for the check and pays for it. The account's owner only.

@@ -25,6 +25,7 @@ import { TxStatus } from '@/components/tx-status';
 import { NetworkId, UsdcToken } from '@/config';
 import { useApi } from '@/hooks/use-api';
 import { useBorrowMost } from '@/hooks/use-borrow-most';
+import { useOutlayer } from '@/hooks/use-outlayer';
 import { useClientAccount, type ClientAccount } from '@/hooks/use-client-account';
 import { useLenderAccount } from '@/hooks/use-lender-account';
 import { useNow } from '@/hooks/use-now';
@@ -48,6 +49,7 @@ import { planRunning } from '@/lib/fund';
 import { canUseLenders, lenderPositions, postedWord, sourceName, TARGET_CUSHION_BP, wouldPostWord } from '@/lib/funding';
 import { holdsLoan } from '@/lib/hl';
 import { loanView } from '@/lib/loan';
+import { isBusy } from '@/lib/outlayer';
 import { etherToken, MOVES, type MoveKey } from '@/lib/moves';
 import { borrowTx, repayTx } from '@/lib/tx';
 import { formatBp, formatUnits, formatUsd, parseUnits } from '@/lib/units';
@@ -106,8 +108,12 @@ function BorrowBody() {
   // INTERFACES.md 51.12: the most the account can borrow always shows at the top of the card. For an account that
   // borrows through `fund`, the risk engine is asked as the page opens, and again when the balances or the debt change.
   const bookKey = answer?.state ? `${answer.debt ?? ''}|${answer.balances.map((b) => b.amount ?? '?').join(',')}|${owed}` : '';
-  const engineMost = useBorrowMost(funded && previewEnabled && answer?.state ? answer.account_id : null, bookKey);
-  const most = mostWords({ engine: engineMost.most, asking: engineMost.asking, estimate: estimate?.amount ?? null });
+  // INTERFACES.md 51.15: while OutLayer is slow or silent the page doesn't add a run of its own to the queue: the
+  // figure is then the page's own guide, and the line under it says why.
+  const outlayerBusy = isBusy(useOutlayer());
+  const engineMost = useBorrowMost(funded && previewEnabled && answer?.state && !outlayerBusy ? answer.account_id : null, bookKey);
+  const mostView = mostWords({ engine: engineMost.most, asking: engineMost.asking, estimate: estimate?.amount ?? null });
+  const most = outlayerBusy && engineMost.most === null ? { ...mostView, note: `${mostView.note} OutLayer is slow right now, so the page isn’t asking it for the exact figure.` } : mostView;
   const arriving = planRunning(lender.data?.funding, now);
   const [panel, setPanel] = useState<{ kind: 'take-back'; lender: LenderName } | { kind: MoveKey } | null>(null);
   // The lender a card's Repay button picked: the repay form opens on it.

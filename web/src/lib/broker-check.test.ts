@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 
 import { BROKER_CHECK_WORDS, brokerCheckOutcome, refusalWords } from './broker-check.ts';
+import { NO_ANSWER_WORDS } from './outlayer.ts';
 
 test('an accepted check goes on to the action, with the block the engine read', () => {
   assert.deepEqual(brokerCheckOutcome({ ok: true, answer: { accepted: true, blk: 277_520_281, tries: 2, tx: '9xQp' } }), { kind: 'accepted', blk: 277_520_281, tx: '9xQp' });
@@ -29,7 +30,8 @@ test('a check the keeper asked for that stored no result is said in plain words:
   // Three tries, and OutLayer brought nothing each time (the keeper's own words, services/keeper/src/loop.ts).
   assert.deepEqual(brokerCheckOutcome({ ok: true, answer: { accepted: false, reason: ' OutLayer returned no verdict ', tries: 3, tx: '9xQp' } }), {
     kind: 'refused',
-    why: 'The risk engine gave no answer this time, so nothing was sent. Try again: it usually answers on the next try.',
+    // INTERFACES.md 51.15: the words name OutLayer and say that nothing was signed or moved.
+    why: NO_ANSWER_WORDS,
     detail: 'OutLayer returned no verdict',
   });
   assert.equal(refusalWords('a check for this account is already on its way: wait for it'), 'A check of your account is already running, so nothing was sent. Wait a minute, then try again.');
@@ -39,10 +41,13 @@ test('a check the keeper asked for that stored no result is said in plain words:
     why: 'The check didn’t go through, so nothing was sent. Try again in a minute; the details say why.',
     detail: 'the account is frozen',
   });
-  // No sentence a client reads names a verdict or OutLayer.
+  // No sentence a client reads names a verdict, a nonce or a counter. Since 14 Nov the one about OutLayer does name
+  // OutLayer (INTERFACES.md 51.15: the user wants it said who is being waited on); the others still don't.
   for (const reason of ['OutLayer returned no verdict', 'OutLayer’s call failed', 'a check for this account is already on its way: wait for it', 'the account is frozen']) {
-    assert.doesNotMatch(refusalWords(reason), /verdict|OutLayer|nonce|counter/i);
+    assert.doesNotMatch(refusalWords(reason), /verdict|nonce|counter/i);
   }
+  assert.match(refusalWords('OutLayer’s call failed'), /^OutLayer didn’t answer in time/);
+  for (const reason of ['a check for this account is already on its way: wait for it', 'the account is frozen']) assert.doesNotMatch(refusalWords(reason), /OutLayer/i);
 });
 
 test('a request cut off before its answer keeps waiting: the check may still land', () => {

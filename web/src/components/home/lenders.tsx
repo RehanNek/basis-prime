@@ -5,8 +5,10 @@
 import { NetworkId } from '@/config';
 import { useApi } from '@/hooks/use-api';
 import { useFundingPlan } from '@/hooks/use-funding-plan';
+import { useOutlayer } from '@/hooks/use-outlayer';
 import { LENDERS_PATH, type LenderName, type LenderPosition, type LendersAnswer, type LenderTerms, type Pricing } from '@/lib/api';
 import { cushionExplained, lenderCard, looksAt, termsFor, toMicro, type PlanView } from '@/lib/funding';
+import { isBusy, PREVIEW_SKIPPED_WORDS } from '@/lib/outlayer';
 import { cardRateNote, pricedPlan } from '@/lib/pricing';
 
 /** What a lender card's buttons do. Without it, the cards only show. */
@@ -158,8 +160,12 @@ function LenderCardView({ position, terms, explain, actions, pays, asOf }: { pos
  * `pricing` is the pool's policy for the account: with one, each rate is what the client pays.
  */
 export function WhereItComesFrom({ account, amount, pricing, posted }: { account: string; amount: string | null; pricing?: Pricing | null; posted?: Partial<Record<string, string>> }) {
-  const plan = useFundingPlan(account, amount);
+  // INTERFACES.md 51.15: each preview is a run at OutLayer. While it is slow or silent the page asks for none, so
+  // the loan's own check isn't kept waiting behind them, and says so in a line.
+  const busy = isBusy(useOutlayer());
+  const plan = useFundingPlan(account, busy ? null : amount);
   const view = pricedPlan(plan.answer, pricing);
+  if (busy) return amount ? <div className="form-text mb-3">{PREVIEW_SKIPPED_WORDS}</div> : null;
   return view ? <Sources view={view} stale={plan.stale} posted={posted} /> : null;
 }
 

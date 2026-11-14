@@ -7,7 +7,7 @@ import { test } from "node:test";
 
 import type { QuoteRequest, QuoteResponse, StatusResponse, TokenInfo } from "@pb/oneclick";
 
-import { CHECKS_PER_MINUTE, keeperCheckOver, postCheck, type KeeperCheck } from "./check.js";
+import { CHECKS_PER_MINUTE, KEEPER_AT_WORK_MS, keeperCheckOver, postCheck, type KeeperCheck } from "./check.js";
 import { apiConfig } from "./config.js";
 import { fakeChain, fakeDeps, fakeFetch, fakeHl, T0 } from "./fakes.js";
 import type { KeeperEvent } from "./drill.js";
@@ -190,6 +190,27 @@ test("49.4, a check cut off by the wait is 504 check_slow, so the page keeps wat
   const slow = Object.assign(new Error("The operation was aborted due to timeout"), { name: "TimeoutError" });
   const { deps, wallet } = world({ overrides: { keeperCheck: fakeKeeper(slow).keeper, ...checks() } });
   await assert.rejects(postCheck(deps, wallet(WALLET), { account: ALICE, intent: { check: {} } }), rejectsWith(504, "check_slow"));
+});
+
+test("51.15, a keeper that took the request and was cut off after minutes is at work, not off: 504 check_slow, so no wallet-paid check is started", async () => {
+  // 14 Nov, 17:28 UTC on the hosted site: OutLayer was slow, the keeper was on its retries, and Node dropped the
+  // backend's request to it after 300 seconds with a plain "fetch failed". That read as "the keeper isn't running",
+  // and the page sent the client to a check from their own wallet, for the same slow OutLayer.
+  assert.equal(KEEPER_AT_WORK_MS, 30_000);
+  let clock = T0;
+  const dropped: KeeperCheck = async () => {
+    clock += 300_969;
+    throw Object.assign(new TypeError("fetch failed"), { cause: { code: "UND_ERR_HEADERS_TIMEOUT" } });
+  };
+  const late = world({ now: () => clock, overrides: { keeperCheck: dropped, now: () => clock, ...checks(() => clock) } });
+  await assert.rejects(postCheck(late.deps, late.wallet(WALLET), { account: ALICE, intent: { check: {} } }), rejectsWith(504, "check_slow", /may still arrive/));
+  // The same failure at once is a keeper that isn't there, as before.
+  const refused: KeeperCheck = async () => {
+    clock += 12;
+    throw Object.assign(new TypeError("fetch failed"), { cause: { code: "ECONNREFUSED" } });
+  };
+  const off = world({ now: () => clock, overrides: { keeperCheck: refused, now: () => clock, ...checks(() => clock) } });
+  await assert.rejects(postCheck(off.deps, off.wallet(WALLET), { account: ALICE, intent: { check: {} } }), rejectsWith(503, "keeper_off"));
 });
 
 test("49.4, with privacy off the route isn't there: 404, whoever asks", async () => {

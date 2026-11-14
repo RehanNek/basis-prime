@@ -4,6 +4,8 @@
 // This file is the rule for what the page does with the backend's answer: go on, say why not, wait, or fall back to
 // the check from the client's own wallet, as before.
 
+import { NO_ANSWER_WORDS } from './outlayer.ts';
+
 /** What POST /api/check answers (INTERFACES.md 49.3): accepted with the block it read, or the refusal's reason. */
 export interface CheckAnswer {
   accepted?: boolean;
@@ -41,7 +43,7 @@ const CUT_OFF = [0, 502, 504];
  */
 export function refusalWords(reason: string): string {
   if (/already on its way/i.test(reason)) return 'A check of your account is already running, so nothing was sent. Wait a minute, then try again.';
-  if (/OutLayer/i.test(reason)) return 'The risk engine gave no answer this time, so nothing was sent. Try again: it usually answers on the next try.';
+  if (/OutLayer/i.test(reason)) return NO_ANSWER_WORDS;
   return 'The check didn’t go through, so nothing was sent. Try again in a minute; the details say why.';
 }
 

@@ -89,7 +89,7 @@ Steps 1 to 7 need no key, no wallet and no account. Tools: Python 3.10 or later 
    ```bash
    pnpm install && pnpm test
    ```
-   1,075 tests pass: the 1Click client (12), the testnet stand-in for 1Click (71), the backend (254), the keeper and the gate scripts (275), the web app (463).
+   1,087 tests pass: the 1Click client (12), the testnet stand-in for 1Click (71), the backend (261), the keeper and the gate scripts (275), the web app (468).
 
 4. **Run the contracts' tests on a local NEAR chain.** The sandbox tests load the contracts' built files, so build them once. That needs cargo-near 0.22.0 (`cargo install cargo-near --version 0.22.0 --locked`).
    ```bash
@@ -224,7 +224,7 @@ Every contract we deploy went through the `near-contract-audit` checklist and a 
 **The testnet demo**
 - **It is small.** About $1,000 of test bitcoin or test ETH against a short of the same size, because Hyperliquid's test dollars are scarce. It is the book of "The problem" at about 1/25 of the size.
 - **A stand-in plays 1Click,** and our own copy plays Rhea (see the table above).
-- **OutLayer's testnet is slow in spells.** A check on chain gets about two minutes (NEAR's limit for a waiting call). On 13 and 14 Nov the enclave's queue was at times longer, and on 14 Nov between 11:45 and 13:36 UTC it answered almost no check. An unanswered check moves nothing: the account stores no answer and the action isn't taken. The keeper and the app ask again. On testnet an order may be signed for up to 4 minutes for the same reason (2 on mainnet).
+- **OutLayer's testnet is slow in spells.** A check on chain gets about two minutes (NEAR's limit for a waiting call). On 13 and 14 Nov the enclave's queue was at times longer, and on 14 Nov between 11:45 and 13:36 UTC it answered almost no check. An unanswered check moves nothing: the account stores no answer and the action isn't taken. The keeper and the app ask again. The app says when this is happening: the backend times its own OutLayer runs (`GET /api/outlayer`), a banner on every page says when OutLayer's testnet is slow or silent, and a wait that passes a minute names OutLayer and shows the time. On testnet an order may be signed for up to 4 minutes for the same reason (2 on mainnet).
 - **Hyperliquid testnet takes no order priced more than about 2.4% from its oracle price,** and its own traded price sometimes stands further out than that (BTC did for 11 hours on 13 and 14 Nov). The app prices an order that should fill at once 2.3% past the reference price, and marks a coin as not trading once Hyperliquid's own price stands 2.0% or more from it.
 - **On testnet, an order may be priced up to 3% from the reference price.** The rule on mainnet is each coin's own band: 1% for bitcoin (`RISK_ENGINE.md` 9).
 - **The client's own ETH moves to Aave's chain 0.02 ETH at a time** (about $38), because the stand-in has to hand over real test ETH there and holds little.
@@ -233,7 +233,7 @@ Every contract we deploy went through the `near-contract-audit` checklist and a 
 
 **The product**
 - **Client accounts never take new code.** An account keeps the code and settings it was made with, so each fix reaches the accounts made after it. Accounts made since 14 Nov, 10:16 UTC have everything in this README.
-- **The rebuilt pages have not been walked end to end with a real wallet.** The app was rebuilt on 13 and 14 Nov (the tabs, Spot, Perps, Basis trade). Since then the contracts, the keeper and the backend were proven by the scripted runs above, and the pages by their own tests (463) and in a browser without a wallet. The by-hand run with a wallet was on 13 Nov, before the rebuild.
+- **The rebuilt pages have not been walked end to end with a real wallet.** The app was rebuilt on 13 and 14 Nov (the tabs, Spot, Perps, Basis trade). Since then the contracts, the keeper and the backend were proven by the scripted runs above, and the pages by their own tests (468) and in a browser without a wallet. The by-hand run with a wallet was on 13 Nov, before the rebuild.
 - **After money comes home from Hyperliquid, new borrowing waits for one check.** Hyperliquid accepts a signed transfer for 2 days, so an old one could take collateral out from under a loan. The account lists each transfer it signed; once a check sees it in Hyperliquid's own history, the pause lifts. Without that it lasts 2 days and 1 hour. Repaying is never blocked. This rule is newer than the security review.
 - **NEAR can't be posted with a lender.** Our contract takes Rhea collateral with at most 18 decimals (wNEAR has 24), and Aave's market has no NEAR. NEAR still counts in the whole-book loan from our pool.
 - **Deposit and withdraw take USDC and bitcoin.** ETH, NEAR and USDT get in and out of an account through a swap on Spot.

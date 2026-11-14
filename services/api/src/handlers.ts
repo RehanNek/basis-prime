@@ -15,6 +15,7 @@ import type { GasLimits, GasWallet } from "./evm-handlers.js";
 import type { HlApi, TtlCache } from "./hl.js";
 import type { LenderRow } from "./lenders.js";
 import type { KeyedRateLimiter, RateLimiter } from "./limiter.js";
+import type { OutLayerHealth } from "./outlayer-health.js";
 import type { OutLayerClient } from "./outlayer.js";
 import type { PricingAnswer } from "./pricing.js";
 import type { RheaTerms } from "./rhea.js";
@@ -29,6 +30,8 @@ export interface Deps {
   chain: ChainReader;
   /** Undefined when OUTLAYER_PAYMENT_KEY is empty: previews and gateway runs are then off. */
   outlayer: Pick<OutLayerClient, "run"> | undefined;
+  /** INTERFACES.md 51.15: how OutLayer has answered this backend's own runs lately (GET /api/outlayer). */
+  outlayerHealth?: () => OutLayerHealth;
   /** The shim on testnet (PLAN.md 5.4). */
   oneClick: Pick<OneClickClient, "baseUrl" | "quote" | "status">;
   previews: RateLimiter;

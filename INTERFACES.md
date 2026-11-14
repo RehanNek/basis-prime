@@ -7393,3 +7393,51 @@ development only, whose stand-in now lets a second sell make the short bigger): 
 loan and back to a ready form, a third that stopped at the margin step with the box, and a stale remembered trade
 ignored on a new account. The sample caught one fault on the way (a state read before it was declared). **Not
 checked with a real wallet.**
+
+### 51.15 OutLayer’s health is timed and said (the main session, 14 Nov, 17:47 UTC)
+
+The user, after a loan's check sat for about nine minutes on the hosted site: "this borrowing thing that goes through
+outlayer is for sure gonna cause us problems. its for sure gonna be stuck when judges are judging ... tell me if we
+can display something where we say that outlayer is not responding so they know its not our fault, its outlayer."
+On the hosted backend between 17:19 and 17:28 UTC every run took 97 seconds or more, and one check got no answer in
+301 seconds. Until now the app's waiting lines said "the risk engine" and "a sealed computer" and never the name
+(a rule of 13 Nov, which two tests held). That rule is lifted on the user's word: the lines name OutLayer.
+
+**Backend** (`services/api/src/outlayer-health.ts`, `index.ts`, `server.ts`, `check.ts`):
+- Every run the backend makes at OutLayer (a preview, a funding plan, an order, a cancel, a credit check) is timed
+  (`watched`, `OutLayerWatch`). The backend asks for no run of its own.
+- **`GET /api/outlayer`** (no account, open to anyone): `state` is `ok`, `slow`, `down` or `unknown`, from the runs
+  that ended in the last 15 minutes and any still waiting (`healthOf`): `down` when the last runs, up to three, all
+  got no answer; `slow` when the latest got none, or took over a minute, or the middle of the last three did, or a
+  run has waited over a minute; `unknown` with no run to go by. Also `last_seconds`, `last_answered`,
+  `last_answer_ms`, `waiting_s`, `runs`, `unanswered`. A refused payment key (401, 402, 403) isn't counted: that is
+  ours to fix.
+- **A fault found on the way** (`check.ts`): Node drops a request with no answer after 300 seconds with a plain
+  "fetch failed". The backend's call to the keeper for a broker-paid check hit that while the keeper was on its
+  retries, and the route answered 503 `keeper_off`. The page then started a wallet-paid check for the same slow
+  OutLayer: five minutes, then a wallet window, then four more. A call to the keeper that fails only after 30
+  seconds (`KEEPER_AT_WORK_MS`) is now 504 `check_slow`, as a timeout already was: the page keeps watching the
+  account and starts no second check.
+
+**App** (`web/src/lib/outlayer.ts`, `hooks/use-outlayer.ts`, `components/outlayer-banner.tsx`):
+- **A banner under the tabs on every page** while the state is `slow` or `down`: who is being waited on, what the
+  backend last saw with its figure ("The last risk check took 2 min 17 s; it normally takes 5 to 20 seconds"), and
+  that nothing is lost. No banner for `ok` or `unknown`.
+- **Waiting lines** (`flow-progress.tsx`, `check-flow.tsx`): past a minute, "Still waiting for OutLayer: 1 min 40 s
+  …", with what OutLayer is and that nothing has been signed. The Perps order's lines name OutLayer too
+  (`order-life.ts`, `perps.ts`).
+- **A wait that ran out** (`NO_ANSWER_WORDS`, in the check flow and the broker's refusal): "OutLayer didn't answer in
+  time, so nothing was signed or moved … this is not your wallet or this app. Try again".
+- **No extra runs while it is slow:** the Borrow page's "Most you can borrow now" (51.12) and "Where it comes from"
+  ask OutLayer for nothing while the state is `slow` or `down`; the figure is then the page's own guide, and a line
+  says why.
+
+**Tests:** backend 261 (six for the health, one for the keeper fault), web 468 (five for the words; three old tests
+that forbade the name now ask for it).
+
+**Seen live after the deploy (17:47 to 17:50 UTC):** `GET /api/outlayer` answered `unknown` from outside right after
+the restart. One real run was then started on our own empty demo account (`fund-eth-11141017.pbf.testnet`, a
+funding plan through the service sign-in). After 75 seconds the route said `slow` with `waiting_s` 75, and the hosted
+site showed the banner on the Borrow page: "OutLayer's testnet is answering slowly right now. A risk check has been
+waiting 1 min 24 s; it normally takes 5 to 20 seconds. …". Not seen by me: the waiting lines and the no-answer words
+inside a signed-in check, which need a wallet.

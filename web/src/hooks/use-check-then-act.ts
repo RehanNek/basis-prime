@@ -12,6 +12,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { accountPath, api, ApiError, postCheck, type AccountAnswer } from '@/lib/api';
 import { brokerCheckOutcome, type BrokerCheck } from '@/lib/broker-check';
+import { NO_ANSWER_WORDS } from '@/lib/outlayer';
 import { isLoan, stillPausedWords } from '@/lib/hl';
 import { requestCheckTx, txFailure, txHash, txLogs, type Outcome, type Tx } from '@/lib/tx';
 import type { Intent, StoredVerdict } from '@/lib/types';
@@ -199,7 +200,7 @@ export function useCheckThenAct(accountId: string, onChange?: () => void) {
           phase: 'failed',
           step: 'verdict',
           checkHash,
-          why: 'The risk engine gave no answer this time, so nothing was sent. Start again: it usually answers on the next try.',
+          why: NO_ANSWER_WORDS,
           logs: txLogs(outcome),
         });
         notify();
@@ -237,7 +238,7 @@ export function useCheckThenAct(accountId: string, onChange?: () => void) {
         // Accepted, and the backend's node doesn't show it yet: read again after a moment.
         if (said) await sleep(POLL_MS);
       }
-      return { kind: 'silent', why: 'The risk engine gave no answer this time, so nothing was sent. Try again: it usually answers on the next try.' };
+      return { kind: 'silent', why: NO_ANSWER_WORDS };
     },
     [accountId, landed],
   );
