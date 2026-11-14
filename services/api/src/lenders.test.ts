@@ -6,7 +6,7 @@ import type { AaveApi } from "./aave.js";
 import { apiConfig } from "./config.js";
 import type { EvmReader } from "./evm.js";
 import { fakeChain, fakeDeps, T0 } from "./fakes.js";
-import { fundingView, getLender, getLenders, LENDERS_CACHE_MS, lenderStatus, plainName, postedOf, postFundingPlan, readExt, rheaCollateralTokens, rheaHoldings, rheaLtvOf, rheaTermsOf } from "./lenders.js";
+import { fundingView, getLender, getLenders, LENDERS_CACHE_MS, lenderStatus, plainName, postedOf, postFundingPlan, readExt, rheaCollateralTokens, rheaDebt, rheaHoldings, rheaLtvOf, rheaTermsOf, TARGET_HF_BP, withLiveDebt } from "./lenders.js";
 import { MAINNET_TOKENS } from "./mainnet.js";
 import { rheaFree } from "./rhea.js";
 import { RpcError } from "./rpc.js";
@@ -224,6 +224,54 @@ test("GET /api/lender/:account for a Phase 6 account: its permission and funding
   });
 });
 
+test("what the account owes Rhea is read from Rhea's own record, in micro-USD, rounded up (INTERFACES.md 51.13)", () => {
+  // 14 Nov, the user's own account: $1,000 borrowed a few minutes before. Rhea counts it with 18 decimals.
+  const owes = { borrowed: [{ token_id: MUSDC, balance: "1000001569937482568360", shares: "1", apr: "0.16" }], collateral: [{ token_id: MNBTC, balance: "32204160000000000" }], supplied: [] };
+  assert.equal(rheaDebt(owes, MUSDC), "1000001570", "$1,000.00157, the last part of a micro-dollar rounded up");
+  assert.equal(rheaDebt({ borrowed: [{ token_id: MUSDC, balance: "1000000000000" }] }, MUSDC), "1");
+  assert.equal(rheaDebt({ borrowed: [{ token_id: MUSDC, balance: "1" }] }, MUSDC), "1", "dust is still a debt");
+  assert.equal(rheaDebt({ borrowed: [] }, MUSDC), "0", "borrowed nothing");
+  assert.equal(rheaDebt({ borrowed: [{ token_id: "other.testnet", balance: "5" }] }, MUSDC), "0");
+  // A record that can't be read that way is "not known", never "nothing".
+  assert.equal(rheaDebt(null, MUSDC), null);
+  assert.equal(rheaDebt({ collateral: [] }, MUSDC), null);
+  assert.equal(rheaDebt({ borrowed: [{ token_id: MUSDC, balance: "abc" }] }, MUSDC), null);
+});
+
+test("a lender position with the debt the lender reports now: the cushion and the room by the engine's own sums", () => {
+  assert.equal(TARGET_HF_BP, 15_000);
+  // The user's account: the held verdict was read after the bitcoin was posted and before the $1,000 was borrowed.
+  const held = { l: "rhea" as const, c: 2_105_263_229, d: 0, hf_bp: 0, r_bp: 1_595, s_bp: 1_019, room: 1_066_666_702, liq_bp: 7_600 };
+  // 2,105.263229 x 0.76 / 1,000.00157 = 1.5999; at a cushion of 1.50 the collateral carries $1,066.67, so $66.67 more.
+  assert.deepEqual(withLiveDebt(held, 1_000_001_570, 15_000), { d: 1_000_001_570, hf_bp: 15_999, room: 66_665_132 });
+  assert.equal(lenderStatus(withLiveDebt(held, 1_000_001_570, 15_000)), "safe");
+  // Repaid in full since the verdict: nothing owed, and the room is what the engine allowed in all.
+  const owed = { ...held, d: 1_000_000_000, hf_bp: 16_000, room: 66_666_702 };
+  assert.deepEqual(withLiveDebt(owed, 0, 15_000), { d: 0, hf_bp: 0, room: 1_066_666_702 });
+  assert.equal(lenderStatus(withLiveDebt(owed, 0, 15_000)), "none");
+  // The same debt as the verdict's changes nothing.
+  assert.deepEqual(withLiveDebt(owed, 1_000_000_000, 15_000), { d: 1_000_000_000, hf_bp: 16_000, room: 66_666_702 });
+  // A debt past what the collateral carries: no room, and a thin cushion shows as it is.
+  assert.deepEqual(withLiveDebt(held, 1_300_000_000, 15_000), { d: 1_300_000_000, hf_bp: 12_307, room: 0 });
+  assert.equal(lenderStatus(withLiveDebt(held, 1_300_000_000, 15_000)), "thin");
+  // A client who asked for a cushion of 2.00: the room is counted to that.
+  assert.equal(withLiveDebt(held, 0, 20_000).room, 800_000_027);
+  // Large books stay exact: $9 billion posted.
+  assert.deepEqual(withLiveDebt({ ...held, c: 9_000_000_000_000_000, room: 4_560_000_000_000_000 }, 4_000_000_000_000_000, 15_000), { d: 4_000_000_000_000_000, hf_bp: 17_100, room: 560_000_000_000_000 });
+});
+
+test("GET /api/lender/:account shows a loan that came from Rhea alone as soon as Rhea has it, not at the next check", async () => {
+  const ext = { l: "rhea", c: 2_105_263_229, d: 0, hf_bp: 0, r_bp: 1_595, s_bp: 1_019, room: 1_066_666_702, liq_bp: 7_600 };
+  const state = { ...OLD_STATE, permission: PERMISSION, verdict: { ...OLD_STATE.verdict, verdict: { ...OLD_STATE.verdict.verdict, ext: [ext] } } };
+  const config = { tokens: [{ id: MUSDC, symbol: "USDC", decimals: 6 }, { id: MNBTC, symbol: "nBTC", decimals: 8 }], usdc_token: MUSDC, lenders: { rhea: { contract_id: "rhea.pbf-ops.testnet", collateral: [MNBTC] } } };
+  const account = { borrowed: [{ token_id: MUSDC, balance: "1000001569937482568360" }], collateral: [{ token_id: MNBTC, balance: "32204160000000000" }], supplied: [] };
+  const { chain } = fakeChain({ views: { [`${ALICE}.get_state`]: state, [`${ALICE}.get_config`]: config, "rhea.pbf-ops.testnet.get_account": account } });
+  const answer = await getLender(fakeDeps({ chain }).deps, ALICE);
+  assert.deepEqual(answer.lenders, [
+    { l: "rhea", posted: 2_105_263_229, debt: 1_000_001_570, hf_bp: 15_999, liq_bp: 7_600, rate_bp: 1_595, supply_bp: 1_019, room: 66_665_132, status: "safe", held: [{ token: MNBTC, symbol: "nBTC", decimals: 8, amount: "3220416" }], deposit: "0", debt_live: true },
+  ]);
+});
+
 /** Our Rhea copy's own answers in the sandbox (research/rhea.md 12): Rhea's 0.15.7 release file under its testnet names. */
 const COPY = JSON.parse(readFileSync(new URL("../../../research/data/rhea_copy_views.json", import.meta.url), "utf8")) as {
   account: string;
@@ -247,7 +295,11 @@ test("stage 2: what the account holds at Rhea, from Rhea's own get_account: coll
   const config = { tokens: TOKENS, usdc_token: MUSDC, lenders: { rhea: { contract_id: COPY.contract_id, collateral: [MNBTC] } } };
   const { chain, calls } = fakeChain({ views: { [`${ALICE}.get_state`]: state, [`${ALICE}.get_config`]: config, [`${COPY.contract_id}.get_account`]: repaid } });
   const answer = await getLender(fakeDeps({ chain }).deps, ALICE);
-  assert.deepEqual(answer.lenders, [{ l: "rhea", posted: 100_000_000_000, debt: 50_667_000_000, hf_bp: 15_000, liq_bp: 7_600, rate_bp: 1_591, supply_bp: 1_032, room: 0, status: "safe", held: [{ token: MNBTC, symbol: "nBTC", decimals: 8, amount: "500000" }], deposit: "9985" }]);
+  // INTERFACES.md 51.13: the held verdict still shows the $50,667 debt, but Rhea's own record says it was repaid in
+  // full. The answer goes by Rhea: nothing owed, no cushion to show, and the room the collateral gives at 1.50.
+  assert.deepEqual(answer.lenders, [
+    { l: "rhea", posted: 100_000_000_000, debt: 0, hf_bp: 0, liq_bp: 7_600, rate_bp: 1_591, supply_bp: 1_032, room: 50_666_666_666, status: "none", held: [{ token: MNBTC, symbol: "nBTC", decimals: 8, amount: "500000" }], deposit: "9985", debt_live: true },
+  ]);
   assert.ok(calls.includes(`${COPY.contract_id}.get_account({"account_id":"${ALICE}"})`));
   // An account with no Rhea position in its verdict asks Rhea nothing.
   const none = fakeChain({ views: { [`${ALICE}.get_state`]: OLD_STATE, [`${ALICE}.get_config`]: config } });

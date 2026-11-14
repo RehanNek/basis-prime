@@ -132,7 +132,7 @@ test('a lender’s cushion in a sentence: how far bitcoin could fall before that
   assert.equal(act.label, 'Act now');
   assert.equal(act.words, 'Bitcoin could fall only 10% before Aave would sell. Repay Aave or post more bitcoin there now.');
   assert.match(cushionView({ l: 'aave', hf_bp: 9_900, debt: 1, status: 'act' }).words, /Aave can sell now/);
-  assert.deepEqual(cushionView({ l: 'aave', hf_bp: 0, debt: 0, status: 'none' }), { status: 'none', label: 'Nothing owed', tone: 'neutral', marker: null, words: 'Nothing is owed to Aave, so nothing there can be sold.' });
+  assert.deepEqual(cushionView({ l: 'aave', hf_bp: 0, debt: 0, status: 'none' }), { status: 'none', label: 'Nothing owed', tone: 'neutral', marker: null, words: 'You owe Aave nothing. It still holds the bitcoin you posted there: take it back whenever you like.' });
 });
 
 test('a status the page doesn’t know is worked out from the cushion itself', () => {

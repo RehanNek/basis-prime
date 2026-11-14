@@ -7316,3 +7316,43 @@ A new account, never checked, saw only "The risk engine works out what you can b
   (`fund-eth-11141017.pbf.testnet`, with the service sign-in): HTTP 200 in 13.7 s, `total` 0, verdict ok, `allow.fund`
   0. A positive figure was seen in the Aave run's record (asked $2,000, total $656.63). The page itself was not
   looked at with a signed-in wallet by me.
+
+### 51.13 Borrow: what is owed to Rhea is read from Rhea, and the page is plainer (the main session, 14 Nov, 16:46 UTC)
+
+The user, after borrowing $1,000 from the new wallet: "the what you owe section doesnt get filled automatically the
+moment you borrown something", and of the lender card and the last section: "very confusing, first it syas nothing
+owed then it says posted there as 2105 and that last section of comparing with rhea is probbaly not needed right?"
+
+**What was wrong.** The chain showed the loan: plan `f277682102` on `4w4k4koqe2.pbf.testnet`, two steps, both done:
+0.03220416 nBTC posted at Rhea, then $1,000 borrowed there. No pool part. The page took each lender's debt from the
+held verdict's `ext`, and that verdict was read after the bitcoin was posted and before the $1,000 was borrowed.
+With no pool step there was no check after the borrow, so the page said "You owe nothing" and "Nothing owed" while
+Rhea's own record showed $1,000.00, and would have until the keeper's next check, up to an hour later.
+
+**The fix, in the backend** (`services/api/src/lenders.ts`): `GET /api/lender/:account` already read Rhea's
+`get_account` for what Rhea holds. It now also reads what the account owes there (`rheaDebt`: the USDC entry of
+`borrowed`, 18 inner decimals, rounded up to a micro-dollar) and answers with that debt in place of the verdict's
+(`withLiveDebt`). The cushion and the room follow from it by the engine's own sums (`hf_bp`, `room_micro`), with the
+collateral's value as the verdict counted it; the room never passes what the engine allowed in all. The entry says
+`debt_live: true`. If Rhea's record can't be read, the verdict's figures stand, as before.
+- **Aave's debt is still the verdict's.** Its collateral is read live already (`evm.posted`); its debt is not. The
+  same gap exists there for a loan from Aave alone. Not fixed today.
+
+**The page** (`web/src/app/borrow/borrow-view.tsx`, `components/home/lenders.tsx`, `lib/funding.ts`):
+- While a funding plan has steps to run, "What you owe" says the new loan is arriving. The lender answer is read
+  every 4 seconds meanwhile (as before), so each part shows as it lands.
+- A lender card with nothing owed shows no cushion bar, no selling rule, no rate and no cushion row: one line ("You
+  owe Rhea nothing. It still holds the bitcoin you posted there: take it back whenever you like."), what it holds,
+  what is owed, and the two buttons. The rows are named "Your collateral there" and "You owe there".
+- With a live debt the card's note says what is owed is read from the lender now, and that the collateral's value
+  is the last check's.
+- "Compared with Rhea alone, and the carry" is gone from the Borrow page. The Credit check page makes that
+  comparison; `lib/carry.ts` stays with its tests and no page uses it.
+
+**Checked:** backend 254 tests (three new: `rheaDebt`, `withLiveDebt`, the endpoint with the user's own figures), web
+457, both builds.
+
+**On the hosted backend after the deploy (16:47 UTC), for the user's account:** Rhea's entry reads posted
+$2,105.26, debt $1,000.003387 with `debt_live: true`, cushion 1.5999, room $66.66, status safe, while the held
+verdict (block 277,682,203) still says nothing is owed. The backend restart signed wallets out once; the keeper met
+one 401, read the new token and went on.

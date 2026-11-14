@@ -644,6 +644,11 @@ export interface LenderPosition {
    * repayment above the debt leaves the rest there, and `lender_withdraw` of the USDC token brings it back.
    */
   deposit?: string;
+  /**
+   * INTERFACES.md 51.13: `debt`, `hf_bp`, `room` and `status` go by what the lender itself reports now, not by the
+   * held verdict. On Rhea's entry when its own record could be read; never on Aave's yet.
+   */
+  debt_live?: boolean;
 }
 
 /**

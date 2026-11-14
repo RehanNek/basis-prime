@@ -5,9 +5,12 @@
 // The app's third shape (INTERFACES.md 50.1 point 2): the lenders' cards ("Aave on Base Sepolia", "Rhea on NEAR") live
 // here, under what is owed. A card's Repay picks that lender in the repay form above it; "Take collateral back" opens
 // its side panel, and so do the moves those two offer on testnet (send USDC to Aave's chain, bring the bitcoin home).
-// From before: PLAN.md 5.8 (which limit sets the most, what Rhea alone would lend, the carry; Rhea's terms live from
-// GET /api/rhea, with the 3 Nov figures when that doesn't answer), and Phase 6, stage 2 (INTERFACES.md 29): an account
-// whose config has lenders borrows through `fund`, with the loan's steps, and repays its dearest source first.
+// From before: PLAN.md 5.8 (which limit sets the most), and Phase 6, stage 2 (INTERFACES.md 29): an account whose
+// config has lenders borrows through `fund`, with the loan's steps, and repays its dearest source first.
+// 14 Nov, from the user's wallet walk (INTERFACES.md 51.12 and 51.13): the most that can be borrowed always shows; a
+// loan just signed for is said to be arriving; and the section "Compared with Rhea alone, and the carry" is gone
+// ("that last section of comparing with rhea is probbaly not needed right?"). The Credit check page makes that
+// comparison.
 import { useRef, useState } from 'react';
 
 import { AccountPicker } from '@/components/account-picker';
@@ -29,28 +32,25 @@ import { useOwnSettings } from '@/hooks/use-own-settings';
 import { useTx } from '@/hooks/use-tx';
 import {
   CONFIG_PATH,
-  hlPath,
   marketsPath,
   POOL_PATH,
-  RHEA_PATH,
   type AccountAnswer,
   type ConfigAnswer,
   type FundingSource,
   type LenderName,
   type MarketsAnswer,
   type PoolAnswer,
-  type RheaAnswer,
 } from '@/lib/api';
 import { borrowable, type Borrowable } from '@/lib/borrow';
 import { checkAgeWords, everythingLabel, everythingWords, mostWords, owedAfter, oweHeadline } from '@/lib/borrow-page';
-import { carry, rheaAlone, rheaTerms } from '@/lib/carry';
 import { borrowEstimate, rateFor } from '@/lib/cockpit';
+import { planRunning } from '@/lib/fund';
 import { canUseLenders, lenderPositions, postedWord, sourceName, TARGET_CUSHION_BP, wouldPostWord } from '@/lib/funding';
-import { hlSummary, holdsLoan, type HlAnswer } from '@/lib/hl';
+import { holdsLoan } from '@/lib/hl';
 import { loanView } from '@/lib/loan';
 import { etherToken, MOVES, type MoveKey } from '@/lib/moves';
 import { borrowTx, repayTx } from '@/lib/tx';
-import { formatBp, formatDollars, formatUnits, formatUsd, parseUnits } from '@/lib/units';
+import { formatBp, formatUnits, formatUsd, parseUnits } from '@/lib/units';
 import { freshness } from '@/lib/verdict';
 
 export function BorrowView() {
@@ -108,6 +108,7 @@ function BorrowBody() {
   const bookKey = answer?.state ? `${answer.debt ?? ''}|${answer.balances.map((b) => b.amount ?? '?').join(',')}|${owed}` : '';
   const engineMost = useBorrowMost(funded && previewEnabled && answer?.state ? answer.account_id : null, bookKey);
   const most = mostWords({ engine: engineMost.most, asking: engineMost.asking, estimate: estimate?.amount ?? null });
+  const arriving = planRunning(lender.data?.funding, now);
   const [panel, setPanel] = useState<{ kind: 'take-back'; lender: LenderName } | { kind: MoveKey } | null>(null);
   // The lender a card's Repay button picked: the repay form opens on it.
   const [repayFirst, setRepayFirst] = useState<FundingSource | null>(null);
@@ -163,6 +164,13 @@ function BorrowBody() {
           <section className="card mb-3" ref={oweCard} style={{ scrollMarginTop: '5rem' }}>
             <div className="card-header fw-semibold">What you owe</div>
             <div className="card-body small">
+              {/* INTERFACES.md 51.13: a loan just signed for arrives in steps the keeper runs. Say so until it is all here. */}
+              {arriving && (
+                <p className="mb-2" role="status">
+                  <span className="spinner-border spinner-border-sm me-2" aria-hidden="true" />
+                  Your new loan is arriving. Each part shows here as soon as it lands, usually within a minute or two.
+                </p>
+              )}
               {funded || positions.length > 0 ? (
                 // Remade when a lender's card picks that lender, so the form opens on it.
                 <RepayBox
@@ -201,7 +209,6 @@ function BorrowBody() {
               />
             </>
           )}
-          <Compare answer={answer} />
           {panel && (
             <Drawer title={panel.kind === 'take-back' ? `Take collateral back from ${sourceName(panel.lender)}` : MOVES[panel.kind].title} onClose={() => setPanel(null)}>
               {panel.kind === 'take-back' ? (
@@ -367,68 +374,5 @@ function RepayForm({ client, answer, rateBp }: { client: ClientAccount; answer: 
       </details>
       <TxStatus record={tx.last} busy={tx.busy} />
     </>
-  );
-}
-
-/**
- * PLAN.md 5.8: what Rhea alone would lend against the nBTC, next to our line, and the carry: the funding the hedge
- * earns on Hyperliquid against the interest the loan costs, at today's rates.
- */
-function Compare({ answer }: { answer: AccountAnswer }) {
-  const hl = useApi<HlAnswer>(hlPath(answer.account_id), 30_000);
-  const markets = useApi<MarketsAnswer>(marketsPath(answer.account_id), 60_000);
-  const rhea = useApi<RheaAnswer>(RHEA_PATH, 5 * 60_000);
-  const now = useNow(60_000);
-  const terms = rheaTerms(rhea.data, now);
-  const verdict = answer.state!.verdict?.verdict ?? null;
-  const nbtc = verdict?.pool?.hold?.nBTC;
-  const view = hl.data?.account_id === answer.account_id ? hl.data.hyperliquid : null;
-  const positions = view ? hlSummary(view).positions : [];
-  const funding = Object.fromEntries(
-    (markets.data?.coins ?? []).filter((c) => c.testnet?.funding != null).map((c) => [c.coin, Number(c.testnet!.funding)]),
-  );
-  const debtUsd = Number(BigInt(answer.debt ?? answer.state!.loan.principal)) / 1e6;
-  const rateBp = verdict?.rate_bp ?? null;
-  const result = rateBp !== null ? carry({ positions, fundingHourly: funding, debtUsd, rateBp }) : null;
-
-  return (
-    <section className="card mb-3">
-      <div className="card-header fw-semibold">Compared with Rhea alone, and the carry</div>
-      <div className="card-body small">
-        <h3 className="h6">Rhea alone</h3>
-        {nbtc !== undefined && verdict ? (
-          <p>
-            Against the account&apos;s nBTC alone ({formatUsd(nbtc)}), Rhea would lend up to <strong>{formatUsd(rheaAlone(BigInt(Math.trunc(nbtc)), terms.nbtcLtvBp))}</strong>
-            {' '}({formatBp(terms.nbtcLtvBp)} of it), at about {formatBp(terms.usdcBorrowBp)} a year, with no buffer: liquidation starts at the
-            borrow limit. Our pool counts the whole hedged book: a credit line of <strong>{formatUsd(verdict.credit.line)}</strong> at{' '}
-            {formatBp(verdict.rate_bp)} a year, with a safety buffer before any unwind.
-          </p>
-        ) : (
-          <p className="text-body-secondary">Run a check first: the comparison uses its value for the nBTC.</p>
-        )}
-        <p className="text-body-secondary">
-          {terms.source === 'live' ? <span className="badge text-bg-success me-1">Live</span> : <span className="badge text-bg-secondary me-1">3 Nov figures</span>}
-          {terms.words}
-        </p>
-
-        <h3 className="h6">Carry</h3>
-        {result && (positions.length > 0 || debtUsd > 0) ? (
-          <>
-            <p className="mb-1">
-              At today&apos;s rates, a year of funding on the Hyperliquid positions comes to <strong>{formatDollars(result.fundingYearUsd)}</strong>,
-              and the loan&apos;s interest to <strong>{formatDollars(result.interestYearUsd)}</strong>: net{' '}
-              <strong className={result.netYearUsd < 0 ? 'text-danger' : 'text-success'}>{formatDollars(result.netYearUsd)}</strong> a year.
-            </p>
-            {result.missing.length > 0 && <p className="mb-1 text-warning-emphasis">No funding rate for {result.missing.join(', ')}: left out.</p>}
-            <p className="text-body-secondary mb-0">
-              Funding changes every hour, and testnet&apos;s runs about three times mainnet&apos;s (BTC: about 36% a year against 11% on 5 Nov,
-              research/day1.md 12), so this carry looks better than mainnet&apos;s would.
-            </p>
-          </>
-        ) : (
-          <p className="text-body-secondary mb-0">No loan and no Hyperliquid positions yet: nothing to carry.</p>
-        )}
-      </div>
-    </section>
   );
 }

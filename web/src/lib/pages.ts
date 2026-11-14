@@ -135,8 +135,8 @@ export const PAGES: AppPage[] = [
     href: '/borrow',
     title: 'Borrow',
     summary:
-      'What you can borrow now and its rate, an amount, where it would come from, and one Borrow button; below it what you ' +
-      'owe, with Repay and Repay everything. Then what Rhea alone would lend, and the carry.',
+      'The most you can borrow now and the rate, an amount, where it would come from, and one Borrow button; below it what ' +
+      'you owe, with Repay and Repay everything, and a card for each lender that holds something of yours.',
     phase: 'Phase 2',
     wallet: true,
     place: 'tab',

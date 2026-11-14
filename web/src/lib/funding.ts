@@ -210,7 +210,8 @@ export function cushionView(position: Pick<LenderPosition, 'l' | 'hf_bp' | 'debt
   const posted = postedWord(position.held);
   switch (status) {
     case 'none':
-      return { status, label: 'Nothing owed', tone: 'neutral', marker: null, words: `Nothing is owed to ${name}, so nothing there can be sold.` };
+      // A card with nothing owed exists only while the lender still holds collateral (lenderPositions).
+      return { status, label: 'Nothing owed', tone: 'neutral', marker: null, words: `You owe ${name} nothing. It still holds the ${posted} you posted there: take it back whenever you like.` };
     case 'safe':
       return { status, label: 'Safe', tone: 'good', marker, words: `${capital(posted)} could fall ${fall} before ${name} would sell.` };
     case 'thin':

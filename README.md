@@ -89,7 +89,7 @@ Steps 1 to 7 need no key, no wallet and no account. Tools: Python 3.10 or later 
    ```bash
    pnpm install && pnpm test
    ```
-   1,066 tests pass: the 1Click client (12), the testnet stand-in for 1Click (71), the backend (251), the keeper and the gate scripts (275), the web app (457).
+   1,069 tests pass: the 1Click client (12), the testnet stand-in for 1Click (71), the backend (254), the keeper and the gate scripts (275), the web app (457).
 
 4. **Run the contracts' tests on a local NEAR chain.** The sandbox tests load the contracts' built files, so build them once. That needs cargo-near 0.22.0 (`cargo install cargo-near --version 0.22.0 --locked`).
    ```bash

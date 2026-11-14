@@ -23,6 +23,8 @@ export type LenderName = (typeof LENDER_NAMES)[number];
 /** INTERFACES.md 27 and 28: a cushion under 13500 is thin, under 12000 needs action now. */
 export const THIN_HF_BP = 13_500;
 export const ACT_HF_BP = 12_000;
+/** FUNDING.md 6: the cushion the engine borrows up to at a lender, unless the client's permission asks for more. */
+export const TARGET_HF_BP = 15_000;
 /**
  * Rhea has no fixed liquidation penalty: liquidators take a discount that grows as the health factor falls. On mainnet
  * they act just under 1.0 and took 0.24% to 0.28% (research/rhea.md 9); FUNDING.md 1 calls it "about 0.3%".
@@ -307,6 +309,38 @@ export function rheaHoldings(account: unknown, tokens: TokenConfig[], usdcId: st
 }
 
 /**
+ * What Rhea's own `get_account` says the account owes there in USDC, in micro-USD, rounded up: a debt is never shown
+ * smaller than it is. "0" when it has borrowed no USDC; null when the record can't be read that way.
+ */
+export function rheaDebt(account: unknown, usdcId: string, usdcDecimals = 6): string | null {
+  const a = account as { borrowed?: unknown } | null;
+  if (!a || !Array.isArray(a.borrowed) || usdcDecimals > RHEA_INNER_DECIMALS) return null;
+  const entry = (a.borrowed as (RheaList | null)[]).find((e) => e?.token_id === usdcId);
+  if (!entry) return "0";
+  if (typeof entry.balance !== "string" || !/^\d+$/.test(entry.balance)) return null;
+  const unit = 10n ** BigInt(RHEA_INNER_DECIMALS - usdcDecimals);
+  return ((BigInt(entry.balance) + unit - 1n) / unit).toString();
+}
+
+/**
+ * A lender position with the debt the lender itself reports now, in place of the held verdict's (INTERFACES.md
+ * 51.13). The verdict is read before the loan's last step runs: a loan that came from a lender alone showed "nothing
+ * owed" until the next check, up to an hour later. The cushion and the room follow the engine's own sums
+ * (risk-core/src/lender.rs: `hf_bp`, `room_micro`), with the collateral's value as the verdict counted it. The room
+ * never grows past what the engine allowed in all (its room and the debt it saw).
+ */
+export function withLiveDebt(e: Ext, debtMicro: number, targetBp: number): Pick<Ext, "d" | "hf_bp" | "room"> {
+  const whole = (n: number) => BigInt(Math.max(0, Math.trunc(n)));
+  const [c, liq, d] = [whole(e.c), whole(e.liq_bp), whole(debtMicro)];
+  const hf = d === 0n ? 0n : (c * liq) / d;
+  const limit = targetBp > 0 ? (c * liq) / whole(targetBp) : 0n;
+  const allowed = whole(e.room) + whole(e.d);
+  const most = allowed < limit ? allowed : limit;
+  const cap = 4_294_967_295n;
+  return { d: Number(d), hf_bp: Number(hf > cap ? cap : hf), room: Number(most > d ? most - d : 0n) };
+}
+
+/**
  * GET /api/lender/:account: the account's permission and funding plan from get_state, its lender positions from the
  * held verdict's `ext`, the lenders its config names, and the pool's `get_pricing` for it. An account made before Phase 6 has none of these, and a
  * pool without `get_pricing` (before stage 2) gives `pricing: null`: both are answers, not errors.
@@ -337,13 +371,21 @@ export async function getLender(deps: Deps, accountId: string) {
   const conf = config?.value;
   const rheaId = conf?.lenders?.rhea?.contract_id;
   let rhea: { held: Held[]; deposit: string } = { held: [], deposit: "0" };
+  // INTERFACES.md 51.13: what the account owes Rhea now, from the same record. Null when it couldn't be read.
+  let rheaOwes: number | null = null;
   if (ext.some((e) => e.l === "rhea") && isAccountId(rheaId)) {
     const tokens = (conf?.tokens ?? []).filter((t): t is TokenConfig => typeof t?.id === "string" && typeof t.symbol === "string" && typeof t.decimals === "number");
     const known = tokens.length ? tokens : deps.config.ids.tokens;
     const usdcId = typeof conf?.usdc_token === "string" ? conf.usdc_token : deps.config.ids.tokens[0]!.id;
     const account = await deps.chain.view<unknown>(rheaId, "get_account", { account_id: accountId }).catch(() => null);
-    if (account) rhea = rheaHoldings(account.value, known, usdcId);
+    if (account) {
+      rhea = rheaHoldings(account.value, known, usdcId);
+      const owes = rheaDebt(account.value, usdcId, known.find((t) => t.id === usdcId)?.decimals ?? 6);
+      rheaOwes = owes === null ? null : Number(owes);
+    }
   }
+  const askedCushion = (state?.value?.permission as { min_hf_bp?: unknown } | null | undefined)?.min_hf_bp;
+  const targetBp = Math.max(TARGET_HF_BP, typeof askedCushion === "number" && Number.isFinite(askedCushion) ? askedCushion : 0);
   // Stage 3: the account's standing on Aave's chain, and what it has posted at Aave, read from that chain.
   const aave = await evmView(deps, state?.value as Parameters<typeof evmView>[1], conf);
 
@@ -356,19 +398,25 @@ export async function getLender(deps: Deps, accountId: string) {
     permission_blk: typeof state?.value?.permission_blk === "number" ? state.value.permission_blk : null,
     funding: state?.value?.funding ?? null,
     verdict_blk: typeof held?.blk === "number" ? held.blk : null,
-    lenders: ext.map((e) => ({
-      l: e.l,
-      posted: e.c,
-      debt: e.d,
-      hf_bp: e.hf_bp,
-      liq_bp: e.liq_bp,
-      rate_bp: e.r_bp,
-      supply_bp: e.s_bp,
-      room: e.room,
-      status: lenderStatus(e),
-      held: e.l === "rhea" ? rhea.held : (aave?.held ?? []),
-      ...(e.l === "rhea" ? { deposit: rhea.deposit } : {}),
-    })),
+    lenders: ext.map((e) => {
+      // Rhea's debt is the one Rhea reports now, when its record could be read; Aave's is still the verdict's.
+      const now = e.l === "rhea" && rheaOwes !== null ? withLiveDebt(e, rheaOwes, targetBp) : null;
+      const shown = now ?? e;
+      return {
+        l: e.l,
+        posted: e.c,
+        debt: shown.d,
+        hf_bp: shown.hf_bp,
+        liq_bp: e.liq_bp,
+        rate_bp: e.r_bp,
+        supply_bp: e.s_bp,
+        room: shown.room,
+        status: lenderStatus(shown),
+        held: e.l === "rhea" ? rhea.held : (aave?.held ?? []),
+        ...(e.l === "rhea" ? { deposit: rhea.deposit } : {}),
+        ...(now ? { debt_live: true } : {}),
+      };
+    }),
     evm: aave?.evm ?? null,
     pricing: pricing?.value ?? null,
   };

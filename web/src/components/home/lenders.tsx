@@ -61,6 +61,9 @@ export function LenderCards({
 function LenderCardView({ position, terms, explain, actions, pays, asOf }: { position: LenderPosition; terms: LenderTerms | null; explain: string | null; actions?: LenderActions; pays: string | null; asOf: string | null }) {
   const card = lenderCard(position, terms);
   const titleId = `lender-${card.l}-title`;
+  // INTERFACES.md 51.13: with nothing owed there is no cushion to draw or explain, and no rate being paid: the card
+  // says what the lender still holds and how to take it back, and nothing else.
+  const owes = card.view.status !== 'none';
   return (
     <section className="pb-card" aria-labelledby={titleId}>
       <div className="d-flex flex-wrap align-items-center gap-2">
@@ -70,56 +73,71 @@ function LenderCardView({ position, terms, explain, actions, pays, asOf }: { pos
         {card.where && <span className="small pb-muted">{card.where}</span>}
         <span className={`pb-pill ms-auto ${card.view.tone}`}>{card.view.label}</span>
       </div>
-      <div className="pb-health-bar" aria-hidden="true">
-        <div className="pb-cushion-zones">
-          <div />
-          <div />
-          <div />
+      {owes && (
+        <>
+          <div className="pb-health-bar" aria-hidden="true">
+            <div className="pb-cushion-zones">
+              <div />
+              <div />
+              <div />
+            </div>
+            {card.view.marker !== null && <div className="pb-health-marker" style={{ left: `${card.view.marker}%` }} />}
+          </div>
+          <div className="pb-cushion-labels" aria-hidden="true">
+            <span>Safe</span>
+            <span>Thin</span>
+            <span>Act</span>
+          </div>
+        </>
+      )}
+      <p className={`mt-3 ${owes ? 'mb-1' : 'mb-3'}`}>{card.view.words}</p>
+      {owes && (
+        <div className="small pb-muted mb-3">
+          {card.sells}
+          {explain && ` ${explain}`}
         </div>
-        {card.view.marker !== null && <div className="pb-health-marker" style={{ left: `${card.view.marker}%` }} />}
-      </div>
-      <div className="pb-cushion-labels" aria-hidden="true">
-        <span>Safe</span>
-        <span>Thin</span>
-        <span>Act</span>
-      </div>
-      <p className="mt-3 mb-1">{card.view.words}</p>
-      <div className="small pb-muted mb-3">
-        {card.sells}
-        {explain && ` ${explain}`}
-      </div>
+      )}
       <dl className="pb-rows">
         <div>
-          <dt>Posted there</dt>
+          <dt>Your collateral there</dt>
           <dd>
             <span className="num">{card.posted}</span>
             <span className="sub">{card.postedSub}</span>
           </dd>
         </div>
         <div>
-          <dt>Owed there</dt>
+          <dt>You owe there</dt>
           <dd>
             <span className="num">{card.owed}</span>
             {card.room && <span className="sub">{card.room}</span>}
           </dd>
         </div>
-        <div>
-          <dt>Rate</dt>
-          <dd>
-            <span className="num">{card.rate}</span>
-            {pays && <span className="sub">{pays}</span>}
-          </dd>
-        </div>
-        <div>
-          <dt>Cushion</dt>
-          <dd>
-            <span className="num">{card.cushion}</span>
-            <span className="sub">{card.name} sells at 1.00</span>
-          </dd>
-        </div>
+        {owes && (
+          <>
+            <div>
+              <dt>Rate</dt>
+              <dd>
+                <span className="num">{card.rate}</span>
+                {pays && <span className="sub">{pays}</span>}
+              </dd>
+            </div>
+            <div>
+              <dt>Cushion</dt>
+              <dd>
+                <span className="num">{card.cushion}</span>
+                <span className="sub">{card.name} sells at 1.00</span>
+              </dd>
+            </div>
+          </>
+        )}
       </dl>
-      {/* The card's figures are the last check's, not the lender's now: a repayment since then isn't in them yet. */}
-      {asOf && <div className="small pb-muted mt-2">These figures are {asOf}. What you did since then shows after the next check.</div>}
+      {/* What is owed comes from the lender itself when the backend could read it; the collateral's value is the last check's. */}
+      {asOf &&
+        (position.debt_live ? (
+          <div className="small pb-muted mt-2">What you owe is read from {card.name} now. The collateral’s value is {asOf}.</div>
+        ) : (
+          <div className="small pb-muted mt-2">These figures are {asOf}. What you did since then shows after the next check.</div>
+        ))}
       {actions && (
         <div className="d-flex flex-wrap gap-2 mt-3">
           <button type="button" className={`btn btn-sm ${card.view.tone === 'bad' ? 'btn-primary' : 'btn-outline-secondary'}`} disabled={toMicro(position.debt) <= 0n} onClick={() => actions.onRepay(position.l)}>
