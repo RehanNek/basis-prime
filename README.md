@@ -8,7 +8,7 @@ Basis Prime is an onchain prime brokerage. You get portfolio margin on the asset
 
 **Why onchain, and why NEAR.** The prime brokers that serve crypto today hold your assets for you, and they were not built for onchain markets. Basis Prime changes both:
 
-- **Self-custody.** Each client has an account contract of their own on NEAR. It is the only thing that can move their tokens on NEAR, their Hyperliquid account and their address on Aave's chain, through NEAR Chain Signatures. We never hold a client's keys.
+- **Self-custody.** Each client has an account contract of their own on NEAR. Only that contract can move their tokens on NEAR. Through NEAR Chain Signatures, only it can take money out of their Hyperliquid account or sign for their address on Aave's chain. We never hold a client's keys.
 - **Minimal trust.** The risk engine and the order gateway run in OutLayer's secure enclave. Each account accepts answers only from the exact program it pins, so nobody can alter a risk check, not even us.
 - **Deep liquidity from day one.** We don't have to raise a lending pool before the first client arrives. A loan draws on Aave's and Rhea's liquidity as well as our own pool. The client asks for one amount; the engine splits it between the lenders and the pool, and the account does every step.
 
@@ -41,7 +41,7 @@ Our engine stress-tests the whole book against the venues' own rules and real cr
    - large actions need our co-signature;
    - lending can be paused, but repaying never is.
 2. **Risk engine** (`risk/`): `pb-risk` runs in OutLayer's enclave, reads every input itself (NEAR, Hyperliquid, the lenders) and returns a signed verdict: the state, the credit line, the client's rating, how a loan splits between a lender and the pool and, when needed, an unwind plan. The account contract accepts only fresh verdicts from the program whose hash it pins.
-3. **Order gateway** (`risk/pb-gateway`): every Hyperliquid order passes the engine's pre-trade checks, one order at a time per account, and is then signed by the account through Chain Signatures.
+3. **Order gateway** (`risk/pb-gateway`): every Hyperliquid order passes the engine's pre-trade checks, one order at a time per account, and is then signed inside the enclave by a trading key made for that account alone. The key's seed was generated inside OutLayer, so nobody has seen it. On Hyperliquid such a key can place and cancel orders and can't take money out. The account approves it through Chain Signatures.
 4. **Lenders:** the account posts collateral and borrows in its own name. At Rhea, on NEAR, by contract calls. At Aave, on Base, by Ethereum transactions the account signs through Chain Signatures.
 5. **Money movement:** 1Click (NEAR Intents) carries swaps and the moves between NEAR, Hyperliquid and Aave's chain. A deposit from a NEAR wallet into the account, and a withdrawal back to it, is a plain token transfer.
 6. **Keeper** (`services/keeper`): asks for checks, runs funding and unwind plans step by step, and tops a lender up when its cushion thins. It uses only public methods, so anyone can run one.
