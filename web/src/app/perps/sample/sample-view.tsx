@@ -20,6 +20,8 @@ import { MarketBar } from '@/components/perps/market-bar';
 import { BookPanel } from '@/components/perps/order-book';
 import { EMPTY_FORM, OrderForm, type FormState } from '@/components/perps/order-form';
 import { PerpsLayout } from '@/components/perps/perps-layout';
+import { TradeSetup } from '@/components/perps/trade-setup';
+import type { ClientAccount } from '@/hooks/use-client-account';
 import type { ActionState, GatewayAction, GatewayRequest } from '@/components/perps/use-gateway-action';
 import type { MarketCoin } from '@/lib/api';
 import type { GatewayAnswer } from '@/lib/gateway';
@@ -106,6 +108,36 @@ const HL: HlAnswer = {
   },
 };
 
+/**
+ * State `setup` (INTERFACES.md 51.9): an account that can't trade yet, as the user's stood on 14 Nov: the address is
+ * there and the trading key is connected, but no USDC has been moved and the key isn't approved. The form then shows
+ * the steps before a first trade. Its button starts the real steps, which stop at once here: there is no such account.
+ */
+const SETUP_HL: HlAnswer = {
+  ...HL,
+  hl: { path: 'hyperliquid-1', address: HL.address!, agent: { address: '0x00000000000000000000000000000000000000a6', received_block: 1 }, signed: [] },
+  hyperliquid: {
+    ...HL.hyperliquid!,
+    clearinghouse_state: {
+      marginSummary: { accountValue: '0.0', totalNtlPos: '0', totalMarginUsed: '0' },
+      crossMarginSummary: { accountValue: '0.0', totalNtlPos: '0', totalMarginUsed: '0' },
+      crossMaintenanceMarginUsed: '0',
+      withdrawable: '0.0',
+      assetPositions: [],
+    },
+    open_orders: [],
+    fills: [],
+  },
+};
+const SETUP_CLIENT = {
+  owner: 'you.testnet',
+  name: 'sample',
+  accountId: ACCOUNT,
+  isOwner: true,
+  reload: () => undefined,
+  answer: { account_id: ACCOUNT, exists: true, balances: [{ token: 'musdc.pbf-ops.testnet', symbol: 'USDC', decimals: 6, amount: '12274948429' }] },
+} as unknown as ClientAccount;
+
 /** Plays an order: the wallet, the checks, a result. With `expireFirst` the first one comes back expired; with `slow` it waits past 30 seconds. */
 function usePlayedAction(expireFirst: boolean, slow = false): GatewayAction {
   const [state, setState] = useState<ActionState>({ kind: 'idle' });
@@ -162,7 +194,16 @@ export function SampleView({ state }: { state: SampleState }) {
       book={<BookPanel coin={coin} szDecimals={szDecimals} market={market} failed={state === 'down'} onPrice={(px) => patch({ kind: 'limit', price: priceFromBook(px, form.isBuy, szDecimals) })} />}
       form={
         <>
-          <OrderForm coin={coin} facts={facts} form={form} onForm={patch} spread={spread} blocked={null} action={action} trading={coinTradingNow(listed, true)} />
+          <OrderForm
+            coin={coin}
+            facts={facts}
+            form={form}
+            onForm={patch}
+            spread={spread}
+            blocked={state === 'setup' ? <TradeSetup client={SETUP_CLIENT} accountId={ACCOUNT} hl={SETUP_HL} reloadHl={() => undefined} /> : null}
+            action={action}
+            trading={coinTradingNow(listed, true)}
+          />
           <p className="small pb-muted mt-2">Sample data ({state}). Nothing here is signed or sent.</p>
         </>
       }

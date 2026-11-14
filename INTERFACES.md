@@ -7244,3 +7244,28 @@ swap again to use the swap again".
 - The amount is emptied on purpose, so a second click in the same place can't repeat the swap.
 - Checked on the sample page (`/spot/dev`, development only): two swaps in a row, no extra click between them, the
   balances moved each time. Not checked with a real wallet by me; the user's next swap on the hosted site is that.
+
+### 51.9 Getting ready to trade happens on the Perps page, with one button (the main session, 14 Nov, 16:16 UTC)
+
+The user, on a new wallet: "i went to trade on hyperliquid but i was redirected to account and then im stuck here
+after step 3. i know the next step sis to move usdc to hyperliquid but that because you guided me before. can we
+make this entire process more intuitve?" The order form sent a new account to the Account page's Hyperliquid card,
+which names contract methods, lets the steps be pressed out of order, and has the USDC move in another card.
+
+- **Where:** the four steps of section 12 now show in the Perps order form itself, in place of the line that sent
+  people away (`web/src/components/perps/trade-setup.tsx`; `perps-view.tsx`, `whyBlocked`).
+- **How they are said** (`web/src/lib/trade-setup.ts`, `TRADE_PARTS`): "Create your Hyperliquid address", "Move USDC
+  there as margin", "Connect the trading key", "Approve the trading key on Hyperliquid", each with one plain line. No
+  contract or protocol names; a test holds that.
+- **One button** ("Set up trading", "Continue setting up" or "Finish setting up") does every step that is left, in
+  order. The wallet opens once for each. A step that fails stops the run and says why; the button then goes on from
+  that step. The steps are Home's own (`components/home/setup-actions.ts`), unchanged.
+- **Each step is read on its own** (`tradePartsDone`), because the Account page lets the key be connected before the
+  first deposit: the user's account stood at address done, key done, no USDC moved, not approved.
+- **The first move's amount** opens at $300, must be at least $10 and no more than the account holds, and on testnet
+  is at most $500: the USDC that arrives on Hyperliquid comes out of one shared float of test USDC (about $775 on
+  14 Nov). An account with under $10 of USDC is sent to the Deposit & withdraw tab.
+- The Account page's Hyperliquid card is as it was, for the detail; nothing links to it from the order form now.
+- **Checked:** `trade-setup.test.ts` (5 tests; web 451 in all), and the panel on the sample page
+  (`/perps/sample?state=setup`, development only): the steps, the amount's refusal over $500, and a failed step's
+  box. **Not checked with a wallet by me:** the run itself; the user's own account is the first.

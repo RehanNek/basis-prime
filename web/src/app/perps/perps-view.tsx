@@ -21,6 +21,7 @@ import { MarketBar } from '@/components/perps/market-bar';
 import { BookPanel } from '@/components/perps/order-book';
 import { EMPTY_FORM, OrderForm, type FormState } from '@/components/perps/order-form';
 import { PerpsLayout } from '@/components/perps/perps-layout';
+import { TradeSetup } from '@/components/perps/trade-setup';
 import s from '@/components/perps/perps.module.css';
 import { useFeed } from '@/components/perps/use-feed';
 import { useGatewayAction } from '@/components/perps/use-gateway-action';
@@ -92,7 +93,7 @@ export function PerpsView() {
     patch({ size: '', price: '' });
   };
 
-  const blocked = signedIn ? whyBlocked(client, accountId, hlData) : null;
+  const blocked = signedIn ? whyBlocked(client, accountId, hlData, hl.reload) : null;
   const canAct = Boolean(signedIn && hlData && client.isOwner && hlData.gateway && setupStep(hlData) === 'ready');
 
   return (
@@ -138,7 +139,7 @@ function Quiet({ children }: { children: ReactNode }) {
 }
 
 /** Why this wallet can't send an order yet, with what to do next; null when it can. */
-function whyBlocked(client: ClientAccount, accountId: string | null, hl: HlAnswer | undefined): ReactNode | null {
+function whyBlocked(client: ClientAccount, accountId: string | null, hl: HlAnswer | undefined, reloadHl: () => void): ReactNode | null {
   if (client.finding) return <span className="pb-muted">Looking for your account…</span>;
   if (client.errorCode === 'not_yours') return 'This account belongs to another wallet. Pick your own below.';
   if (client.problem) return 'Enter your account’s name below.';
@@ -152,14 +153,9 @@ function whyBlocked(client: ClientAccount, accountId: string | null, hl: HlAnswe
   if (!accountId || !hl) return <span className="pb-muted">Reading your account…</span>;
   if (!client.isOwner) return `Only the owner (${hl.owner}) can trade from this account.`;
   if (!hl.gateway) return 'This account was made before trading existed, so it can’t trade. Open a new account under another name.';
-  const step = setupStep(hl);
-  if (step === 'ready') return null;
-  const what = { init: 'its Hyperliquid address', fund: 'a first deposit of at least $10 on Hyperliquid', agent: 'the broker’s trading agent', approve: 'your approval of the trading agent on Hyperliquid' }[step];
-  return (
-    <>
-      Before the first order, the account needs {what}. <Link href="/account">Set it up on the Account page</Link>, in the Hyperliquid card.
-    </>
-  );
+  if (setupStep(hl) === 'ready') return null;
+  // INTERFACES.md 51.9: the steps before a first trade are done here, where the order would be placed, with one button.
+  return <TradeSetup client={client} accountId={accountId} hl={hl} reloadHl={reloadHl} />;
 }
 
 /** Which account the form trades from, with the picker behind "Change". It opens by itself while there is no account to show. */
