@@ -2,8 +2,10 @@
 // "Deposit & withdraw" (INTERFACES.md 50.1 point 3; the user's words, 13 Nov: "it has to be deposit and withdraw",
 // and "i see only deposit options, i need the withdraw workflow as well"). One page for both, on one read of the
 // account, with the two names side by side at the top: one click shows either. Deposit (PLAN.md 5.8, Phase 2): test
-// tokens from the faucet, a deposit from the wallet, and a deposit through 1Click (the shim on testnet) with a live
-// status. Withdraw: the form of before, with its check first while a loan is open (components/withdraw-form.tsx).
+// tokens from the faucet, then a deposit from the wallet. The third part, a deposit through 1Click, was taken off the
+// page on 14 Nov (the user: "do we need that thing at all?"): on testnet it only turned one test token into the
+// other, which the Spot tab does through the same stand-in. Withdraw: the form of before, with its check first while
+// a loan is open (components/withdraw-form.tsx).
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -15,9 +17,8 @@ import { NetworkId, Tokens } from '@/config';
 import { useApi } from '@/hooks/use-api';
 import { useClientAccount, type ClientAccount } from '@/hooks/use-client-account';
 import { useTx } from '@/hooks/use-tx';
-import { useTypedPrice } from '@/hooks/use-typed-price';
-import { accountPath, ApiError, quote, statusPath, type AccountAnswer, type QuoteAnswer, type StatusAnswer, type SwapStatus } from '@/lib/api';
-import { depositTx, mintTx, oneClickDepositTx } from '@/lib/tx';
+import { accountPath, type AccountAnswer } from '@/lib/api';
+import { depositTx, mintTx } from '@/lib/tx';
 import type { Token } from '@/lib/types';
 import { displayUnits, formatUnits, parseUnits } from '@/lib/units';
 
@@ -69,7 +70,6 @@ function DepositBody() {
         <div id="deposit">
           {NetworkId === 'testnet' && <Faucet owner={client.owner} wallet={wallet.data} reload={wallet.reload} />}
           <FromWallet client={client} wallet={wallet.data} ready={ready} reloadWallet={wallet.reload} />
-          <ThroughOneClick client={client} ready={ready} />
         </div>
       )}
       {side === 'withdraw' && (
@@ -201,128 +201,6 @@ function FromWallet({ client, wallet, ready, reloadWallet }: { client: ClientAcc
           </p>
         )}
         <TxStatus record={tx.last} busy={tx.busy} />
-      </div>
-    </section>
-  );
-}
-
-/** 1Click's statuses in words (PLAN.md 5.4: REFUNDED, FAILED and INCOMPLETE_DEPOSIT are shown, not hidden). */
-const STATUS_WORDS: Record<SwapStatus, { words: string; tone: string; done: boolean }> = {
-  PENDING_DEPOSIT: { words: 'Waiting for your deposit to reach the deposit address.', tone: 'secondary', done: false },
-  KNOWN_DEPOSIT_TX: { words: '1Click has seen the deposit transaction.', tone: 'info', done: false },
-  PROCESSING: { words: 'The deposit arrived; 1Click is delivering it.', tone: 'info', done: false },
-  SUCCESS: { words: 'Delivered into the account.', tone: 'success', done: true },
-  INCOMPLETE_DEPOSIT: { words: 'Less than the quoted amount arrived before the deadline; what came is refunded.', tone: 'warning', done: true },
-  REFUNDED: { words: 'Refunded to your wallet.', tone: 'warning', done: true },
-  FAILED: { words: 'Failed: nothing moved.', tone: 'danger', done: true },
-};
-
-/** PLAN.md 5.4, "Deposit from any chain": a quote through the backend, a deposit address, the wallet pays it, 1Click delivers. */
-function ThroughOneClick({ client, ready }: { client: ClientAccount; ready: boolean }) {
-  const [fromId, setFromId] = useState(Tokens[1]!.id);
-  const [toId, setToId] = useState(Tokens[0]!.id);
-  const [text, setText] = useState('');
-  const [committed, setCommitted] = useState<QuoteAnswer | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [busy, setBusy] = useState(false);
-  const tx = useTx();
-  const [paid, setPaid] = useState(false);
-
-  const from = Tokens.find((t) => t.id === fromId) ?? Tokens[1]!;
-  const to = Tokens.find((t) => t.id === toId) ?? Tokens[0]!;
-  const { units, problem } = readAmount(text, from);
-  const accountId = client.answer?.account_id;
-
-  const depositAddress = paid ? committed?.quote.depositAddress : undefined;
-  // PLAN.md 5.4 polls every 5-10 s, until the status is final.
-  const status = useApi<StatusAnswer>(depositAddress ? statusPath(depositAddress, committed?.quote.depositMemo) : null, 5_000, (s) => STATUS_WORDS[s.status]?.done ?? false);
-  const shown = status.data ? STATUS_WORDS[status.data.status] : undefined;
-
-  const body = (dry: boolean) => ({ dry, originAsset: `nep141:${from.id}`, destinationAsset: `nep141:${to.id}`, amount: units ?? '0', recipient: accountId ?? '', refundTo: client.owner });
-  // INTERFACES.md 49.1 point 6: no "Get a price" button. The price comes as the amount is typed, and one button does
-  // the rest: it holds the price, gets the deposit address and opens the wallet to pay it.
-  const typed = useTypedPrice(ready && units && accountId ? `${from.id}:${to.id}:${units}` : null, () => quote(body(true)), busy || paid);
-  const priced = committed ?? typed.price;
-  const go = async () => {
-    if (!units || !accountId) return;
-    setBusy(true);
-    setError(null);
-    try {
-      const answer = await quote(body(false));
-      const address = answer.quote.depositAddress;
-      if (!address) {
-        setError('The price came back without a deposit address, so nothing was sent. Try again in a moment.');
-        return;
-      }
-      setCommitted(answer);
-      const outcome = await tx.run(`Send ${answer.quote.amountInFormatted} ${from.label} to 1Click`, oneClickDepositTx(from.id, address, answer.quote.amountIn));
-      if (outcome) setPaid(true);
-    } catch (failure) {
-      setError(`${failure instanceof ApiError ? failure.message : String(failure)} Nothing was sent. Try again.`);
-    } finally {
-      setBusy(false);
-    }
-  };
-  const reset = () => {
-    setCommitted(null);
-    setPaid(false);
-    setError(null);
-  };
-
-  return (
-    <section className="card mb-3">
-      <div className="card-header fw-semibold">3. Or deposit through 1Click</div>
-      <div className="card-body small">
-        <p>
-          1Click takes a token from any chain and delivers the one you pick into the account, with a message the account books
-          as a deposit. {NetworkId === 'testnet' && '1Click has no testnet, so our shim stands in for it here: real prices, simulated delivery from its float.'}
-        </p>
-        <div className="d-flex flex-wrap align-items-center gap-2">
-          <span>Send</span>
-          <input className="form-control form-control-sm" style={{ maxWidth: 140 }} value={text} onChange={(e) => { setText(e.target.value); reset(); }} placeholder="amount" aria-label="Amount to send" />
-          <select className="form-select form-select-sm" style={{ maxWidth: 110 }} value={fromId} onChange={(e) => { setFromId(e.target.value); reset(); }} aria-label="Token to send">
-            {Tokens.map((t) => <option key={t.id} value={t.id}>{t.label}</option>)}
-          </select>
-          <span>and the account gets</span>
-          <select className="form-select form-select-sm" style={{ maxWidth: 110 }} value={toId} onChange={(e) => { setToId(e.target.value); reset(); }} aria-label="Token the account gets">
-            {Tokens.map((t) => <option key={t.id} value={t.id}>{t.label}</option>)}
-          </select>
-        </div>
-        {problem && <div className="form-text text-danger">{problem}</div>}
-        {!priced && typed.asking && <div className="form-text">Getting the price…</div>}
-        {!priced && typed.error && <div className="form-text text-danger">{typed.error} The page asks again by itself.</div>}
-        {priced && (
-          <p className="mt-2 mb-2">
-            You send {priced.quote.amountInFormatted} {from.label}; the account gets about {priced.quote.amountOutFormatted} {to.label} (at least{' '}
-            {formatUnits(priced.quote.minAmountOut, to.decimals)}), in about {priced.quote.timeEstimate} seconds.
-          </p>
-        )}
-        <button type="button" className="btn btn-sm btn-primary mt-1" disabled={!ready || !units || !priced || busy || paid || tx.busy} onClick={() => void go()}>
-          {busy ? 'Working…' : `Send ${text || '…'} ${from.label} through 1Click`}
-        </button>
-        {!paid && <div className="form-text">One click: your wallet opens once. It registers 1Click’s deposit address on the token (0.00125 NEAR), then pays it.</div>}
-        {error && <div className="alert alert-warning small mt-2 mb-0">{error}</div>}
-        {committed?.quote.depositAddress && (
-          <details className="form-text">
-            <summary>The details</summary>
-            Deposit address <code>{committed.quote.depositAddress}</code>
-            {committed.quote.deadline && <> · the price holds until {new Date(committed.quote.deadline).toLocaleTimeString()}</>}
-          </details>
-        )}
-        <TxStatus record={tx.last} busy={tx.busy} />
-        {depositAddress && (
-          <p className="mt-2 mb-0">
-            Status:{' '}
-            {shown ? (
-              <>
-                <span className={`badge text-bg-${shown.tone}`}>{status.data!.status}</span> {shown.words}
-                {status.data!.swapDetails?.refundReason && ` (${status.data!.swapDetails.refundReason})`}
-              </>
-            ) : (
-              'asking…'
-            )}
-          </p>
-        )}
       </div>
     </section>
   );

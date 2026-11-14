@@ -7208,3 +7208,15 @@ fill itself is at the book's prices, as before.
 stops at 0.5%) and `perps.test.ts` (the expected market prices: 69,001 x 1.023 = 70,588 and x 0.977 = 67,414). Web
 446 tests, tsc and lint clean. Live on the hosted site since 15:24 UTC. **Not proven by a live order:** no order has
 been sent from the app at the new price; the first will be the user's click-through.
+
+### 51.6 The Deposit page loses its 1Click part, and one line is reworded (the main session, 14 Nov, 15:45 to 15:55 UTC)
+
+From the user's wallet click-through on the hosted site.
+- **"2. Deposit from your wallet"** now says: "This moves tokens from your wallet into your account. Once they are
+  there, they count as collateral." (It named `ft_transfer_call`.)
+- **"3. Or deposit through 1Click" is gone from the page** (`web/src/app/deposit/deposit-view.tsx`: `ThroughOneClick`
+  and its status words). On testnet it only turned one test token into the other through the stand-in, which the
+  Spot tab does. The page is two steps: get test tokens, deposit them. `lib/pages.ts` and the Home panel's link say
+  the same. `oneClickDepositTx` stays in `lib/tx.ts` with its test; nothing on a page calls it now.
+- On mainnet a deposit from another chain through 1Click would come back as its own piece of work; nothing here is
+  on mainnet.

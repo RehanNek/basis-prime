@@ -853,11 +853,11 @@ export function AddFundsBox({ client, answer }: { client: ClientAccount; answer:
           ))}
         </>
       ) : (
-        <p>Deposit from your wallet, or from any chain through 1Click.</p>
+        <p>Deposit from your wallet.</p>
       )}
       <p className="mt-3 mb-0">
         <Link href="/deposit">
-          From your wallet, or from another token through 1Click <i className="bi bi-arrow-right" aria-hidden="true" />
+          Deposit from your wallet <i className="bi bi-arrow-right" aria-hidden="true" />
         </Link>
       </p>
     </div>

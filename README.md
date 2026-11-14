@@ -33,7 +33,7 @@ Our engine stress-tests the whole book against the venues' own rules and real cr
 2. **Risk engine** (`risk/`): `pb-risk` runs in OutLayer's enclave, reads every input itself (NEAR, Hyperliquid, the lenders) and returns a signed verdict: the state, the credit line, the client's rating, how a loan splits between a lender and the pool and, when needed, an unwind plan. The account contract accepts only fresh verdicts from the program whose hash it pins.
 3. **Order gateway** (`risk/pb-gateway`): every Hyperliquid order passes the engine's pre-trade checks, one order at a time per account, and is then signed by the account through Chain Signatures.
 4. **Lenders:** the account posts collateral and borrows in its own name. At Rhea, on NEAR, by contract calls. At Aave, on Base, by Ethereum transactions the account signs through Chain Signatures.
-5. **Money movement:** 1Click (NEAR Intents) carries deposits, withdrawals, swaps and moves between NEAR, Hyperliquid and Aave's chain.
+5. **Money movement:** 1Click (NEAR Intents) carries swaps and the moves between NEAR, Hyperliquid and Aave's chain. A deposit from a NEAR wallet into the account, and a withdrawal back to it, is a plain token transfer.
 6. **Keeper** (`services/keeper`): asks for checks, runs funding and unwind plans step by step, and tops a lender up when its cushion thins. It uses only public methods, so anyone can run one.
 7. **Web app** (`web/`): Home, Spot, Perps, Basis trade (put a coin and its margin in the account, short the same amount on Hyperliquid, borrow against both, in one run), Borrow; under More: Credit check, Book, Deposit & withdraw, Account details, Risk, Activity, Drill.
 

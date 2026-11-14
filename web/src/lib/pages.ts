@@ -105,8 +105,8 @@ export const PAGES: AppPage[] = [
     // INTERFACES.md 50.1 point 3: depositing and withdrawing are one page, each one click away at its top.
     title: 'Deposit & withdraw',
     summary:
-      'Depositing: test tokens from the faucet, a deposit from your wallet, or a deposit through 1Click, with the live status ' +
-      'of the transfer. Withdrawing: a token out to a NEAR wallet, with its check first while a loan is open.',
+      'Depositing: test tokens from the faucet, then a deposit from your wallet. ' +
+      'Withdrawing: a token out to a NEAR wallet, with its check first while a loan is open.',
     phase: 'Phase 2',
     wallet: true,
     place: 'more',
