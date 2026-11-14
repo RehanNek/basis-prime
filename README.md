@@ -160,7 +160,7 @@ Steps 1 to 7 need no key, no wallet and no account. Tools: Python 3.10 or later 
 
    **Hosted:** open https://13-192-48-169.sslip.io. It is the app with our backend, keeper and stand-in behind it, on a small server of ours, meant to stay up through judging.
    - **With no wallet:** Book shows the pool's money, read live from `pool.pbf.testnet`. Credit check, "Or use the worked example", then Check, runs the risk engine in OutLayer's enclave on live mainnet data and shows our credit line next to Rhea's (about 10 seconds when OutLayer's testnet is answering; see "Known limits"). Spot and Perps show the markets.
-   - **With a NEAR testnet wallet** holding about 7 test NEAR: sign in and open an account (6 NEAR). Basis trade then puts a test coin and its margin in the account (minted, on testnet), shorts the same amount on Hyperliquid testnet and borrows against both. Borrow shows the loan, the lenders, and the way back; More, Deposit & withdraw mints and moves test tokens by hand. These wallet steps have not been walked end to end on the rebuilt pages (see "Known limits").
+   - **With a NEAR testnet wallet** holding about 7 test NEAR: sign in and open an account (6 NEAR). Basis trade then puts a test coin and its margin in the account (minted, on testnet), shorts the same amount on Hyperliquid testnet and borrows against both. Borrow shows the loan, the lenders, and the way back; Deposit & withdraw mints and moves test tokens by hand. On 14 Nov a new wallet did the same by hand on the hosted site: deposits, swaps on Spot, shorts on Hyperliquid and a $1,000 loan from Rhea.
 
    **Your own copy.** After step 3's `pnpm install`, in two terminals:
    ```bash
