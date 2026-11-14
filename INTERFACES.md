@@ -7277,3 +7277,21 @@ second with the default option being market." `EMPTY_FORM.kind` is `market` and 
 (`web/src/components/perps/order-form.tsx`, `ORDER_KINDS`). A price clicked in the order book still switches the
 form to Limit with that price. Checked on the sample page: the order is Market, Limit; Market is selected; no price
 field shows.
+
+### 51.11 Perps: a leverage slider that sizes the order (the main session, 14 Nov, 16:45 UTC)
+
+The user: "theres no leverage adjuster". Asked which of two things they wanted, they picked the slider.
+
+- **What it is** (`web/src/lib/leverage.ts`, `order-form.tsx`): a slider in the order form, from 0x to Hyperliquid's
+  own setting for the account and coin. Dragging it fills in the order's size in USDC: margin on Hyperliquid times the
+  leverage (3x on $298.38 is $895.13). Any size typed reads back the same way: "This order is 0.33x your margin".
+- **Where it ends** (`leverageCap`): the account's own Hyperliquid setting when it has a position in the coin
+  (Hyperliquid reports it with the position), else a new account's: 20x, or the coin's most when that is less. On
+  14 Nov Hyperliquid testnet reported 20x cross for the user's new account on BTC and on ETH.
+- **What it is not:** Hyperliquid's leverage setting. Only the gateway's key can sign that change, and `set_leverage`
+  (section 9) sets it from the risk engine, for an account with a loan. A client-chosen setting would need a new
+  gateway build, published and pinned, and would reach only accounts made after it. The form says under the slider
+  that it sets the order's size and leaves Hyperliquid's setting alone.
+- It shows only for an account that can trade and has margin on Hyperliquid.
+- **Checked:** `leverage.test.ts` (4 tests; web 455 in all) and the sample page: 3x on $512.40 filled in 1,537.2
+  USDC. Not tried with a wallet by me.

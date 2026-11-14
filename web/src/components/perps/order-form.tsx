@@ -8,6 +8,7 @@ import type { ReactNode } from 'react';
 import { TIFS, type Tif } from '@/lib/gateway';
 import { notTradingWords, orderStopped, type Trading } from '@/lib/hl-reach';
 import { bandPercent, decFromNumber, decText } from '@/lib/hl-rules';
+import { LEVERAGE_NOTE, LEVERAGE_STEP, leverageOf, leverageText, leverageWords, sizeForLeverage, sliderAt } from '@/lib/leverage';
 import { buildOrder, coinFromUsd, marketFillNote, orderLabel, priceFromBook, priceText, sizeStep, usdFromCoin, type CoinFacts, type OrderKind, type SizeUnit, type Spread } from '@/lib/perps';
 import { formatUsd } from '@/lib/units';
 
@@ -47,9 +48,14 @@ interface Props {
    * can't, one line above the form says why, and the button is off for an order that couldn't be taken.
    */
   trading?: Trading;
+  /**
+   * INTERFACES.md 51.11: the account's margin on Hyperliquid in dollars, and where the leverage slider ends. Left out
+   * or null (no wallet, an account not set up, nothing on Hyperliquid yet), the form has no slider.
+   */
+  margin?: { equityUsd: number; cap: number } | null;
 }
 
-export function OrderForm({ coin, facts, form, onForm, spread, blocked, action, trading }: Props) {
+export function OrderForm({ coin, facts, form, onForm, spread, blocked, action, trading, margin }: Props) {
   const built = buildOrder({ coin, ...form }, facts);
   const notTrading = trading ? notTradingWords(coin, trading, 'market') : null;
   const stopped = trading ? orderStopped({ trading, kind: form.kind, limitPx: built.order?.limit_px ?? form.price, reference: facts?.reference, bandBp: facts?.bandBp ?? 0 }) : false;
@@ -57,6 +63,8 @@ export function OrderForm({ coin, facts, form, onForm, spread, blocked, action, 
   const szDecimals = facts?.szDecimals ?? 0;
   const typed = Boolean(form.size || (!market && form.price));
   const fillNote = market ? marketFillNote({ isBuy: form.isBuy, marketPx: built.marketPx, bestBid: spread?.bid, bestAsk: spread?.ask, szDecimals }) : null;
+  // The slider reads the order back as a multiple of the margin, whatever way its size was typed.
+  const leverage = margin && built.worthMicro > 0n ? leverageOf(built.worthMicro, margin.equityUsd) : null;
 
   /** The price a size is counted at when the unit is switched: the mark for a market order, else the typed limit. */
   const countedAt = (): string | null => {
@@ -148,6 +156,33 @@ export function OrderForm({ coin, facts, form, onForm, spread, blocked, action, 
             <span className="input-group-text">{form.sizeIn === 'coin' ? coin : 'USDC'}</span>
           </div>
         </div>
+
+        {margin && margin.equityUsd > 0 && (
+          <div className="mt-3">
+            <div className={s.fieldLabel}>
+              <label htmlFor="perps-leverage">Leverage</label>
+              <span className={s.num}>{leverageText(leverage)}</span>
+            </div>
+            <input
+              id="perps-leverage"
+              type="range"
+              className="form-range"
+              min={0}
+              max={margin.cap}
+              step={LEVERAGE_STEP}
+              value={sliderAt(leverage, margin.cap)}
+              onChange={(event) => onForm({ sizeIn: 'usd', size: sizeForLeverage(margin.equityUsd, Number(event.target.value)) })}
+              aria-describedby="perps-leverage-words"
+            />
+            <div className="d-flex justify-content-between small pb-muted" aria-hidden="true">
+              <span>0x</span>
+              <span>{margin.cap}x</span>
+            </div>
+            <p id="perps-leverage-words" className={`${s.calm} mt-1 mb-0`}>
+              {leverageWords({ leverage, equityUsd: margin.equityUsd, cap: margin.cap })} {LEVERAGE_NOTE}
+            </p>
+          </div>
+        )}
 
         <div className="d-flex flex-wrap align-items-center justify-content-between gap-2 mt-3">
           <div className="form-check mb-0">

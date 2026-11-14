@@ -26,6 +26,7 @@ import type { ActionState, GatewayAction, GatewayRequest } from '@/components/pe
 import type { MarketCoin } from '@/lib/api';
 import type { GatewayAnswer } from '@/lib/gateway';
 import type { HlAnswer } from '@/lib/hl';
+import { leverageCap } from '@/lib/leverage';
 import { coinTradingNow, notTradingWords } from '@/lib/hl-reach';
 import { coinFacts, intervalMs, parseCandles, parsePerps, pickerCoins, priceFromBook, resultWords, spreadOf, type Candle, type Interval } from '@/lib/perps';
 
@@ -203,6 +204,7 @@ export function SampleView({ state }: { state: SampleState }) {
             blocked={state === 'setup' ? <TradeSetup client={SETUP_CLIENT} accountId={ACCOUNT} hl={SETUP_HL} reloadHl={() => undefined} /> : null}
             action={action}
             trading={coinTradingNow(listed, true)}
+            margin={state === 'setup' ? null : { equityUsd: 512.4, cap: leverageCap(coin === 'BTC' ? 20 : null, listed?.testnet?.max_leverage) }}
           />
           <p className="small pb-muted mt-2">Sample data ({state}). Nothing here is signed or sent.</p>
         </>

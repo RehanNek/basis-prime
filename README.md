@@ -89,7 +89,7 @@ Steps 1 to 7 need no key, no wallet and no account. Tools: Python 3.10 or later 
    ```bash
    pnpm install && pnpm test
    ```
-   1,060 tests pass: the 1Click client (12), the testnet stand-in for 1Click (71), the backend (251), the keeper and the gate scripts (275), the web app (451).
+   1,064 tests pass: the 1Click client (12), the testnet stand-in for 1Click (71), the backend (251), the keeper and the gate scripts (275), the web app (455).
 
 4. **Run the contracts' tests on a local NEAR chain.** The sandbox tests load the contracts' built files, so build them once. That needs cargo-near 0.22.0 (`cargo install cargo-near --version 0.22.0 --locked`).
    ```bash
@@ -233,7 +233,7 @@ Every contract we deploy went through the `near-contract-audit` checklist and a 
 
 **The product**
 - **Client accounts never take new code.** An account keeps the code and settings it was made with, so each fix reaches the accounts made after it. Accounts made since 14 Nov, 10:16 UTC have everything in this README.
-- **The rebuilt pages have not been walked end to end with a real wallet.** The app was rebuilt on 13 and 14 Nov (the tabs, Spot, Perps, Basis trade). Since then the contracts, the keeper and the backend were proven by the scripted runs above, and the pages by their own tests (451) and in a browser without a wallet. The by-hand run with a wallet was on 13 Nov, before the rebuild.
+- **The rebuilt pages have not been walked end to end with a real wallet.** The app was rebuilt on 13 and 14 Nov (the tabs, Spot, Perps, Basis trade). Since then the contracts, the keeper and the backend were proven by the scripted runs above, and the pages by their own tests (455) and in a browser without a wallet. The by-hand run with a wallet was on 13 Nov, before the rebuild.
 - **After money comes home from Hyperliquid, new borrowing waits for one check.** Hyperliquid accepts a signed transfer for 2 days, so an old one could take collateral out from under a loan. The account lists each transfer it signed; once a check sees it in Hyperliquid's own history, the pause lifts. Without that it lasts 2 days and 1 hour. Repaying is never blocked. This rule is newer than the security review.
 - **NEAR can't be posted with a lender.** Our contract takes Rhea collateral with at most 18 decimals (wNEAR has 24), and Aave's market has no NEAR. NEAR still counts in the whole-book loan from our pool.
 - **Deposit and withdraw take USDC and bitcoin.** ETH, NEAR and USDT get in and out of an account through a swap on Spot.

@@ -31,7 +31,8 @@ import { hlPath, MARKETS_PATH, marketsPath, type MarketsAnswer } from '@/lib/api
 import { NetworkId } from '@/config';
 import { orderLifeMs } from '@/lib/gateway';
 import { coinTradingNow, notTradingWords } from '@/lib/hl-reach';
-import { setupStep, type HlAnswer } from '@/lib/hl';
+import { hlSummary, setupStep, type HlAnswer } from '@/lib/hl';
+import { leverageCap } from '@/lib/leverage';
 import { candlesPath, coinFacts, ctxFromMarkets, mergeCtx, parseCandles, parsePerps, perpsPath, pickerCoins, priceFromBook, spreadOf, withLivePrices, type Interval } from '@/lib/perps';
 import { useNearWallet } from '@/providers/near-provider';
 import { useSession } from '@/providers/session-provider';
@@ -95,6 +96,11 @@ export function PerpsView() {
 
   const blocked = signedIn ? whyBlocked(client, accountId, hlData, hl.reload) : null;
   const canAct = Boolean(signedIn && hlData && client.isOwner && hlData.gateway && setupStep(hlData) === 'ready');
+  // INTERFACES.md 51.11: the leverage slider sizes an order from the account's margin on Hyperliquid. It ends at
+  // Hyperliquid's own setting for this coin: the account's, once it has a position there, else a new account's.
+  const equityUsd = canAct && hlData?.hyperliquid ? (hlSummary(hlData.hyperliquid).equity ?? 0) : 0;
+  const ownLeverage = hlData?.hyperliquid?.clearinghouse_state?.assetPositions.find((p) => p.position.coin === coin && Number(p.position.szi) !== 0)?.position.leverage.value;
+  const margin = equityUsd > 0 ? { equityUsd, cap: leverageCap(ownLeverage, listed?.testnet?.max_leverage) } : null;
 
   return (
     <PerpsLayout
@@ -104,7 +110,7 @@ export function PerpsView() {
       form={
         <WalletGate>
           <ApiProblem error={client.error ?? hl.error} />
-          <OrderForm coin={coin} facts={facts} form={form} onForm={patch} spread={spread} blocked={blocked} action={action} trading={trading} />
+          <OrderForm coin={coin} facts={facts} form={form} onForm={patch} spread={spread} blocked={blocked} action={action} trading={trading} margin={margin} />
           <AccountLine client={client} accountId={accountId} />
         </WalletGate>
       }
