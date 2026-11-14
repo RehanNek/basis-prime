@@ -1,5 +1,11 @@
 # Basis Prime: an onchain prime brokerage on NEAR
 
+**Track:** NEAR HACKATHON, Unstoppable DeFi (`defi`). A self-custody prime brokerage on NEAR: one account that trades spot and perps and borrows against both together. It runs on testnet and is hosted at https://13-192-48-169.sslip.io. Built between 3 and 14 November 2026.
+
+**Our other entry:** [NEAR Investment Thesis](https://github.com/RehanNek/near-investment-thesis), an investment thesis on NEAR, in the Investment Thesis track (`thesis`). The two projects are independent and share no code.
+
+## Our pitch
+
 **Imagine taking SpaceX stock from Base and using it as collateral to trade on Hyperliquid. That is what we are building at Basis Prime.**
 
 Basis Prime is an onchain prime brokerage. You get portfolio margin on the assets NEAR Intents supports, and you trade on the venues that matter, all from one account that stays yours.
@@ -13,8 +19,6 @@ Basis Prime is an onchain prime brokerage. You get portfolio margin on the asset
 - **Deep liquidity from day one.** We don't have to raise a lending pool before the first client arrives. A loan draws on Aave's and Rhea's liquidity as well as our own pool. The client asks for one amount; the engine splits it between the lenders and the pool, and the account does every step.
 
 **The whole product is hosted: https://13-192-48-169.sslip.io** The app, the backend, the keeper and the 1Click stand-in all run there on testnet, and we keep it up through judging. "Try it now" starts there: what to click, and what you will see.
-
-Entry for NEAR HACKATHON, Unstoppable DeFi track (`defi`). Built between 3 and 14 November 2026. Our team's other entry is [NEAR Investment Thesis](https://github.com/RehanNek/near-investment-thesis) (track `thesis`); the two are independent of each other.
 
 **Where it stands.** Everything below runs on NEAR testnet, Hyperliquid testnet and Base Sepolia. Nothing has signed or paid anything on a mainnet. The credit check reads mainnet data. Today the venue is Hyperliquid; an account holds five test tokens (USDC, bitcoin, ETH, NEAR, USDT), and bitcoin and ETH can be posted with a lender; the lenders are Aave's test market and our own copy of Rhea. Tokenised stocks, more venues and mainnet are where this goes next; none of that is built.
 
