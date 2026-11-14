@@ -2,7 +2,7 @@
 
 **Track:** NEAR HACKATHON, Unstoppable DeFi (`defi`). A self-custody prime brokerage on NEAR: one account that trades spot and perps and borrows against both together. It runs on testnet and is hosted at https://13-192-48-169.sslip.io. Built between 3 and 14 November 2026.
 
-**Our other entry:** [NEAR Investment Thesis](https://github.com/RehanNek/near-investment-thesis), an investment thesis on NEAR, in the Investment Thesis track (`thesis`). The two projects are independent and share no code.
+**Our other entry:** [Three Engines, One Token](https://github.com/RehanNek/near-investment-thesis), an investment thesis on NEAR, in the Investment Thesis track (`thesis`). The two projects are independent and share no code.
 
 ## Our pitch
 
