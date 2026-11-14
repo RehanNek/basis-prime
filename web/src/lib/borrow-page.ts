@@ -1,5 +1,7 @@
 // The Borrow page's figures in words (INTERFACES.md 49.1 point 8): what you can borrow and at what rate, what you owe,
 // what "Repay everything" would pay, and how old a lender's figure is when it comes from an earlier check.
+import type { FundingPlanAnswer } from './api.ts';
+import { toMicro } from './funding.ts';
 import { formatBp, formatUsd } from './units.ts';
 import { SECONDS_PER_BLOCK, VERDICT_LIFETIME_BLOCKS } from './verdict.ts';
 
@@ -15,6 +17,52 @@ export function borrowHeadline(input: { canBorrow: bigint | null; rateBp: number
   if (input.canBorrow === null) return 'Reading what you can borrow…';
   if (input.canBorrow <= 0n) return 'You can’t borrow more right now.';
   return `You can borrow ${input.exact === false ? 'about ' : ''}${formatUsd(input.canBorrow)} now${input.rateBp === null ? '' : `, at ${formatBp(input.rateBp)} a year`}.`;
+}
+
+/**
+ * What the page asks for when the question is "what is the most?" (INTERFACES.md 51.12): a loan of $1 billion, in
+ * micro-USD. The pool holds far less, so the engine's answer is the most it would lend.
+ */
+export const ASK_FOR_MOST = '1000000000000000';
+
+/**
+ * The most the engine would lend, from a preview that asked for `ASK_FOR_MOST` (POST /api/funding-plan): its `total`
+ * is what a check would allow, from the lenders and our pool together. Null with no answer, with a refusal (which
+ * isn't "nothing": the engine may just not have read the book) or with no total.
+ */
+export function mostFromPlan(answer: FundingPlanAnswer | null | undefined): bigint | null {
+  if (!answer || (answer as { ok?: boolean }).ok === false || answer.verdict?.ok === false) return null;
+  if (answer.total === undefined || answer.total === null) return null;
+  const total = toMicro(answer.total);
+  return total >= 0n ? total : null;
+}
+
+/** The figure at the top of the Borrow card, and the one line under it. */
+export interface MostView {
+  figure: string;
+  note: string;
+}
+
+/**
+ * "Most you can borrow now", always with something to read. `engine` is the risk engine's own answer for this
+ * account as it stands; `asking` says a question is out; `estimate` is the page's own guide (the last check's credit
+ * line less what is owed, inside the pool's limits), for the moments the engine hasn't answered.
+ */
+export function mostWords(input: { engine: bigint | null; asking: boolean; estimate: bigint | null }): MostView {
+  const { engine, asking, estimate } = input;
+  if (engine !== null) {
+    if (engine <= 0n) return { figure: `${formatUsd(0n)} USDC`, note: 'Nothing can be borrowed against the account as it stands. Deposit collateral, or repay, to raise it.' };
+    return { figure: `${formatUsd(engine)} USDC`, note: asking ? 'From the risk engine a moment ago. It is working the figure out again.' : 'Worked out by the risk engine from your whole account, just now.' };
+  }
+  const guide = estimate !== null && estimate > 0n ? `about ${formatUsd(estimate)} USDC` : null;
+  if (asking) {
+    return guide
+      ? { figure: guide, note: 'From your last check. The risk engine is working out the exact figure: 10 to 60 seconds.' }
+      : { figure: 'Working it out…', note: 'The risk engine is reading your whole account: 10 to 60 seconds.' };
+  }
+  return guide
+    ? { figure: guide, note: 'From your last check. The risk engine sets the exact figure when you press Borrow.' }
+    : { figure: 'Not known yet', note: 'The risk engine sets the figure when you press Borrow.' };
 }
 
 /** "You owe $1,025.73, at 8.08% a year." The rate is the whole loan's, weighted by amount. */

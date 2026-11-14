@@ -21,6 +21,7 @@ import { SendWindowNotice } from '@/components/send-window-notice';
 import { TxStatus } from '@/components/tx-status';
 import { NetworkId, UsdcToken } from '@/config';
 import { useApi } from '@/hooks/use-api';
+import { useBorrowMost } from '@/hooks/use-borrow-most';
 import { useClientAccount, type ClientAccount } from '@/hooks/use-client-account';
 import { useLenderAccount } from '@/hooks/use-lender-account';
 import { useNow } from '@/hooks/use-now';
@@ -41,7 +42,7 @@ import {
   type RheaAnswer,
 } from '@/lib/api';
 import { borrowable, type Borrowable } from '@/lib/borrow';
-import { borrowHeadline, checkAgeWords, everythingLabel, everythingWords, owedAfter, oweHeadline } from '@/lib/borrow-page';
+import { checkAgeWords, everythingLabel, everythingWords, mostWords, owedAfter, oweHeadline } from '@/lib/borrow-page';
 import { carry, rheaAlone, rheaTerms } from '@/lib/carry';
 import { borrowEstimate, rateFor } from '@/lib/cockpit';
 import { canUseLenders, lenderPositions, postedWord, sourceName, TARGET_CUSHION_BP, wouldPostWord } from '@/lib/funding';
@@ -102,6 +103,11 @@ function BorrowBody() {
           nowNs: BigInt(now) * 1_000_000n,
         })
       : null;
+  // INTERFACES.md 51.12: the most the account can borrow always shows at the top of the card. For an account that
+  // borrows through `fund`, the risk engine is asked as the page opens, and again when the balances or the debt change.
+  const bookKey = answer?.state ? `${answer.debt ?? ''}|${answer.balances.map((b) => b.amount ?? '?').join(',')}|${owed}` : '';
+  const engineMost = useBorrowMost(funded && previewEnabled && answer?.state ? answer.account_id : null, bookKey);
+  const most = mostWords({ engine: engineMost.most, asking: engineMost.asking, estimate: estimate?.amount ?? null });
   const [panel, setPanel] = useState<{ kind: 'take-back'; lender: LenderName } | { kind: MoveKey } | null>(null);
   // The lender a card's Repay button picked: the repay form opens on it.
   const [repayFirst, setRepayFirst] = useState<FundingSource | null>(null);
@@ -134,19 +140,20 @@ function BorrowBody() {
           <section className="card mb-3">
             <div className="card-header fw-semibold">Borrow</div>
             <div className="card-body small">
+              {/* The most that can be borrowed, always in view (the user, 14 Nov). Any amount can still be typed below. */}
+              <div className="pb-tile mb-3" style={{ maxWidth: 380 }} aria-live="polite">
+                <div className="l">Most you can borrow now</div>
+                <div className="v">{most.figure}</div>
+                <div className="s">{most.note}</div>
+              </div>
               <p className="mb-2">
-                {/* Without a check from the last minute the figure is a guide: the engine's answer sets it when Borrow is pressed. */}
-                <span className="fw-semibold">
-                  {estimate && estimate.amount === null
-                    ? 'The risk engine works out what you can borrow when you press Borrow.'
-                    : borrowHeadline({ canBorrow: estimate?.amount ?? null, rateBp: poolRateBp, exact: estimate?.basis === 'engine' })}
-                </span>{' '}
-                {estimate && estimate.basis !== 'engine' && (estimate.amount ?? 0n) > 0n && 'The risk engine sets the exact figure when you press Borrow. '}
-                {funded ? 'That is our pool’s rate; when part of a loan comes from a lender, the rate for your amount shows under it.' : 'The USDC arrives in your account.'}
+                {poolRateBp !== null && <>Our pool lends at {formatBp(poolRateBp)} a year. </>}
+                {funded ? 'When part of a loan comes from a lender, the rate for your amount shows under it.' : 'The USDC arrives in your account.'} You can type any amount: the risk engine lends up
+                to the most it allows.
               </p>
               {funded ? (
                 // An account that can use lenders: one amount, the engine picks the sources, and the keeper runs the steps.
-                <BorrowBox client={client} answer={answer} estimate={estimate?.amount ?? null} previewEnabled={previewEnabled} paused={paused} lender={lender.data} reloadLender={lender.reload} would={would} />
+                <BorrowBox client={client} answer={answer} estimate={engineMost.most ?? estimate?.amount ?? null} previewEnabled={previewEnabled} paused={paused} lender={lender.data} reloadLender={lender.reload} would={would} />
               ) : (
                 <BorrowForm client={client} answer={answer} limit={limit?.result ?? null} most={estimate?.amount ?? null} paused={paused} />
               )}

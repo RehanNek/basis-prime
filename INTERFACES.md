@@ -7278,7 +7278,7 @@ second with the default option being market." `EMPTY_FORM.kind` is `market` and 
 form to Limit with that price. Checked on the sample page: the order is Market, Limit; Market is selected; no price
 field shows.
 
-### 51.11 Perps: a leverage slider that sizes the order (the main session, 14 Nov, 16:45 UTC)
+### 51.11 Perps: a leverage slider that sizes the order (the main session, 14 Nov, 16:32 UTC)
 
 The user: "theres no leverage adjuster". Asked which of two things they wanted, they picked the slider.
 
@@ -7295,3 +7295,24 @@ The user: "theres no leverage adjuster". Asked which of two things they wanted, 
 - It shows only for an account that can trade and has margin on Hyperliquid.
 - **Checked:** `leverage.test.ts` (4 tests; web 455 in all) and the sample page: 3x on $512.40 filled in 1,537.2
   USDC. Not tried with a wallet by me.
+
+### 51.12 Borrow: the most that can be borrowed always shows (the main session, 14 Nov, 16:37 UTC)
+
+The user: "in the borrow page - while the user should be able to enter whatever amount he wants - can we display a
+maximum amount of loan in usdc that we can give out? So it always displays whats the maximum ... a user can borrow."
+A new account, never checked, saw only "The risk engine works out what you can borrow when you press Borrow."
+
+- **What shows:** a figure at the top of the Borrow card, "Most you can borrow now", with one line under it
+  (`web/src/app/borrow/borrow-view.tsx`; words in `lib/borrow-page.ts`, `mostWords`). The amount field under it still
+  takes any amount, and its Max button fills in the same figure.
+- **Where the figure comes from** (`hooks/use-borrow-most.ts`): for an account that borrows through `fund`, with
+  previews on, the page asks the risk engine as it opens: `POST /api/funding-plan` for $1 billion (`ASK_FOR_MOST`).
+  The answer's `total` is `allow.fund`: the most a check would allow, from the lenders and our pool together. It asks
+  again when the account's balances or debt change, and once a minute at most for the same book.
+- **While the engine hasn't answered:** the page's own guide (the last check's credit line less what is owed, inside
+  the pool's limits) with "about", or "Working it out…". No answer or a refusal is "not known", never "$0".
+- **Cost:** one enclave run when the page opens, paid by the backend, inside the previews limit.
+- **Checked:** two tests (web 457), and one live call on the hosted backend for our own empty demo account
+  (`fund-eth-11141017.pbf.testnet`, with the service sign-in): HTTP 200 in 13.7 s, `total` 0, verdict ok, `allow.fund`
+  0. A positive figure was seen in the Aave run's record (asked $2,000, total $656.63). The page itself was not
+  looked at with a signed-in wallet by me.
