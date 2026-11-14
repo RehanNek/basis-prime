@@ -89,12 +89,19 @@ export function SwapBox({ tokens, rows, listFailed, accountId, balances, stand, 
   const [inverted, setInverted] = useState(false);
   /** The price on screen when Swap was pressed. */
   const [atClick, setAtClick] = useState<SwapQuote | null>(null);
-  const swap = useSwap(stand === 'ready' ? accountId : null, reload);
+  // When a swap comes to its end the amount empties by itself, so the box is ready for the next one with no click.
+  const swap = useSwap(stand === 'ready' ? accountId : null, reload, () => setText(''));
+  /** The swap under way. Null once it has ended: the box is the user's again, and only its last line still shows. */
+  const running = swap.finished ? null : swap.started;
+  /** The ended swap's line goes as soon as the form is touched again. */
+  const touch = () => {
+    if (swap.finished) swap.reset();
+  };
 
   // The box opens paying USDC for bitcoin. While a swap runs, it keeps showing the tokens the swap is about.
   const opening = defaultPair(tokens);
-  const pay = swap.started?.pay ?? tokenBy(tokens, paySymbol ?? opening.pay);
-  const receive = swap.started?.receive ?? tokenBy(tokens, receiveSymbol ?? opening.receive);
+  const pay = running?.pay ?? tokenBy(tokens, paySymbol ?? opening.pay);
+  const receive = running?.receive ?? tokenBy(tokens, receiveSymbol ?? opening.receive);
   const held = pay ? heldUnits(pay, balances) : null;
   const receiveHeld = receive ? heldUnits(receive, balances) : null;
   const amount = readPay(text, pay, held);
@@ -106,7 +113,7 @@ export function SwapBox({ tokens, rows, listFailed, accountId, balances, stand, 
 
   // What the box shows: the price for what is typed; from the click, the price that was on screen then; and once the
   // price is held, the held one.
-  const quote = swap.started?.quote ?? (swap.locked ? atClick : (typed.price?.quote ?? null));
+  const quote = running?.quote ?? (swap.locked ? atClick : (typed.price?.quote ?? null));
   const twoTokens = pay !== null && receive !== null && pair !== 'same';
   // With no quote, what the two tokens' own prices give: for a visitor, a pair that can't swap here, and the moment
   // before the quote comes.
@@ -131,6 +138,7 @@ export function SwapBox({ tokens, rows, listFailed, accountId, balances, stand, 
   const frozen = swap.locked || tokens.length === 0;
 
   const pick = (side: 'pay' | 'receive', token: SpotToken) => {
+    touch();
     // Picking the token the other side already has swaps the two round.
     if (side === 'pay') {
       setPaySymbol(token.symbol);
@@ -144,6 +152,7 @@ export function SwapBox({ tokens, rows, listFailed, accountId, balances, stand, 
   /** The two sides change places, and what was to be received becomes what is paid. */
   const flip = () => {
     if (!pay || !receive) return;
+    touch();
     setPaySymbol(receive.symbol);
     setReceiveSymbol(pay.symbol);
     setText(quote ? fieldText(quote.amountOut, receive.decimals, 8) : estimate ? estimateText(estimate.amount, receive.decimals) : text);
@@ -152,6 +161,7 @@ export function SwapBox({ tokens, rows, listFailed, accountId, balances, stand, 
 
   const go = () => {
     if (slot.kind !== 'swap' || !slot.ready || !pay || !receive || !amount.units) return;
+    touch();
     const shown = typed.price?.quote ?? null;
     setAtClick(shown);
     void swap.start({ pay, receive, units: amount.units, shown });
@@ -166,14 +176,34 @@ export function SwapBox({ tokens, rows, listFailed, accountId, balances, stand, 
             {pay && held !== null && (
               <span>
                 Balance {showUnits(held, pay.decimals)} {shownSymbol(pay.symbol)}{' '}
-                <button type="button" className={styles.max} disabled={frozen || held === 0n} onClick={() => setText(maxText(held, pay))}>
+                <button
+                  type="button"
+                  className={styles.max}
+                  disabled={frozen || held === 0n}
+                  onClick={() => {
+                    touch();
+                    setText(maxText(held, pay));
+                  }}
+                >
                   Max
                 </button>
               </span>
             )}
           </div>
           <div className={styles.legRow}>
-            <input id="spot-pay" className={styles.amount} inputMode="decimal" autoComplete="off" placeholder="0" value={text} disabled={frozen} onChange={(event) => setText(event.target.value)} />
+            <input
+              id="spot-pay"
+              className={styles.amount}
+              inputMode="decimal"
+              autoComplete="off"
+              placeholder="0"
+              value={text}
+              disabled={frozen}
+              onChange={(event) => {
+                touch();
+                setText(event.target.value);
+              }}
+            />
             <TokenButton token={pay} side="Token you pay with" disabled={frozen} onClick={() => setPicking('pay')} />
           </div>
           <LegFoot usd={payUsd} token={pay} />
@@ -237,14 +267,14 @@ export function SwapBox({ tokens, rows, listFailed, accountId, balances, stand, 
       )}
 
       <div className={styles.slot}>
-        {swap.step.at !== 'idle' ? (
-          <Progress
-            swap={swap}
-            onAgain={() => {
-              swap.reset();
-              setText('');
-            }}
-          />
+        {/* A swap that has ended: its last line stays above the button, and the box is ready for the next one. */}
+        {swap.finished && (
+          <div className="mb-3" aria-live="polite">
+            <Outcome swap={swap} />
+          </div>
+        )}
+        {swap.locked ? (
+          <Progress swap={swap} />
         ) : slot.kind === 'line' ? (
           <>
             <div className={styles.line} role="status">
@@ -327,10 +357,28 @@ function LegFoot({ usd, token }: { usd: number | null; token: SpotToken | null }
   );
 }
 
-/** A swap under way, from holding the price to "You received X": one step at a time, each in a sentence. */
-function Progress({ swap, onAgain }: { swap: Swap; onAgain: () => void }) {
-  const { step, started, flow, words, reason } = swap;
-  const tone = words?.tone === 'good' ? styles.good : words?.tone === 'warn' ? styles.warn : words?.tone === 'bad' ? styles.bad : '';
+/** Where a swap stands once the tokens have left, in one sentence, with its transaction: "You received X" at the end. */
+function Outcome({ swap, spaced }: { swap: Swap; spaced?: boolean }) {
+  const { step, words, reason } = swap;
+  if (step.at !== 'following' || !words) return null;
+  const tone = words.tone === 'good' ? styles.good : words.tone === 'warn' ? styles.warn : words.tone === 'bad' ? styles.bad : '';
+  return (
+    <div className={`${styles.result} ${tone} ${spaced ? 'mt-2' : ''}`}>
+      <Dot mark={!words.done ? 'busy' : words.tone === 'good' ? 'done' : words.tone === 'bad' ? 'failed' : 'todo'} />
+      <div>
+        <div>
+          {words.line}
+          {reason && words.stage === 'returned' && ` 1Click’s reason: ${reason}.`}
+          <TxLink hash={step.hash} text="your transaction" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/** A swap under way, from holding the price to its end: one step at a time, each in a sentence. */
+function Progress({ swap }: { swap: Swap }) {
+  const { step, started, flow } = swap;
   return (
     <div aria-live="polite">
       {step.at === 'holding' && (
@@ -380,23 +428,7 @@ function Progress({ swap, onAgain }: { swap: Swap; onAgain: () => void }) {
           </div>
         </div>
       )}
-      {step.at === 'following' && words && (
-        <div className={`${styles.result} ${tone} ${flow.state.phase === 'idle' ? '' : 'mt-2'}`}>
-          <Dot mark={!words.done ? 'busy' : words.tone === 'good' ? 'done' : words.tone === 'bad' ? 'failed' : 'todo'} />
-          <div>
-            <div>
-              {words.line}
-              {reason && words.stage === 'returned' && ` 1Click’s reason: ${reason}.`}
-              <TxLink hash={step.hash} text="your transaction" />
-            </div>
-            {words.done && (
-              <button type="button" className="btn btn-primary btn-sm mt-2" onClick={onAgain}>
-                Swap again
-              </button>
-            )}
-          </div>
-        </div>
-      )}
+      <Outcome swap={swap} spaced={flow.state.phase !== 'idle'} />
     </div>
   );
 }

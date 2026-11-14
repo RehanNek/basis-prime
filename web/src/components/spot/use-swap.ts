@@ -73,16 +73,21 @@ export type Step =
 
 const asError = (failure: unknown) => (failure instanceof ApiError ? failure : { status: 0, code: 'error', message: String(failure) });
 
-/** `accountId` is the wallet's own account, or null while there is none to swap for. `onChange` re-reads its balances. */
-export function useSwap(accountId: string | null, onChange: () => void) {
+/**
+ * `accountId` is the wallet's own account, or null while there is none to swap for. `onChange` re-reads its balances.
+ * `onDone` is called once when a swap comes to its end (received, sent back or failed): the box empties its amount.
+ */
+export function useSwap(accountId: string | null, onChange: () => void, onDone?: () => void) {
   const { sendTx } = useNearWallet();
   const flow = useCheckThenAct(accountId ?? '', onChange);
   const { run: runFlow, reset: resetFlow } = flow;
   const [step, setStep] = useState<Step>({ at: 'idle' });
   const [started, setStarted] = useState<Started | null>(null);
   const changed = useRef(onChange);
+  const ended = useRef(onDone);
   useEffect(() => {
     changed.current = onChange;
+    ended.current = onDone;
   });
 
   /** The wallet's one approval, when no check is needed first. */
@@ -192,6 +197,13 @@ export function useSwap(accountId: string | null, onChange: () => void) {
     });
   }
 
+  // The user, 14 Nov: "i had to click on swap again to use the swap again". A swap that has come to its end frees the
+  // box by itself: no "Swap again" button. Its last line stays until the form is touched.
+  const finished = step.at === 'following' && words?.done === true;
+  useEffect(() => {
+    if (finished) ended.current?.();
+  }, [finished]);
+
   return {
     step,
     started,
@@ -201,8 +213,10 @@ export function useSwap(accountId: string | null, onChange: () => void) {
     words,
     /** 1Click's own reason for sending the tokens back, when it gave one. */
     reason: status.data?.swapDetails?.refundReason ?? null,
-    /** From the click until "Try again" or "Swap again": the box doesn't change under a run. */
-    locked: step.at !== 'idle',
+    /** The swap has come to its end: the box is free for the next one, and this swap's last line still shows. */
+    finished,
+    /** From the click until the swap's end, or "Try again": the box doesn't change under a run. */
+    locked: step.at !== 'idle' && !finished,
     start,
     approve,
     reset,

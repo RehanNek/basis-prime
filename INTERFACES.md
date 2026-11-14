@@ -7230,3 +7230,17 @@ deposit then buy spot then trade perps then borrow."
   has `place: 'tab'` and is first in `TAB_ORDER`). Basis trade stays where it was, after Borrow.
 - **More now:** Activity, Risk, Account details, Credit check, Book, Drill.
 - The page, its address (`/deposit`) and every link to it are unchanged. `pages.test.ts` holds the new order.
+
+### 51.8 Spot: no "Swap again" button (the main session, 14 Nov, 16:07 UTC)
+
+The user, after walking the whole Spot page with a wallet: "the only small thing i felt was that i had to clikc on
+swap again to use the swap again".
+- A swap that has come to its end (received, sent back or failed) now frees the box by itself: the amount empties,
+  the tokens can be changed, and the Swap button is back. `use-swap.ts` gives `finished`, and `locked` is false from
+  then on; it calls `onDone` once, which empties the amount.
+- The swap's last line ("You received … It is in your account.", with its transaction link) stays above the button
+  until the form is touched: typing an amount, Max, picking a token, or flipping the two sides (`touch` in
+  `swap-box.tsx`).
+- The amount is emptied on purpose, so a second click in the same place can't repeat the swap.
+- Checked on the sample page (`/spot/dev`, development only): two swaps in a row, no extra click between them, the
+  balances moved each time. Not checked with a real wallet by me; the user's next swap on the hosted site is that.
