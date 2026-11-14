@@ -1,12 +1,22 @@
-# Basis Prime: a prime brokerage on NEAR
+# Basis Prime: an onchain prime brokerage on NEAR
 
-Entry for NEAR HACKATHON, Unstoppable DeFi track (`defi`). Built between 3 and 14 November 2026.
+**Imagine taking SpaceX stock from Base and using it as collateral to trade on Hyperliquid. That is what we are building at Basis Prime.**
 
-**What it is.** Basis Prime is a broker for funds and trading firms. A fund keeps its coins on NEAR and its hedge on Hyperliquid. A lender such as Rhea or Aave looks only at the coins posted with it, so a hedged book borrows little. This broker looks at the whole book, lends against it from its own pool, and adds a lender's money where there is some. The client keeps custody: each client has an account contract of their own on NEAR, and that contract is the only thing that can move their tokens on NEAR, their Hyperliquid account and their address on Aave's chain (through NEAR Chain Signatures).
+Basis Prime is an onchain prime brokerage. You get portfolio margin on the assets NEAR Intents supports, and you trade on the venues that matter, all from one account that stays yours.
 
-**Hosted demo:** https://13-192-48-169.sslip.io (testnet; see step 8 for what to try there).
+**What a prime broker changes.** Today, if you want to borrow, you go to a lending protocol and deposit spot assets. The protocol lends against that deposit alone. It can't see your perps account, so a fully hedged book borrows as if it had no hedge. A prime broker looks at your whole portfolio, spot and perps together, and gives you margin financing against all of it. One example: $25,000 of bitcoin on NEAR with a $25,000 short on Hyperliquid, backed by $9,500 of margin, carries almost no price risk. Rhea would lend about $15,800 against the bitcoin alone, at a safe distance from liquidation. Our engine lends $24,150 against the whole book (the figures are worked through under "The problem").
 
-**Where it stands.** Everything below runs on NEAR testnet, Hyperliquid testnet and Base Sepolia. Nothing has signed or paid anything on a mainnet. The credit check reads mainnet data.
+**Why onchain, and why NEAR.** The prime brokers that serve crypto today hold your assets for you, and they were not built for onchain markets. Basis Prime changes both:
+
+- **Self-custody.** Each client has an account contract of their own on NEAR. It is the only thing that can move their tokens on NEAR, their Hyperliquid account and their address on Aave's chain, through NEAR Chain Signatures. We never hold a client's keys.
+- **Minimal trust.** The risk engine and the order gateway run in OutLayer's secure enclave. Each account accepts answers only from the exact program it pins, so nobody can alter a risk check, not even us.
+- **Deep liquidity from day one.** We don't have to raise a lending pool before the first client arrives. A loan draws on Aave's and Rhea's liquidity as well as our own pool. The client asks for one amount; the engine splits it between the lenders and the pool, and the account does every step.
+
+**The whole product is hosted: https://13-192-48-169.sslip.io** The app, the backend, the keeper and the 1Click stand-in all run there on testnet, and we keep it up through judging. Step 8 says what to try.
+
+Entry for NEAR HACKATHON, Unstoppable DeFi track (`defi`). Built between 3 and 14 November 2026. Our team's other entry is [NEAR Investment Thesis](https://github.com/RehanNek/near-investment-thesis) (track `thesis`); the two are independent of each other.
+
+**Where it stands.** Everything below runs on NEAR testnet, Hyperliquid testnet and Base Sepolia. Nothing has signed or paid anything on a mainnet. The credit check reads mainnet data. Today the venue is Hyperliquid; an account holds five test tokens (USDC, bitcoin, ETH, NEAR, USDT), and bitcoin and ETH can be posted with a lender; the lenders are Aave's test market and our own copy of Rhea. Tokenised stocks, more venues and mainnet are where this goes next; none of that is built.
 
 - **One loan against a hedged book, part from a lender and part from our pool.** The risk engine splits it. On 14 Nov, on live testnet, a book of about $1,000 of test bitcoin with a short of the same size borrowed $509.09 from our Rhea copy and $488.02 from our pool. The same book in test ETH borrowed $478.78 from Rhea and $518.21 from our pool.
 - **Four scripted end-to-end runs passed on live testnet on 14 Nov** ("gates"), each on a new account, every transaction recorded: through Rhea with bitcoin, through Rhea with ETH, through Aave with bitcoin, and through Aave with the client's own ETH. They are listed under "What ran on live testnet".
