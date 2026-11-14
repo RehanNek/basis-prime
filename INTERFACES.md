@@ -7356,3 +7356,40 @@ collateral's value as the verdict counted it; the room never passes what the eng
 $2,105.26, debt $1,000.003387 with `debt_live: true`, cushion 1.5999, room $66.66, status safe, while the held
 verdict (block 277,682,203) still says nothing is owed. The backend restart signed wallets out once; the keeper met
 one 401, read the new token and went on.
+
+### 51.14 Basis trade: the form is always there, and a new trade goes on top (the main session, 14 Nov, 17:09 UTC)
+
+The user, with a short, some bitcoin and a loan in the account, all made by hand on other tabs: "now i see basis
+trade placed. I dont wnat it to say that i want to place a second thrid or fourth basis trade and i want the flow
+like as if i had zero basis trades....why do we restrict?"
+
+**Why it restricted.** The tab reads where a trade stands from the account itself, so a reload goes on from the right
+step (`openSteps`: "nothing is remembered"). Any short in the coin and any debt read as "the trade is open", and the
+form went away. That was this page's design, not a rule of the account or the engine: an account is one book and
+takes any number of positions.
+
+**What changed** (`web/src/lib/basis.ts`, `components/basis/open-trade.tsx`, `use-open-run.ts`):
+- The card is always "Open a basis trade", with the coin, the size and the button. An account that already holds a
+  trade gets one line saying what it holds, is short and owes, and that a new trade is added on top.
+- **`TradeBase`**: when such a trade is started the page notes where the account stood (the coin held, the short,
+  everything owed) and the new size. The steps then count from there: the coin is in once the account holds that
+  much more; the short is open once it has grown by the new size (99% of it counts, for Hyperliquid's size step);
+  the loan is taken once what is owed has grown by $5 or 0.1%, so interest alone doesn't count.
+- The run adds only the new coin, moves only the margin the bigger short still lacks (`marginToAdd`; a first trade
+  still moves all it added but $10), and sells only the new size. Bitcoin's added short goes through this page's
+  own order, as the other coins' do.
+- The started trade is kept in the browser (`pb:basis:adding:<account>`) for six hours, so a reload goes on with it.
+  It is dropped when the account no longer has the short it started from (`baseStands`: "Close everything" ran, or
+  another wallet's account), and by "Stop here" or "Finish without a new loan".
+- **A margin move while our pool is owed** needs a check, which the run's own margin step doesn't make. The run stops
+  there and the step offers the "Move USDC to Hyperliquid" box, which runs the check and the move; the page goes on
+  to the short once the margin is there.
+- **Testnet:** a trade whose margin move would be over $500 is refused in the form (`marginTooLarge`): the margin
+  comes out of the shared float.
+- A first trade on a new account is as it was: the same steps, the same amounts, the same tests.
+
+**Checked:** `basis.test.ts`, six new tests (web 463 in all); and on the sample page (`/basis/dev?state=open`,
+development only, whose stand-in now lets a second sell make the short bigger): a second trade from the button to the
+loan and back to a ready form, a third that stopped at the margin step with the box, and a stale remembered trade
+ignored on a new account. The sample caught one fault on the way (a state read before it was declared). **Not
+checked with a real wallet.**

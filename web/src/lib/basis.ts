@@ -219,6 +219,134 @@ export interface OpenInput {
   value?: bigint | null;
   /** The client passed the Aave step over: the loan then comes without Aave. */
   skipAave?: boolean;
+  /**
+   * INTERFACES.md 51.14: this trade is added on top of what the account already had. The coin, the short and the
+   * loan are then done once the account has that much MORE than `base` shows. Without it (a first trade) each step
+   * is done by what the account holds at all, as before.
+   */
+  base?: TradeBase | null;
+}
+
+// ---------- another trade, on top of what the account has (INTERFACES.md 51.14) ----------
+
+/**
+ * Where the account stood when another trade was started, and that trade's size. The user, 14 Nov: "i want to place a
+ * second third or fourth basis trade and i want the flow like as if i had zero basis trades". An account has one
+ * book, so "another trade" is more of the coin, a bigger short and a bigger loan: the page remembers where it
+ * started and counts from there. Amounts of the coin are in the token's own units; `owed` is micro-USD.
+ */
+export interface TradeBase {
+  symbol: string;
+  decimals: number;
+  /** The new trade's size. */
+  sizeUnits: bigint;
+  /** What the account held of the coin, and was short, when the trade was started. */
+  heldUnits: bigint;
+  shortUnits: bigint;
+  /** What it owed in all, to our pool and to lenders. */
+  owed: bigint;
+  startedMs: number;
+}
+
+/** How long a started trade is gone on with. After that the page takes the account as it finds it. */
+export const BASE_KEEP_MS = 6 * 60 * 60_000;
+
+/** The account's short in a coin on Hyperliquid, in the token's own units. 0 with none, and for a long. */
+export function shortUnitsOf(hl: HlAnswer | undefined, coin: string, decimals: number): bigint {
+  const position = hl?.hyperliquid ? hlSummary(hl.hyperliquid).positions.find((p) => p.coin === coin && p.side === 'short') : undefined;
+  return position ? BigInt(Math.round(Math.abs(position.size) * 10 ** decimals)) : 0n;
+}
+
+/** Everything the account owes now, to our pool and to its lenders, as the page can see it. */
+export function owedInAll(account: AccountAnswer | undefined, lender: LenderAccountAnswer | null | undefined): bigint {
+  const side = lenderSide(lender);
+  return toMicro(account?.debt ?? account?.state?.loan.principal ?? 0) + side.aaveDebt + side.rheaDebt;
+}
+
+/** The account as it stands, as the starting point of a trade of `sizeUnits`. */
+export function tradeBase(input: { token: Pick<BasisToken, 'symbol' | 'coin' | 'decimals'>; sizeUnits: bigint; account: AccountAnswer | undefined; hl: HlAnswer | undefined; lender: LenderAccountAnswer | null | undefined; nowMs: number }): TradeBase {
+  const { token } = input;
+  return {
+    symbol: token.symbol,
+    decimals: token.decimals,
+    sizeUnits: input.sizeUnits,
+    heldUnits: held(input.account, token.symbol),
+    shortUnits: shortUnitsOf(input.hl, token.coin, token.decimals),
+    owed: owedInAll(input.account, input.lender),
+    startedMs: input.nowMs,
+  };
+}
+
+/**
+ * Does a remembered trade still fit the account? Only while the account is open and still has the short it had when
+ * the trade was started. After "Close everything", or on another account under the same name, it doesn't: the page
+ * then takes the account as it finds it.
+ */
+export function baseStands(base: TradeBase, account: AccountAnswer | undefined, hl: HlAnswer | undefined, coin: string): boolean {
+  return Boolean(account?.state) && base.shortUnits > 0n && shortUnitsOf(hl, coin, base.decimals) >= base.shortUnits;
+}
+
+/** The short the account has once the added trade is open, in the token's units: what it had, and the new size. */
+export const shortTarget = (base: TradeBase): bigint => base.shortUnits + base.sizeUnits;
+
+/** Is the new short there? 99% of its size counts, so a size cut to Hyperliquid's step still does. */
+export const shortAdded = (base: TradeBase, shortNow: bigint): boolean => shortNow >= base.shortUnits + (base.sizeUnits * 99n) / 100n;
+
+/**
+ * Has a new loan been taken since the trade was started? What is owed grows by itself, by the second, so a little
+ * more is not a loan: it counts from $5 more, or 0.1% of what was owed when that is larger.
+ */
+export function loanAdded(base: TradeBase, owedNow: bigint): boolean {
+  const drift = base.owed / 1_000n;
+  return owedNow >= base.owed + (drift > 5_000_000n ? drift : 5_000_000n);
+}
+
+/**
+ * The margin an added trade moves to Hyperliquid: what the whole short will need, less what already sits there, at
+ * least Hyperliquid's $10, and no more than the account's USDC. Null when the account holds under $10 of USDC.
+ * On a first trade the page moves all the USDC it added but $10 (`marginToMove`); an account that is adding a trade
+ * may hold USDC of its own, which stays where it is.
+ */
+export function marginToAdd(input: { totalValue: bigint; hlEquity: bigint; usdcHeld: bigint }): bigint | null {
+  const missing = marginFor(input.totalValue) - input.hlEquity;
+  const wanted = missing > FIRST_DEPOSIT_MIN ? missing : FIRST_DEPOSIT_MIN;
+  if (wanted <= input.usdcHeld) return wanted;
+  return input.usdcHeld >= FIRST_DEPOSIT_MIN ? input.usdcHeld : null;
+}
+
+/**
+ * On testnet the margin that arrives on Hyperliquid comes out of one float of test USDC that every visitor shares
+ * (about $775 on 14 Nov), so one trade's margin is $500 at most: a trade of about $2,000.
+ */
+export const TESTNET_MARGIN_MAX = 500_000_000n;
+
+/**
+ * Why a trade can't be opened on testnet, or null: the margin it has to move (`needed`, micro-USD) is more than the
+ * shared float carries in one move. A first trade moves its whole margin; an added one, what the bigger short still lacks.
+ */
+export function marginTooLarge(needed: bigint | null, testnet: boolean): string | null {
+  if (!testnet || needed === null || needed <= TESTNET_MARGIN_MAX) return null;
+  return 'On testnet a trade can be about $2,000 at most: its margin comes out of test USDC on Hyperliquid that everyone trying the app shares.';
+}
+
+/** A started trade as text for the browser's own store, and back. Anything that isn't one reads as null. */
+export function baseToText(base: TradeBase): string {
+  return JSON.stringify({ ...base, sizeUnits: base.sizeUnits.toString(), heldUnits: base.heldUnits.toString(), shortUnits: base.shortUnits.toString(), owed: base.owed.toString() });
+}
+
+export function baseFromText(text: string | null | undefined, nowMs: number): TradeBase | null {
+  if (!text) return null;
+  try {
+    const raw = JSON.parse(text) as Record<string, unknown>;
+    const digits = (v: unknown): bigint | null => (typeof v === 'string' && /^\d+$/.test(v) ? BigInt(v) : null);
+    const [size, heldBefore, shortBefore, owed] = [digits(raw.sizeUnits), digits(raw.heldUnits), digits(raw.shortUnits), digits(raw.owed)];
+    if (typeof raw.symbol !== 'string' || typeof raw.decimals !== 'number' || typeof raw.startedMs !== 'number') return null;
+    if (size === null || size === 0n || heldBefore === null || shortBefore === null || owed === null) return null;
+    if (nowMs - raw.startedMs > BASE_KEEP_MS || raw.startedMs > nowMs + 60_000) return null;
+    return { symbol: raw.symbol, decimals: raw.decimals, sizeUnits: size, heldUnits: heldBefore, shortUnits: shortBefore, owed, startedMs: raw.startedMs };
+  } catch {
+    return null;
+  }
 }
 
 /**
@@ -297,18 +425,22 @@ export function openSteps(input: OpenInput): OpenView {
   const transfers = pendingTransfers(state?.pending);
   const toHl = transfers.some((t) => t.kind === 'to_hl');
   const summary = hl?.hyperliquid ? hlSummary(hl.hyperliquid) : null;
-  const short = (summary?.positions ?? []).some((p) => p.coin === token.coin && p.side === 'short');
+  // INTERFACES.md 51.14: an added trade counts from where the account stood when it was started.
+  const base = input.base && input.base.symbol === token.symbol ? input.base : null;
+  const short = base ? shortAdded(base, shortUnitsOf(hl, token.coin, base.decimals)) : (summary?.positions ?? []).some((p) => p.coin === token.coin && p.side === 'short');
   const equity = BigInt(Math.max(0, Math.round((summary?.equity ?? 0) * 1e6)));
   // Margin is there once the short is open, or Hyperliquid holds enough for it.
   const funded = short || (hl ? hlFunded(hl.hyperliquid) && (input.value == null || marginEnough(equity, input.value)) : false);
   const owes = borrowed(account, lender);
   const loanOnItsWay = planRunning(lender?.funding, input.nowMs);
+  const coinThere = base ? held(account, token.symbol) >= base.heldUnits + base.sizeUnits : held(account, token.symbol) > 0n;
+  const loanThere = base ? loanAdded(base, owedInAll(account, lender)) : owes;
   const test = testCollateralStep({ testnet: input.testnet, lender, skipped: input.skipAave === true, helperOn: input.helperOn });
 
   const done: Record<OpenKey, boolean> = {
     account: state !== null,
     // The coin is there, and so is the margin: on NEAR, on its way, or already on Hyperliquid.
-    collateral: state !== null && (short || (held(account, token.symbol) > 0n && (funded || toHl || held(account, 'USDC') >= 2n * FIRST_DEPOSIT_MIN))),
+    collateral: state !== null && (short || (coinThere && (funded || toHl || held(account, 'USDC') >= 2n * FIRST_DEPOSIT_MIN))),
     address: state !== null && Boolean(hl?.address),
     margin: state !== null && funded,
     agent: state !== null && Boolean(hl?.hl?.agent),
@@ -316,7 +448,7 @@ export function openSteps(input: OpenInput): OpenView {
     short: state !== null && short,
     // A loan that is already open doesn't wait for test collateral.
     aave: test !== 'needed' || owes || loanOnItsWay,
-    loan: owes && !loanOnItsWay,
+    loan: loanThere && !loanOnItsWay,
   };
   const keys: OpenKey[] = ['account', 'collateral', 'address', 'margin', 'agent', 'approve', 'short', ...(test ? (['aave'] as OpenKey[]) : []), 'loan'];
   const next = keys.find((key) => !done[key]) ?? null;

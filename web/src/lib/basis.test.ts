@@ -7,6 +7,10 @@ import { test } from 'node:test';
 import type { AccountAnswer, LenderAccountAnswer, MarketCoin } from './api.ts';
 import {
   aaveOwed,
+  BASE_KEEP_MS,
+  baseFromText,
+  baseStands,
+  baseToText,
   basisTokens,
   CLOSE_STAGES,
   closeStage,
@@ -21,23 +25,33 @@ import {
   failureWords,
   hlWasRead,
   JARGON,
+  loanAdded,
   marginEnough,
   marginFor,
+  marginToAdd,
   marginToMove,
+  marginTooLarge,
   moveAmount,
   nextCloseStep,
   offersOwnEther,
   openApproval,
   openSteps,
+  owedInAll,
   ownEtherAmount,
   openTitle,
   readSize,
   settingsTokens,
+  shortAdded,
+  shortTarget,
+  shortUnitsOf,
   suggestedLoan,
+  TESTNET_MARGIN_MAX,
+  tradeBase,
   valueMicro,
   type CloseState,
   type CloseStep,
   type OpenKey,
+  type TradeBase,
 } from './basis.ts';
 import type { HlAnswer, HyperliquidView } from './hl.ts';
 import { lenderPayoff, poolExtra } from './loan.ts';
@@ -857,4 +871,124 @@ test('what there is to close, in short lines; nothing open gives none', () => {
     '$430.00 of USDC is on Hyperliquid.',
     'Your account holds $488.28 of USDC and 0.015 BTC.',
   ]);
+});
+
+// ---------- another trade, on top of what the account has (INTERFACES.md 51.14) ----------
+
+/** The hedged account of above, with its BTC short at another size. */
+const shortOf = (size: string): HlAnswer => {
+  const state = HEDGED.hyperliquid!.clearinghouse_state!;
+  return { ...HEDGED, hyperliquid: { ...HEDGED.hyperliquid!, clearinghouse_state: { ...state, assetPositions: [{ position: { ...state.assetPositions[0]!.position, szi: `-${size}` } }] } } };
+};
+const NBTC_TOKEN = { symbol: 'nBTC', coin: 'BTC', decimals: 8 };
+/** 0.015 BTC held, a short of the same, $500 owed to the pool: a first trade, open. */
+const OPEN_ACCOUNT = account({ nbtc: '1500000', debt: '500000000' });
+/** A second trade of 0.01 BTC, started from there. */
+const ADDED: TradeBase = { symbol: 'nBTC', decimals: 8, sizeUnits: 1_000_000n, heldUnits: 1_500_000n, shortUnits: 1_500_000n, owed: 500_000_000n, startedMs: NOW };
+const again = (parts: { account: AccountAnswer; hl: HlAnswer; value?: bigint; base?: TradeBase | null }) =>
+  openSteps({ token: BTC, account: parts.account, hl: parts.hl, lender: lender(), testnet: true, helperOn: undefined, nowMs: NOW, value: parts.value ?? usd(1_900), base: parts.base === undefined ? ADDED : parts.base });
+
+test('where an account stands when another trade is started: what it holds, its short and what it owes', () => {
+  assert.equal(shortUnitsOf(HEDGED, 'BTC', 8), 1_500_000n, '0.015 BTC');
+  assert.equal(shortUnitsOf(HEDGED, 'ETH', 18), 0n, 'no short in that coin');
+  assert.equal(shortUnitsOf(hl({ address: true, funded: true }), 'BTC', 8), 0n);
+  assert.equal(shortUnitsOf(undefined, 'BTC', 8), 0n);
+  assert.equal(owedInAll(OPEN_ACCOUNT, lender()), 500_000_000n);
+  assert.equal(owedInAll(undefined, null), 0n);
+  assert.deepEqual(tradeBase({ token: NBTC_TOKEN, sizeUnits: 1_000_000n, account: OPEN_ACCOUNT, hl: HEDGED, lender: lender(), nowMs: NOW }), ADDED);
+  assert.equal(shortTarget(ADDED), 2_500_000n, 'the short once the new trade is open: 0.025 BTC');
+});
+
+test('a second trade runs the same steps, counted from where the account stood', () => {
+  // By the first trade's rules this account is done: it holds the coin, is short it and owes.
+  assert.equal(again({ account: OPEN_ACCOUNT, hl: HEDGED, base: null }).complete, true);
+  // With a second trade started, the coin comes first: the account holds 0.015 and needs 0.025.
+  const start = again({ account: OPEN_ACCOUNT, hl: HEDGED });
+  assert.equal(start.complete, false);
+  assert.equal(start.next, 'collateral');
+  assert.deepEqual(marks(start), { account: 'done', collateral: 'current', address: 'done', margin: 'done', agent: 'done', approve: 'done', short: 'todo', loan: 'todo' });
+  // The coin is in: the short is next. The margin on Hyperliquid ($428) carries a $1,900 short, so nothing moves.
+  const coinIn = again({ account: account({ nbtc: '2500000', debt: '500000000' }), hl: HEDGED });
+  assert.equal(coinIn.next, 'short');
+  assert.equal(marks(coinIn).collateral, 'done');
+  // A bigger short than the margin carries: the margin step comes back before the short.
+  const thin = again({ account: account({ nbtc: '2500000', usdc: '600000000', debt: '500000000' }), hl: HEDGED, value: usd(4_000) });
+  assert.equal(thin.next, 'margin');
+  // The short has grown by the new size: the loan is the client's to take.
+  const shorted = again({ account: account({ nbtc: '2500000', debt: '500000000' }), hl: shortOf('0.025') });
+  assert.equal(shorted.next, 'loan');
+  assert.deepEqual([marks(shorted).collateral, marks(shorted).short, marks(shorted).loan], ['done', 'done', 'current']);
+  // The short alone doesn't count when it is the old one: 0.015 is where the account started.
+  assert.equal(again({ account: account({ nbtc: '2500000', debt: '500000000' }), hl: shortOf('0.0151') }).next, 'short');
+  // Interest on the old loan is not a new loan; $200 more is. Then the second trade is open.
+  assert.equal(again({ account: account({ nbtc: '2500000', debt: '500400000' }), hl: shortOf('0.025') }).next, 'loan');
+  assert.equal(again({ account: account({ nbtc: '2500000', debt: '700000000' }), hl: shortOf('0.025') }).complete, true);
+  // Once the loan has taken the coin to a lender, the account holds less: the short still says the coin was there.
+  assert.equal(again({ account: account({ nbtc: '0', debt: '700000000' }), hl: shortOf('0.025') }).complete, true);
+  // A trade started in another coin doesn't change how this one is read.
+  assert.equal(again({ account: OPEN_ACCOUNT, hl: HEDGED, base: { ...ADDED, symbol: 'ETH' } }).complete, true);
+});
+
+test('what counts as the new short and the new loan', () => {
+  assert.equal(shortAdded(ADDED, 2_500_000n), true);
+  assert.equal(shortAdded(ADDED, 2_490_000n), true, '99% of the new size, for a size cut to Hyperliquid’s step');
+  assert.equal(shortAdded(ADDED, 2_489_999n), false);
+  assert.equal(shortAdded(ADDED, 1_500_000n), false, 'the short it started with');
+  // A big short and a small trade: the allowance is 1% of the new size, not of the whole short.
+  assert.equal(shortAdded({ ...ADDED, shortUnits: 100_000_000n, sizeUnits: 100_000n }, 100_050_000n), false);
+  assert.equal(shortAdded({ ...ADDED, shortUnits: 100_000_000n, sizeUnits: 100_000n }, 100_099_000n), true);
+  // A loan counts from $5 more than was owed, or 0.1% of it when that is more: interest alone never reaches it in the hours a trade is kept.
+  assert.equal(loanAdded(ADDED, 500_000_000n), false);
+  assert.equal(loanAdded(ADDED, 504_999_999n), false);
+  assert.equal(loanAdded(ADDED, 505_000_000n), true);
+  assert.equal(loanAdded({ ...ADDED, owed: 0n }, 10_000_000n), true, 'a first loan on top of none');
+  assert.equal(loanAdded({ ...ADDED, owed: 20_000_000_000n }, 20_010_000_000n), false, '0.1% of $20,000 is $20');
+  assert.equal(loanAdded({ ...ADDED, owed: 20_000_000_000n }, 20_020_000_000n), true);
+});
+
+test('the margin an added trade moves: what the bigger short still lacks, never more than the account’s USDC', () => {
+  // A $2,400 short needs $600 (25%); $298 sits on Hyperliquid: $302 more.
+  assert.equal(marginFor(usd(2_400)), usd(600));
+  assert.equal(marginToAdd({ totalValue: usd(2_400), hlEquity: usd(298), usdcHeld: usd(12_000) }), usd(302));
+  // At least Hyperliquid's $10.
+  assert.equal(marginToAdd({ totalValue: usd(1_200), hlEquity: usd(295), usdcHeld: usd(12_000) }), usd(10));
+  // The account holds less than is wanted: all of it, when that is $10 or more.
+  assert.equal(marginToAdd({ totalValue: usd(2_400), hlEquity: usd(298), usdcHeld: usd(120) }), usd(120));
+  assert.equal(marginToAdd({ totalValue: usd(2_400), hlEquity: usd(298), usdcHeld: usd(9) }), null);
+  // The first trade's rule is unchanged: all the USDC the page added but $10.
+  assert.equal(marginToMove(usd(300)), usd(290));
+  // Testnet: one trade's margin is $500 at most.
+  assert.equal(TESTNET_MARGIN_MAX, usd(500));
+  assert.equal(marginTooLarge(usd(500), true), null);
+  assert.match(marginTooLarge(usd(500.01), true)!, /about \$2,000 at most/);
+  assert.equal(marginTooLarge(usd(5_000), false), null, 'mainnet has no such limit');
+  assert.equal(marginTooLarge(null, true), null);
+});
+
+test('a started trade is kept in the browser as text, for six hours, and anything else reads as none', () => {
+  const text = baseToText(ADDED);
+  assert.deepEqual(baseFromText(text, NOW + 60_000), ADDED);
+  assert.equal(BASE_KEEP_MS, 6 * 60 * 60_000);
+  assert.deepEqual(baseFromText(text, NOW + BASE_KEEP_MS), ADDED);
+  assert.equal(baseFromText(text, NOW + BASE_KEEP_MS + 1), null, 'too old: the page takes the account as it finds it');
+  assert.equal(baseFromText(text, NOW - 5 * 60_000), null, 'from the future');
+  assert.equal(baseFromText(null, NOW), null);
+  assert.equal(baseFromText('', NOW), null);
+  assert.equal(baseFromText('not json', NOW), null);
+  assert.equal(baseFromText(JSON.stringify({ symbol: 'nBTC' }), NOW), null);
+  assert.equal(baseFromText(text.replace('"1000000"', '"0"'), NOW), null, 'a size of nothing');
+  assert.equal(baseFromText(text.replace('"1000000"', '"-5"'), NOW), null);
+});
+
+test('a remembered trade is dropped once the account no longer has the short it started from', () => {
+  assert.equal(baseStands(ADDED, OPEN_ACCOUNT, HEDGED, 'BTC'), true);
+  assert.equal(baseStands(ADDED, OPEN_ACCOUNT, shortOf('0.025'), 'BTC'), true, 'the short has grown: the trade is under way');
+  // "Close everything" ran, or part of the short was closed by hand.
+  assert.equal(baseStands(ADDED, OPEN_ACCOUNT, hl({ address: true, funded: true, agent: true, approved: true }), 'BTC'), false);
+  assert.equal(baseStands(ADDED, OPEN_ACCOUNT, shortOf('0.01'), 'BTC'), false);
+  // No such account (another wallet under the same name), or nothing read yet.
+  assert.equal(baseStands(ADDED, account({ exists: false }), HEDGED, 'BTC'), false);
+  assert.equal(baseStands(ADDED, undefined, undefined, 'BTC'), false);
+  // A base with no short to start from was never one of this page's.
+  assert.equal(baseStands({ ...ADDED, shortUnits: 0n }, OPEN_ACCOUNT, HEDGED, 'BTC'), false);
 });

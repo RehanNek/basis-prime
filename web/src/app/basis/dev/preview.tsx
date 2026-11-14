@@ -51,6 +51,8 @@ interface World {
   agent: boolean;
   approved: boolean;
   short: boolean;
+  /** The short's size in BTC: a second trade's sell makes it bigger (INTERFACES.md 51.14). */
+  shortSz: number;
   hlSigned: { index: number; kind: string; amount: bigint }[];
   evmUsdc: bigint;
   evmWeth: bigint;
@@ -81,6 +83,7 @@ function worldFor(state: PreviewState): World {
     agent: false,
     approved: false,
     short: false,
+    shortSz: 0,
     hlSigned: [],
     evmUsdc: 0n,
     evmWeth: 0n,
@@ -94,7 +97,7 @@ function worldFor(state: PreviewState): World {
   if (state === 'new' || state === 'empty' || state === 'btc-out') return base;
   const coin = { ...base, nbtc: 1_500_000n, hlAddress: true };
   if (state === 'margin') return { ...coin, usdc: 450_000_000n };
-  const hedged = { ...coin, usdc: 10_000_000n, hlUsd: 430_000_000n, agent: true, approved: true, short: true };
+  const hedged = { ...coin, usdc: 10_000_000n, hlUsd: 430_000_000n, agent: true, approved: true, short: true, shortSz: 0.015 };
   if (state === 'loan') return { ...hedged, evmWeth: WETH_POSTED };
   const borrowed = [
     { nonce: 0, kind: 'approve', token: WETH, hash: '0x00', status: 'mined' },
@@ -156,7 +159,7 @@ function hl(id: string, w: World): HlAnswer {
             crossMarginSummary: { accountValue: value, totalNtlPos: '0', totalMarginUsed: '0' },
             crossMaintenanceMarginUsed: '0',
             withdrawable: w.short ? (Number(w.hlUsd) / 2e6).toFixed(2) : value,
-            assetPositions: w.short ? [{ position: { coin: 'BTC', szi: '-0.015', entryPx: '76000', positionValue: '1140', unrealizedPnl: '0', liquidationPx: null, leverage: { type: 'cross', value: 5 }, marginUsed: '228' } }] : [],
+            assetPositions: w.short ? [{ position: { coin: 'BTC', szi: `-${w.shortSz}`, entryPx: '76000', positionValue: String(Math.round(w.shortSz * 76_000)), unrealizedPnl: '0', liquidationPx: null, leverage: { type: 'cross', value: 5 }, marginUsed: '228' } }] : [],
           },
           spot_usdc: null,
           abstraction: null,
@@ -375,8 +378,17 @@ function answer(path: string, body: Record<string, unknown> | null, w: World): u
     return { account: body.account, index: entry.index, kind: entry.kind, nonce: 1, ok: true, http_status: 200, hl: { status: 'ok' } };
   }
   if (path.startsWith('/api/order')) {
-    w.short = !w.short;
-    return { ok: true, status: 'filled', filled_sz: '0.015', avg_px: '76000', sent: { coin: 'BTC', is_buy: !w.short, sz: '0.015', limit_px: '76000', tif: 'Ioc', reduce_only: !w.short } };
+    // The order as the page signed it: a sell makes the short bigger, a buy smaller.
+    let sent = { is_buy: w.short, sz: '0.015' };
+    try {
+      const order = (JSON.parse(String((body.auth as { message?: unknown } | undefined)?.message ?? '{}')) as { order?: { is_buy?: boolean; sz?: string } }).order;
+      if (order && typeof order.is_buy === 'boolean' && typeof order.sz === 'string') sent = { is_buy: order.is_buy, sz: order.sz };
+    } catch {
+      // not a message the page signs: the old toggle
+    }
+    w.shortSz = Math.max(0, Math.round((w.shortSz + (sent.is_buy ? -1 : 1) * Number(sent.sz)) * 1e8) / 1e8);
+    w.short = w.shortSz > 0;
+    return { ok: true, status: 'filled', filled_sz: sent.sz, avg_px: '76000', sent: { coin: 'BTC', is_buy: sent.is_buy, sz: sent.sz, limit_px: '76000', tif: 'Ioc', reduce_only: sent.is_buy } };
   }
   if (path.startsWith('/api/evm/submit')) return mine(w, Number(body.nonce)) ?? undefined;
   if (path.startsWith('/api/evm/gas')) {
