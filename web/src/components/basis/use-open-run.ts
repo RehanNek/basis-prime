@@ -17,7 +17,7 @@ import type { ClientAccount } from '@/hooks/use-client-account';
 import { accountPath, api, EVM_GAS_PATH, hlPath, lenderPath, marketsPath, sendOrder, type AccountAnswer, type EvmGasInfo, type LenderAccountAnswer, type MarketsAnswer } from '@/lib/api';
 import { collateralPlan, marginToMove, openApproval, openSteps, openTitle, valueMicro, DEFAULT_VALUE_USD, type BasisOption, type OpenKey } from '@/lib/basis';
 import { expiryNow, GATEWAY_RECIPIENT, orderLifeMs, orderMessage, orderWords, randomNonce, toAuth } from '@/lib/gateway';
-import { coinTradingNow, notTradingWords } from '@/lib/hl-reach';
+import { coinTradingNow, notTradingWords, ownOrderBp } from '@/lib/hl-reach';
 import { sendWithinLife } from '@/lib/order-life';
 import { hlSummary, type HlAnswer } from '@/lib/hl';
 import { decFromNumber, decText, roundOrder, roundPrice } from '@/lib/hl-rules';
@@ -112,8 +112,8 @@ export function useOpenRun({ client, token, sizeUnits, usdcId, permission, reloa
     // INTERFACES.md 50.4: an order Hyperliquid can't take now isn't signed. The page's own read may be half a minute old; this one is fresh.
     const stopped = notTradingWords(picked.coin, coinTradingNow(coin, testnet), 'coin');
     if (stopped) throw new StepFailed(stopped, [], { happened: stopped, todo: 'Nothing was signed or sent. What is in your account stays there.' });
-    // A limit half the price band below the reference: it fills at once, and stays inside the band.
-    const target = decFromNumber(reference * (1 - coin.band_bp / 20_000));
+    // A limit below the reference (lib/hl-reach.ts, ownOrderBp): it fills at once, and stays inside the band.
+    const target = decFromNumber(reference * (1 - ownOrderBp(coin.band_bp) / 10_000));
     if (!target) throw new StepFailed('No price to sell at.');
     const rounded = roundOrder({ size: formatUnits(units, picked.decimals), price: decText(roundPrice(target, listed.sz_decimals, 'up')), isBuy: false, szDecimals: listed.sz_decimals });
     if (rounded.problems.length) throw new StepFailed(rounded.problems.join(' '));

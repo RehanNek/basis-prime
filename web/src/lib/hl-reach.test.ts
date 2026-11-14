@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 
-import { BAND_EDGE_BP, coinTradingNow, defaultCoin, firstTrading, HL_TESTNET_REACH_BP, NONE_TRADING_WORDS, NOT_TRADING_MARK, notTradingWords, orderStopped, reachOf, tradingNow } from './hl-reach.ts';
+import { BAND_EDGE_BP, coinTradingNow, defaultCoin, firstTrading, HL_TESTNET_REACH_BP, NONE_TRADING_WORDS, NOT_TRADING_MARK, notTradingWords, orderStopped, ownFillBp, ownOrderBp, reachOf, THROUGH_MARK_BP, tradingNow } from './hl-reach.ts';
 
 /** A coin's row of the markets answer, with the mark a share under (or over) the oracle price. */
 const row = (oracle: number, offPercent: number, bandBp = 300) => ({ band_bp: bandBp, testnet: { mark_px: String(oracle * (1 + offPercent / 100)), oracle_px: String(oracle) } });
@@ -19,6 +19,17 @@ test('the figures are the keeper’s own: Hyperliquid testnet trades up to about
   assert.deepEqual(reachOf(100), { bp: 90, venue: false });
 });
 
+test('an order meant to fill at once is priced a tenth of a percent inside what may be priced, and the page stops 0.3% before that', () => {
+  assert.equal(THROUGH_MARK_BP, 30);
+  // Testnet's 3% band: priced 2.3% past the reference, and a coin trades while its mark is under 2.0% from the oracle price.
+  assert.deepEqual([ownOrderBp(300), ownFillBp(300)], [230, 200]);
+  // An older gateway's 1% band: 0.8% and 0.5%.
+  assert.deepEqual([ownOrderBp(100), ownFillBp(100)], [80, 50]);
+  // The price is always inside the band, and inside Hyperliquid's own limit.
+  for (const band of [50, 100, 250, 300, 500]) assert.ok(ownOrderBp(band) < band && ownOrderBp(band) < HL_TESTNET_REACH_BP && ownFillBp(band) < ownOrderBp(band));
+  assert.deepEqual([ownOrderBp(0), ownFillBp(0), ownFillBp(30)], [0, 0, 0]);
+});
+
 test('which coins can trade now: BTC 2.6% from its reference price can’t, ETH at 1.13% and NEAR at 0.10% can', () => {
   const btc = coinTradingNow(BTC, true);
   assert.equal(btc.ok, false);
@@ -27,10 +38,15 @@ test('which coins can trade now: BTC 2.6% from its reference price can’t, ETH 
   assert.equal(coinTradingNow(NEAR, true).ok, true);
   // Over the oracle is as far as under it: a short that couldn't be closed isn't opened.
   assert.equal(coinTradingNow(row(68_800, 2.6), true).ok, false);
-  // Just inside Hyperliquid's limit, but past where this app prices an order that fills at once (half the band, 1.5%).
-  const two = coinTradingNow(row(68_800, -2.0), true);
-  assert.deepEqual(two.ok ? null : [two.why, two.limitBp], ['page', 150]);
-  assert.equal(coinTradingNow(row(68_800, -1.49), true).ok, true);
+  // Just inside Hyperliquid's limit, but too near the price this app sends an order at (2.3% out) for it to meet the book.
+  const two = coinTradingNow(row(68_800, -2.2), true);
+  assert.deepEqual(two.ok ? null : [two.why, two.limitBp], ['page', 200]);
+  assert.equal(coinTradingNow(row(68_800, -1.99), true).ok, true);
+  // 14 Nov, 15:14 UTC: BTC's mark stood 1.58% under its oracle price. Until then the page stopped at 1.5%.
+  assert.equal(coinTradingNow(row(68_800, -1.58), true).ok, true);
+  // An older gateway's 1% band: the page still stops at half a percent.
+  const half = coinTradingNow(row(68_800, -0.6, 100), true);
+  assert.deepEqual(half.ok ? null : [half.why, half.limitBp], ['page', 50]);
   // An account on an older gateway: its 1% band is the nearer limit.
   const old = coinTradingNow(row(68_800, -0.95, 100), true);
   assert.deepEqual(old.ok ? null : [old.why, old.limitBp], ['gateway', 90]);
@@ -74,8 +90,8 @@ test('the words: the dropdown marks the coin, and one line says why in plain wor
     'Hyperliquid testnet’s BTC price is 2.6% away from its reference price right now, and it takes no order that far out. Pick another market, or try BTC again later.',
   );
   assert.equal(
-    notTradingWords('BTC', coinTradingNow(row(68_800, -2.0), true)),
-    'Hyperliquid testnet’s BTC price is 2.0% away from its reference price right now, too far for an order placed from here to fill at once. Pick another coin, or try BTC again later.',
+    notTradingWords('BTC', coinTradingNow(row(68_800, -2.2), true)),
+    'Hyperliquid testnet’s BTC price is 2.2% away from its reference price right now, too far for an order placed from here to fill at once. Pick another coin, or try BTC again later.',
   );
   assert.equal(
     notTradingWords('BTC', coinTradingNow(row(68_800, -0.95, 100), true)),

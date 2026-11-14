@@ -7182,3 +7182,29 @@ for WETH: each run sends 0.02 out and brings it back, less what the routes cost.
 answers; the Credit check's worked example, with no wallet, came back from OutLayer after 185 seconds (normally about
 10): a $94,173.67 line next to Rhea's $63,086.95. So the server's backend reaches OutLayer and pays for runs, and
 OutLayer's testnet was still slow.
+
+### 51.5 The app's own orders are priced 2.3% out, not 1.5% (the main session, 14 Nov, 15:15 to 15:25 UTC)
+
+**Why.** At 15:14 UTC Hyperliquid testnet's BTC mark stood 1.58% under its oracle price. The app priced an order
+meant to fill at once half the band past the reference (1.5% with the 3% band) and marked a coin as not trading
+from 1.5% (50.4 and the notes at 50.5 name this gap). The keeper's own runs trade out to 2.4%. The user said to
+widen it, before their wallet click-through.
+
+**The rule now, in one place (`web/src/lib/hl-reach.ts`).**
+- `ownOrderBp(band)` = what may be priced (`reachOf`: the nearer of Hyperliquid testnet's 2.4% and the band less
+  0.1%) less another 0.1%. With the 3% band: **2.3%**. With a 1% band: 0.8% (it was 0.5%).
+- `ownFillBp(band)` = `ownOrderBp` less 0.3% (`THROUGH_MARK_BP`, the keeper's own figure for meeting the book).
+  A coin counts as **not trading from 2.0%** with the 3% band (`why: 'page'`, `limitBp` 200); from 0.5% with a 1%
+  band, as before.
+- Every place that prices such an order uses `ownOrderBp`: a market order on Perps (`lib/perps.ts`, `marketPrice`;
+  `MARKET_BAND_SHARE` is gone), the old trade page's fill price and "Close…", the Basis trade's short
+  (`use-open-run.ts`) and its close (`use-close-run.ts`), and the setup's short (`setup-actions.ts`).
+
+**What it costs.** The gateway checks the book as if the order filled at its limit (P4, `worst_fill`), so a market
+order now counts 2.3% of its size against the account at the check, not 1.5%: $23 on a $1,000 order, not $15. The
+fill itself is at the book's prices, as before.
+
+**Tests.** `hl-reach.test.ts` (a new test for the two figures; 1.58% trades, 2.2% does not, an older 1% band still
+stops at 0.5%) and `perps.test.ts` (the expected market prices: 69,001 x 1.023 = 70,588 and x 0.977 = 67,414). Web
+446 tests, tsc and lint clean. Live on the hosted site since 15:24 UTC. **Not proven by a live order:** no order has
+been sent from the app at the new price; the first will be the user's click-through.

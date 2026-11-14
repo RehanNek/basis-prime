@@ -19,18 +19,29 @@ export function reachOf(bandBp: number): { bp: number; venue: boolean } {
   return HL_TESTNET_REACH_BP < band ? { bp: HL_TESTNET_REACH_BP, venue: true } : { bp: band, venue: false };
 }
 
+/** How far through the mark an order has to be priced to meet the book, in bp: the keeper's own 0.3% (hedge-kit.ts, THROUGH_MARK_BP). */
+export const THROUGH_MARK_BP = 30;
+
 /**
  * How far past the reference price this app prices an order that should fill at once (a market order on Perps, the
- * Basis trade's short and its close, the setup's short): half the band. Such an order meets the book only while the
- * mark is nearer the oracle than that.
+ * Basis trade's short and its close, the setup's short): as far as an order may be priced, less a tenth of a percent,
+ * because the gateway and Hyperliquid each measure from a price of their own, a little off the one this page sees.
+ * With testnet's 3% band that is 2.3%; with a 1% band, 0.8%. Until 14 Nov it was half the band (1.5%), which marked a
+ * coin as not trading while the keeper's own runs, priced out to 2.4%, still traded it.
  */
-export const ownOrderBp = (bandBp: number): number => bandBp / 2;
+export const ownOrderBp = (bandBp: number): number => Math.max(0, reachOf(bandBp).bp - BAND_EDGE_BP);
+
+/**
+ * How far the mark may stand from the oracle price before such an order stops meeting the book: 0.3% nearer than
+ * the order's own price. With testnet's 3% band, 2.0%; with a 1% band, 0.5%.
+ */
+export const ownFillBp = (bandBp: number): number => Math.max(0, ownOrderBp(bandBp) - THROUGH_MARK_BP);
 
 export type Trading =
   | { ok: true; gapBp: number | null }
   /**
    * `venue`: the mark is further from the oracle than Hyperliquid itself trades. `gateway`: further than the account's
-   * own gateway takes. `page`: inside both, but further than this app prices an order that fills at once.
+   * own gateway takes. `page`: inside both, but too near the price this app sends an order at for it to meet the book.
    */
   | { ok: false; gapBp: number; why: 'venue' | 'gateway' | 'page'; limitBp: number };
 
@@ -47,7 +58,7 @@ export function tradingNow(input: { mark: number | null | undefined; oracle: num
   if (!testnet || !(bandBp > 0)) return { ok: true, gapBp };
   const reach = reachOf(bandBp);
   if (gapBp >= reach.bp) return { ok: false, gapBp, why: reach.venue ? 'venue' : 'gateway', limitBp: reach.bp };
-  if (gapBp >= ownOrderBp(bandBp)) return { ok: false, gapBp, why: 'page', limitBp: ownOrderBp(bandBp) };
+  if (gapBp >= ownFillBp(bandBp)) return { ok: false, gapBp, why: 'page', limitBp: ownFillBp(bandBp) };
   return { ok: true, gapBp };
 }
 

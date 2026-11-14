@@ -392,7 +392,7 @@ test('the form prices from the live mark and oracle when the market has answered
   const live = parsePerps(ANSWER)!.ctx;
   const facts = coinFacts(withLivePrices(market(), live))!;
   assert.deepEqual([facts.mark, facts.reference], [68551, 69002.4]);
-  assert.equal(marketPrice({ reference: facts.reference, bandBp: facts.bandBp, isBuy: true, szDecimals: 5 }), '70037', '69002.4 x 1.015 = 70037.436');
+  assert.equal(marketPrice({ reference: facts.reference, bandBp: facts.bandBp, isBuy: true, szDecimals: 5 }), '70589', '69002.4 x 1.023 = 70589.455');
   assert.deepEqual(withLivePrices(market(), null), market(), 'no live answer: the list as it is');
   assert.equal(withLivePrices(market(), { ...live, oracle: null })!.testnet!.oracle_px, '69001.0', 'a missing live figure keeps the list\u2019s');
   assert.equal(coinFacts(withLivePrices(market({}, { delisted: true }), live))!.listed, false, 'a delisted coin stays unlisted');
@@ -404,16 +404,17 @@ test('the picker offers the allow-listed coins, those testnet lists first', () =
   assert.deepEqual(pickerCoins(coins), [{ coin: 'BTC', listed: true }, { coin: 'ETH', listed: true }, { coin: 'ZEC', listed: false }, { coin: 'HYPE', listed: false }]);
 });
 
-test("a market order's price is the trade page's Close sum: half the band past the reference, on the side that fills", () => {
-  // The trade page: reference * (1 + (isBuy ? 1 : -1) * band_bp / 20_000), a buy rounded down and a sell up.
-  assert.equal(marketPrice({ reference: 69001, bandBp: 300, isBuy: true, szDecimals: 5 }), '70036', '69001 x 1.015 = 70036.015, down');
-  assert.equal(marketPrice({ reference: 69001, bandBp: 300, isBuy: false, szDecimals: 5 }), '67966', '69001 x 0.985 = 67965.985, up');
-  assert.equal(marketPrice({ reference: 1947.72, bandBp: 300, isBuy: true, szDecimals: 4 }), '1976.9', 'ETH: 1976.9358, 5 significant figures, down');
-  assert.equal(marketPrice({ reference: 1947.72, bandBp: 300, isBuy: false, szDecimals: 4 }), '1918.6', '1918.5042, up');
-  assert.equal(marketPrice({ reference: 69001, bandBp: 100, isBuy: true, szDecimals: 5 }), '69346', "mainnet's 1% band for BTC: half a percent past");
+test("a market order's price is the trade page's Close sum: 2.3% past the reference with testnet's 3% band, on the side that fills", () => {
+  // Every order meant to fill at once: reference * (1 + (isBuy ? 1 : -1) * ownOrderBp(band) / 10_000), a buy rounded down and a sell up.
+  assert.equal(marketPrice({ reference: 69001, bandBp: 300, isBuy: true, szDecimals: 5 }), '70588', '69001 x 1.023 = 70588.023, down');
+  assert.equal(marketPrice({ reference: 69001, bandBp: 300, isBuy: false, szDecimals: 5 }), '67414', '69001 x 0.977 = 67413.977, up');
+  assert.equal(marketPrice({ reference: 1947.72, bandBp: 300, isBuy: true, szDecimals: 4 }), '1992.5', 'ETH: 1992.5176, 5 significant figures, down');
+  assert.equal(marketPrice({ reference: 1947.72, bandBp: 300, isBuy: false, szDecimals: 4 }), '1903', '1902.9224, up');
+  assert.equal(marketPrice({ reference: 69001, bandBp: 100, isBuy: true, szDecimals: 5 }), '69553', "mainnet's 1% band for BTC: 0.8% past");
   for (const [bandBp, isBuy] of [[300, true], [300, false], [100, true], [250, false]] as const) {
     const px = Number(marketPrice({ reference: 69001, bandBp, isBuy, szDecimals: 5 }));
-    assert.ok(Math.abs(px / 69001 - 1) <= bandBp / 20_000, 'never past half the band, so it is always inside the band');
+    assert.ok(Math.abs(px / 69001 - 1) <= (bandBp - 20) / 10_000, 'never nearer than 0.2% to the band’s edge, so it is always inside the band');
+    assert.ok(Math.abs(px / 69001 - 1) <= 0.023, 'and never past 2.3%: a tenth of a percent inside what Hyperliquid testnet takes');
     assert.ok(isBuy ? px > 69001 : px < 69001, 'on the side that fills');
   }
   assert.equal(marketPrice({ reference: null, bandBp: 300, isBuy: true, szDecimals: 5 }), null);
@@ -446,11 +447,11 @@ test('a limit order: rounded by Hyperliquid’s rules, never worse than typed, a
 
 test('a market order: immediate-or-cancel at the market price, worth its size at the mark', () => {
   const buy = buildOrder(intent({ kind: 'market', price: 'ignored', tif: 'Gtc' }), BTC);
-  assert.deepEqual(buy.order, { coin: 'BTC', is_buy: true, sz: '0.01', limit_px: '70036', reduce_only: false, tif: 'Ioc' });
-  assert.equal(buy.marketPx, '70036');
+  assert.deepEqual(buy.order, { coin: 'BTC', is_buy: true, sz: '0.01', limit_px: '70588', reduce_only: false, tif: 'Ioc' });
+  assert.equal(buy.marketPx, '70588');
   assert.equal(buy.worthMicro, 685_350_000n, '0.01 x the mark 68,535, not the limit');
   const sell = buildOrder(intent({ kind: 'market', isBuy: false }), BTC);
-  assert.equal(sell.order!.limit_px, '67966');
+  assert.equal(sell.order!.limit_px, '67414');
   const none = buildOrder(intent({ kind: 'market' }), coinFacts(market({}, { oracle_px: null, mark_px: null })));
   assert.equal(none.order, null);
   assert.match(none.problems[0]!, /no price for BTC right now/);
@@ -461,7 +462,7 @@ test('size in USDC: at the limit for a limit order, at the mark for a market ord
   assert.equal(limit.order!.sz, '0.00735', '500 / 68,000');
   const atMarket = buildOrder(intent({ kind: 'market', size: '500', sizeIn: 'usd' }), BTC);
   assert.equal(atMarket.order!.sz, '0.00729', '500 / the mark 68,535');
-  assert.equal(atMarket.order!.limit_px, '70036');
+  assert.equal(atMarket.order!.limit_px, '70588');
   assert.deepEqual(buildOrder(intent({ size: '', sizeIn: 'usd' }), BTC).problems, ['Enter an amount in USDC, like 100']);
   assert.deepEqual(buildOrder(intent({ size: '500', sizeIn: 'usd', price: '' }), BTC).problems, ['Enter an amount in USDC, like 100', 'Enter a limit price, like 75000']);
 });
@@ -521,12 +522,12 @@ test('Close is one order: all of the position, the other side, reduce-only, at t
   assert.equal(closeIntent({ coin: 'ETH', szi: 'x' }), null);
   // The whole path: a short of 0.0123 BTC is bought back at the market price, immediate-or-cancel, reduce-only.
   const built = buildOrder(closeIntent({ coin: 'BTC', szi: '-0.0123' })!, BTC);
-  assert.deepEqual(built.order, { coin: 'BTC', is_buy: true, sz: '0.0123', limit_px: '70036', reduce_only: true, tif: 'Ioc' });
+  assert.deepEqual(built.order, { coin: 'BTC', is_buy: true, sz: '0.0123', limit_px: '70588', reduce_only: true, tif: 'Ioc' });
   assert.equal(orderLabel(built.order!, 'market'), 'Buy 0.0123 BTC at market');
   // A position worth less than Hyperliquid's $10 can still be closed: that minimum is left to Hyperliquid.
   const dust = closeIntent({ coin: 'BTC', szi: '0.0001' })!;
   assert.equal(buildOrder(dust, BTC).order, null);
-  assert.deepEqual(buildOrder(dust, BTC, { closing: true }).order, { coin: 'BTC', is_buy: false, sz: '0.0001', limit_px: '67966', reduce_only: true, tif: 'Ioc' });
+  assert.deepEqual(buildOrder(dust, BTC, { closing: true }).order, { coin: 'BTC', is_buy: false, sz: '0.0001', limit_px: '67414', reduce_only: true, tif: 'Ioc' });
   assert.equal(orderLabel({ coin: 'ETH', is_buy: false, sz: '0.5', limit_px: '1950', reduce_only: false, tif: 'Gtc' }, 'limit'), 'Sell 0.5 ETH at 1950');
 });
 

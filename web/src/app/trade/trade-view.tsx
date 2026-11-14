@@ -34,6 +34,7 @@ import {
 } from '@/lib/gateway';
 import { sendWithinLife } from '@/lib/order-life';
 import { hlSummary, setupStep, sideWords, type HlAnswer } from '@/lib/hl';
+import { ownOrderBp } from '@/lib/hl-reach';
 import { bandFloorWords, bandPercent, bandProblem, decFromNumber, decText, priceBand, roundOrder, roundPrice, showPrice } from '@/lib/hl-rules';
 import { formatDollars, formatUsd } from '@/lib/units';
 import { useNearWallet } from '@/providers/near-provider';
@@ -173,10 +174,10 @@ function OrderForm(props: {
   const ready = hl && hl.gateway && setupStep(hl) === 'ready';
   const canSend = Boolean(rounded && rounded.problems.length === 0 && facts?.listed && ready && isOwner && !busy && form.size && form.price);
 
-  /** A limit inside the band: half the band past the reference, on the side that fills. */
+  /** A limit inside the band, past the reference on the side that fills (lib/hl-reach.ts, ownOrderBp). */
   const fillPrice = () => {
     if (!facts?.band) return;
-    const target = facts.reference * (1 + ((form.isBuy ? 1 : -1) * coin!.band_bp) / 20_000);
+    const target = facts.reference * (1 + ((form.isBuy ? 1 : -1) * ownOrderBp(coin!.band_bp)) / 10_000);
     const dec = decFromNumber(target);
     if (dec) update({ price: decText(roundPrice(dec, facts.szDecimals, form.isBuy ? 'down' : 'up')) });
   };
@@ -388,7 +389,7 @@ function Positions({ hl, markets, onClose }: { hl: HlAnswer; markets: MarketsAns
                           const isBuy = p.side === 'short';
                           let price = '';
                           if (facts?.band) {
-                            const target = facts.reference * (1 + ((isBuy ? 1 : -1) * facts.band.bandBp) / 20_000);
+                            const target = facts.reference * (1 + ((isBuy ? 1 : -1) * ownOrderBp(facts.band.bandBp)) / 10_000);
                             const dec = decFromNumber(target);
                             if (dec) price = decText(roundPrice(dec, facts.szDecimals, isBuy ? 'down' : 'up'));
                           }

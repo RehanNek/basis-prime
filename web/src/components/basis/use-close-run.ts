@@ -37,7 +37,7 @@ import {
 import { closeStage, closeStateFrom, closeWords, hlWasRead, MIN_MOVE, nextCloseStep, type CloseState, type CloseStep } from '@/lib/basis';
 import { approved, EVM_CHAIN_NAME, gasView, walletToken } from '@/lib/evm';
 import { expiryNow, GATEWAY_RECIPIENT, orderLifeMs, orderMessage, orderWords, randomNonce, toAuth } from '@/lib/gateway';
-import { coinTradingNow, notTradingWords } from '@/lib/hl-reach';
+import { coinTradingNow, notTradingWords, ownOrderBp } from '@/lib/hl-reach';
 import { sendWithinLife } from '@/lib/order-life';
 import { lastSignedIndex, newSignedEntry, signedIndexFromLogs, submitWords, type HlAnswer, type SubmitAnswer } from '@/lib/hl';
 import { decFromNumber, decText, roundOrder, roundPrice } from '@/lib/hl-rules';
@@ -384,8 +384,8 @@ export function useCloseRun({ accountId, owner, testnet, usdcId, reloadAll }: In
             todo: 'Nothing was signed or sent. Try again later: the page goes on from where your account really is.',
           });
         }
-        // A limit half the price band past the reference, on the side that fills: it fills at once, inside the band.
-        const target = decFromNumber(reference * (1 + ((isBuy ? 1 : -1) * coin.band_bp) / 20_000));
+        // A limit past the reference on the side that fills (lib/hl-reach.ts, ownOrderBp): it fills at once, inside the band.
+        const target = decFromNumber(reference * (1 + ((isBuy ? 1 : -1) * ownOrderBp(coin.band_bp)) / 10_000));
         if (!target) throw new StepFailed('No price to close at.');
         const rounded = roundOrder({ size: String(next.size), price: decText(roundPrice(target, listed.sz_decimals, isBuy ? 'down' : 'up')), isBuy, szDecimals: listed.sz_decimals });
         if (rounded.problems.length) throw new StepFailed(rounded.problems.join(' '));

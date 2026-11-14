@@ -9,6 +9,7 @@
 // Nothing here reads the clock, the network or the browser.
 import type { MarketCoin } from './api.ts';
 import { cancelWords, EXPIRED_ORDER_WORDS, isExpired, orderWords, type AnswerWords, type GatewayAnswer, type GatewayOrder, type Tif } from './gateway.ts';
+import { ownOrderBp } from './hl-reach.ts';
 import { bandPercent, decFromNumber, decText, notionalMicro, parseDec, priceBand, roundOrder, roundPrice, type Band } from './hl-rules.ts';
 import { orderWaitWords } from './order-life.ts';
 
@@ -557,20 +558,15 @@ export function pickerCoins(coins: MarketCoin[]): { coin: string; listed: boolea
 }
 
 /**
- * How far past the reference a market order's limit goes, as a share of the band. The trade page's "Close…" and the
- * setup's hedge use half the band: the gateway measures the band from its own reference price, which can differ a
- * little from the one the page sees, so the very edge would often be refused (P2).
- */
-export const MARKET_BAND_SHARE = 0.5;
-
-/**
  * The limit price of a market order: an immediate-or-cancel limit past the reference on the side that fills, inside
- * the band, rounded to Hyperliquid's rules toward the reference (a buy down, a sell up). The same sum as the trade
- * page's "Close…": reference x (1 +/- band / 2). Null without a reference price.
+ * the band, rounded to Hyperliquid's rules toward the reference (a buy down, a sell up). How far past is one rule for
+ * every order this app means to fill at once (lib/hl-reach.ts, ownOrderBp): 2.3% with testnet's 3% band. The very edge
+ * of the band would often be refused, since the gateway measures from its own reference price (P2). Null without a
+ * reference price.
  */
 export function marketPrice(input: { reference: number | null; bandBp: number; isBuy: boolean; szDecimals: number }): string | null {
   if (input.reference === null || !(input.reference > 0)) return null;
-  const target = input.reference * (1 + ((input.isBuy ? 1 : -1) * input.bandBp * MARKET_BAND_SHARE) / 10_000);
+  const target = input.reference * (1 + ((input.isBuy ? 1 : -1) * ownOrderBp(input.bandBp)) / 10_000);
   const dec = decFromNumber(target);
   if (!dec) return null;
   const rounded = roundPrice(dec, input.szDecimals, input.isBuy ? 'down' : 'up');

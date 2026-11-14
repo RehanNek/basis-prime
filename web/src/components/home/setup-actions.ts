@@ -34,7 +34,7 @@ import {
 import { collateralAt, EVM_CHAIN_NAME, testCollateral } from '@/lib/evm';
 import { termsFor } from '@/lib/funding';
 import { expiryNow, GATEWAY_RECIPIENT, orderLifeMs, orderMessage, orderWords, randomNonce, toAuth } from '@/lib/gateway';
-import { coinTradingNow, notTradingWords } from '@/lib/hl-reach';
+import { coinTradingNow, notTradingWords, ownOrderBp } from '@/lib/hl-reach';
 import { sendWithinLife } from '@/lib/order-life';
 import { agentApproved, hlFunded, hlSummary, lastSignedIndex, loanOpen, newSignedEntry, signedIndexFromLogs, submitWords, type HlAnswer } from '@/lib/hl';
 import { decFromNumber, decText, roundOrder, roundPrice } from '@/lib/hl-rules';
@@ -231,8 +231,8 @@ export function useSetupActions({ accountId, owner, name, permission, skipTestCo
       // INTERFACES.md 50.4: an order Hyperliquid can't take now isn't signed.
       const stopped = notTradingWords('BTC', coinTradingNow(coin, NetworkId === 'testnet'), 'coin');
       if (stopped) throw new StepFailed(`${stopped.replace(' Pick another coin, or try BTC again later.', '')} Nothing was signed. Try again later, or hedge another coin on the Basis trade tab.`);
-      // Sell as much BTC as the account holds nBTC, at a limit half the price band below the reference, now or never.
-      const target = decFromNumber(reference * (1 - coin.band_bp / 20_000));
+      // Sell as much BTC as the account holds nBTC, at a limit below the reference (lib/hl-reach.ts, ownOrderBp), now or never.
+      const target = decFromNumber(reference * (1 - ownOrderBp(coin.band_bp) / 10_000));
       if (!target) throw new StepFailed('No price to sell at.');
       const rounded = roundOrder({ size: formatUnits(units, 8), price: decText(roundPrice(target, listed.sz_decimals, 'up')), isBuy: false, szDecimals: listed.sz_decimals });
       if (rounded.problems.length) throw new StepFailed(rounded.problems.join(' '));
